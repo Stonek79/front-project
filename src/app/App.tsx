@@ -1,12 +1,10 @@
-import React, {Suspense, useContext, useState} from 'react';
-import '../styles/index.scss'
-import {Link, Route, Routes} from "react-router-dom";
-import MainPage from "../pages/MainPage/MainPage";
-import AboutPage from "../pages/AboutPage/AboutPage";
-import {MainPageLazy} from "../pages/MainPage/MainPage.lazy";
-import {AboutPageLazy} from "../pages/AboutPage/AboutPage.lazy";
-import {useTheme} from "../theme/useTheme";
-import {classNames} from "../helpers/classNames/classNames";
+import React, { Suspense } from 'react'
+import './styles/index.scss'
+import { Link, Route, Routes } from 'react-router-dom'
+import { useTheme } from 'app/providers/ThemeProvider'
+import { classNames } from 'shared/lib/classNames/classNames'
+import { MainPageLazy } from 'pages/MainPage'
+import { AboutPageLazy } from 'pages/AboutPage'
 
 
 const App = () => {
@@ -25,7 +23,7 @@ const App = () => {
                 </Routes>
             </Suspense>
         </div>
-    );
-};
+    )
+}
 
-export default App;
+export default App

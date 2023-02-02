@@ -1,4 +1,3 @@
-
 type Mods = Record<string, string | boolean>
 export const classNames = (cn: string, modes: Mods, additional: string[]): string => {
 
@@ -6,9 +5,9 @@ export const classNames = (cn: string, modes: Mods, additional: string[]): strin
         cn,
         ...additional,
         ...Object.entries(modes)
-            .filter(([cn, value]) => Boolean(value))
-            .map(([className]) => className)
+        .filter(([_, value]) => Boolean(value))
+        .map(([className]) => className),
 
     ]
-        .join(' ')
+    .join(' ')
 }
