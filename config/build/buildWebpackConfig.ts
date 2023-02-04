@@ -1,15 +1,15 @@
-import { BuildOptions } from './types/config'
 import webpack from 'webpack'
-import { buildLoaders } from './buildLoaders'
-import { buildResolvers } from './buldResolvers'
 import { buildPlugins } from './buidPlugins'
 import { buildDevServer } from './buildDevServer'
+import { buildLoaders } from './buildLoaders'
+import { buildResolvers } from './buldResolvers'
+import { BuildOptions } from './types/config'
 
 export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration => {
     const { paths, mode, isDev } = options
 
     return {
-        mode: mode,
+        mode,
         entry: paths.entry,
         output: {
             filename: '[name].[contenthash].js',
