@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import { FC } from 'react'
 import { Theme, useTheme } from 'app/providers/ThemeProvider'
-import DerkIcon from 'shared/assets/icons/theme-dark.svg'
+import DarkIcon from 'shared/assets/icons/theme-dark.svg'
 import LightIcon from 'shared/assets/icons/theme-light.svg'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 
@@ -18,7 +18,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
 
     return (
         <Button theme={ButtonTheme.CLEAR} className={cn} onClick={toggleTheme}>
-            {theme === Theme.DARK ? <DerkIcon /> : <LightIcon />}
+            {theme === Theme.DARK ? <DarkIcon /> : <LightIcon />}
         </Button>
     )
 }

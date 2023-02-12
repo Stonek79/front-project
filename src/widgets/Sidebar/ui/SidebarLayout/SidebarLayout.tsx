@@ -23,8 +23,9 @@ export const SidebarLayout: FC<SidebarLayoutProps> = (props) => {
     const btnName = collapsed ? t('sidebarOpen') : t('sidebarClose')
 
     return (
-        <div className={cn}>
+        <div data-testid="sidebarLayout" className={cn}>
             <Button
+                data-testid="sidebarLayout-toggle"
                 theme={ButtonTheme.LIGHT}
                 onClick={onToggle}
                 className={cls.btn}

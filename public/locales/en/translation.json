@@ -2,6 +2,11 @@
     "sidebarOpen": "OPEN",
     "sidebarClose": "CLOSE",
     "language": "РУССКИЙ",
+    "notFoundPage": "Page not found",
     "aboutPageCapitalize": "ABOUT US",
-    "mainPageCapitalize": "MAIN PAGE"
+    "mainPageCapitalize": "MAIN PAGE",
+    "errorMessage": "Something went wrong.",
+    "throw error": "Throw error",
+    "reloadPage": "Reload page",
+    "toMainPage": "To main page"
 }

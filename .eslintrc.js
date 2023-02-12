@@ -43,12 +43,20 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': ['warn', {
             argsIgnorePattern: '^_',
         }],
-        'i18next/no-literal-string': ['error', { markupOnly: true }],
-        'max-len': ['error', { code: 120, ignoreComments: true }],
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['to', 'data-testid'] }],
+        'max-len': ['warn', { code: 120, ignoreComments: true }],
         semi: 0,
         indent: [2, 4],
     },
     globals: {
         _IS_DEV_: true,
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };

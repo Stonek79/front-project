@@ -12,7 +12,9 @@ export const LangSwitcher: FC<LangSwitcherProps> = (props) => {
     const { className } = props
 
     const cn = classNames('', [className])
-    const switcher = () => i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
+    const switcher = async () => {
+        await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
+    }
 
     return (
         <Button
