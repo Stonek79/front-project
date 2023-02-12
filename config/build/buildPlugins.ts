@@ -1,8 +1,7 @@
-import webpack from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
-import { BuildOptions } from './types/config'
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BuildOptions } from './types/config';
 
 export const buildPlugins = ({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] => [
     new HtmlWebpackPlugin({
@@ -17,6 +16,4 @@ export const buildPlugins = ({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         _IS_DEV_: JSON.stringify(isDev),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    isDev && new ReactRefreshWebpackPlugin(),
-
-].filter(Boolean)
+]
