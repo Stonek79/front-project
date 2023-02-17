@@ -2,9 +2,11 @@
     position: relative;
     top: calc(50% - 40px);
     left: calc(50% - 40px);
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #3498db;
+    border: 8px solid var(--bg-color);
+    border-top: 8px solid var(--inverted-bg-color);
     border-radius: 50%;
+    background-color: #04ff04;
+    margin: 0;
     width: 80px;
     height: 80px;
     animation: spin 1s linear infinite;

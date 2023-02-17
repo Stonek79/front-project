@@ -28,11 +28,11 @@ export const ErrorPage: FC<ErrorPageProps> = (props) => {
         <div className={cn}>
             <p>{t('errorMessage')}</p>
             <br />
-            <Button theme={ButtonTheme.LIGHT} className={cls.btn} onClick={reloadPage}>
+            <Button theme={ButtonTheme.SECONDARY} className={cls.btn} onClick={reloadPage}>
                 {t('reloadPage')}
             </Button>
             <br />
-            <Button theme={ButtonTheme.LIGHT} className={cls.btn} onClick={toMain}>
+            <Button theme={ButtonTheme.SECONDARY} className={cls.btn} onClick={toMain}>
                 {t('toMainPage')}
             </Button>
         </div>

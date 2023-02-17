@@ -17,7 +17,7 @@ export const BugButton = () => {
 
     return (
         <Button
-            theme={ButtonTheme.LIGHT}
+            theme={ButtonTheme.SECONDARY}
             onClick={onThrow}
         >
             {t('throw error')}

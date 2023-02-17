@@ -26,7 +26,7 @@ export const SidebarLayout: FC<SidebarLayoutProps> = (props) => {
         <div data-testid="sidebarLayout" className={cn}>
             <Button
                 data-testid="sidebarLayout-toggle"
-                theme={ButtonTheme.LIGHT}
+                theme={ButtonTheme.SECONDARY}
                 onClick={onToggle}
                 className={cls.btn}
             >

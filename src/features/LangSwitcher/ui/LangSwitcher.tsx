@@ -18,7 +18,7 @@ export const LangSwitcher: FC<LangSwitcherProps> = (props) => {
 
     return (
         <Button
-            theme={ButtonTheme.LIGHT}
+            theme={ButtonTheme.SECONDARY}
             className={cn}
             onClick={switcher}
         >
