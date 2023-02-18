@@ -10,6 +10,7 @@
         "test": "jest --config config/jest/jest.config.ts",
         "test:screenshot": "npx loki",
         "test:screenshot:approve": "npx loki",
+        "test:screenshot:ci": "npx loki --requireReference --reactUri file:./storybook-static",
         "lint": "eslint \"**/*.{ts,tsx}\"",
         "lint:all": "eslint \"**/*.{ts,tsx}\" && stylelint \"**/*.{css,scss}\"",
         "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
