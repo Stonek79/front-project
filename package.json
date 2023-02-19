@@ -10,7 +10,7 @@
         "test": "jest --config config/jest/jest.config.ts",
         "test:screenshot": "npx loki",
         "test:screenshot:approve": "npx loki approve",
-        "test:screenshot:ci": "npx loki --requireReference --reactUri file:./storybook-static",
+        "test:screenshot:ci": "concurrently --kill-others --raw --success first 'loki --requireReference --reactUri file:./storybook-static' 'deelay'",
         "lint": "eslint \"**/*.{ts,tsx}\"",
         "lint:all": "eslint \"**/*.{ts,tsx}\" && stylelint \"**/*.{css,scss}\"",
         "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
@@ -18,7 +18,7 @@
         "lint:scss:fix": "stylelint \"**/*.{css,scss}\" --fix",
         "lint:fix:all": "eslint \"**/*.{ts,tsx}\" --fix && stylelint \"**/*.{css,scss}\" --fix",
         "storybook": "start-storybook -p 6006 -c ./config/storybook",
-        "storybook:build": "build-storybook -c ./config/storybook"
+        "storybook:build": "build-storybook -c ./config/storybook --quiet"
     },
     "keywords": [],
     "author": "",
@@ -54,6 +54,7 @@
         "babel-plugin-i18next-extract": "^0.8.3",
         "copy-webpack-plugin": "^10.2.4",
         "css-loader": "^6.6.0",
+        "deelay": "^2.0.0",
         "eslint": "^8.10.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-plugin-i18next": "^5.1.2",
@@ -101,14 +102,14 @@
     "loki": {
         "configurations": {
             "chrome.laptop": {
-                "target": "chrome.app",
+                "target": "chrome.docker",
                 "width": 1366,
                 "height": 768,
                 "deviceScaleFactor": 1,
                 "mobile": false
             },
             "chrome.iphone7": {
-                "target": "chrome.app",
+                "target": "chrome.docker",
                 "preset": "iPhone 7"
             }
         }
