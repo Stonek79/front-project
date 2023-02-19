@@ -9,7 +9,7 @@
         "build:dev": "webpack --env mode=development",
         "test": "jest --config config/jest/jest.config.ts",
         "test:screenshot": "npx loki",
-        "test:screenshot:approve": "npx loki",
+        "test:screenshot:approve": "npx loki approve",
         "test:screenshot:ci": "npx loki --requireReference --reactUri file:./storybook-static",
         "lint": "eslint \"**/*.{ts,tsx}\"",
         "lint:all": "eslint \"**/*.{ts,tsx}\" && stylelint \"**/*.{css,scss}\"",
@@ -17,7 +17,7 @@
         "lint:scss": "stylelint \"**/*.{css,scss}\"",
         "lint:scss:fix": "stylelint \"**/*.{css,scss}\" --fix",
         "lint:fix:all": "eslint \"**/*.{ts,tsx}\" --fix && stylelint \"**/*.{css,scss}\" --fix",
-        "storybook": "start-storybook -p 6006 -c ./config/storybook -s ./public",
+        "storybook": "start-storybook -p 6006 -c ./config/storybook",
         "storybook:build": "build-storybook -c ./config/storybook"
     },
     "keywords": [],

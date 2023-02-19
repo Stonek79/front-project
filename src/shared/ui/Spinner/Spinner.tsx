@@ -9,8 +9,16 @@ interface SpinnerProps {
 export const Spinner: FC<SpinnerProps> = (props) => {
     const { className } = props
     const cn = classNames(cls.Spinner, [className])
-
+    const cnSpinner = classNames(cls['lds-ellipsis'], [className])
+    console.log(className, cn, cnSpinner)
     return (
-        <div className={cn} />
+        <div className={cn}>
+            <div className={cnSpinner}>
+                <div />
+                <div />
+                <div />
+                <div />
+            </div>
+        </div>
     );
 };

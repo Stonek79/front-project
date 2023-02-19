@@ -11,11 +11,11 @@ export default ({ config }: { config: webpack.Configuration }) => {
         src: path.resolve(__dirname, '../../', 'src'),
     }
 
-    const isDevPlagin = new webpack.DefinePlugin({
+    const isDevPlugin = new webpack.DefinePlugin({
         _IS_DEV_: JSON.stringify(true),
     })
 
-    config.plugins.push(isDevPlagin)
+    config.plugins.push(isDevPlugin)
     config.resolve.modules.push(paths.src)
     config.resolve.extensions.push('ts', 'tsx')
     // eslint-disable-next-line no-param-reassign
