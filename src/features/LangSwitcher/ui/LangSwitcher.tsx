@@ -10,7 +10,6 @@ interface LangSwitcherProps {
 export const LangSwitcher: FC<LangSwitcherProps> = (props) => {
     const { t, i18n } = useTranslation()
     const { className } = props
-
     const cn = classNames('', [className])
     const switcher = async () => {
         await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
