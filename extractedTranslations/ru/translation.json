@@ -1,14 +1,11 @@
 {
-  "aboutPage": "aboutPage",
-  "aboutPageCapitalize": "aboutPageCapitalize",
-  "errorMessage": "errorMessage",
-  "language": "language",
-  "mainPage": "mainPage",
-  "mainPageCapitalize": "mainPageCapitalize",
-  "notFoundPage": "notFoundPage",
-  "reloadPage": "reloadPage",
-  "sidebarClose": "sidebarClose",
-  "sidebarOpen": "sidebarOpen",
   "throw error": "throw error",
-  "toMainPage": "toMainPage"
+  "Главная": "Главная",
+  "Главная страница": "Главная страница",
+  "О сайте": "О сайте",
+  "Обновить страницу": "Обновить страницу",
+  "Переключить": "Переключить",
+  "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
+  "Страница не найдена": "Страница не найдена",
+  "Язык": "Язык"
 }

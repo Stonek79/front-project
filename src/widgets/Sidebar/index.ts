@@ -1,1 +1,5 @@
-export { SidebarLayout } from './ui/SidebarLayout/SidebarLayout'
+import { Sidebar } from './ui/Sidebar/Sidebar';
+
+export {
+    Sidebar,
+};

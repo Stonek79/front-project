@@ -1,23 +1,24 @@
-import { Route, Routes } from 'react-router-dom'
-import { Suspense } from 'react'
-import { routeConfig } from 'app/providers/router/config/routeConfig'
-import { Spinner } from 'shared/ui/Spinner/Spinner'
-import { BugButton } from 'app/providers/ErrorBoundaries'
+import React, { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
 
-export const AppRouter = () => (
-    <div className="page">
-        <Suspense fallback={<Spinner />}>
-            {/* Тестовая кнопка */}
-            <BugButton />
-            <Routes>
-                {routeConfig.map(({ path, element }) => (
-                    <Route
-                        key={path}
-                        path={path}
-                        element={element}
-                    />
-                ))}
-            </Routes>
-        </Suspense>
-    </div>
-)
+const AppRouter = () => (
+    <Routes>
+        {Object.values(routeConfig).map(({ element, path }) => (
+            <Route
+                key={path}
+                path={path}
+                element={(
+                    <Suspense fallback={<PageLoader />}>
+                        <div className="page-wrapper">
+                            {element}
+                        </div>
+                    </Suspense>
+                )}
+            />
+        ))}
+    </Routes>
+);
+
+export default AppRouter;

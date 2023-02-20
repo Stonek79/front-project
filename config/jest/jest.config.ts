@@ -1,50 +1,40 @@
-// For a detailed explanation regarding each configuration property, visit:
-// https://jestjs.io/docs/en/configuration.html
+/*
+ * For a detailed explanation regarding each configuration property and type check, visit:
+ * https://jestjs.io/docs/configuration
+ */
 
-import path from 'path'
+import path from 'path';
 
 export default {
     clearMocks: true,
     testEnvironment: 'jsdom',
     coveragePathIgnorePatterns: [
-        '/node_modules/',
+        '\\\\node_modules\\\\',
+    ],
+    moduleFileExtensions: [
+        'js',
+        'jsx',
+        'ts',
+        'tsx',
+        'json',
+        'node',
     ],
     moduleDirectories: [
         'node_modules',
     ],
-    moduleFileExtensions: [
-        'js',
-        'json',
-        'jsx',
-        'ts',
-        'tsx',
-        'node',
-    ],
     modulePaths: [
         '<rootDir>src',
     ],
-    rootDir: '../..',
     testMatch: [
-        '**/__tests__/**/*.[jt]s?(x)',
-        '**/?(*.)+(spec|test).[tj]s?(x)',
+        // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
+        '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
-    setupFilesAfterEnv: ['<rootDir>/config/jest/jest-setup.ts'],
+    rootDir: '../../',
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
-
-    // All imported modules in your tests should be mocked automatically
-    // automock: false,
-
-    // Stop running tests after `n` failures
-    // bail: 0,
-
-    // The directory where Jest should store its cached dependency information
-    // cacheDirectory: "/tmp/jest_rs",
-
-    // Automatically clear mock calls and instances between every test
-
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
@@ -116,7 +106,7 @@ export default {
     // Use this configuration option to add custom reporters to Jest
     // reporters: undefined,
 
-    // Automatically reset mock state between every test
+    // Automatically reset mock state before every test
     // resetMocks: false,
 
     // Reset the module registry before running each individual test
@@ -125,7 +115,7 @@ export default {
     // A path to a custom resolver
     // resolver: undefined,
 
-    // Automatically restore mock state between every test
+    // Automatically restore mock state and implementation before every test
     // restoreMocks: false,
 
     // The root directory that Jest should scan for tests and modules within
@@ -138,12 +128,14 @@ export default {
     // Allows you to use a custom runner instead of Jest's default test runner
     // runner: "jest-runner",
 
-    // eslint-disable-next-line max-len
     // The paths to modules that run some code to configure or set up the testing environment before each test
     // setupFiles: [],
 
     // A list of paths to modules that run some code to configure or set up the testing framework before each test
     // setupFilesAfterEnv: [],
+
+    // The number of seconds after which a test is considered as slow and reported as such in the results.
+    // slowTestThreshold: 5,
 
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
@@ -160,7 +152,7 @@ export default {
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
     // testPathIgnorePatterns: [
-    //   "/node_modules/"
+    //   "\\\\node_modules\\\\"
     // ],
 
     // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -170,7 +162,7 @@ export default {
     // testResultsProcessor: undefined,
 
     // This option allows use of a custom test runner
-    // testRunner: "jasmine2",
+    // testRunner: "jest-circus/runner",
 
     // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
     // testURL: "http://localhost",
@@ -183,7 +175,8 @@ export default {
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [
-    //   "/node_modules/"
+    //   "\\\\node_modules\\\\",
+    //   "\\.pnp\\.[^\\\\]+$"
     // ],
 
     // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

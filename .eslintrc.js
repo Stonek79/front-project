@@ -50,7 +50,7 @@ module.exports = {
         indent: [2, 4],
     },
     globals: {
-        _IS_DEV_: true,
+        __IS_DEV__: true,
     },
     overrides: [
         {

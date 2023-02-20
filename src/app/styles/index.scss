@@ -1,6 +1,6 @@
-@import "./reset";
+@import "reset";
 @import "./variables/global";
-@import "./themes/light";
+@import "./themes/normal";
 @import "./themes/dark";
 
 .app {
@@ -14,7 +14,7 @@
     display: flex;
 }
 
-.page {
+.page-wrapper {
     flex-grow: 1;
     padding: 20px;
 }

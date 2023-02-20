@@ -1,12 +1,14 @@
 {
-    "sidebarOpen": "OPEN",
-    "sidebarClose": "CLOSE",
-    "language": "РУССКИЙ",
-    "notFoundPage": "Page not found",
-    "aboutPageCapitalize": "ABOUT US",
-    "mainPageCapitalize": "MAIN PAGE",
-    "errorMessage": "Something went wrong.",
-    "throw error": "Throw error",
-    "reloadPage": "Reload page",
-    "toMainPage": "To main page"
+  "Тестовый пример": "Test example",
+  "Перевод": "Translate",
+  "Главная страница": "Main page",
+  "Язык": "English",
+  "новый перевод": "новый перевод",
+  "Страница не найдена": "Page not found",
+  "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
+  "Обновить страницу": "Reload page",
+  "throw error": "throw error",
+  "Главная": "Main",
+  "О сайте": "About us",
+  "Переключить": "Переключить"
 }

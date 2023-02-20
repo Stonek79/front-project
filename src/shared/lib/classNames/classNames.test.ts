@@ -1,42 +1,40 @@
-import { classNames } from './classNames'
+import { classNames } from 'shared/lib/classNames/classNames';
 
-describe('classNames function test', () => {
-    test('with only class name', () => {
-        expect(classNames('className')).toBe('className')
-    })
+describe('classNames', () => {
+    test('with only first param', () => {
+        expect(classNames('someClass')).toBe('someClass');
+    });
 
-    test('with one additional parameter', () => {
-        const parameter = 'parameter'
-        const expected = 'className parameter'
+    test('with additional class', () => {
+        const expected = 'someClass class1 class2';
+        expect(classNames('someClass', {}, ['class1', 'class2']))
+            .toBe(expected);
+    });
 
-        expect(classNames('className', [parameter])).toBe(expected)
-    })
+    test('with mods', () => {
+        const expected = 'someClass class1 class2 hovered scrollable';
+        expect(classNames(
+            'someClass',
+            { hovered: true, scrollable: true },
+            ['class1', 'class2'],
+        )).toBe(expected);
+    });
 
-    test('with some additional parameters', () => {
-        const parameter = 'parameter'
-        const expected = 'className parameter next next one'
+    test('with mods false', () => {
+        const expected = 'someClass class1 class2 hovered';
+        expect(classNames(
+            'someClass',
+            { hovered: true, scrollable: false },
+            ['class1', 'class2'],
+        )).toBe(expected);
+    });
 
-        expect(classNames('className', [parameter, 'next', 'next one'])).toBe(expected)
-    })
-
-    test('with modes', () => {
-        const expected = 'className hidden hovered'
-        expect(classNames('className', [], { hidden: true, hovered: true })).toBe(expected)
-    })
-
-    test('with false mode', () => {
-        const expected = 'className hidden'
-        expect(classNames('className', [], { hidden: true, hovered: false })).toBe(expected)
-    })
-
-    test('with undefined mode', () => {
-        const expected = 'className hidden'
-        expect(classNames('className', [], { hidden: true, hovered: undefined })).toBe(expected)
-    })
-
-    test('with additional classes and modes', () => {
-        const parameter = 'parameter next parameter'
-        const expected = 'className parameter next parameter additional hidden hovered'
-        expect(classNames('className', [parameter, 'additional'], { hidden: true, hovered: true })).toBe(expected)
-    })
-})
+    test('with mods undefined', () => {
+        const expected = 'someClass class1 class2 hovered';
+        expect(classNames(
+            'someClass',
+            { hovered: true, scrollable: undefined },
+            ['class1', 'class2'],
+        )).toBe(expected);
+    });
+});

@@ -7,28 +7,29 @@ on:
     branches: [ main ]
 
 jobs:
-  integration:
+  pipeline:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
-        node: [ 18 ]
-    runs-on: ${{ matrix.os }}
+        node-version: [ 17.x ]
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
-      - name: Install dependencies
-        run: npm ci
-      - name: Build project
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm install
+      - name: build production project
         run: npm run build:prod
-      - name: Run ESLint
-        run: npm run lint:all
-      - name: Run unit tests
-        run: npm run test
-      - name: Build storybook
+      - name: linting typescript
+        run: npm run lint:ts
+      - name: linting css
+        run: npm run lint:scss
+      - name: unit testing
+        run: npm run test:unit
+      - name: build storybook
         run: npm run storybook:build
-      - name: Run screenshot tests
-        run: npm run test:screenshot:ci
+      - name: screenshot testing
+        run: npm run test:ui:ci
