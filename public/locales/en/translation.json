@@ -10,5 +10,7 @@
     "throw error": "throw error",
     "Главная": "Main",
     "О сайте": "About us",
-    "short-lng": "En"
+    "short-lng": "En",
+    "modal": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n Accusamus cumque debitis deleniti ex nam nihil nisi, quasi tempore voluptas voluptates.\n",
+    "logIn": "LogIn"
 }
