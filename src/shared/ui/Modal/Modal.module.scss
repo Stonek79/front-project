@@ -28,11 +28,6 @@
     max-width: 60%;
 }
 
-.content.dark {
-    background: var(--inverted-bg-color);
-    color: var(--inverted-primary-color);
-}
-
 .opened {
     opacity: 1;
     pointer-events: auto;

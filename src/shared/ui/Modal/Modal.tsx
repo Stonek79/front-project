@@ -47,7 +47,6 @@ export const Modal: FC<ModalProps> = (props) => {
     }
 
     const cn = classNames(cls.Modal, mods, [className])
-    const cnContent = classNames(cls.content, {}, [cls[className]])
 
     useEffect(() => {
         if (isOpen) {
@@ -63,7 +62,7 @@ export const Modal: FC<ModalProps> = (props) => {
     return (
         <div className={cn}>
             <div className={cls.overlay} onClick={closeHandler}>
-                <div className={cnContent} onClick={onContentClick}>
+                <div className={cls.content} onClick={onContentClick}>
                     {children}
                 </div>
             </div>
