@@ -12,16 +12,18 @@ export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
     const { t, i18n } = useTranslation();
 
     const toggle = async () => {
-        i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
+        await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     };
+
+    const btnName = short ? 'short-lng' : 'Язык'
 
     return (
         <Button
             className={classNames('', {}, [className])}
-            theme={ButtonTheme.CLEAR}
+            theme={ButtonTheme.BG_INVERTED}
             onClick={toggle}
         >
-            {t(short ? 'short-lng' : 'Язык')}
+            {t(btnName)}
         </Button>
     );
 };

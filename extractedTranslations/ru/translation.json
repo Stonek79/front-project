@@ -1,8 +1,10 @@
 {
+  "LogIn": "LogIn",
   "decrement": "decrement",
   "increment": "increment",
   "logIn": "logIn",
   "modal": "modal",
+  "short-lng": "short-lng",
   "throw error": "throw error",
   "Главная": "Главная",
   "Главная страница": "Главная страница",
