@@ -1,4 +1,6 @@
 {
+  "decrement": "decrement",
+  "increment": "increment",
   "logIn": "logIn",
   "modal": "modal",
   "throw error": "throw error",

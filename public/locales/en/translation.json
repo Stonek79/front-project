@@ -12,5 +12,7 @@
     "О сайте": "About us",
     "short-lng": "En",
     "modal": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n Accusamus cumque debitis deleniti ex nam nihil nisi, quasi tempore voluptas voluptates.\n",
-    "logIn": "LogIn"
+    "logIn": "LogIn",
+    "increment": "increment",
+    "decrement": "decrement"
 }
