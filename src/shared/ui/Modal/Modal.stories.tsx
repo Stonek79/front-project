@@ -27,5 +27,6 @@ export const Dark = Template.bind({})
 Dark.args = {
     children: lorem,
     isOpen: true,
+    className: Theme.DARK,
 }
 Dark.decorators = [ThemeDecorator(Theme.DARK)]

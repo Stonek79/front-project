@@ -3,16 +3,18 @@
     "Перевод": "Перевод",
     "Главная страница": "Главная страница",
     "Язык": "English",
-    "новый перевод": "новый перевод",
     "Страница не найдена": "Страница не найдена",
     "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
     "Обновить страницу": "Обновить страницу",
-    "throw error": "throw error",
+    "throw error": "Пробросить ошибку",
     "Главная": "Главная",
     "О сайте": "О сайте",
     "short-lng": "En",
     "modal": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n Accusamus cumque debitis deleniti ex nam nihil nisi, quasi tempore voluptas voluptates.\n",
     "logIn": "Войти",
     "increment": "прибавить",
-    "decrement": "отнять"
+    "decrement": "отнять",
+    "Enter text": "Введите текст",
+    "Enter username": "Введите имя",
+    "Enter password": "Введите пароль"
 }

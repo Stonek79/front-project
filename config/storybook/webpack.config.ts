@@ -10,6 +10,12 @@ export default ({ config }: {config: webpack.Configuration}) => {
         entry: '',
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
+
+    const isDevPlagin = new webpack.DefinePlugin({
+        __IS_DEV__: JSON.stringify(true),
+    })
+
+    config.plugins.push(isDevPlagin)
     config.resolve.modules.push(paths.src);
     config.resolve.extensions.push('.ts', '.tsx');
 

@@ -1,9 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames'
-import { Portal } from 'shared/ui/Portal/Portal'
-import { Modal } from 'shared/ui/Modal/Modal'
 import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { LoginModal } from 'features/AuthByUsername'
 import cls from './Navbar.module.scss'
 
 interface NavbarProps {
@@ -16,8 +15,12 @@ export const Navbar = ({ className }: NavbarProps) => {
 
     const cn = classNames(cls.Navbar, {}, [className])
 
-    const onToggleModal = useCallback(() => {
-        setIsOpen((prev) => !prev)
+    const onOpenModal = useCallback(() => {
+        setIsOpen(true)
+    }, [])
+
+    const onCloseModal = useCallback(() => {
+        setIsOpen(false)
     }, [])
 
     return (
@@ -25,18 +28,15 @@ export const Navbar = ({ className }: NavbarProps) => {
             <Button
                 theme={ButtonTheme.CLEAR_INVERTED}
                 className={cls.links}
-                onClick={() => setIsOpen(true)}
+                onClick={onOpenModal}
             >
                 {t('logIn')}
             </Button>
 
-            <Portal>
-                {isOpen && (
-                    <Modal isOpen={isOpen} onClose={onToggleModal}>
-                        {t('modal')}
-                    </Modal>
-                )}
-            </Portal>
+            <LoginModal isOpen={isOpen} onClose={onCloseModal}>
+                {t('modal')}
+            </LoginModal>
+
         </div>
     )
 }
