@@ -26,7 +26,7 @@ export default {
         'node_modules',
     ],
     modulePaths: [
-        '<rootDir>src',
+        '<rootDir>/src',
     ],
     testMatch: [
         // Обнаружил разницу между МАК ОС и ВИНДОУС!!!

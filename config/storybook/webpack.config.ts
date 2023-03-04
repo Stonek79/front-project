@@ -11,12 +11,17 @@ export default ({ config }: {config: webpack.Configuration}) => {
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
 
-    const isDevPlagin = new webpack.DefinePlugin({
-        __IS_DEV__: JSON.stringify(true),
+    // config.resolve.modules.push(paths.src)
+    config.resolve.modules = [
+        path.resolve(__dirname, '../../src'),
+        'node_modules',
+    ];
+    const isDevPlugin = new webpack.DefinePlugin({
+        __IS_DEV__: true,
     })
 
-    config.plugins.push(isDevPlagin)
-    config.resolve.modules.push(paths.src);
+    config.plugins.push(isDevPlugin);
+
     config.resolve.extensions.push('.ts', '.tsx');
 
     // eslint-disable-next-line no-param-reassign
