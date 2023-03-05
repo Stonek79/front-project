@@ -24,7 +24,7 @@ Normal.decorators = [StoreDecorator({
     loginForm: {
         username: 'User',
         password: 'pass123',
-        isLoding: false,
+        isLoading: false,
     },
 })]
 
@@ -35,7 +35,7 @@ Error.decorators = [StoreDecorator({
         username: 'User',
         password: 'pass123',
         error: 'Log in error',
-        isLoding: false,
+        isLoading: false,
     },
 })]
 
@@ -45,7 +45,7 @@ Loading.decorators = [StoreDecorator({
     loginForm: {
         username: 'User',
         password: 'pass123',
-        isLoding: true,
+        isLoading: true,
     },
 })]
 
@@ -55,6 +55,6 @@ Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
     loginForm: {
         username: 'User',
         password: 'pass123',
-        isLoding: false,
+        isLoading: false,
     },
 })]
