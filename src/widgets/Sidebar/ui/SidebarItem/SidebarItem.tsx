@@ -12,7 +12,7 @@ interface SidebarItemProps {
 
 export const SidebarItem = (props: SidebarItemProps) => {
     const { item, collapsed } = props
-    const { Icon, text, path } = item
+    const { Icon, text = '', path } = item
     const { t } = useTranslation()
 
     const cn = classNames(cls.item, { [cls.collapsed]: collapsed })

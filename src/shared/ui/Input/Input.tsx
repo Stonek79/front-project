@@ -1,5 +1,5 @@
 import {
-    ChangeEvent, InputHTMLAttributes, memo, SyntheticEvent, useEffect, useRef, useState,
+    ChangeEvent, InputHTMLAttributes, memo, MutableRefObject, SyntheticEvent, useEffect, useRef, useState,
 } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Input.module.scss'
@@ -23,7 +23,7 @@ export const Input = memo((props: InputProps) => {
 
     const [isFocused, setIsFocused] = useState(false)
     const [sliderPosition, setSliderPosition] = useState(0)
-    const ref = useRef<HTMLInputElement>()
+    const ref = useRef() as MutableRefObject<HTMLInputElement>
 
     const cn = classNames(cls.Input, {}, [className])
 

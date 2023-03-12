@@ -23,7 +23,7 @@ export const loginSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(loginByUsername.pending, (state) => {
-                state.error = null
+                state.error = ''
                 state.isLoading = true
             })
             .addCase(loginByUsername.fulfilled, (state) => {

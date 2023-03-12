@@ -43,6 +43,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'no-unused-vars': 'off',
+        'no-undef': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         '@typescript-eslint/no-unused-vars': ['warn', {
@@ -58,6 +59,7 @@ module.exports = {
     },
     globals: {
         __IS_DEV__: true,
+        __API__: true,
     },
     overrides: [
         {

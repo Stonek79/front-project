@@ -11,14 +11,31 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    args: {
+        to: '/profile',
+    },
 } as ComponentMeta<typeof ProfilePage>;
 
 const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage />;
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [StoreDecorator({})]
+Normal.decorators = [StoreDecorator({
+    profile: {
+        data: {
+            firstname: 'Alex',
+            lastname: 'Smith',
+        },
+    },
+})]
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+    profile: {
+        data: {
+            firstname: 'Alex',
+            lastname: 'Smith',
+        },
+    },
+})];

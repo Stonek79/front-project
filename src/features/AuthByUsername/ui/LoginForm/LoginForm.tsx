@@ -22,6 +22,7 @@ export interface LoginFormProps {
 const initialReducers: ReducersList = {
     loginForm: loginReducer,
 }
+
 const LoginForm = memo((props: LoginFormProps) => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()

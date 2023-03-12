@@ -35,9 +35,9 @@
         { "id": "1", "body": "some comment", "postId": "1" }
     ],
     "profile": {
-        "first": "Alex",
+        "firstname": "Alex",
         "lastname": "StoneK",
-        "age": 22,
+        "age": 42,
         "currency": "RUB",
         "country": "Russia",
         "city": "Moscow",
