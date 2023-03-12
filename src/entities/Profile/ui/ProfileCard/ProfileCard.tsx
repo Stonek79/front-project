@@ -16,8 +16,8 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
     const { className } = props
     const { t } = useTranslation()
     const profileData = useSelector(getProfileData)
-    const profileError = useSelector(getProfileError)
-    const profileIsLoading = useSelector(getProfileIsLoading)
+    // const profileError = useSelector(getProfileError)
+    // const profileIsLoading = useSelector(getProfileIsLoading)
 
     const cn = classNames(cls.ProfileCard, {}, [className])
 
