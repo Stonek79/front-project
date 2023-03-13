@@ -6,6 +6,7 @@ export enum ButtonTheme {
     CLEAR = 'clear',
     CLEAR_INVERTED = 'clearInverted',
     OUTLINE = 'outline',
+    OUTLINE_RED = 'outline_red',
     BG = 'background',
     BG_INVERTED = 'backgroundInverted'
 }
@@ -40,11 +41,14 @@ export const Button = memo((props: ButtonProps) => {
         [cls.square]: square,
         [cls.disabled]: disabled,
     }
+
+    const cn = classNames(cls.Button, mods, [className, cls[theme], cls[size]])
+
     return (
         <button
             type="button"
             disabled={disabled}
-            className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
+            className={cn}
             {...otherProps}
         >
             {children}
