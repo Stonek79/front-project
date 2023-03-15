@@ -1,22 +1,23 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames, Mods } from 'shared/lib/classNames/classNames'
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text'
+import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
 import { Loader } from 'shared/ui/Loader/Loader'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Currency, CurrencySelect } from 'entities/Currency'
 import { Countries } from 'entities/Country/model/types/countries'
 import { CountrySelect } from 'entities/Country'
-import { Profile } from '../../model/types/profile'
+import { Profile, ValidateErrors, ValidateProfileErrors } from '../../model/types/profile'
 import cls from './ProfileCard.module.scss'
 
 interface ProfileCardProps {
     className?: string;
     data?: Profile
-    error?: string
+    error?: ValidateErrors
     isLoading?: boolean
     readonly?: boolean
+    validateErrors?: ValidateErrors
     onChangeLastname?: (value?: string) => void
     onChangeFirstname?: (value?: string) => void
     onChangeAge?: (value?: string) => void
@@ -42,15 +43,31 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         error,
         isLoading,
         readonly,
+        validateErrors,
     } = props
     const { t } = useTranslation()
 
+    const validateErrorTranslates = {
+        [ValidateProfileErrors.NO_DATA]: t('noData'),
+        [ValidateProfileErrors.REQUIRED]: t('required'),
+        [ValidateProfileErrors.INCORRECT_LENGTH]: t('incorrectLength'),
+        [ValidateProfileErrors.INCORRECT_AGE]: t('incorrectAge'),
+        [ValidateProfileErrors.SERVER_ERROR]: t('serverError'),
+    }
     const mode: Mods = {
         [cls.editing]: !readonly,
     }
     const cn = classNames(cls.ProfileCard, mode, [className])
     const cnLoading = classNames(cls.ProfileCard, {}, [className, cls.loading])
     const cnError = classNames(cls.ProfileCard, {}, [className, cls.error])
+
+    const getErrorsFields = (errors: ValidateProfileErrors[]) => errors.map((err) => (
+        <Text
+            key={err}
+            theme={TextTheme.ERROR}
+            text={validateErrorTranslates[err]}
+        />
+    ))
 
     if (isLoading) {
         return (
@@ -60,14 +77,18 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         )
     }
 
-    if (error) {
+    if (error?.data.length) {
         return (
             <div className={cnError}>
-                <Text
-                    theme={TextTheme.ERROR}
-                    title={error}
-                    align={TextAlign.CENTER}
-                />
+                {getErrorsFields(error?.data)}
+            </div>
+        )
+    }
+
+    if (validateErrors?.data.length) {
+        return (
+            <div className={cnError}>
+                {getErrorsFields(validateErrors?.data)}
             </div>
         )
     }
@@ -90,6 +111,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     onChange={onChangeFirstname}
                     readonly={readonly}
                 />
+                {validateErrors?.firstname.length ? getErrorsFields(validateErrors?.firstname) : null}
                 <Input
                     value={data?.lastname}
                     placeholder={t('Last name')}
@@ -97,6 +119,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     onChange={onChangeLastname}
                     readonly={readonly}
                 />
+                {validateErrors?.lastname.length ? getErrorsFields(validateErrors?.lastname) : null}
                 <Input
                     value={data?.age}
                     placeholder={t('Age')}
@@ -104,6 +127,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     onChange={onChangeAge}
                     readonly={readonly}
                 />
+                {validateErrors?.age.length ? getErrorsFields(validateErrors?.age) : null}
                 <Input
                     value={data?.city}
                     placeholder={t('City')}
@@ -111,6 +135,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     onChange={onChangeCity}
                     readonly={readonly}
                 />
+                {validateErrors?.city.length ? getErrorsFields(validateErrors?.city) : null}
                 <Input
                     value={data?.username}
                     placeholder={t('Username')}
@@ -118,6 +143,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     onChange={onChangeUsername}
                     readonly={readonly}
                 />
+                {validateErrors?.username.length ? getErrorsFields(validateErrors?.username) : null}
                 <Input
                     value={data?.avatar}
                     placeholder={t('Avatar')}
@@ -131,12 +157,14 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                     readonly={readonly}
                     className={cls.input}
                 />
+                {validateErrors?.currency.length ? getErrorsFields(validateErrors?.currency) : null}
                 <CountrySelect
                     value={data?.country}
                     onChange={onChangeCountry}
                     readonly={readonly}
                     className={cls.input}
                 />
+                {validateErrors?.country.length ? getErrorsFields(validateErrors?.country) : null}
             </div>
         </div>
     );

@@ -1,4 +1,5 @@
-export { fetchProfileData } from './model/sevices/FetchPrifileData'
+export { getProfileValidateErrors } from './model/selectors/getProfileValidateErrors/getProfileValidateErrors'
+export { fetchProfileData } from './model/sevices/FetchProfileData'
 export { updateProfileData } from './model/sevices/UpdateProfileData'
 export { getProfileForm } from './model/selectors/getProfileForm/getProfileForm'
 export { getProfileReadonly } from './model/selectors/getProfileReadonly/getProfileReadonly'

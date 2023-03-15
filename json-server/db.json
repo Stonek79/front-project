@@ -41,7 +41,7 @@
   "profile": {
     "firstname": "Alex",
     "lastname": "StoneK",
-    "age": "42",
+    "age": 42,
     "currency": "RUB",
     "country": "Russia",
     "city": "Moscow",

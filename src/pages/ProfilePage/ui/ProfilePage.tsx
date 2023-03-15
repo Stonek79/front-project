@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import {
@@ -7,6 +6,7 @@ import {
     getProfileForm,
     getProfileIsLoading,
     getProfileReadonly,
+    getProfileValidateErrors,
     profileActions,
     ProfileCard,
     profileReducer,
@@ -28,17 +28,19 @@ interface ProfilePageProps {
 
 const ProfilePage = (props: ProfilePageProps) => {
     const { className } = props
-    const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const readonly = useSelector(getProfileReadonly)
     const profileData = useSelector(getProfileForm)
     const profileError = useSelector(getProfileError)
     const profileIsLoading = useSelector(getProfileIsLoading)
+    const profileErrors = useSelector(getProfileValidateErrors)
 
     const cn = classNames('', {}, [className])
 
     useEffect(() => {
-        dispatch(fetchProfileData())
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData())
+        }
     }, [dispatch])
 
     const onChangeFirstname = useCallback((value?: string) => {
@@ -53,13 +55,11 @@ const ProfilePage = (props: ProfilePageProps) => {
         }))
     }, [dispatch])
 
-    const onChangeAge = useCallback((value = '') => {
-        const reg = /^\d+$/;
-        if (reg.test(value)) {
-            dispatch(profileActions.updateProfile({
-                age: value,
-            }))
-        }
+    const onChangeAge = useCallback((value?: string) => {
+        const valueHandler = value?.replace(/\D+/gm, '')
+        dispatch(profileActions.updateProfile({
+            age: Number(valueHandler) || '',
+        }))
     }, [dispatch])
 
     const onChangeCity = useCallback((value?: string) => {
@@ -101,6 +101,7 @@ const ProfilePage = (props: ProfilePageProps) => {
                     error={profileError}
                     isLoading={profileIsLoading}
                     readonly={readonly}
+                    validateErrors={profileErrors}
                     onChangeFirstname={onChangeFirstname}
                     onChangeLastname={onChangeLastname}
                     onChangeAge={onChangeAge}
