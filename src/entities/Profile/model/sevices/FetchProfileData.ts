@@ -22,7 +22,7 @@ export const fetchProfileData = createAsyncThunk<
 
             return data
         } catch (e: any | unknown) {
-            return rejectWithValue(ValidateProfileData(e.message))
+            return rejectWithValue(e.message)
         }
     },
 )

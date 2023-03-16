@@ -36,5 +36,8 @@
   "Произошла непредвиденная ошибка": "Unexpected error",
   "Страница не найдена": "Page not found",
   "Тестовый пример": "Test example",
-  "Язык": "Русский"
+  "Язык": "Русский",
+    "Articles page": "Articles page",
+  "Article detail page": "Article detail page",
+  "Articles": "Articles"
 }

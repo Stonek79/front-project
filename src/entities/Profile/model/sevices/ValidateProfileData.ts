@@ -17,9 +17,14 @@ export const ValidateProfileData = (profile?: Profile) => {
         return errors
     }
 
+    if (typeof profile !== 'object') {
+        errors.data.push(ValidateProfileErrors.SERVER_ERROR)
+        return errors
+    }
+
     const {
         firstname, lastname, age, city, username, country, currency,
-    } = profile
+    } = profile as Profile
 
     const minLength = 2
     const maxLength = 16
