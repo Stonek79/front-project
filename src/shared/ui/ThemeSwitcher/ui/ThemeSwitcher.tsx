@@ -3,10 +3,17 @@ import React, { memo } from 'react'
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
 import DarkIcon from 'shared/assets/icons/theme-dark.svg';
+import LilacIcon from 'shared/assets/icons/theme-lilac.svg';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 interface ThemeSwitcherProps {
     className?: string;
+}
+
+const themes = {
+    [Theme.DARK]: <DarkIcon />,
+    [Theme.LIGHT]: <LightIcon />,
+    [Theme.LILAC]: <LilacIcon />,
 }
 
 export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
@@ -19,7 +26,7 @@ export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
             className={classNames('', {}, [className])}
             onClick={toggleTheme}
         >
-            {theme === Theme.DARK ? <DarkIcon /> : <LightIcon />}
+            {themes[theme]}
         </Button>
     );
 });
