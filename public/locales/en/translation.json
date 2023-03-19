@@ -1,9 +1,13 @@
 {
   "About us": "About us",
   "Age": "Age",
+  "Article detail page": "Article detail page",
+  "Articles": "Articles",
+  "Articles page": "Articles page",
   "Avatar": "Avatar",
   "Cancel edit": "Cancel edit",
   "City": "City",
+  "Comments": "Comments",
   "Country": "Country",
   "Currency": "Currency",
   "Edit profile": "Edit profile",
@@ -13,6 +17,7 @@
   "First name": "First name",
   "Last name": "Last name",
   "Main": "Main",
+  "No comments": "No comments",
   "Profile": "Profile",
   "ProfilePage": "Profile Page",
   "Save": "Save",
@@ -36,8 +41,5 @@
   "Произошла непредвиденная ошибка": "Unexpected error",
   "Страница не найдена": "Page not found",
   "Тестовый пример": "Test example",
-  "Язык": "Русский",
-    "Articles page": "Articles page",
-  "Article detail page": "Article detail page",
-  "Articles": "Articles"
+  "Язык": "Русский"
 }

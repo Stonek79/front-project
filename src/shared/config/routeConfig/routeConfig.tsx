@@ -28,7 +28,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ARTICLE_DETAILS]: '/articles/', // + :id
 
     // last
-    [AppRoutes.NOT_FOUND]: '*',
+    [AppRoutes.NOT_FOUND]: '/404', // return NotFoundPage
 };
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {

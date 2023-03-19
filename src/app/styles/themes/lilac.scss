@@ -1,8 +1,15 @@
 .app_lilac_theme {
     --bg-color: #7566c1;
     --inverted-bg-color: #bdffff;
-    --primary-color: #bdffff;
-    --secondary-color: #7566c1;
+    --primary-color: #96fdfd;
+    --secondary-color: #c2ffff;
     --inverted-primary-color: #fb31e0;
     --inverted-secondary-color: #f5f4fb;
+
+    // skeleton
+    --skeleton-color: #fff;
+    --skeleton-shadow: rgba(0 0 0 / 20%);
+
+    // code
+    --code-bg: #fff;
 }
