@@ -4,6 +4,7 @@
   "Article detail page": "Article detail page",
   "Articles page": "Articles page",
   "Avatar": "Avatar",
+  "Back to articles": "Back to articles",
   "Cancel edit": "Cancel edit",
   "City": "City",
   "Comments": "Comments",
@@ -19,6 +20,13 @@
   "No comments": "No comments",
   "Profile": "Profile",
   "ProfilePage": "ProfilePage",
+  "Read more": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
   "Save": "Save",
   "Send": "Send",
   "Username": "Username",
