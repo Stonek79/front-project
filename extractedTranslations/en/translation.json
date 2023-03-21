@@ -11,6 +11,7 @@
   "Country": "Country",
   "Currency": "Currency",
   "Edit profile": "Edit profile",
+  "Enter comment text": "Enter comment text",
   "Enter password": "Enter password",
   "Enter username": "Enter username",
   "First name": "First name",
@@ -19,6 +20,7 @@
   "Profile": "Profile",
   "ProfilePage": "ProfilePage",
   "Save": "Save",
+  "Send": "Send",
   "Username": "Username",
   "authForm": "authForm",
   "decrement": "decrement",
@@ -37,5 +39,6 @@
   "О сайте": "О сайте",
   "Обновить страницу": "Обновить страницу",
   "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
+  "Статья не найдена": "Статья не найдена",
   "Страница не найдена": "Страница не найдена"
 }

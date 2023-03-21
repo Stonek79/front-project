@@ -6,6 +6,7 @@ import { fetchProfileData } from '../FetchProfileData'
 jest.mock('axios')
 
 const testData = {
+    id: '1',
     firstname: 'Alex',
     lastname: 'Smith',
     age: '42',
@@ -20,7 +21,7 @@ describe('FetchProfileData test', () => {
         const thunk = TestAsyncThunk(fetchProfileData)
         thunk.api.get.mockReturnValue(Promise.resolve({ data: testData }))
 
-        const result = await thunk.callThunk()
+        const result = await thunk.callThunk('1')
 
         expect(thunk.api.get).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('fulfilled')
@@ -31,7 +32,7 @@ describe('FetchProfileData test', () => {
         const thunk = TestAsyncThunk(fetchProfileData)
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }))
 
-        const result = await thunk.callThunk()
+        const result = await thunk.callThunk('2')
 
         expect(thunk.api.get).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('rejected')

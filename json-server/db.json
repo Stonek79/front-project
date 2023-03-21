@@ -25,7 +25,7 @@
       "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit"
     },
     {
-      "userId": "1",
+      "userId": "2",
       "id": "5",
       "title": "nesciunt quas odio",
       "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
@@ -39,7 +39,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -120,25 +122,57 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "2"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "fguyhtyu",
+      "id": "RYhqJWJ"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "ddfsd",
+      "id": "92PVPAD"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "rororo",
+      "id": "IcAORUX"
     }
   ],
-  "profile": {
-    "firstname": "Alex",
-    "lastname": "StoneK",
-    "age": 42,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
-  },
+  "profile": [
+    {
+      "id": "1",
+      "firstname": "Alex",
+      "lastname": "StoneK",
+      "age": 42,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://yt3.googleusercontent.com/ytc/AL5GRJWFuUDcz4xxj3J7WIMKh6m1dk4Tm0DfEEeiOGZD=s176-c-k-c0x00ffffff-no-rj"
+    },
+    {
+      "id": "2",
+      "firstname": "John",
+      "lastname": "Dou",
+      "age": 66,
+      "currency": "USD",
+      "country": "USA",
+      "city": "Sin City",
+      "username": "user",
+      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+    }
+  ],
   "users": [
     {
       "id": "1",
       "username": "admin",
       "password": "123",
       "role": "admin",
-      "avatar": "https://avatars.mds.yandex.net/get-zen_doc/3413519/pub_5ff887b2fe4e686f6ae6ba3f_5ff887d7f906b16872a69755/scale_1200"
+      "avatar": "https://yt3.googleusercontent.com/ytc/AL5GRJWFuUDcz4xxj3J7WIMKh6m1dk4Tm0DfEEeiOGZD=s176-c-k-c0x00ffffff-no-rj"
     },
     {
       "id": "2",

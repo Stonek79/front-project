@@ -15,6 +15,7 @@ export const updateProfileData = createAsyncThunk<
 
         const formData = getProfileForm(getState())
         const errors = ValidateProfileData(formData)
+        const profileId = formData?.id
 
         Object.entries(errors).forEach(([_, err]) => {
             if (err.length) {
@@ -23,7 +24,7 @@ export const updateProfileData = createAsyncThunk<
         })
 
         try {
-            const { data } = await extra.api.put<Profile>('/profile', formData)
+            const { data } = await extra.api.put<Profile>(`/profile/${profileId}`, formData)
 
             if (!data) {
                 return rejectWithValue(ValidateProfileData(data))

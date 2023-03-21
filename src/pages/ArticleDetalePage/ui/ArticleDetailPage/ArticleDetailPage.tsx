@@ -1,5 +1,5 @@
 import { ArticleDetails } from 'entities/Article';
-import { memo } from 'react'
+import { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useParams } from 'react-router-dom'
 import { Text } from 'shared/ui/Text/Text'
@@ -9,10 +9,12 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { fetchCommentsByArticleId } from 'entities/Comment/model/services/fetchCommentsByArticleId'
+import { AddCommentForm } from 'features/addCommentForm'
+import { fetchCommentsByArticleId } from '../../model/services/FetchCommentsByArticleId/fetchCommentsByArticleId'
 import { getIsLoadingComments } from '../../model/selectors/comments'
 import { articleDetailsCommentReduces, getArticleComments } from '../../model/slices/articleDetailCommentSlice'
 import cls from './ArticleDetailPage.module.scss'
+import { addCommentForArticle } from '../../model/services/AddCommentForArticle/AddCommentForArticle'
 
 interface ArticleDetailPageProps {
     className?: string;
@@ -24,7 +26,7 @@ const reducers: ReducersList = {
 
 const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     const { className } = props
-    const { id } = useParams<{ id: string }>()
+    const { id = '1' } = useParams<{ id: string }>()
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const comments = useSelector(getArticleComments.selectAll)
@@ -32,9 +34,22 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
 
     const cn = classNames(cls.ArticleDetailPage, {}, [className])
 
+    const onSendComment = useCallback((text: string) => {
+        dispatch(addCommentForArticle(text))
+    }, [dispatch])
+
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id))
     })
+
+    if (!id) {
+        return (
+            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                {t('Статья не найдена')}
+            </div>
+        );
+    }
+
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={cn}>
@@ -42,6 +57,7 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
                     <>
                         <ArticleDetails id={id} />
                         <Text title={t('Comments')} className={cls.commentTitle} />
+                        <AddCommentForm onSendComment={onSendComment} />
                         <CommentList isLoading={commentsIsLoading} comments={comments} />
                     </>
                 )}

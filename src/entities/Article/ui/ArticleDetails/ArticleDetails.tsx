@@ -1,5 +1,4 @@
-import { memo, useCallback, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
+import { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -37,7 +36,6 @@ const articleDetailsReducers: ReducersList = {
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const { className, id } = props
-    const { t } = useTranslation()
     const location = useLocation();
     const dispatch = useAppDispatch()
     const isLoading = useSelector(getArticleIsLoadingData)
