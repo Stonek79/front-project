@@ -1,20 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
-import { Comment } from 'entities/Comment/model/types/comment'
+import { Article } from 'entities/Article'
 
-export const fetchCommentsByArticleId = createAsyncThunk<
-    Comment[],
-    string | undefined,
+export const fetchArticlesList = createAsyncThunk<
+    Article[],
+    void,
     ThunkConfig<string>
 >(
-    'comments/fetchCommentsByArticleId',
-    async (articleId, thunkAPI) => {
+    'articlesPage/fetchArticlesList',
+    async (_, thunkAPI) => {
         const { extra, rejectWithValue } = thunkAPI
 
         try {
-            const res = await extra.api.get<Comment[]>('/comments/', {
+            const res = await extra.api.get<Article[]>('/articles', {
                 params: {
-                    articleId,
                     _expand: 'user',
                 },
             })
@@ -25,6 +24,7 @@ export const fetchCommentsByArticleId = createAsyncThunk<
 
             return res.data
         } catch (e: any | unknown) {
+            console.log(e)
             if (e.response.status === 404) {
                 return rejectWithValue('404')
             }
