@@ -11,13 +11,14 @@ import {
     ProfileCard,
     profileReducer,
 } from 'entities/Profile'
-import { useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { Currency } from 'entities/Currency/model/types/currency'
 import { Countries } from 'entities/Country/model/types/countries'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useParams } from 'react-router-dom'
+import { Page } from 'shared/ui/Page/Page'
 import { ProfilePageHeader } from '../ui/ProfilePageHeader/ProfilePageHeader'
 
 const reducers: ReducersList = {
@@ -97,7 +98,7 @@ const ProfilePage = (props: ProfilePageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={cn}>
+            <Page className={cn}>
                 <ProfilePageHeader />
                 <ProfileCard
                     data={profileData}
@@ -114,9 +115,9 @@ const ProfilePage = (props: ProfilePageProps) => {
                     onChangeCurrency={onChangeCurrency}
                     onChangeCountry={onChangeCountry}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };
 
-export default ProfilePage
+export default memo(ProfilePage)
