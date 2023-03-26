@@ -18,7 +18,7 @@ import { Currency } from 'entities/Currency/model/types/currency'
 import { Countries } from 'entities/Country/model/types/countries'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useParams } from 'react-router-dom'
-import { Page } from 'shared/ui/Page/Page'
+import { Page } from 'widgets/Page/ui/Page/Page'
 import { ProfilePageHeader } from '../ui/ProfilePageHeader/ProfilePageHeader'
 
 const reducers: ReducersList = {
