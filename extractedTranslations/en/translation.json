@@ -33,12 +33,14 @@
       }
     }
   },
+  "Recommendations": "Recommendations",
   "Save": "Save",
   "Science": "Science",
   "Search": "Search",
   "Send": "Send",
   "Sort by": "Sort by",
   "Username": "Username",
+  "_blank": "_blank",
   "ascending": "ascending",
   "authForm": "authForm",
   "by creating": "by creating",

@@ -49,7 +49,7 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': ['warn', {
             argsIgnorePattern: '^_',
         }],
-        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['to', 'data-testid'] }],
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['to', 'data-testid', 'target'] }],
         'max-len': ['warn', { code: 120, ignoreComments: true }],
         semi: 0,
         indent: [2, 4],

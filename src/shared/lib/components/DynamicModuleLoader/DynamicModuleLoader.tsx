@@ -4,7 +4,7 @@ import { ReduxStoreWithManager, StateSchemaKeys } from 'app/providers/StoreProvi
 import { Reducer } from '@reduxjs/toolkit'
 
 export type ReducersList = {
-    [name in StateSchemaKeys]?: Reducer
+    [name in StateSchemaKeys]?: Reducer // <NonNullable<StateSchema[name]>>
 }
 
 interface DynamicModuleLoaderProps {

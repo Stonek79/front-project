@@ -1,8 +1,14 @@
-import { ArticleDetails } from 'entities/Article';
+import {
+    ArticleDetails,
+    fetchArticlesRecommendations,
+    getArticlesRecommendationsIsLoading,
+    articleDetailsPageRecommendationsSliceReducer,
+    getArticlesRecommendations, ArticleList,
+} from 'entities/Article'
 import { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Text } from 'shared/ui/Text/Text'
+import { Text, TextSize } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { CommentList } from 'entities/Comment'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
@@ -25,6 +31,7 @@ interface ArticleDetailPageProps {
 
 const reducers: ReducersList = {
     comments: articleDetailsCommentReduces,
+    articlesRecommendations: articleDetailsPageRecommendationsSliceReducer,
 }
 
 const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
@@ -34,9 +41,12 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const comments = useSelector(getArticleComments.selectAll)
+    const recommendations = useSelector(getArticlesRecommendations.selectAll)
     const commentsIsLoading = useSelector(getIsLoadingComments)
+    const recommendationsIsLoading = useSelector(getArticlesRecommendationsIsLoading)
 
     const cn = classNames(cls.ArticleDetailPage, {}, [className])
+    const target = '_blank'
 
     const onBackToArticles = useCallback(() => {
         navigate(RoutePath.articles)
@@ -48,6 +58,7 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id))
+        dispatch(fetchArticlesRecommendations())
     })
 
     if (!id) {
@@ -65,7 +76,22 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
                     {t('Back to articles')}
                 </Button>
                 <ArticleDetails id={id} />
-                <Text title={t('Comments')} className={cls.commentTitle} />
+                <Text
+                    size={TextSize.L}
+                    title={t('Recommendations')}
+                    className={cls.commentTitle}
+                />
+                <ArticleList
+                    articles={recommendations}
+                    isLoading={recommendationsIsLoading}
+                    className={cls.recommendations}
+                    target={target}
+                />
+                <Text
+                    size={TextSize.L}
+                    title={t('Comments')}
+                    className={cls.commentTitle}
+                />
                 <AddCommentForm onSendComment={onSendComment} />
                 <CommentList isLoading={commentsIsLoading} comments={comments} />
             </Page>
