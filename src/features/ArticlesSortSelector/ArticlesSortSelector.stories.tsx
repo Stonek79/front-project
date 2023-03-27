@@ -2,17 +2,17 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { ArticleViewSelector } from './ArticleViewSelector'
+import { ArticlesSortSelector } from './ArticlesSortSelector'
 
 export default {
-    title: 'features/ArticleViewSelector',
-    component: ArticleViewSelector,
+    title: 'features/ArticlesSortSelector',
+    component: ArticlesSortSelector,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ArticleViewSelector>
+} as ComponentMeta<typeof ArticlesSortSelector>
 
-const Template: ComponentStory<typeof ArticleViewSelector> = (args) => <ArticleViewSelector {...args} />
+const Template: ComponentStory<typeof ArticlesSortSelector> = (args) => <ArticlesSortSelector {...args} />
 
 export const Normal = Template.bind({})
 Normal.args = {}

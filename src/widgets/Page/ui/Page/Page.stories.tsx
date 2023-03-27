@@ -5,7 +5,7 @@ import { Theme } from 'app/providers/ThemeProvider'
 import { Page } from './Page'
 
 export default {
-    title: '_/Page',
+    title: 'widgets/Page',
     component: Page,
     argTypes: {
         backgroundColor: { control: 'color' },

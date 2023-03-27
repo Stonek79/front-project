@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { StateSchema } from 'app/providers/StoreProvider'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { useTrottle } from 'shared/lib/hooks/useTrottle/useTrottle'
+import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle'
 import { scrollSafeActions } from '../../model/slices/scrollSafeSlice'
 import { getSafeScrollByPAth } from '../../model/selectors/getSafeScroll'
 import cls from './Page.module.scss'
@@ -46,7 +46,7 @@ export const Page = memo((props: PageProps) => {
         wrapperRef.current.scrollTop = scrollPosition
     })
 
-    const onScroll = useTrottle((e: UIEvent<HTMLDivElement>) => {
+    const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
         dispatch(scrollSafeActions.setScrollPosition({
             position: e.currentTarget.scrollTop,
             path: pathname,
@@ -60,7 +60,7 @@ export const Page = memo((props: PageProps) => {
             onScroll={onScroll}
         >
             {children}
-            {!isLoading && (<div ref={triggerRef} />)}
+            {!isLoading && (<div className={cls.trigger} ref={triggerRef} />)}
         </section>
     )
 })

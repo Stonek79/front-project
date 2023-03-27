@@ -7,9 +7,11 @@
 .CARDS {
     display: flex;
     flex-wrap: wrap;
+    gap: 30px;
+}
 
-    .card {
-        margin-right: 30px;
-        margin-bottom: 30px;
-    }
+.text {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }

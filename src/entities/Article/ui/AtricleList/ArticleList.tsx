@@ -1,7 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSceleton'
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text'
+import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSceleton'
 import { Article, ArticleView } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import cls from './ArticleList.module.scss'
@@ -36,6 +37,17 @@ export const ArticleList = memo((props: ArticleListProps) => {
             view={view}
         />
     )
+
+    if (!isLoading && !articles.length) {
+        return (
+            <div className={cls.text}>
+                <Text
+                    title={t('Articles not found')}
+                    align={TextAlign.CENTER}
+                />
+            </div>
+        )
+    }
 
     return (
         <div className={cn}>
