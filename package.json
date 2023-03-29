@@ -7,7 +7,7 @@
         "start": "webpack serve --env port=3000",
         "start:dev": "concurrently \"npm run start\" \"npm run start:dev:server\"",
         "start:dev:server": "node ./json-server/index.js",
-        "build:prod": "concurrently \"webpack  --env mode=production apiUrl=http://localhost:8000\" \"npm run start:dev:server\"",
+        "build:prod": "concurrently \"webpack  --env mode=production\" \"npm run start:dev:server\"",
         "build:dev": "webpack  --env mode=development",
         "lint:ts": "eslint \"**/*.{ts,tsx}\"",
         "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
