@@ -52,7 +52,7 @@
   "Обновить страницу": "Reload page",
   "Перевод": "Translate",
   "Произошла непредвиденная ошибка": "Unexpected error",
-  "Статья не найдена": "Статья не найдена",
+  "Статья не найдена": "Article not found",
   "Страница не найдена": "Page not found",
   "Тестовый пример": "Test example",
   "Язык": "Русский",
@@ -61,5 +61,8 @@
   "Science": "Science",
   "Economics": "Economics",
   "Articles not found": "Articles not found",
-  "Recommendations": "Recommendations"
+  "Recommendations": "Recommendations",
+  "Edit article": "Edit article",
+  "Add article": "Add article",
+  "StoneK 79": "StoneK 79"
 }

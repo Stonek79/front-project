@@ -12,7 +12,11 @@ export const fetchArticleById = createAsyncThunk<
         const { extra, rejectWithValue } = thunkAPI
 
         try {
-            const res = await extra.api.get<Article>(`/articles/${articleId}`)
+            const res = await extra.api.get<Article>(`/articles/${articleId}`, {
+                params: {
+                    _expand: 'user',
+                },
+            })
 
             if (!res.data) {
                 return rejectWithValue(res.status === 404 ? '404' : 'server error')

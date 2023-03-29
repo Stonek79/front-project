@@ -1,3 +1,4 @@
+export { getArticleDetailsData } from './model/selectors/articleDetails'
 export {
     articleDetailsPageRecommendationsSliceReducer,
     getArticlesRecommendations,
