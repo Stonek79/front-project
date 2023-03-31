@@ -1,7 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Article } from 'entities/Article'
-import { Comment } from 'entities/Comment'
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article'
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 import ArticleDetailPage from './ArticleDetailPage'
@@ -97,15 +96,5 @@ Normal.decorators = [StoreDecorator({
     article: {
         data,
         isLoading: true,
-    },
-    comments: {
-        ids: ['1'],
-        entities: {
-            comment: {
-                id: '1',
-                text: 'hello world',
-                user: { id: '1', username: 'Vasya' },
-            },
-        },
     },
 })]

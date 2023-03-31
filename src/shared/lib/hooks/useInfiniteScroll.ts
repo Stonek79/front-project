@@ -1,4 +1,5 @@
 import { MutableRefObject, useEffect, useRef } from 'react'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 
 export interface UseInfiniteScrollOptions {
     callback?: () => void;
@@ -12,7 +13,7 @@ export function useInfiniteScroll({
 }: UseInfiniteScrollOptions) {
     const observer = useRef<IntersectionObserver | null>(null);
 
-    useEffect(() => {
+    useInitialEffect(() => {
         const wrapperElement = wrapperRef.current;
         const triggerElement = triggerRef.current;
 
