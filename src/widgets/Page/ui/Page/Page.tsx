@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import {
-    memo, MutableRefObject, ReactNode, useRef, UIEvent,
+    MutableRefObject, ReactNode, useRef, UIEvent,
 } from 'react'
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -20,7 +20,7 @@ interface PageProps {
     isLoading?: boolean
 }
 
-export const Page = memo((props: PageProps) => {
+export const Page = ((props: PageProps) => {
     const {
         className,
         children,
@@ -34,6 +34,7 @@ export const Page = memo((props: PageProps) => {
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
     const cn = classNames(cls.Page, {}, [className])
+    const pageId = 'PAGE_ID'
 
     useInfiniteScroll({
         triggerRef,
@@ -44,7 +45,7 @@ export const Page = memo((props: PageProps) => {
 
     useInitialEffect(() => {
         wrapperRef.current.scrollTop = scrollPosition
-    })
+    }, [])
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
         dispatch(scrollSafeActions.setScrollPosition({
@@ -55,6 +56,7 @@ export const Page = memo((props: PageProps) => {
 
     return (
         <section
+            id={pageId}
             ref={wrapperRef}
             className={cn}
             onScroll={onScroll}

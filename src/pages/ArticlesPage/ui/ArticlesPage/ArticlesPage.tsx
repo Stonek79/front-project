@@ -1,5 +1,6 @@
-import { memo, useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
+import {
+    memo, useCallback,
+} from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { ArticleList } from 'entities/Article'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
@@ -15,6 +16,7 @@ import { fetchNextArticlesPage } from '../../models/services/fetchNextArticlesPa
 import { articlesPageReducer, getArticles } from '../../models/slices/articlesPageSlice'
 import cls from './ArticlesPage.module.scss'
 import {
+    getArticlesHasMore,
     getArticlesPageError,
     getArticlesView,
     getIsLoadingArticles,
@@ -30,19 +32,21 @@ const reducer: ReducersList = {
 
 const ArticlesPage = (props: ArticlesPageProps) => {
     const { className } = props
-    const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const articles = useSelector(getArticles.selectAll)
     const isLoading = useSelector(getIsLoadingArticles)
     const error = useSelector(getArticlesPageError)
     const view = useSelector(getArticlesView)
+    const hasMore = useSelector(getArticlesHasMore)
     const [searchParams] = useSearchParams()
 
     const cn = classNames(cls.ArticlesPage, {}, [className])
 
     const onLoadNextPage = useCallback(() => {
-        dispatch(fetchNextArticlesPage())
-    }, [dispatch])
+        if (hasMore) {
+            dispatch(fetchNextArticlesPage())
+        }
+    }, [dispatch, hasMore])
 
     useInitialEffect(() => {
         dispatch(initArticlesPage(searchParams))
@@ -58,13 +62,14 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
-            <Page onScrollEnd={onLoadNextPage} isLoading={isLoading} className={cn}>
+            <Page isLoading={isLoading} className={cn}>
                 <ArticlesPageFilters />
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
                     articles={articles}
                     className={cls.list}
+                    onLoadNextPage={onLoadNextPage}
                 />
             </Page>
         </DynamicModuleLoader>

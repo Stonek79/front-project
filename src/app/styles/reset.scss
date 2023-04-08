@@ -15,3 +15,11 @@ select {
 a {
     text-decoration: none;
 }
+
+.ce-toolbar__content {
+    margin: 0;
+}
+
+.codex-editor--narrow .ce-toolbar__actions {
+    right: 0;
+}

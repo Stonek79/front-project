@@ -50,24 +50,23 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         return (
             <Card className={cn}>
                 <div className={cls.card}>
-                    <div className={cls.header}>
+                    <header className={cls.header}>
                         <Avatar size={30} src={article.user.avatar} />
                         <Text text={article.user.username} className={cls.username} />
                         <Text text={article.createdAt} className={cls.date} />
-                    </div>
+                    </header>
                     <Text text={article.title} className={cls.title} />
                     {types}
                     <img src={article.img} alt={article.title} className={cls.img} />
                     {textBlock && (
                         <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
                     )}
-                    <div className={cls.footer}>
+                    <footer className={cls.footer}>
                         <AppLink target={target} to={RoutePath.article_details + article.id}>
                             <Button>{t('Read more')}</Button>
                         </AppLink>
                         {views}
-                    </div>
-
+                    </footer>
                 </div>
             </Card>
         )

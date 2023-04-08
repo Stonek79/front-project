@@ -32,6 +32,7 @@
         "@babel/preset-env": "^7.16.11",
         "@babel/preset-react": "^7.16.7",
         "@babel/preset-typescript": "^7.16.7",
+        "@editorjs/checklist": "^1.4.0",
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
         "@storybook/addon-actions": "^6.4.19",
         "@storybook/addon-essentials": "^6.4.19",
@@ -91,15 +92,22 @@
         "webpack-dev-server": "^4.7.4"
     },
     "dependencies": {
+        "@editorjs/code": "^2.8.0",
+        "@editorjs/editorjs": "^2.26.5",
+        "@editorjs/image": "^2.8.1",
+        "@editorjs/paragraph": "^2.9.0",
+        "@emotion/styled": "^11.10.6",
         "@reduxjs/toolkit": "^1.8.0",
         "i18next": "^21.6.11",
         "i18next-browser-languagedetector": "^6.1.3",
         "i18next-http-backend": "^1.3.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-editor-js": "^2.1.0",
         "react-i18next": "^11.15.5",
         "react-redux": "^7.2.6",
-        "react-router-dom": "^6.2.1"
+        "react-router-dom": "^6.2.1",
+        "react-virtuoso": "^4.1.1"
     },
     "loki": {
         "configurations": {

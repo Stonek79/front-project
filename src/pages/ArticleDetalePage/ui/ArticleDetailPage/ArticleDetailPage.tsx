@@ -63,7 +63,7 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     }
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={Boolean(true)}>
             <Page className={cn}>
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
@@ -79,7 +79,7 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
                     className={cls.recommendations}
                     target="_blank"
                 />
-                {/* need widget CommentsToArticle */}
+                {/* TODO need widget CommentsToArticle */}
                 <Text
                     size={TextSize.L}
                     title={t('Comments')}

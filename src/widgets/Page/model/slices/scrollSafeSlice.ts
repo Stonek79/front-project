@@ -11,6 +11,7 @@ const scrollSafeSlice = createSlice({
     reducers: {
         setScrollPosition: (state, { payload }: PayloadAction<{ path: string, position: number }>) => {
             state.scroll[payload.path] = payload.position
+            console.log(...Object.entries(state.scroll))
         },
     },
 

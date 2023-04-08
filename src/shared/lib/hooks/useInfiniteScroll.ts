@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef } from 'react'
+import { MutableRefObject, useRef } from 'react'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 
 export interface UseInfiniteScrollOptions {
