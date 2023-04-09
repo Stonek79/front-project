@@ -1,15 +1,10 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import React, {
-    Context,
-    forwardRef,
-    HTMLAttributeAnchorTarget,
-    memo,
+    Context, forwardRef, HTMLAttributeAnchorTarget, memo,
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
-import {
-    ListProps, Virtuoso, VirtuosoGrid,
-} from 'react-virtuoso'
+import { ListProps, Virtuoso, VirtuosoGrid } from 'react-virtuoso'
 import { useSelector } from 'react-redux'
 import { StateSchema } from 'app/providers/StoreProvider'
 import { getSafeScrollByPAth } from 'widgets/Page'
@@ -27,6 +22,7 @@ interface ArticleListProps {
     view?: ArticleView
     onLoadNextPage?: () => void
     target?: HTMLAttributeAnchorTarget
+    hasMore?: boolean
 }
 
 const ListEl = styled.div`
@@ -40,10 +36,21 @@ const CurrentList = forwardRef<
     ListProps & { context?: Context<unknown> }
 >((props, ref) => (<ListEl {...props} ref={ref} />))
 
-const getSkeleton = (view: ArticleView) => new Array(view === ArticleView.CARDS ? 6 : 3)
+const ListFooter = () => new Array(3)
     .fill(0)
 // eslint-disable-next-line react/no-array-index-key
-    .map((_, i) => <ArticleListItemSkeleton key={Date.now() + i} className={cls.card} view={view} />)
+    .map((_, i) => (<ArticleListItemSkeleton key={i} className={cls.card} view={ArticleView.LIST} />))
+
+const CardFooter = () => (
+    <div className={cls.CARDS}>
+        {
+            new Array(6)
+                .fill(0)
+            // eslint-disable-next-line react/no-array-index-key
+                .map((_, i) => (<ArticleListItemSkeleton key={i} className={cls.card} view={ArticleView.CARDS} />))
+        }
+    </div>
+)
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
@@ -53,6 +60,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         isLoading,
         view = ArticleView.CARDS,
         onLoadNextPage,
+        hasMore,
     } = props
 
     const { t } = useTranslation()
@@ -81,13 +89,15 @@ export const ArticleList = memo((props: ArticleListProps) => {
         )
     }
 
-    const node = document.getElementById('PAGE_ID') as HTMLDivElement
+    // const node = document.getElementById('PAGE_ID') as HTMLDivElement
+    // node.scrollTop = scrollPosition
 
     return (
         view === 'LIST'
             ? (
                 <Virtuoso
-                    customScrollParent={node}
+                    useWindowScroll
+                    // customScrollParent={node}
                     initialScrollTop={scrollPosition}
                     className={cn}
                     overscan={3}
@@ -96,33 +106,31 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     totalCount={articles.length}
                     endReached={onLoadNextPage}
                     components={{
-                        // eslint-disable-next-line react/no-unstable-nested-components
-                        ScrollSeekPlaceholder: () => (
-                            <div>
-                                {getSkeleton(view)}
-                            </div>
-                        ),
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        Footer: hasMore && ListFooter,
                     }}
                     itemContent={(index, article) => renderArticles(article)}
                 />
             )
             : (
                 <VirtuosoGrid
-                    customScrollParent={node}
+                    // ref={virtuoso}
+                    useWindowScroll
+                    // customScrollParent={node}
                     className={cn}
                     overscan={9}
-                    style={{ height: '100vh' }}
+                    style={{
+                        height: '100%', width: '100%',
+                    }}
                     data={articles}
                     totalCount={articles.length}
                     endReached={onLoadNextPage}
                     components={{
                         List: CurrentList,
-                        // eslint-disable-next-line react/no-unstable-nested-components
-                        ScrollSeekPlaceholder: () => (
-                            <div>
-                                {getSkeleton(view)}
-                            </div>
-                        ),
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        Footer: hasMore && CardFooter,
                     }}
                     itemContent={(index, article) => renderArticles(article)}
                 />

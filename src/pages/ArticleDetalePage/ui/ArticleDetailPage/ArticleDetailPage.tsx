@@ -1,9 +1,11 @@
 import {
     ArticleDetails,
-    fetchArticlesRecommendations,
-    getArticlesRecommendationsIsLoading,
     articleDetailsPageRecommendationsSliceReducer,
-    getArticlesRecommendations, ArticleList,
+    ArticleList,
+    ArticleView,
+    fetchArticlesRecommendations,
+    getArticlesRecommendations,
+    getArticlesRecommendationsIsLoading,
 } from 'entities/Article'
 import { memo, useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
@@ -17,6 +19,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { AddCommentForm } from 'features/addCommentForm'
 import { Page } from 'widgets/Page/ui/Page/Page'
+import { VStack } from 'shared/ui/Stack'
 import { fetchCommentsByArticleId } from '../../model/services/FetchCommentsByArticleId/fetchCommentsByArticleId'
 import { getIsLoadingComments } from '../../model/selectors/comments'
 import { articleDetailsCommentReduces, getArticleComments } from '../../model/slices/articleDetailCommentSlice'
@@ -65,28 +68,33 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={Boolean(true)}>
             <Page className={cn}>
-                <ArticleDetailsPageHeader />
-                <ArticleDetails id={id} />
-                {/* TODO need widget RecommendedArticles */}
-                <Text
-                    size={TextSize.L}
-                    title={t('Recommendations')}
-                    className={cls.commentTitle}
-                />
-                <ArticleList
-                    articles={recommendations}
-                    isLoading={recommendationsIsLoading}
-                    className={cls.recommendations}
-                    target="_blank"
-                />
-                {/* TODO need widget CommentsToArticle */}
-                <Text
-                    size={TextSize.L}
-                    title={t('Comments')}
-                    className={cls.commentTitle}
-                />
-                <AddCommentForm onSendComment={onSendComment} />
-                <CommentList isLoading={commentsIsLoading} comments={comments} />
+                <VStack gap="16" max>
+                    <ArticleDetailsPageHeader />
+                    <ArticleDetails id={id} />
+                    {/* TODO need widget RecommendedArticles */}
+                    <VStack max align="center">
+                        <Text
+                            size={TextSize.L}
+                            title={t('Recommendations')}
+                            className={cls.commentTitle}
+                        />
+                        <ArticleList
+                            view={ArticleView.CARDS}
+                            articles={recommendations}
+                            isLoading={recommendationsIsLoading}
+                            className={cls.recommendations}
+                            target="_blank"
+                        />
+                    </VStack>
+                    {/* TODO need widget CommentsToArticle */}
+                    <Text
+                        size={TextSize.L}
+                        title={t('Comments')}
+                        className={cls.commentTitle}
+                    />
+                    <AddCommentForm onSendComment={onSendComment} />
+                    <CommentList isLoading={commentsIsLoading} comments={comments} />
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     )

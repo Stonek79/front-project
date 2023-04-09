@@ -70,6 +70,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                     articles={articles}
                     className={cls.list}
                     onLoadNextPage={onLoadNextPage}
+                    hasMore={hasMore}
                 />
             </Page>
         </DynamicModuleLoader>

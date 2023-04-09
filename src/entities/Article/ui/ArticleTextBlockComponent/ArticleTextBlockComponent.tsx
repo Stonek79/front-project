@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Text } from 'shared/ui/Text/Text'
+import { VStack } from 'shared/ui/Stack'
 import { ArticleTextBlock } from '../../model/types/article'
 import cls from './ArticleTextBlockComponent.module.scss'
 
@@ -15,9 +16,9 @@ export const ArticleTextBlockComponent = memo((props: ArticleTextBlockComponentP
     const cn = classNames('', {}, [className])
 
     return (
-        <div className={cn}>
+        <VStack max className={cn}>
             {block.title && (<Text title={block.title} className={cls.title} />) }
             {block.paragraphs.map((paragraph) => (<Text key={paragraph} text={paragraph} className={cls.paragraph} />))}
-        </div>
+        </VStack>
     )
 })

@@ -5,6 +5,7 @@ import { Text } from 'shared/ui/Text/Text'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { HStack, VStack } from 'shared/ui/Stack'
 import { Comment } from '../../model/types/comment'
 import cls from './CommentCard.module.scss'
 
@@ -21,23 +22,28 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
     if (isLoading) {
         return (
-            <div className={cn}>
-                <div className={cls.header}>
+            <VStack max className={cn}>
+                <HStack>
                     <Skeleton height={30} width={30} border="50%" />
-                    <Skeleton className={cls.username} height={20} width={90} />
-                </div>
-                <Skeleton className={cls.text} height={60} width="100%" />
-            </div>
+                    <Skeleton height={20} width={90} />
+                </HStack>
+                <Skeleton height={60} width="100%" />
+            </VStack>
         )
     }
 
     return (
-        <div className={cn}>
-            <AppLink to={`${RoutePath.profile}${comment?.user.id}`} className={cls.header}>
-                {comment?.user.avatar && <Avatar size={30} alt={comment?.user.username} src={comment?.user.avatar} />}
-                <Text className={cls.username} title={comment?.user.username} />
+        <VStack gap="8" max className={cn}>
+            <AppLink to={`${RoutePath.profile}${comment?.user.id}`}>
+                <HStack gap="8">
+                    {
+                        comment?.user.avatar
+                        && <Avatar size={30} alt={comment?.user.username} src={comment?.user.avatar} />
+                    }
+                    <Text title={comment?.user.username} />
+                </HStack>
             </AppLink>
-            <Text className={cls.text} text={comment?.text} />
-        </div>
+            <Text text={comment?.text} />
+        </VStack>
     )
 })

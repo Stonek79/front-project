@@ -6,7 +6,7 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getArticleDetailsData } from 'entities/Article'
-import cls from './ArticleDetailsPageHeader.module.scss'
+import { HStack } from 'shared/ui/Stack'
 import { getCanEditArticle } from '../../model/selectors/article'
 
 interface ArticleDetailsPageHeaderProps {
@@ -20,7 +20,7 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
     const isEdit = useSelector(getCanEditArticle)
     const article = useSelector(getArticleDetailsData)
 
-    const cn = classNames(cls.ArticleDetailsPageHeader, {}, [className])
+    const cn = classNames('', {}, [className])
 
     const onBackToArticles = useCallback(() => {
         navigate(RoutePath.articles)
@@ -31,18 +31,15 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
     }, [article?.id, navigate])
 
     return (
-        <div className={cn}>
+        <HStack max justify="between" className={cn}>
             <Button onClick={onBackToArticles}>
                 {t('Back to articles')}
             </Button>
             {isEdit && (
-                <Button
-                    className={cls.editBtn}
-                    onClick={onEditArticle}
-                >
+                <Button onClick={onEditArticle}>
                     { t('Edit article') }
                 </Button>
             )}
-        </div>
+        </HStack>
     )
 })

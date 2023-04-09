@@ -8,6 +8,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Currency, CurrencySelect } from 'entities/Currency'
 import { Countries } from 'entities/Country/model/types/countries'
 import { CountrySelect } from 'entities/Country'
+import { HStack, VStack } from 'shared/ui/Stack'
 import { Profile, ValidateErrors, ValidateProfileErrors } from '../../model/types/profile'
 import cls from './ProfileCard.module.scss'
 
@@ -71,101 +72,99 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
 
     if (isLoading) {
         return (
-            <div className={cnLoading}>
+            <HStack max justify="center" className={cnLoading}>
                 <Loader />
-            </div>
+            </HStack>
         )
     }
 
     if (error?.data.length) {
         return (
-            <div className={cnError}>
+            <HStack max justify="center" className={cnError}>
                 {getErrorsFields(error?.data)}
-            </div>
+            </HStack>
         )
     }
 
     if (validateErrors?.data.length) {
         return (
-            <div className={cnError}>
+            <HStack max justify="center" className={cnError}>
                 {getErrorsFields(validateErrors?.data)}
-            </div>
+            </HStack>
         )
     }
 
     return (
-        <div className={cn}>
-            <div className={cls.data}>
-                {data?.avatar && (
-                    <div className={cls.avatarWrapper}>
-                        <Avatar
-                            src={data.avatar}
-                            alt={t('Avatar')}
-                        />
-                    </div>
-                )}
-                <Input
-                    value={data?.firstname}
-                    placeholder={t('First name')}
-                    className={cls.input}
-                    onChange={onChangeFirstname}
-                    readonly={readonly}
-                />
-                {validateErrors?.firstname.length ? getErrorsFields(validateErrors?.firstname) : null}
-                <Input
-                    value={data?.lastname}
-                    placeholder={t('Last name')}
-                    className={cls.input}
-                    onChange={onChangeLastname}
-                    readonly={readonly}
-                />
-                {validateErrors?.lastname.length ? getErrorsFields(validateErrors?.lastname) : null}
-                <Input
-                    value={data?.age}
-                    placeholder={t('Age')}
-                    className={cls.input}
-                    onChange={onChangeAge}
-                    readonly={readonly}
-                />
-                {validateErrors?.age.length ? getErrorsFields(validateErrors?.age) : null}
-                <Input
-                    value={data?.city}
-                    placeholder={t('City')}
-                    className={cls.input}
-                    onChange={onChangeCity}
-                    readonly={readonly}
-                />
-                {validateErrors?.city.length ? getErrorsFields(validateErrors?.city) : null}
-                <Input
-                    value={data?.username}
-                    placeholder={t('Username')}
-                    className={cls.input}
-                    onChange={onChangeUsername}
-                    readonly={readonly}
-                />
-                {validateErrors?.username.length ? getErrorsFields(validateErrors?.username) : null}
-                <Input
-                    value={data?.avatar}
-                    placeholder={t('Avatar')}
-                    className={cls.input}
-                    onChange={onChangeAvatar}
-                    readonly={readonly}
-                />
-                <CurrencySelect
-                    value={data?.currency}
-                    onChange={onChangeCurrency}
-                    readonly={readonly}
-                    className={cls.input}
-                />
-                {validateErrors?.currency.length ? getErrorsFields(validateErrors?.currency) : null}
-                <CountrySelect
-                    value={data?.country}
-                    onChange={onChangeCountry}
-                    readonly={readonly}
-                    className={cls.input}
-                />
-                {validateErrors?.country.length ? getErrorsFields(validateErrors?.country) : null}
-            </div>
-        </div>
+        <VStack max gap="8" className={cn}>
+            {data?.avatar && (
+                <HStack max justify="center">
+                    <Avatar
+                        src={data.avatar}
+                        alt={t('Avatar')}
+                    />
+                </HStack>
+            )}
+            <Input
+                value={data?.firstname}
+                placeholder={t('First name')}
+                className={cls.input}
+                onChange={onChangeFirstname}
+                readonly={readonly}
+            />
+            {validateErrors?.firstname.length ? getErrorsFields(validateErrors?.firstname) : null}
+            <Input
+                value={data?.lastname}
+                placeholder={t('Last name')}
+                className={cls.input}
+                onChange={onChangeLastname}
+                readonly={readonly}
+            />
+            {validateErrors?.lastname.length ? getErrorsFields(validateErrors?.lastname) : null}
+            <Input
+                value={data?.age}
+                placeholder={t('Age')}
+                className={cls.input}
+                onChange={onChangeAge}
+                readonly={readonly}
+            />
+            {validateErrors?.age.length ? getErrorsFields(validateErrors?.age) : null}
+            <Input
+                value={data?.city}
+                placeholder={t('City')}
+                className={cls.input}
+                onChange={onChangeCity}
+                readonly={readonly}
+            />
+            {validateErrors?.city.length ? getErrorsFields(validateErrors?.city) : null}
+            <Input
+                value={data?.username}
+                placeholder={t('Username')}
+                className={cls.input}
+                onChange={onChangeUsername}
+                readonly={readonly}
+            />
+            {validateErrors?.username.length ? getErrorsFields(validateErrors?.username) : null}
+            <Input
+                value={data?.avatar}
+                placeholder={t('Avatar')}
+                className={cls.input}
+                onChange={onChangeAvatar}
+                readonly={readonly}
+            />
+            <CurrencySelect
+                value={data?.currency}
+                onChange={onChangeCurrency}
+                readonly={readonly}
+                className={cls.input}
+            />
+            {validateErrors?.currency.length ? getErrorsFields(validateErrors?.currency) : null}
+            <CountrySelect
+                value={data?.country}
+                onChange={onChangeCountry}
+                readonly={readonly}
+                className={cls.input}
+            />
+            {validateErrors?.country.length ? getErrorsFields(validateErrors?.country) : null}
+        </VStack>
     );
 });
