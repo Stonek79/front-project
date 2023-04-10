@@ -4,6 +4,7 @@ import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
 import DarkIcon from 'shared/assets/icons/theme-dark.svg';
 import LilacIcon from 'shared/assets/icons/theme-lilac.svg';
+// eslint-disable-next-line fsd-paths-checker-plugin/fsd-paths-checker-plugin
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 interface ThemeSwitcherProps {

@@ -24,6 +24,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
+        'fsd-paths-checker-plugin',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -49,13 +50,19 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': ['warn', {
             argsIgnorePattern: '^_',
         }],
-        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['align', 'to', 'data-testid', 'direction', 'gap', 'justify', 'target'] }],
+        'i18next/no-literal-string': ['error',
+            {
+                markupOnly: true,
+                ignoreAttribute: ['align', 'to', 'data-testid', 'direction', 'gap', 'justify', 'target'],
+            },
+        ],
         'max-len': ['warn', { code: 120, ignoreComments: true }],
         semi: 0,
         indent: [2, 4],
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
+        'fsd-paths-checker-plugin/fsd-paths-checker-plugin': 'error',
     },
     globals: {
         __IS_DEV__: true,
