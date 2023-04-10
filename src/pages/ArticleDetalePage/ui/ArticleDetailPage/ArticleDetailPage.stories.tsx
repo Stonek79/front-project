@@ -89,12 +89,9 @@ export default {
 
 const Template: ComponentStory<typeof ArticleDetailPage> = (args) => <ArticleDetailPage {...args} />
 
+// TODO fix story
 export const Normal = Template.bind({})
 Normal.args = {
 }
 Normal.decorators = [StoreDecorator({
-    article: {
-        data,
-        isLoading: true,
-    },
 })]

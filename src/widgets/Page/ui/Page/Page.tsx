@@ -55,7 +55,7 @@ export const Page = ((props: PageProps) => {
     }, 500)
 
     return (
-        <section
+        <main
             id={pageId}
             ref={wrapperRef}
             className={cn}
@@ -63,6 +63,6 @@ export const Page = ((props: PageProps) => {
         >
             {children}
             {!isLoading && (<div className={cls.trigger} ref={triggerRef} />)}
-        </section>
+        </main>
     )
 })
