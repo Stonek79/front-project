@@ -98,6 +98,7 @@
         "@editorjs/image": "^2.8.1",
         "@editorjs/paragraph": "^2.9.0",
         "@emotion/styled": "^11.10.6",
+        "@headlessui/react": "^1.7.14",
         "@reduxjs/toolkit": "^1.8.0",
         "i18next": "^21.6.11",
         "i18next-browser-languagedetector": "^6.1.3",
