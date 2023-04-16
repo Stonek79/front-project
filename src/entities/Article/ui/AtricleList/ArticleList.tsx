@@ -1,19 +1,13 @@
 import { classNames } from 'shared/lib/classNames/classNames'
-import React, {
-    HTMLAttributeAnchorTarget, memo, useEffect, useRef, useState,
-} from 'react'
+import React, { HTMLAttributeAnchorTarget, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
-import { Virtuoso, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso'
-import { PageLoader } from 'widgets/PageLoader/PageLoader'
-import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters'
-import { ARTICLE_LIST_ITEM_ID_KEY } from 'shared/const/localstarage'
 import cls from './ArticleList.module.scss'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { Article, ArticleView } from '../../model/types/article'
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSceleton'
 
-// TODO fix virtualisation
+// TODO add virtualization
 
 interface ArticleListProps {
     className?: string
