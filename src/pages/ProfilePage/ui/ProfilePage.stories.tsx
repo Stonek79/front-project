@@ -5,7 +5,7 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Currency } from 'entities/Currency'
 import { Countries } from 'entities/Country'
-import { ValidateProfileErrors } from 'entities/Profile/model/types/profile'
+import { ValidateProfileErrors } from 'features/ProfilePageEdit/model/types/profilePageEditSchema'
 import ProfilePage from './ProfilePage';
 import AvatarImg from '../../../shared/assets/avatar.jpg'
 

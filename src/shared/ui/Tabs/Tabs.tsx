@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import { ReactNode, useCallback } from 'react'
-// eslint-disable-next-line fsd-paths-checker-plugin/fsd-paths-checker-plugin
-import { Card, CardTheme } from 'shared/ui/Card/Card'
+import { Card, CardTheme } from '../Card/Card'
 import cls from './Tabs.module.scss'
 
 export interface TabItem<T extends string> {

@@ -9,6 +9,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Button } from 'shared/ui/Button/Button'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { ARTICLE_LIST_ITEM_ID_KEY } from 'shared/const/localstarage'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import {
     Article, ArticleBlockType, ArticleTextBlock, ArticleView,
@@ -20,6 +21,7 @@ interface ArticleListItemProps {
     article: Article
     view: ArticleView
     target?: HTMLAttributeAnchorTarget
+    index?: number
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
@@ -28,6 +30,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         article,
         view,
         target,
+        index,
     } = props
 
     const { t } = useTranslation()
@@ -39,6 +42,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             <Icon Svg={ViewIcon} />
         </>
     )
+
+    const onClickHandle = () => {
+        sessionStorage.setItem(ARTICLE_LIST_ITEM_ID_KEY, JSON.stringify(index))
+    }
 
     const cn = classNames('', {}, [className, cls[view]])
 
@@ -63,7 +70,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     )}
                     <footer className={cls.footer}>
                         <AppLink target={target} to={RoutePath.article_details + article.id}>
-                            <Button>{t('Read more')}</Button>
+                            <Button onClick={onClickHandle}>{t('Read more')}</Button>
                         </AppLink>
                         {views}
                     </footer>

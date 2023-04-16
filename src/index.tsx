@@ -19,3 +19,4 @@ render(
     </BrowserRouter>,
     document.getElementById('root'),
 )
+export { ProfileSchema } from 'features/ProfilePageEdit/model/types/profilePageEditSchema'

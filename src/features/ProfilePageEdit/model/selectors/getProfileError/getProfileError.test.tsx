@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/StoreProvider'
+import { ValidateProfileErrors } from '../../types/profilePageEditSchema'
 import { getProfileError } from './getProfileError'
-import { ValidateProfileErrors } from '../../types/profile'
 
 describe('get Profile Error test', () => {
     test('should return Profile Error', () => {

@@ -9,8 +9,11 @@ import { Currency, CurrencySelect } from 'entities/Currency'
 import { Countries } from 'entities/Country/model/types/countries'
 import { CountrySelect } from 'entities/Country'
 import { HStack, VStack } from 'shared/ui/Stack'
-import { Profile, ValidateErrors, ValidateProfileErrors } from '../../model/types/profile'
+import { ValidateErrors, ValidateProfileErrors } from 'features/ProfilePageEdit/model/types/profilePageEditSchema'
+import { Profile } from '../../model/types/profile'
 import cls from './ProfileCard.module.scss'
+
+// TODO fix ValidateEditors path
 
 interface ProfileCardProps {
     className?: string;

@@ -617,8 +617,8 @@
       "firstname": "Alex",
       "lastname": "StoneK",
       "age": 42,
-      "currency": "RUB",
-      "country": "Kazakhstan",
+      "currency": "USD",
+      "country": "USA",
       "city": "Moscow",
       "username": "admin",
       "avatar": "https://graph.digiseller.ru/img.ashx?idp=1738637&maxlength=400&keepratio=1"

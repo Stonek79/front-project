@@ -1,7 +1,5 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit'
-
 import { StateSchema } from 'app/providers/StoreProvider'
-
 import {
     Article, ArticleSortField, ArticleType, ArticleView,
 } from 'entities/Article'
