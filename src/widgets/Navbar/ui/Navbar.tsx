@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserAuthData, userActions } from 'entities/User'
+import {
+    getUserAuthData, isUserAdmin, isUserManager, userActions,
+} from 'entities/User'
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text'
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
@@ -22,6 +24,8 @@ export const Navbar = memo((props: NavbarProps) => {
     const dispatch = useDispatch()
     const [isOpen, setIsOpen] = useState(false)
     const authData = useSelector(getUserAuthData)
+    const isAdmin = useSelector(isUserAdmin)
+    const isManager = useSelector(isUserManager)
 
     const cn = classNames(cls.Navbar, {}, [className])
 
@@ -37,6 +41,13 @@ export const Navbar = memo((props: NavbarProps) => {
         setIsOpen(false)
         dispatch(userActions.logout())
     }, [dispatch])
+
+    const isAdminPanelAvailable = isAdmin || isManager
+
+    const adminPanel = isAdminPanelAvailable ? [{
+        content: t('Admin'),
+        href: RoutePath.admin_panel,
+    }] : []
 
     if (authData) {
         return (
@@ -57,6 +68,7 @@ export const Navbar = memo((props: NavbarProps) => {
                     direction="top right"
                     className={cls.links}
                     items={[
+                        ...adminPanel,
                         {
 
                             content: t('Profile'),

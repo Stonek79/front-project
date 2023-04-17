@@ -640,14 +640,14 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "admin",
+      "roles": ["admin", "manager"],
       "avatar": "https://graph.digiseller.ru/img.ashx?idp=1738637&maxlength=400&keepratio=1"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "user",
+      "roles": ["user"],
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ]

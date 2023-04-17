@@ -1,5 +1,4 @@
 {
-  "": "",
   "About us": "About us",
   "Add article": "Add article",
   "Age": "Age",
@@ -66,5 +65,8 @@
   "Статья не найдена": "Article not found",
   "Страница не найдена": "Page not found",
   "Тестовый пример": "Test example",
-  "Язык": "Русский"
+  "Язык": "Русский",
+  "Admin page panel": "Admin page panel",
+  "Admin": "Admin",
+  "Access not allowed": "Access not allowed"
 }
