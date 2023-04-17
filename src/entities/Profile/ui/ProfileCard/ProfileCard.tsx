@@ -65,11 +65,12 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
     const cnLoading = classNames(cls.ProfileCard, {}, [className, cls.loading])
     const cnError = classNames(cls.ProfileCard, {}, [className, cls.error])
 
-    const getErrorsFields = (errors: ValidateProfileErrors[]) => errors.map((err) => (
+    const getErrorsFields = (errors: ValidateProfileErrors[], field?: string) => errors.map((err) => (
         <Text
             key={err}
             theme={TextTheme.ERROR}
             text={validateErrorTranslates[err]}
+            data-testid={`ProfileCard-${field}-field-error`}
         />
     ))
 
@@ -84,7 +85,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
     if (error?.data.length) {
         return (
             <HStack max justify="center" className={cnError}>
-                {getErrorsFields(error?.data)}
+                {getErrorsFields(error?.data, 'data')}
             </HStack>
         )
     }
@@ -92,7 +93,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
     if (validateErrors?.data.length) {
         return (
             <HStack max justify="center" className={cnError}>
-                {getErrorsFields(validateErrors?.data)}
+                {getErrorsFields(validateErrors?.data, 'data')}
             </HStack>
         )
     }
@@ -113,61 +114,69 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 className={cls.input}
                 onChange={onChangeFirstname}
                 readonly={readonly}
+                data-testid="ProfileCard-firstname-field-input"
             />
-            {validateErrors?.firstname.length ? getErrorsFields(validateErrors?.firstname) : null}
+            {validateErrors?.firstname.length ? getErrorsFields(validateErrors?.firstname, 'firstname') : null}
             <Input
                 value={data?.lastname}
                 placeholder={t('Last name')}
                 className={cls.input}
                 onChange={onChangeLastname}
                 readonly={readonly}
+                data-testid="ProfileCard-lastname-field-input"
             />
-            {validateErrors?.lastname.length ? getErrorsFields(validateErrors?.lastname) : null}
+            {validateErrors?.lastname.length ? getErrorsFields(validateErrors?.lastname, 'lastname') : null}
             <Input
                 value={data?.age}
                 placeholder={t('Age')}
                 className={cls.input}
                 onChange={onChangeAge}
                 readonly={readonly}
+                data-testid="ProfileCard-age-field-input"
             />
-            {validateErrors?.age.length ? getErrorsFields(validateErrors?.age) : null}
+            {validateErrors?.age.length ? getErrorsFields(validateErrors?.age, 'age') : null}
             <Input
                 value={data?.city}
                 placeholder={t('City')}
                 className={cls.input}
                 onChange={onChangeCity}
                 readonly={readonly}
+                data-testid="ProfileCard-city-field-input"
             />
-            {validateErrors?.city.length ? getErrorsFields(validateErrors?.city) : null}
+            {validateErrors?.city.length ? getErrorsFields(validateErrors?.city, 'city') : null}
             <Input
                 value={data?.username}
                 placeholder={t('Username')}
                 className={cls.input}
                 onChange={onChangeUsername}
                 readonly={readonly}
+                data-testid="ProfileCard-username-field-input"
             />
-            {validateErrors?.username.length ? getErrorsFields(validateErrors?.username) : null}
+            {validateErrors?.username.length ? getErrorsFields(validateErrors?.username, 'username') : null}
             <Input
                 value={data?.avatar}
                 placeholder={t('Avatar')}
                 className={cls.input}
                 onChange={onChangeAvatar}
                 readonly={readonly}
+                data-testid="ProfileCard-avatar-field-input"
             />
             <CurrencySelect
                 value={data?.currency}
                 onChange={onChangeCurrency}
                 readonly={readonly}
                 className={cls.input}
+                data-testid="ProfileCard-currency-field-input"
             />
-            {validateErrors?.currency.length ? getErrorsFields(validateErrors?.currency) : null}
+            {validateErrors?.currency.length ? getErrorsFields(validateErrors?.currency, 'currency') : null}
             <CountrySelect
                 value={data?.country}
                 onChange={onChangeCountry}
                 readonly={readonly}
                 className={cls.input}
+                data-testid="ProfileCard-country-field-input"
             />
-            {validateErrors?.country.length ? getErrorsFields(validateErrors?.country) : null}
+            {validateErrors?.country.length ? getErrorsFields(validateErrors?.country, 'country') : null}
         </VStack>
     );
 });
