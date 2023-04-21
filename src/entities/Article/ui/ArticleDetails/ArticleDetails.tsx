@@ -23,12 +23,13 @@ import {
 import { fetchArticleById } from '../../model/services/fetchArticleById'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import cls from './ArticleDetails.module.scss'
-import { ArticleBlock, ArticleBlockType } from '../../model/types/article'
+import { ArticleBlock } from '../../model/types/article'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
+import { ArticleBlockTypes } from '../../model/consts/consts';
 
 interface ArticleDetailsProps {
     className?: string;
-    id: string
+    id?: string
 }
 
 const articleDetailsReducers: ReducersList = {
@@ -47,11 +48,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
-        case ArticleBlockType.CODE:
+        case ArticleBlockTypes.CODE:
             return <ArticleCodeBlockComponent key={block.id} block={block} />
-        case ArticleBlockType.IMAGE:
+        case ArticleBlockTypes.IMAGE:
             return <ArticleImageBlockComponent key={block.id} block={block} />
-        case ArticleBlockType.TEXT:
+        case ArticleBlockTypes.TEXT:
             return <ArticleTextBlockComponent key={block.id} block={block} />
         default:
             return null
@@ -60,7 +61,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     useInitialEffect(() => {
         dispatch(fetchArticleById(id))
-    })
+    }, [id, dispatch])
 
     let content
 

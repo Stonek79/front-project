@@ -1,5 +1,4 @@
-import { Profile } from 'entities/Profile'
-import { ValidateErrors, ValidateProfileErrors } from '../../model/types/profilePageEditSchema'
+import { Profile, ValidateErrors, ValidateProfileErrors } from 'entities/Profile'
 
 export const ValidateProfileData = (profile?: Profile) => {
     const errors: ValidateErrors = {

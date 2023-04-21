@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
-import { ArticleType } from '../../model/types/article'
 import { fetchArticleById } from './fetchArticleById'
+import { ArticleTypes } from '../../model/consts/consts';
 
 jest.mock('axios')
 
@@ -11,7 +11,7 @@ const testData = {
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
-    type: [ArticleType.IT],
+    type: [ArticleTypes.IT],
     blocks: [],
 }
 

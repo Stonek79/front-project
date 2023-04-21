@@ -8,7 +8,6 @@ import { Countries } from 'entities/Country'
 import { ProfileCard } from 'entities/Profile'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { VStack } from 'shared/ui/Stack'
-import { useTranslation } from 'react-i18next'
 import { ProfilePageEditHeader } from '../../ui/ProfilePageEditHeader/ProfilePageEditHeader'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
@@ -31,7 +30,6 @@ const reducers: ReducersList = {
 export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
     const { className, id } = props
 
-    const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const readonly = useSelector(getProfileReadonly)
     const profileData = useSelector(getProfileForm)

@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { Currency } from '../../model/types/currency';
 import { CurrencySelect } from './CurrencySelect'
 
 export default {
@@ -16,9 +17,11 @@ const Template: ComponentStory<typeof CurrencySelect> = (args) => <CurrencySelec
 
 export const PrimaryNormal = Template.bind({});
 PrimaryNormal.args = {
+    value: Currency.USD,
 };
 
 export const PrimaryDarkBig = Template.bind({});
 PrimaryDarkBig.args = {
+    value: Currency.USD,
 };
 PrimaryDarkBig.decorators = [ThemeDecorator(Theme.DARK)];

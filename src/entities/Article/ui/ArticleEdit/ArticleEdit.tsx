@@ -4,9 +4,9 @@ import { OutputBlockData } from '@editorjs/editorjs'
 import { EDITOR_JS_TOOLS } from 'shared/const/editor'
 import { useSelector } from 'react-redux'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { ArticleBlockType } from '../../model/types/article'
 import { getArticleDetailsData } from '../../model/selectors/articleDetails'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
+import { ArticleBlockTypes } from '../../model/consts/consts';
 
 interface ArticleEditProps {
     className?: string
@@ -29,29 +29,29 @@ export function ArticleEdit(props: ArticleEditProps) {
     const mainData = articleData ? [
         {
             id: articleData.id + articleData.img.length,
-            type: ArticleBlockType.IMAGE,
+            type: ArticleBlockTypes.IMAGE,
             data: { file: { url: articleData.img } },
         },
         {
             id: articleData.id + articleData.title.length,
-            type: ArticleBlockType.TEXT,
+            type: ArticleBlockTypes.TEXT,
             data: { text: articleData.title },
         },
         {
             id: articleData.id + articleData.type.toString(),
-            type: ArticleBlockType.TEXT,
+            type: ArticleBlockTypes.TEXT,
             data: { text: articleData.type },
         },
         {
             id: articleData.id + articleData.subtitle.length,
-            type: ArticleBlockType.TEXT,
+            type: ArticleBlockTypes.TEXT,
             data: { text: articleData.subtitle },
         }] as unknown as OutputBlockData[] : []
 
     const blocksData = articleData?.blocks.reduce((acc: any[], block) => {
         const { id, type } = block
 
-        if (type === ArticleBlockType.TEXT) {
+        if (type === ArticleBlockTypes.TEXT) {
             const title = {
                 id: id + block.title,
                 type,
@@ -65,12 +65,12 @@ export function ArticleEdit(props: ArticleEditProps) {
 
             return [...acc, title, ...text]
         }
-        if (type === ArticleBlockType.IMAGE) {
+        if (type === ArticleBlockTypes.IMAGE) {
             const data = { file: { url: block.src }, caption: block.title }
             const img = { id, type, data }
             return [...acc, img]
         }
-        if (type === ArticleBlockType.CODE) {
+        if (type === ArticleBlockTypes.CODE) {
             const data = { code: block.code }
             return [...acc, { id, type, data }]
         }

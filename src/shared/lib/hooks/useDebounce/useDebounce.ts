@@ -5,7 +5,7 @@ type Callback = (...args: any[]) => void;
 export const useDebounce = (callback: Callback, delay: number) => {
     const timer = useRef() as MutableRefObject<any>
 
-    return useCallback((...args) => {
+    return useCallback((...args: any[]) => {
         if (timer.current) {
             clearTimeout(timer.current)
         }

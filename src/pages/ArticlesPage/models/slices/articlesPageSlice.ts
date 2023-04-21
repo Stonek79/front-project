@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { StateSchema } from 'app/providers/StoreProvider'
 import {
-    Article, ArticleSortField, ArticleType, ArticleView,
+    Article, ArticleSortField, ArticleSortFieldTypes, ArticleTypes, ArticleTypesType, ArticleView, ArticleViewTypes,
 } from 'entities/Article'
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstarage'
 import { SortOrder } from 'shared/types'
@@ -31,10 +31,10 @@ const articlesPageSlice = createSlice({
         order: 'asc',
         search: '',
         limit: 9,
-        type: ArticleType.ALL,
+        type: ArticleTypes.ALL,
     }),
     reducers: {
-        setView: (state, action: PayloadAction<ArticleView>) => {
+        setView: (state, action: PayloadAction<ArticleViewTypes>) => {
             state.view = action.payload
             localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload)
         },
@@ -44,17 +44,17 @@ const articlesPageSlice = createSlice({
         setOrder: (state, action: PayloadAction<SortOrder>) => {
             state.order = action.payload
         },
-        setSort: (state, action: PayloadAction<ArticleSortField>) => {
+        setSort: (state, action: PayloadAction<ArticleSortFieldTypes>) => {
             state.sort = action.payload
         },
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload
         },
-        setType: (state, action: PayloadAction<ArticleType>) => {
+        setType: (state, action: PayloadAction<ArticleTypesType>) => {
             state.type = action.payload
         },
         initState: (state) => {
-            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView
+            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleViewTypes
 
             state.view = view
             state.limit = view === ArticleView.LIST ? 3 : 9

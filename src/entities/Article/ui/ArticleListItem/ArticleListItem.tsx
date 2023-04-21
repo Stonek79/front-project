@@ -12,14 +12,15 @@ import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { ARTICLE_LIST_ITEM_ID_KEY } from 'shared/const/localstarage'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import {
-    Article, ArticleBlockType, ArticleTextBlock, ArticleView,
+    Article, ArticleTextBlock, ArticleViewTypes,
 } from '../../model/types/article'
 import cls from './ArticleListItem.module.scss'
+import { ArticleBlockTypes, ArticleView } from '../../model/consts/consts';
 
 interface ArticleListItemProps {
     className?: string
     article: Article
-    view: ArticleView
+    view: ArticleViewTypes
     target?: HTMLAttributeAnchorTarget
     index?: number
 }
@@ -51,7 +52,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
     if (view === ArticleView.LIST) {
         const textBlock = article.blocks.find(
-            (block) => block.type === ArticleBlockType.TEXT,
+            (block) => block.type === ArticleBlockTypes.TEXT,
         ) as ArticleTextBlock
 
         return (

@@ -1,2 +1,2 @@
 export { ProfilePageEdit } from './ui/ProfilePageEdit/ProfilePageEdit'
-export { ProfileSchema } from './model/types/profilePageEditSchema'
+export type { ProfileSchema } from './model/types/profilePageEditSchema'

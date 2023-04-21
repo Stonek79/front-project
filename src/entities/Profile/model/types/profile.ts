@@ -1,5 +1,6 @@
-import { Currency } from 'entities/Currency/model/types/currency'
-import { Countries } from 'entities/Country/model/types/countries'
+import { Currency } from 'entities/Currency/'
+import { Countries } from 'entities/Country/'
+import { ValidateProfileErrors } from '../consts/consts';
 
 export interface Profile {
     id?: string,
@@ -11,4 +12,17 @@ export interface Profile {
     city?: string,
     username?: string,
     avatar?: string
+}
+
+export type ValidateProfileErrorsType = typeof ValidateProfileErrors[keyof typeof ValidateProfileErrors]
+
+export type ValidateErrors = {
+    firstname: ValidateProfileErrorsType[],
+    lastname: ValidateProfileErrorsType[],
+    age: ValidateProfileErrorsType[],
+    city: ValidateProfileErrorsType[],
+    username: ValidateProfileErrorsType[],
+    currency: ValidateProfileErrorsType[],
+    country: ValidateProfileErrorsType[],
+    data: ValidateProfileErrorsType[]
 }

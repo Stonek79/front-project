@@ -2,12 +2,13 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import React, { memo } from 'react'
 import { Card } from 'shared/ui/Card/Card'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
-import { ArticleView } from '../../model/types/article'
 import cls from './ArticleListItem.module.scss'
+import { ArticleView } from '../../model/consts/consts';
+import { ArticleViewTypes } from '../../model/types/article';
 
 interface ArticleListItemSkeletonProps {
     className?: string
-    view: ArticleView
+    view: ArticleViewTypes
 }
 
 export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps) => {

@@ -2,8 +2,9 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { ArticleView } from '../../model/consts/consts';
 import { ArticleList } from './ArticleList'
-import { Article, ArticleView } from '../../model/types/article'
+import { Article } from '../../model/types/article'
 
 const article = {
     id: '1',
@@ -85,7 +86,7 @@ const article = {
     ],
 } as Article
 
-const articles = new Array(9).fill(article)
+const articles = new Array(9).fill(article).map((art, ind) => ({ ...art, id: `${ind}` }))
 export default {
     title: 'entities/ArticleList',
     component: ArticleList,

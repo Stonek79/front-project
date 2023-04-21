@@ -1,8 +1,4 @@
-export const UserRoles = {
-    ADMIN: 'admin',
-    USER: 'user',
-    MANAGER: 'manager',
-} as const
+import { UserRoles } from '../consts/consts';
 
 export type UserRole = typeof UserRoles[keyof typeof UserRoles]
 

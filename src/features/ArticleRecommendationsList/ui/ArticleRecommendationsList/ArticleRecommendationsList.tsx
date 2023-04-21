@@ -13,7 +13,11 @@ interface ArticleRecommendationsListProps {
 export const ArticleRecommendationsList = memo((props: ArticleRecommendationsListProps) => {
     const { className } = props
     const { t } = useTranslation()
-    const { data: articles, isLoading, error } = useArticlesRecommendationsList(3)
+    const {
+        data: articles,
+        isLoading,
+        error,
+    } = useArticlesRecommendationsList(3)
 
     if (error || !articles || !articles.length) {
         return (<NotFoundPage />)

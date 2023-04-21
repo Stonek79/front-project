@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
-import { Article, ArticleType } from 'entities/Article'
+import { Article, ArticleTypes } from 'entities/Article'
 import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams'
 import {
     getArticlesLimit,
@@ -41,7 +41,7 @@ export const fetchArticlesList = createAsyncThunk<
                     _order: order,
                     _sort: sort,
                     q: search,
-                    type: type === ArticleType.ALL ? undefined : type,
+                    type: type === ArticleTypes.ALL ? undefined : type,
                 },
             })
 

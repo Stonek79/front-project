@@ -6,14 +6,11 @@ import { Input } from 'shared/ui/Input/Input'
 import { Loader } from 'shared/ui/Loader/Loader'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Currency, CurrencySelect } from 'entities/Currency'
-import { Countries } from 'entities/Country/model/types/countries'
-import { CountrySelect } from 'entities/Country'
+import { Countries, CountrySelect } from 'entities/Country'
 import { HStack, VStack } from 'shared/ui/Stack'
-import { ValidateErrors, ValidateProfileErrors } from 'features/ProfilePageEdit/model/types/profilePageEditSchema'
-import { Profile } from '../../model/types/profile'
+import { ValidateProfileErrors } from '../../model/consts/consts';
+import { Profile, ValidateErrors, ValidateProfileErrorsType } from '../../model/types/profile'
 import cls from './ProfileCard.module.scss'
-
-// TODO fix ValidateEditors path
 
 interface ProfileCardProps {
     className?: string;
@@ -65,7 +62,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
     const cnLoading = classNames(cls.ProfileCard, {}, [className, cls.loading])
     const cnError = classNames(cls.ProfileCard, {}, [className, cls.error])
 
-    const getErrorsFields = (errors: ValidateProfileErrors[], field?: string) => errors.map((err) => (
+    const getErrorsFields = (errors: ValidateProfileErrorsType[], field?: string) => errors.map((err) => (
         <Text
             key={err}
             theme={TextTheme.ERROR}

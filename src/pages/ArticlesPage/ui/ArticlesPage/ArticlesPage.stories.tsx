@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 import {
-    Article, ArticleList, ArticleType, ArticleView,
+    Article,
 } from 'entities/Article'
 import ArticlesPage from './ArticlesPage'
 

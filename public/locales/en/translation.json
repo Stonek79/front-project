@@ -1,6 +1,9 @@
 {
   "About us": "About us",
+  "Access not allowed": "Access not allowed",
   "Add article": "Add article",
+  "Admin": "Admin",
+  "Admin page panel": "Admin page panel",
   "Age": "Age",
   "All topics": "All topics",
   "Article detail page": "Article detail page",
@@ -65,8 +68,5 @@
   "Статья не найдена": "Article not found",
   "Страница не найдена": "Page not found",
   "Тестовый пример": "Test example",
-  "Язык": "Русский",
-  "Admin page panel": "Admin page panel",
-  "Admin": "Admin",
-  "Access not allowed": "Access not allowed"
+  "Язык": "Русский"
 }

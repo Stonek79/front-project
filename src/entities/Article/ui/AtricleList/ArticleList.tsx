@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { Text, TextAlign } from 'shared/ui/Text/Text'
 import cls from './ArticleList.module.scss'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
-import { Article, ArticleView } from '../../model/types/article'
+import { Article, ArticleViewTypes } from '../../model/types/article'
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSceleton'
+import { ArticleView } from '../../model/consts/consts';
 
 // TODO add virtualization
 
@@ -13,11 +14,11 @@ interface ArticleListProps {
     className?: string
     articles: Article[]
     isLoading?: boolean
-    view?: ArticleView
+    view?: ArticleViewTypes
     target?: HTMLAttributeAnchorTarget
 }
 
-const getSkeleton = (view: ArticleView) => new Array(view === ArticleView.CARDS ? 6 : 3)
+const getSkeleton = (view: ArticleViewTypes) => new Array(view === ArticleView.CARDS ? 6 : 3)
     .fill(0)
 // eslint-disable-next-line react/no-array-index-key
     .map((_, i) => <ArticleListItemSkeleton key={Date.now() + i} className={cls.card} view={view} />)

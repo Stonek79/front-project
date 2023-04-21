@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames'
-import { memo, useCallback } from 'react'
+import { memo } from 'react'
 import { ArticleList } from 'entities/Article'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
@@ -7,11 +7,9 @@ import { useSearchParams } from 'react-router-dom'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { getArticles } from '../../models/slices/articlesPageSlice'
 import {
-    getArticlesHasMore,
     getArticlesView,
     getIsLoadingArticles,
 } from '../../models/selectors/articlesPageSelectors'
-import { fetchNextArticlesPage } from '../../models/services/fetchNextArticlesPage'
 import { initArticlesPage } from '../../models/services/initArticlesPage'
 import cls from './ArticleInfiniteList.module.scss'
 

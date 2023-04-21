@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { Countries } from '../../model/types/countries';
 import { CountrySelect } from './CountrySelect'
 
 export default {
@@ -16,9 +17,11 @@ const Template: ComponentStory<typeof CountrySelect> = (args) => <CountrySelect 
 
 export const PrimaryNormal = Template.bind({});
 PrimaryNormal.args = {
+    value: Countries.USA,
 };
 
 export const PrimaryDarkBig = Template.bind({});
 PrimaryDarkBig.args = {
+    value: Countries.USA,
 };
 PrimaryDarkBig.decorators = [ThemeDecorator(Theme.DARK)];

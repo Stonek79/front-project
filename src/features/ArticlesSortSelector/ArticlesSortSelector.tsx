@@ -2,16 +2,16 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Select, SelectOptions } from 'shared/ui/Select/Select'
-import { ArticleSortField } from 'entities/Article'
+import { ArticleSortField, ArticleSortFieldTypes } from 'entities/Article'
 import { SortOrder } from 'shared/types'
 import cls from './ArticlesSortSelector.module.scss'
 
 interface ArticlesSortSelectorProps {
     className?: string
-    sort: ArticleSortField
+    sort: ArticleSortFieldTypes
     order: SortOrder
     onChangeOrder: (newOrder: SortOrder) => void
-    onChangeSort: (newSort: ArticleSortField) => void
+    onChangeSort: (newSort: ArticleSortFieldTypes) => void
 }
 
 export const ArticlesSortSelector = memo((props: ArticlesSortSelectorProps) => {
@@ -33,7 +33,7 @@ export const ArticlesSortSelector = memo((props: ArticlesSortSelectorProps) => {
         },
     ], [t])
 
-    const sortFieldOptions = useMemo<SelectOptions<ArticleSortField>[]>(() => [
+    const sortFieldOptions = useMemo<SelectOptions<ArticleSortFieldTypes>[]>(() => [
         {
             value: ArticleSortField.ALL,
             content: t('by default'),
@@ -54,7 +54,7 @@ export const ArticlesSortSelector = memo((props: ArticlesSortSelectorProps) => {
 
     return (
         <div className={cn}>
-            <Select<ArticleSortField>
+            <Select<ArticleSortFieldTypes>
                 value={sort}
                 onChange={onChangeSort}
                 options={sortFieldOptions}

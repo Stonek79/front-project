@@ -14,7 +14,7 @@ const ProfilePage = (props: ProfilePageProps) => {
     const { className } = props
     const { id } = useParams<{ id: string }>()
 
-    if (!id) {
+    if (!id && __PROJECT__ !== 'storybook') {
         return (
             <NotFoundPage />
         )
