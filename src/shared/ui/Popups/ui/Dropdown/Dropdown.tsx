@@ -3,15 +3,11 @@ import { useTranslation } from 'react-i18next'
 import { Menu } from '@headlessui/react'
 import { DropdownDirection } from 'shared/types/ui';
 import cls from './Dropdown.module.scss'
-import { classNames } from '../../lib/classNames/classNames'
-import { AppLink } from '../AppLink/AppLink';
+import clsPopup from '../../styles/Popups.module.scss'
+import { classNames } from '../../../../lib/classNames/classNames'
+import { AppLink } from '../../../AppLink/AppLink';
+import { MapDirectionClass } from '../../styles/consts';
 
-const MapDirectionClass: Record<DropdownDirection, string> = {
-    'bottom right': cls.bottomRight,
-    'bottom left': cls.bottomLeft,
-    'top right': cls.topRight,
-    'top left': cls.topLeft,
-}
 export interface DropdownItem {
     disabled?: boolean
     title?: string
@@ -36,12 +32,12 @@ export const Dropdown = memo((props: DropdownProps) => {
     } = props
     const { t } = useTranslation()
 
-    const cn = classNames(cls.Dropdown, {}, [className])
-    const menuCN = classNames(cls.menu, {}, [MapDirectionClass[direction]])
+    const cn = classNames(clsPopup.popup, {}, [className])
+    const menuCN = classNames(clsPopup.options, {}, [MapDirectionClass[direction]])
 
     return (
         <Menu as="div" className={cn}>
-            <Menu.Button className={cls.btn}>
+            <Menu.Button className={clsPopup.trigger}>
                 {trigger}
             </Menu.Button>
             <Menu.Items className={menuCN}>

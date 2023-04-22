@@ -1,8 +1,12 @@
-.Dropdown {
+.popup {
     position: relative;
 }
 
-.btn {
+.active {
+    background: var(--inverted-primary-color);
+}
+
+.trigger {
     background: none;
     border: none;
     outline: none;
@@ -11,7 +15,7 @@
     cursor: pointer;
 }
 
-.menu {
+.options {
     display: flex;
     flex-direction: column;
     width: max-content;
@@ -42,17 +46,6 @@
     }
 }
 
-.menuItem {
-    padding: 10px 25px;
-    width: 100%;
-    border: none;
-    background: none;
-    outline: none;
-    border-radius: 8px;
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-.active {
-    background: var(--inverted-primary-color);
+.disabled {
+    opacity: 0.7;
 }
