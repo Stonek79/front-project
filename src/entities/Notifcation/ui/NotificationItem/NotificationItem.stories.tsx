@@ -15,8 +15,20 @@ export default {
 const Template: ComponentStory<typeof NotificationItem> = (args) => <NotificationItem {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    item: {
+        id: 1,
+        title: 'Задача назначена',
+        description: 'Вакансия «React Native Developer» откликнена',
+    },
+};
 
 export const NormalDark = Template.bind({});
-NormalDark.args = {};
+NormalDark.args = {
+    item: {
+        id: 1,
+        title: 'Задача назначена',
+        description: 'Вакансия «React Native Developer» откликнена',
+    },
+};
 NormalDark.decorators = [ThemeDecorator(Theme.DARK)];
