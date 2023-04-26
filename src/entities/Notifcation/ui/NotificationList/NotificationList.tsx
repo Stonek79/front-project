@@ -1,7 +1,7 @@
-import { classNames } from 'shared/lib/classNames/classNames'
 import { memo } from 'react'
-import { VStack } from 'shared/ui/Stack';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { VStack } from '@/shared/ui/Stack';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { useNotifications } from '../../api/notificationApi';
 import { NotificationItem } from '../../ui/NotificationItem/NotificationItem';
 
@@ -23,6 +23,7 @@ export const NotificationList = memo((props: NotificationListProps) => {
             </VStack>
         )
     }
+
     return (
         <VStack gap="16" max className={cn}>
             {data?.map((item) => <NotificationItem item={item} key={item.id} />)}

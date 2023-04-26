@@ -1,10 +1,10 @@
-import { classNames } from 'shared/lib/classNames/classNames'
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text, TextSize } from 'shared/ui/Text/Text'
-import { ArticleList, ArticleView } from 'entities/Article'
-import { VStack } from 'shared/ui/Stack'
-import { NotFoundPage } from 'pages/NotFoundPage'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { Text, TextSize } from '@/shared/ui/Text/Text'
+import { ArticleList, ArticleView } from '@/entities/Article'
+import { VStack } from '@/shared/ui/Stack'
+import { NotFoundPage } from '@/pages/NotFoundPage'
 import { useArticlesRecommendationsList } from '../../api/ArticleRecommendationsApi'
 
 interface ArticleRecommendationsListProps {

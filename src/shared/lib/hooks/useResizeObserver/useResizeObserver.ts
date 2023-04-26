@@ -1,5 +1,5 @@
 import { MutableRefObject, useEffect } from 'react'
-import { ArticleView } from 'entities/Article'
+import { ArticleView } from '@/entities/Article'
 
 interface useResizeObserverProps {
     page: number

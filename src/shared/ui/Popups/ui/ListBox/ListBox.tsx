@@ -1,6 +1,6 @@
 import { Listbox } from '@headlessui/react'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { Fragment, memo, ReactNode } from 'react'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button } from '../../../Button/Button';
 import { HStack } from '../../../Stack';
 import cls from './ListBox.module.scss'

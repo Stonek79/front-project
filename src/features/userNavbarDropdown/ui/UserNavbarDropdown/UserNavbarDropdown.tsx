@@ -1,11 +1,11 @@
-import { classNames } from 'shared/lib/classNames/classNames'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Dropdown } from 'shared/ui/Popups';
 import { useSelector } from 'react-redux';
-import { isUserAdmin, isUserManager, User } from 'entities/User';
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Dropdown } from '@/shared/ui/Popups';
+import { isUserAdmin, isUserManager, User } from '@/entities/User';
 import cls from './UserNavbarDropdown.module.scss'
 
 interface UserNavbarDropdownProps {

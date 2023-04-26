@@ -5,6 +5,8 @@
 @import "./themes/lilac";
 
 .app_dark_theme,
+.app_modal,
+.app_drawer,
 body {
     font: var(--font-m);
     color: var(--primary-color);

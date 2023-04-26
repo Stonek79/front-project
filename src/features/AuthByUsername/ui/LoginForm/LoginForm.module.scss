@@ -1,11 +1,14 @@
 .LoginForm {
     display: flex;
     flex-direction: column;
-    width: 400px;
 }
 
 .input {
     margin-top: 10px;
+}
+
+input::placeholder {
+    width: fit-content;
 }
 
 .loginBtn {

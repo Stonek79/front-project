@@ -1,12 +1,12 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
+import withMock from 'storybook-addon-mock'
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import {
     Article,
-} from 'entities/Article'
-import withMock from 'storybook-addon-mock'
-import { SuspenseDecorator } from 'shared/config/storybook/SuspenseDecorator/SuspenseDecorator'
+} from '@/entities/Article'
+import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator'
 import ArticlesPage from './ArticlesPage'
 
 const article = {

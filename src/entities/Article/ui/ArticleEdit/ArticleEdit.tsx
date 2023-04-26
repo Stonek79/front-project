@@ -1,9 +1,9 @@
 import { createReactEditorJS } from 'react-editor-js'
 
 import { OutputBlockData } from '@editorjs/editorjs'
-import { EDITOR_JS_TOOLS } from 'shared/const/editor'
 import { useSelector } from 'react-redux'
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { EDITOR_JS_TOOLS } from '@/shared/const/editor'
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { getArticleDetailsData } from '../../model/selectors/articleDetails'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import { ArticleBlockTypes } from '../../model/consts/consts';

@@ -1,10 +1,10 @@
-import { classNames } from 'shared/lib/classNames/classNames'
 import { memo } from 'react'
-import { Page } from 'widgets/Page/ui/Page/Page'
-import { VStack } from 'shared/ui/Stack'
-import { ProfilePageEdit } from 'features/ProfilePageEdit'
 import { useParams } from 'react-router-dom'
-import { NotFoundPage } from 'pages/NotFoundPage'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { Page } from '@/widgets/Page/ui/Page/Page'
+import { VStack } from '@/shared/ui/Stack'
+import { ProfilePageEdit } from '@/features/ProfilePageEdit'
+import { NotFoundPage } from '@/pages/NotFoundPage'
 
 interface ProfilePageProps {
     className?: string;

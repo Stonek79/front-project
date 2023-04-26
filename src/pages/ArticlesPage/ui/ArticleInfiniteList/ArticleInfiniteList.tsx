@@ -1,10 +1,10 @@
-import { classNames } from 'shared/lib/classNames/classNames'
 import { memo } from 'react'
-import { ArticleList } from 'entities/Article'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { ArticleList } from '@/entities/Article'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { getArticles } from '../../models/slices/articlesPageSlice'
 import {
     getArticlesView,

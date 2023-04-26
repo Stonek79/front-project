@@ -1,7 +1,6 @@
 import { Fragment, memo, ReactNode } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Menu } from '@headlessui/react'
-import { DropdownDirection } from 'shared/types/ui';
+import { DropdownDirection } from '@/shared/types/ui';
 import cls from './Dropdown.module.scss'
 import clsPopup from '../../styles/Popups.module.scss'
 import { classNames } from '../../../../lib/classNames/classNames'
@@ -30,7 +29,6 @@ export const Dropdown = memo((props: DropdownProps) => {
         items,
         direction = 'bottom right',
     } = props
-    const { t } = useTranslation()
 
     const cn = classNames(clsPopup.popup, {}, [className])
     const menuCN = classNames(clsPopup.options, {}, [MapDirectionClass[direction]])

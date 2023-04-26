@@ -1,4 +1,4 @@
-import { Profile, ValidateErrors, ValidateProfileErrors } from 'entities/Profile'
+import { Profile, ValidateErrors, ValidateProfileErrors } from '@/entities/Profile'
 
 export const ValidateProfileData = (profile?: Profile) => {
     const errors: ValidateErrors = {
