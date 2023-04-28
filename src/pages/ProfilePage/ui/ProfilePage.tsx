@@ -5,6 +5,7 @@ import { Page } from '@/widgets/Page/ui/Page/Page'
 import { VStack } from '@/shared/ui/Stack'
 import { ProfilePageEdit } from '@/features/ProfilePageEdit'
 import { NotFoundPage } from '@/pages/NotFoundPage'
+import { ProfileRating } from '@/features/ProfileRating';
 
 interface ProfilePageProps {
     className?: string;
@@ -26,6 +27,7 @@ const ProfilePage = (props: ProfilePageProps) => {
         <Page className={cn}>
             <VStack gap="16" max>
                 <ProfilePageEdit id={id} />
+                <ProfileRating userId={id} />
             </VStack>
         </Page>
     );

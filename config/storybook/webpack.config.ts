@@ -14,6 +14,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
     };
 
     config!.resolve!.modules!.push(paths.src)
+    config.resolve!.alias = { '@': paths.src }
+
     config!.resolve!.modules = [
         path.resolve(__dirname, '../../src'),
         'node_modules',
@@ -41,7 +43,6 @@ export default ({ config }: {config: webpack.Configuration}) => {
         use: ['@svgr/webpack'],
     });
     config!.module!.rules!.push(buildCssLoader(true));
-    config.resolve!.alias = { '@': paths.src }
 
     return config;
 };

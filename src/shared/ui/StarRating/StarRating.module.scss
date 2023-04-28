@@ -1,0 +1,15 @@
+.StarRating {
+    border: none;
+}
+
+.starIcon {
+    cursor: pointer;
+}
+
+.normal {
+    fill: none;
+}
+
+.hovered {
+    fill: var(--primary-color);
+}

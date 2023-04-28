@@ -40,7 +40,7 @@ export const Dropdown = memo((props: DropdownProps) => {
             </Menu.Button>
             <Menu.Items className={menuCN}>
                 {
-                    items.map((item) => {
+                    items.map((item, i) => {
                         const content = ({ active }: { active: boolean }) => (
                             <button
                                 type="button"
@@ -53,14 +53,16 @@ export const Dropdown = memo((props: DropdownProps) => {
 
                         if (item.href) {
                             return (
-                                <Menu.Item as={AppLink} to={item.href} disabled={item.disabled}>
+                                // eslint-disable-next-line react/no-array-index-key
+                                <Menu.Item key={`menu-item-${i}`} as={AppLink} to={item.href} disabled={item.disabled}>
                                     {content}
                                 </Menu.Item>
                             )
                         }
 
                         return (
-                            <Menu.Item as={Fragment} disabled={item.disabled}>
+                            // eslint-disable-next-line react/no-array-index-key
+                            <Menu.Item key={`menu-item-${i}`} as={Fragment} disabled={item.disabled}>
                                 {content}
                             </Menu.Item>
                         )
