@@ -5,7 +5,6 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/app/providers/ThemeProvider'
 import ProfileRating from './ProfileRating'
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 
 export default {
     title: 'features/ProfileRating',
@@ -13,13 +12,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [withMock, SuspenseDecorator, StoreDecorator({
-        user: {
-            authData: {
-                id: '1', username: 'admin',
-            },
-        },
-    })],
+    decorators: [withMock, StoreDecorator({})],
 } as ComponentMeta<typeof ProfileRating>;
 
 const Template: ComponentStory<typeof ProfileRating> = (args) => <ProfileRating {...args} />;
@@ -27,11 +20,33 @@ const Template: ComponentStory<typeof ProfileRating> = (args) => <ProfileRating 
 export const Normal = Template.bind({});
 Normal.args = {
 };
+Normal.parameters = {
+    mockData: [
+        {
+            url: `${__API__}/profile-ratings?userId=1`,
+            method: 'GET',
+            status: 200,
+            response: [
+            ],
+        },
+    ],
+}
 
 export const NormalDark = Template.bind({});
 NormalDark.args = {
 };
 NormalDark.decorators = [ThemeDecorator(Theme.DARK)];
+NormalDark.parameters = {
+    mockData: [
+        {
+            url: `${__API__}/profile-ratings?userId=1`,
+            method: 'GET',
+            status: 200,
+            response: [
+            ],
+        },
+    ],
+}
 
 export const Normal4Stars = Template.bind({});
 Normal4Stars.args = {
@@ -40,7 +55,7 @@ Normal4Stars.args = {
 Normal4Stars.parameters = {
     mockData: [
         {
-            url: `${__API__}/profile-ratings`,
+            url: `${__API__}/profile-ratings?userId=1`,
             method: 'GET',
             status: 200,
             response: [
@@ -57,12 +72,13 @@ Normal4Stars.parameters = {
 
 export const NormalDark4Stars = Template.bind({});
 NormalDark4Stars.args = {
+    userId: '1',
 };
 NormalDark4Stars.decorators = [ThemeDecorator(Theme.DARK)];
 NormalDark4Stars.parameters = {
     mockData: [
         {
-            url: `${__API__}/profile-ratings`,
+            url: `${__API__}/profile-ratings?userId=1`,
             method: 'GET',
             status: 200,
             response: [

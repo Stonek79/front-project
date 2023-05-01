@@ -34,6 +34,8 @@
   "Order": "Order",
   "Profile": "Profile",
   "ProfilePage": "Profile Page",
+  "Rate User profile": "Rate User profile",
+  "Rate the article": "Rate the article",
   "Read more": "Read more...",
   "Recommendations": "Recommendations",
   "Save": "Save",
@@ -44,6 +46,7 @@
   "StoneK 79": "StoneK 79",
   "Thanks for the rating!": "Thanks for the rating!",
   "Username": "Username",
+  "We will glad to get your vote": "We will glad to get your vote",
   "Your feedback": "Your feedback",
   "ascending": "ascending",
   "authForm": "Authorization form",
@@ -71,8 +74,5 @@
   "Статья не найдена": "Article not found",
   "Страница не найдена": "Page not found",
   "Тестовый пример": "Test example",
-  "Язык": "Русский",
-    "We will glad to get your vote": "We will glad to get your vote",
-  "Rate User profile": "Rate User profile",
-  "Rate the article": "Rate the article"
+  "Язык": "Русский"
 }
