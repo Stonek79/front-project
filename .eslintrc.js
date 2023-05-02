@@ -74,7 +74,13 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
         'fsd-paths-checker-plugin/fsd-paths-checker-plugin': ['error', { alias: '@' }],
-        'fsd-paths-checker-plugin/public-imports': ['error', { alias: '@' }],
+        'fsd-paths-checker-plugin/public-imports': [
+            'error',
+            {
+                alias: '@',
+                testFiles: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,

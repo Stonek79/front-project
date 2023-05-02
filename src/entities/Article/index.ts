@@ -1,4 +1,3 @@
-export { articleDetailsReducer } from './model/slice/articleDetailsSlice';
 export { ArticleEdit } from './ui/ArticleEdit/ArticleEdit'
 export { getArticleDetailsData } from './model/selectors/articleDetails'
 export {
