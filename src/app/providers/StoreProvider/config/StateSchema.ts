@@ -11,7 +11,7 @@ import { ArticleDetailsCommentsSchema } from '@/pages/ArticleDetalePage'
 import { ArticlesPageSchema } from '@/pages/ArticlesPage'
 import { ScrollSafeSchema } from '@/widgets/Page'
 import { rtkApi } from '@/shared/api/rtkApi'
-import { ProfileSchema } from '@/features/ProfilePageEdit/model/types/profilePageEditSchema'
+import { ProfileSchema } from '@/features/ProfilePageEdit'
 
 export interface StateSchema {
     counter: CounterSchema
