@@ -24,32 +24,66 @@ export default {
 const Template: ComponentStory<typeof ArticleRating> = (args) => <ArticleRating {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
-
-export const NormalDark = Template.bind({});
-NormalDark.args = {};
-NormalDark.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const Normal4Stars = Template.bind({});
 Normal.args = {
     articleId: '1',
 };
-
-export const NormalDark4Stars = Template.bind({});
-NormalDark.args = {
-    articleId: '1',
-};
-NormalDark4Stars.decorators = [ThemeDecorator(Theme.DARK)]
 Normal.parameters = {
     mockData: [
         {
-            url: `${__API__}/article-ratings`,
+            url: `${__API__}/article-ratings?userId=1&articleId=1`,
             method: 'GET',
             status: 200,
-            params: {
-                userId: '1',
-                articleId: '1',
-            },
+            response: [],
+        },
+    ],
+}
+
+export const NormalDark = Template.bind({});
+NormalDark.args = {
+    articleId: '1',
+};
+NormalDark.decorators = [ThemeDecorator(Theme.DARK)];
+NormalDark.parameters = {
+    mockData: [
+        {
+            url: `${__API__}/article-ratings?userId=1&articleId=1`,
+            method: 'GET',
+            status: 200,
+            response: [],
+        },
+    ],
+}
+
+export const Normal4Stars = Template.bind({});
+Normal4Stars.args = {
+    articleId: '1',
+};
+Normal4Stars.parameters = {
+    mockData: [
+        {
+            url: `${__API__}/article-ratings?userId=1&articleId=1`,
+            method: 'GET',
+            status: 200,
+            response: [
+                {
+                    starRate: 4,
+                },
+            ],
+        },
+    ],
+}
+
+export const NormalDark4Stars = Template.bind({});
+NormalDark4Stars.args = {
+    articleId: '1',
+};
+NormalDark4Stars.decorators = [ThemeDecorator(Theme.DARK)]
+NormalDark4Stars.parameters = {
+    mockData: [
+        {
+            url: `${__API__}/article-ratings?userId=1&articleId=1`,
+            method: 'GET',
+            status: 200,
             response: [
                 {
                     starRate: 4,

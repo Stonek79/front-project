@@ -5,8 +5,6 @@ import { Theme } from '@/app/providers/ThemeProvider'
 import { ArticleListItem } from './ArticleListItem'
 import { Article } from '../../model/types/article'
 import { ArticleView } from '../../model/consts/consts';
-import { ArticleListItemSkeleton } from '@/entities/Article/ui/ArticleListItem/ArticleListItemSceleton'
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const article = {
     id: '1',
