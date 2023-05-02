@@ -10,7 +10,6 @@ import { Avatar } from '@/shared/ui/Avatar/Avatar'
 import EyeIcon from '@/shared/assets/icons/eye.svg'
 import DateIcon from '@/shared/assets/icons/date-schedule.svg'
 import { Icon } from '@/shared/ui/Icon/Icon'
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent'
@@ -26,6 +25,7 @@ import cls from './ArticleDetails.module.scss'
 import { ArticleBlock } from '../../model/types/article'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import { ArticleBlockTypes } from '../../model/consts/consts';
+import { RoutePath } from '@/shared/const/router';
 
 interface ArticleDetailsProps {
     className?: string;

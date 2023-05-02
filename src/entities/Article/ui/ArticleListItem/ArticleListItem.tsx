@@ -7,7 +7,6 @@ import ViewIcon from '@/shared/assets/icons/eye.svg'
 import { Card } from '@/shared/ui/Card/Card'
 import { Avatar } from '@/shared/ui/Avatar/Avatar'
 import { Button } from '@/shared/ui/Button/Button'
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { ARTICLE_LIST_ITEM_ID_KEY } from '@/shared/const/localstarage'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
@@ -16,6 +15,7 @@ import {
 } from '../../model/types/article'
 import cls from './ArticleListItem.module.scss'
 import { ArticleBlockTypes, ArticleView } from '../../model/consts/consts';
+import { RoutePath } from '@/shared/const/router';
 
 interface ArticleListItemProps {
     className?: string
