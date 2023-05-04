@@ -1,10 +1,10 @@
 import React, { memo, useCallback, useState } from 'react'
 import { BrowserView, MobileView } from 'react-device-detect';
+import { NotificationList } from 'src/entities/Notification';
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import NotificationIcon from '@/shared/assets/icons/notification.svg';
-import { NotificationList } from '@/entities/Notifcation';
 import { Popover } from '@/shared/ui/Popups';
 import { Drawer } from '@/shared/ui/Drawer';
 import cls from './NotificationButton.module.scss'
