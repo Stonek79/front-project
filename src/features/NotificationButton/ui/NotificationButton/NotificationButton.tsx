@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useState } from 'react'
 import { BrowserView, MobileView } from 'react-device-detect';
-import { NotificationList } from 'src/entities/Notification';
+import { NotificationList } from '@/entities/Notification';
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
