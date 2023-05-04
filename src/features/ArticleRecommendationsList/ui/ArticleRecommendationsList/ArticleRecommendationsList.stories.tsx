@@ -2,11 +2,11 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import withMock from 'storybook-addon-mock';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from '@/app/providers/ThemeProvider'
 import { Article, ArticleTypes, ArticleBlockTypes } from '@/entities/Article';
 import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList'
+import { Theme } from '@/shared/const/theme';
 
 const data: Article = {
     id: '1',

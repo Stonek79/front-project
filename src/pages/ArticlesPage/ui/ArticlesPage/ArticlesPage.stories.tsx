@@ -38,10 +38,14 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [StoreDecorator({
+    decorators: [SuspenseDecorator, StoreDecorator({
         articlesPage: {
             ids: articles.map((art) => art.id),
+            entities: {
+
+            }
         },
+
     })],
 } as ComponentMeta<typeof ArticlesPage>
 

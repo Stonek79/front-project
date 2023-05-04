@@ -6,7 +6,7 @@ import cls from './ProfileRating.module.scss'
 import { RatingCard } from '@/entities/Rating';
 import { useProfileRating, useRateProfile } from '../../api/ProfileRatingApi';
 import { getUserAuthData } from '@/entities/User';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 export interface ProfileRatingProps {
     className?: string

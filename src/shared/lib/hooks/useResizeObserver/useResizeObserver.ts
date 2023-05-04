@@ -1,4 +1,5 @@
 import { MutableRefObject, useEffect } from 'react'
+// eslint-disable-next-line fsd-paths-checker-plugin/layer-import-control
 import { ArticleView } from '@/entities/Article'
 
 interface useResizeObserverProps {

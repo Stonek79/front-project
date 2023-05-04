@@ -6,7 +6,7 @@ import cls from './ArticleRating.module.scss'
 import { RatingCard } from '@/entities/Rating';
 import { useArticleRating, useRateArticle } from '../../api/ArticleRatingApi';
 import { getUserAuthData } from '@/entities/User';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 export interface ArticleRatingProps {
     className?: string

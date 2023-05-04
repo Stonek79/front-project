@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Page } from '@/widgets/Page'
-import { Text } from '@/shared/ui/Text/Text'
+import { Text } from '@/shared/ui/Text'
 import { ArticleEdit } from '@/entities/Article'
 import cls from './ArticleEditPage.module.scss'
 

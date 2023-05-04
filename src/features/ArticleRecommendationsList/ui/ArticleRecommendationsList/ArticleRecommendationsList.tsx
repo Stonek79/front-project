@@ -1,10 +1,9 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Text, TextSize } from '@/shared/ui/Text/Text'
+import { Text, TextSize } from '@/shared/ui/Text'
 import { ArticleList, ArticleView } from '@/entities/Article'
-import { VStack } from '@/shared/ui/Stack'
-import { NotFoundPage } from '@/pages/NotFoundPage'
+import { HStack, VStack } from '@/shared/ui/Stack'
 import { useArticlesRecommendationsList } from '../../api/ArticleRecommendationsApi'
 
 interface ArticleRecommendationsListProps {
@@ -19,11 +18,15 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
         error,
     } = useArticlesRecommendationsList(3)
 
-    if (error || !articles || !articles.length) {
-        return (<NotFoundPage />)
-    }
-
     const cn = classNames('', {}, [className])
+
+    if (error || !articles || !articles.length) {
+        return (
+            <HStack max align="center" className={cn}>
+                {t('Recommendations list error')}
+            </HStack>
+        );
+    }
 
     return (
         <VStack gap="8" max align="center" className={cn}>
@@ -33,7 +36,7 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
             />
             <ArticleList
                 view={ArticleView.CARDS}
-                articles={articles}
+                articles={articles || []}
                 isLoading={isLoading}
                 target="_blank"
             />
