@@ -1,7 +1,6 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import withMock from 'storybook-addon-mock'
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import {
     Article,
@@ -41,9 +40,6 @@ export default {
     decorators: [SuspenseDecorator, StoreDecorator({
         articlesPage: {
             ids: articles.map((art) => art.id),
-            entities: {
-
-            }
         },
 
     })],

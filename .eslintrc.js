@@ -25,6 +25,7 @@ module.exports = {
         'i18next',
         'react-hooks',
         'fsd-paths-checker-plugin',
+        'unused-imports',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -33,6 +34,7 @@ module.exports = {
             extensions: ['.js', '.jsx', '.ts', '.tsx'],
         }],
         'import/no-unresolved': 'off',
+        'unused-imports/no-unused-imports': 'error',
         'import/prefer-default-export': 'off',
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
