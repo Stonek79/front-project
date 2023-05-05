@@ -6,7 +6,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { Dropdown } from '@/shared/ui/Popups';
 import { isUserAdmin, isUserManager, User } from '@/entities/User';
 import cls from './UserNavbarDropdown.module.scss'
-import { RoutePath } from '@/shared/const/router';
+import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/router';
 
 interface UserNavbarDropdownProps {
     className?: string
@@ -25,7 +25,7 @@ export const UserNavbarDropdown = memo((props: UserNavbarDropdownProps) => {
 
     const adminPanel = isAdminPanelAvailable ? [{
         content: t('Admin'),
-        href: RoutePath.admin_panel,
+        href: getRouteAdminPanel(),
     }] : []
 
     if (!authData) {
@@ -41,7 +41,7 @@ export const UserNavbarDropdown = memo((props: UserNavbarDropdownProps) => {
                 {
 
                     content: t('Profile'),
-                    href: RoutePath.profile + authData.id,
+                    href: getRouteProfile(authData.id),
                 },
                 {
                     content: t('Exit'),

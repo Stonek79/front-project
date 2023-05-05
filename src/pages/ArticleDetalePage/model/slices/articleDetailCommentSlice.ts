@@ -44,4 +44,4 @@ const articleDetailsCommentSlice = createSlice({
     },
 })
 
-export const { reducer: articleDetailsCommentReduces } = articleDetailsCommentSlice
+export const { reducer: articleDetailsCommentReducers } = articleDetailsCommentSlice

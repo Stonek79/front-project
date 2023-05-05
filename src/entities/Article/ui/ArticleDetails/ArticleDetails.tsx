@@ -25,7 +25,7 @@ import cls from './ArticleDetails.module.scss'
 import { ArticleBlock } from '../../model/types/article'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import { ArticleBlockTypes } from '../../model/consts/consts';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteNotFound } from '@/shared/const/router';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -77,7 +77,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         )
     } else if (articleError) {
         if (articleError === '404') {
-            content = (<Navigate to={RoutePath.not_found} state={{ from: location }} replace />)
+            content = (<Navigate to={getRouteNotFound()} state={{ from: location }} replace />)
         } else {
             content = (<Text align={TextAlign.CENTER} text={articleError} />)
         }

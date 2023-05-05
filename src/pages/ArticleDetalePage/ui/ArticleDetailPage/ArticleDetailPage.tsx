@@ -8,7 +8,7 @@ import { Page } from '@/widgets/Page'
 import { VStack } from '@/shared/ui/Stack'
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList'
 import { ArticleDetailsComments } from '../../ui/ArticleDetailsComments/ArticleDetailsComments'
-import { articleDetailsCommentReduces } from '../../model/slices/articleDetailCommentSlice'
+import { articleDetailsCommentReducers } from '../../model/slices/articleDetailCommentSlice'
 import cls from './ArticleDetailPage.module.scss'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import { ArticleRating } from '@/features/ArticleRating';
@@ -18,7 +18,7 @@ interface ArticleDetailPageProps {
 }
 
 const reducers: ReducersList = {
-    comments: articleDetailsCommentReduces,
+    comments: articleDetailsCommentReducers,
 }
 
 const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {

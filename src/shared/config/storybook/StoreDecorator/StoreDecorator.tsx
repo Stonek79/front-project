@@ -5,12 +5,13 @@ import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/Dynami
 import { articleDetailsReducer } from '@/entities/Article/testing'
 import { commentFormReducer } from '@/features/AddCommentForm/testing'
 import { profileReducer } from '@/features/ProfilePageEdit/testing'
+import { articleDetailsCommentReducers } from '@/pages/ArticleDetalePage/testing';
 
 const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
     article: articleDetailsReducer,
-    comments: articleDetailsReducer,
+    comments: articleDetailsCommentReducers,
     commentForm: commentFormReducer,
 }
 

@@ -13,7 +13,7 @@ import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { UserNavbarDropdown } from '@/features/UserNavbarDropdown';
 import cls from './Navbar.module.scss'
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleNew } from '@/shared/const/router';
 
 interface NavbarProps {
     className?: string;
@@ -52,7 +52,7 @@ export const Navbar = memo((props: NavbarProps) => {
                 />
                 <AppLink
                     theme={AppLinkTheme.SECONDARY}
-                    to={RoutePath.article_new}
+                    to={getRouteArticleNew()}
                 >
                     { t('Add article') }
                 </AppLink>
