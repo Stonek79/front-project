@@ -11,7 +11,7 @@ import { getRouteProfile } from '@/shared/const/router';
 
 interface CommentCardProps {
     className?: string;
-    comment: Comment
+    comment?: Comment
     isLoading?: boolean
 }
 
@@ -20,7 +20,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
     const cn = classNames(cls.CommentCard, { [cls.loading]: isLoading }, [className])
 
-    if (isLoading) {
+    if (isLoading || !comment) {
         return (
             <VStack max className={cn}>
                 <HStack>
