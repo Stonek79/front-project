@@ -48,7 +48,7 @@ export const UserNavbarDropdown = memo((props: UserNavbarDropdownProps) => {
                     onClick: onLogOut,
                 },
             ]}
-            trigger={<Avatar className={cls.avatar} size={30} src={authData.avatar} />}
+            trigger={<Avatar fallbackInverted className={cls.avatar} size={30} src={authData.avatar} />}
         />
     );
 });
