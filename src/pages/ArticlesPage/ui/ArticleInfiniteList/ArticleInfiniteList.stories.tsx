@@ -39,6 +39,9 @@ export default {
         articlesPage: {
             ids: articles.map((art) => art.id),
         },
+        article: {
+            data: article,
+        },
     })],
 } as ComponentMeta<typeof ArticleInfiniteList>
 

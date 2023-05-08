@@ -40,8 +40,19 @@ export default {
     decorators: [SuspenseDecorator, StoreDecorator({
         articlesPage: {
             ids: articles.map((art) => art.id),
+            entities: {
+                data: article,
+            },
         },
-
+        profile: {
+            data: {
+                id: '1',
+                username: 'user',
+            },
+        },
+        article: {
+            data: article,
+        },
     })],
 } as ComponentMeta<typeof ArticlesPage>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import withMock from 'storybook-addon-mock'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Currency } from '@/entities/Currency'
@@ -36,6 +37,18 @@ export default {
     component: ProfilePage,
     argTypes: {
         backgroundColor: { control: 'color' },
+    },
+    decorators: [withMock],
+    parameters: {
+        mockData: [
+            {
+                url: `${__API__}/profile-ratings?userId=1`,
+                method: 'GET',
+                status: 200,
+                response: [
+                ],
+            },
+        ],
     },
 } as ComponentMeta<typeof ProfilePage>;
 
