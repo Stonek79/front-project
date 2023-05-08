@@ -18,12 +18,14 @@ export default {
 const Template: ComponentStory<typeof NotificationList> = (args) => <NotificationList {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+};
 Normal.parameters = {
     mockData: [
         {
             url: `${__API__}/notifications`,
             method: 'GET',
+            delay: 1000,
             status: 200,
             response: [
                 {
@@ -53,6 +55,7 @@ Normal.parameters = {
         {
             url: `${__API__}/notifications`,
             method: 'GET',
+            delay: 1000,
             status: 200,
             response: [
                 {

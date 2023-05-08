@@ -6,7 +6,7 @@ import { $api } from '@/shared/api/api'
 import { scrollSafeReducer } from '@/widgets/Page'
 import { rtkApi } from '@/shared/api/rtkApi'
 import { createReducerManager } from './ReducerManager'
-import { StateSchema, ThunkExtraArg } from './StateSchema'
+import { ReduxStoreWithManager, StateSchema, ThunkExtraArg } from './StateSchema'
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -34,10 +34,8 @@ export function createReduxStore(
                 extraArgument: extraArg,
             },
         }).concat(rtkApi.middleware),
-    });
+    }) as ReduxStoreWithManager
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     store.reducerManager = reducerManager
 
     return store
