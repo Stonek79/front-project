@@ -20,30 +20,23 @@ export const AppImage = memo((props: AppImageProps) => {
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
-    console.log(isLoading, 'is loading')
-    console.log(hasError, 'has error')
-
     useLayoutEffect(() => {
         const img = new Image();
         img.src = src ?? '';
         img.onload = () => {
-            console.log('on load')
             setIsLoading(false);
         };
         img.onerror = () => {
-            console.log('on error')
             setIsLoading(false);
             setHasError(true);
         };
     }, [src]);
 
     if (isLoading && fallback) {
-        console.log('fallback')
         return fallback;
     }
 
     if (hasError && errorFallback) {
-        console.log('error')
         return errorFallback;
     }
 

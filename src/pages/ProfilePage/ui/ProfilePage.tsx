@@ -27,7 +27,7 @@ const ProfilePage = (props: ProfilePageProps) => {
     }
 
     return (
-        <Page className={cn}>
+        <Page className={cn} data-testid="ProfilePage">
             <VStack gap="16" max>
                 <ProfilePageEdit id={id} />
                 <ProfileRating userId={id} />

@@ -12,7 +12,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Card } from '@/shared/ui/Card'
 import { Input } from '@/shared/ui/Input'
 import { ArticlesSortSelector } from '@/features/ArticlesSortSelector'
-import { SortOrder } from '@/shared/types'
+import { SortOrder } from '@/shared/types/sort'
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
 import { ArticleTypeTabs } from '@/features/ArticleTypeTabs'
 import cls from './ArticlesPageFilters.module.scss'

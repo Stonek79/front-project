@@ -12,8 +12,9 @@ import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle'
 import { scrollSafeActions } from '../../model/slices/scrollSafeSlice'
 import { getSafeScrollByPAth } from '../../model/selectors/getSafeScroll'
 import cls from './Page.module.scss'
+import { TestProps } from '@/shared/types/tests';
 
-interface PageProps {
+interface PageProps extends TestProps {
     className?: string
     children: ReactNode
     onScrollEnd?: () => void
@@ -60,6 +61,8 @@ export const Page = ((props: PageProps) => {
             ref={wrapperRef}
             className={cn}
             onScroll={onScroll}
+            /* eslint-disable-next-line react/destructuring-assignment */
+            data-testid={props['data-testid'] ?? 'Page'}
         >
             {children}
             {!isLoading && (<div className={cls.trigger} ref={triggerRef} />)}

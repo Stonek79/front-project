@@ -7,29 +7,26 @@ import { RequireAuth } from './RequireAuth'
 import { AppRoutesProps } from '@/shared/types/router';
 import { routeConfig } from '../config/routeConfig';
 
-const AppRouter = () => {
+export const AppRouter = memo(() => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
-        const { path, authOnly, element } = route
-        const elem = (
+        const element = (
             <Suspense fallback={<PageLoader />}>
-                {element}
+                {route.element}
             </Suspense>
-        )
+        );
 
         return (
             <Route
-                key={path}
-                path={path}
-                element={authOnly ? <RequireAuth roles={route.roles}>{elem}</RequireAuth> : elem}
+                key={route.path}
+                path={route.path}
+                element={route.authOnly ? <RequireAuth roles={route.roles}>{element}</RequireAuth> : element}
             />
-        )
-    }, [])
+        );
+    }, []);
 
     return (
         <Routes>
             {Object.values(routeConfig).map(renderWithWrapper)}
         </Routes>
-    )
-}
-
-export default memo(AppRouter);
+    );
+});

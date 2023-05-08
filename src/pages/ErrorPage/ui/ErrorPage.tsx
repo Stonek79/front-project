@@ -17,7 +17,7 @@ export const ErrorPage = ({ className }: ErrorPageProps) => {
     };
 
     return (
-        <Page className={classNames(cls.ErrorPage, {}, [className])}>
+        <Page data-testid="ErrorPage" className={classNames(cls.ErrorPage, {}, [className])}>
             <p>{t('Произошла непредвиденная ошибка')}</p>
             <Button theme={ButtonTheme.BG_INVERTED} onClick={reloadPage}>
                 {t('Обновить страницу')}

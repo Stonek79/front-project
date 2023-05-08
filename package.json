@@ -28,6 +28,9 @@
         "create:slice": "node ./scripts/createSlice/index.js",
         "postinstall": "rm -rf ./node-modules/.cache"
     },
+        "lint-staged": {
+            "**/*.{ts,tsx}": "eslint"
+        },
     "keywords": [],
     "author": "",
     "license": "ISC",
@@ -49,7 +52,7 @@
         "@storybook/testing-library": "^0.0.9",
         "@svgr/webpack": "^6.2.1",
         "@testing-library/jest-dom": "^5.16.2",
-        "@testing-library/react": "^13.1.0",
+        "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.3.0",
         "@types/circular-dependency-plugin": "^5.0.5",
         "@types/jest": "^27.4.1",
@@ -86,6 +89,7 @@
         "jest": "^27.5.1",
         "jest-html-reporters": "^3.0.10",
         "json-server": "^0.17.0",
+        "lint-staged": "^13.2.2",
         "loki": "^0.28.1",
         "mini-css-extract-plugin": "^2.5.3",
         "react-editor-js": "^2.1.0",

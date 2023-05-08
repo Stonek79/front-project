@@ -21,4 +21,4 @@ export const getRouteArticleNew = () => '/articles/new'
 export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`
 export const getRouteAdminPanel = () => '/admin'
 export const getRouteForbidden = () => '/forbidden'
-export const getRouteNotFound = () => '/404'
+export const getRouteNotFound = () => '*'

@@ -60,7 +60,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     }, [])
 
     useInitialEffect(() => {
-        dispatch(fetchArticleById(id))
+        if (id) {
+            dispatch(fetchArticleById(id))
+        }
     }, [id, dispatch])
 
     let content
