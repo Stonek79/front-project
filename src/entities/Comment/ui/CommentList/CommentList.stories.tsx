@@ -9,6 +9,11 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    parameters: {
+        loki: {
+            waitAssets: true,
+        },
+    },
 } as ComponentMeta<typeof CommentList>
 
 const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />

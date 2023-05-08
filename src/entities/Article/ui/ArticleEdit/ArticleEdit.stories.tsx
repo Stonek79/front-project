@@ -87,6 +87,11 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    parameters: {
+        loki: {
+            waitAssets: true,
+        },
+    },
 } as ComponentMeta<typeof ArticleEdit>
 
 const Template: ComponentStory<typeof ArticleEdit> = (args) => <ArticleEdit {...args} />
