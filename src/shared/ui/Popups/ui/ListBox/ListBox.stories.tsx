@@ -12,7 +12,7 @@ export default {
     },
     decorators: [(Story) => (
         <div style={{
-            padding: '200px',
+            padding: '20px',
         }}
         >
             <Story />
@@ -31,7 +31,7 @@ Normal.args = {
         { value: 'value 1', content: 'content content 1' },
         { value: 'value 1', content: 'content content 1' },
     ],
-    direction: 'bottom left',
+    direction: 'top right',
     label: 'Label',
     value: undefined,
     defaultValue: 'Default value',
@@ -47,7 +47,7 @@ NormalDark.args = {
         { value: 'value 1', content: 'content content 1' },
         { value: 'value 1', content: 'content content 1' },
     ],
-    direction: 'bottom right',
+    direction: 'top left',
     label: 'Label',
     value: undefined,
     defaultValue: 'Default value',

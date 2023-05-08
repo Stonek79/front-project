@@ -56,10 +56,21 @@ export default {
     parameters: {
         mockData: [
             {
-                url: `${__API__}/profile-ratings?userId=1`,
+                url: `${__API__}/article-ratings?userId=1&articleId=1`,
                 method: 'GET',
                 status: 200,
                 response: [
+                    { starRate: 4 },
+                ],
+            },
+            {
+                url: `${__API__}/articles?_limit=3`,
+                method: 'GET',
+                status: 200,
+                response: [
+                    article,
+                    { ...article, id: '2' },
+                    { ...article, id: '3' },
                 ],
             },
         ],
@@ -72,13 +83,19 @@ export const Normal = Template.bind({})
 Normal.args = {
 }
 Normal.decorators = [SuspenseDecorator, StoreDecorator({
+    user: {
+        authData: {
+            id: '1',
+            username: 'admin',
+        },
+    },
     article: {
         data: article,
     },
     articlesRecommendations: {
         ids: [],
     },
-    comments: {
-        ids: [],
-    },
+    // comments: {
+    //     ids: [],
+    // },
 })]

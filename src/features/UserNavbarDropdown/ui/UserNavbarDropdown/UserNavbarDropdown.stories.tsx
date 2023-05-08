@@ -14,7 +14,7 @@ export default {
     },
     decorators: [SuspenseDecorator, StoreDecorator({
         user: {
-            authData: { username: 'XXXXX', avatar: 'https://i.pravatar.cc/300', id: '1' },
+            authData: { username: 'XXXXX', avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d', id: '1' },
             inited: true,
         },
     })],
@@ -24,11 +24,10 @@ const Template: ComponentStory<typeof UserNavbarDropdown> = (args) => <UserNavba
 
 export const Normal = Template.bind({});
 Normal.args = {
-    className: 'direction: top-left',
     authData: {
         id: '1',
         username: 'XXXXX',
-        avatar: 'https://i.pravatar.cc/300',
+        avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d' || '',
         roles: ['admin'],
     },
     onLogOut: () => ({}),
@@ -39,7 +38,7 @@ NormalDark.args = {
     authData: {
         id: '1',
         username: 'XXXXX',
-        avatar: 'https://i.pravatar.cc/300',
+        avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d' || '',
         roles: ['admin'],
     },
     onLogOut: () => ({}),
@@ -51,7 +50,7 @@ NormalIsAdmin.args = {
     authData: {
         id: '1',
         username: 'XXXXX',
-        avatar: 'https://i.pravatar.cc/300',
+        avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d' || '',
         roles: ['admin'],
     },
     onLogOut: () => ({}),

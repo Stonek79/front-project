@@ -13,6 +13,32 @@ export default {
         backgroundColor: { control: 'color' },
     },
     decorators: [withMock, StoreDecorator({})],
+    parameters: {
+        mockData: [
+            {
+                url: `${__API__}/notifications`,
+                method: 'GET',
+                status: 200,
+                response: [
+                    {
+                        id: '1',
+                        title: 'Задача назначена',
+                        description: 'Вакансия «React Native Developer» откликнена',
+                    },
+                    {
+                        id: '2',
+                        title: 'Задача назначена',
+                        description: 'Вакансия «React Native Developer» откликнена',
+                    },
+                    {
+                        id: '3',
+                        title: 'Задача назначена',
+                        description: 'Вакансия «React Native Developer» откликнена',
+                    },
+                ],
+            },
+        ],
+    },
 } as ComponentMeta<typeof NotificationList>;
 
 const Template: ComponentStory<typeof NotificationList> = (args) => <NotificationList {...args} />;
@@ -20,60 +46,7 @@ const Template: ComponentStory<typeof NotificationList> = (args) => <Notificatio
 export const Normal = Template.bind({});
 Normal.args = {
 };
-Normal.parameters = {
-    mockData: [
-        {
-            url: `${__API__}/notifications`,
-            method: 'GET',
-            delay: 1000,
-            status: 200,
-            response: [
-                {
-                    id: '1',
-                    title: 'Задача назначена',
-                    description: 'Вакансия «React Native Developer» откликнена',
-                },
-                {
-                    id: '2',
-                    title: 'Задача назначена',
-                    description: 'Вакансия «React Native Developer» откликнена',
-                },
-                {
-                    id: '3',
-                    title: 'Задача назначена',
-                    description: 'Вакансия «React Native Developer» откликнена',
-                },
-            ],
-        },
-    ],
-}
+
 export const NormalDark = Template.bind({});
 NormalDark.args = {};
 NormalDark.decorators = [ThemeDecorator(Theme.DARK)];
-Normal.parameters = {
-    mockData: [
-        {
-            url: `${__API__}/notifications`,
-            method: 'GET',
-            delay: 1000,
-            status: 200,
-            response: [
-                {
-                    id: '1',
-                    title: 'Задача назначена',
-                    description: 'Вакансия «React Native Developer» откликнена',
-                },
-                {
-                    id: '2',
-                    title: 'Задача назначена',
-                    description: 'Вакансия «React Native Developer» откликнена',
-                },
-                {
-                    id: '3',
-                    title: 'Задача назначена',
-                    description: 'Вакансия «React Native Developer» откликнена',
-                },
-            ],
-        },
-    ],
-}

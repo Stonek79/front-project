@@ -5,7 +5,7 @@ import { AppImage } from './AppImage'
 import { Theme } from '@/shared/const/theme';
 
 export default {
-    title: '_/AppImage',
+    title: 'shared/AppImage',
     component: AppImage,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -15,8 +15,16 @@ export default {
 const Template: ComponentStory<typeof AppImage> = (args) => <AppImage {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    src: 'https://i.pravatar.cc/150?u=a042581f4e29026704d' || '',
+    height: 100,
+    width: 100,
+};
 
 export const NormalDark = Template.bind({});
-NormalDark.args = {};
+NormalDark.args = {
+    src: 'https://i.pravatar.cc/150?u=a042581f4e29026704d' || '',
+    height: 100,
+    width: 100,
+};
 NormalDark.decorators = [ThemeDecorator(Theme.DARK)];
