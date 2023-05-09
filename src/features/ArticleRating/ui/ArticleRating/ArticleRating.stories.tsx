@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import withMock from 'storybook-addon-mock'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import ArticleRating from './ArticleRating'
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
@@ -12,7 +11,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [withMock, StoreDecorator({
+    decorators: [StoreDecorator({
         user: {
             authData: {
                 id: '1',

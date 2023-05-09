@@ -1,6 +1,5 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import withMock from 'storybook-addon-mock'
 import { Article, ArticleTypes, ArticleBlockTypes } from '@/entities/Article'
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator'
@@ -52,7 +51,6 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [withMock],
     parameters: {
         mockData: [
             {

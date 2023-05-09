@@ -12,7 +12,6 @@ import DateIcon from '@/shared/assets/icons/date-schedule.svg'
 import { Icon } from '@/shared/ui/Icon'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { HStack, VStack } from '@/shared/ui/Stack'
-import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent'
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent'
 import {
     getArticleDetailsData,
@@ -26,6 +25,7 @@ import { ArticleBlock } from '../../model/types/article'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import { ArticleBlockTypes } from '../../model/consts/consts';
 import { getRouteNotFound } from '@/shared/const/router';
+import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 
 interface ArticleDetailsProps {
     className?: string;

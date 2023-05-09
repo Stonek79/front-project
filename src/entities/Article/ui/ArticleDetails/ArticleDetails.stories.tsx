@@ -1,6 +1,5 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Article } from '../../model/types/article'
@@ -12,7 +11,7 @@ const data: Article = {
     id: '1',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
-    img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+    img: 'https://planeta-eruditov.ru/wp-content/uploads/2021/02/write-high-quality-python-scripts-1600x800.jpg',
     user: {
         id: '1',
         username: 'admin',
