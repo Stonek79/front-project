@@ -12,7 +12,7 @@ export default {
         backgroundColor: { control: 'color' },
     },
     args: {
-        to: '/login',
+        to: '/common',
     },
 } as ComponentMeta<typeof LoginForm>
 

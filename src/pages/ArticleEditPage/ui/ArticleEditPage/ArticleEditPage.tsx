@@ -14,7 +14,6 @@ const ArticleEditPage = (props: ArticleEditPageProps) => {
     const { id } = useParams<{ id: string }>()
     const cn = classNames(cls.ArticleEditPage, {}, [className])
 
-    console.log(id, 'ArticleEditPage')
     return (
         <Page className={cn}>
             {/* TODO add editor widget */}

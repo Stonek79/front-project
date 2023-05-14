@@ -43,6 +43,18 @@ export default {
             data: article,
         },
     })],
+    parameters: {
+        mockData: [
+            {
+                url: `${__API__}/articles?order=asc&sort=&search=&type=ALL`,
+                method: 'GET',
+                status: 200,
+                response: [
+                    articles,
+                ],
+            },
+        ],
+    },
 } as ComponentMeta<typeof ArticleInfiniteList>
 
 const Template: ComponentStory<typeof ArticleInfiniteList> = (args) => <ArticleInfiniteList {...args} />

@@ -33,6 +33,7 @@ export const fetchArticlesList = createAsyncThunk<
             addQueryParams({
                 order, sort, search, type,
             })
+
             const res = await extra.api.get<Article[]>('/articles', {
                 params: {
                     _expand: 'user',

@@ -33,7 +33,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
     }
 
     return (
-        <VStack gap="8" max className={cn}>
+        <VStack data-testid="CommentCard.Content" gap="8" max className={cn}>
             <AppLink to={getRouteProfile(comment.user.id)}>
                 <HStack gap="8">
                     {

@@ -93,7 +93,7 @@ Normal.decorators = [SuspenseDecorator, StoreDecorator({
     articlesRecommendations: {
         ids: [],
     },
-    // comments: {
-    //     ids: [],
-    // },
+    comments: {
+        ids: [],
+    },
 })]

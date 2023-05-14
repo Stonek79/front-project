@@ -92,11 +92,6 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    parameters: {
-        loki: {
-            waitAssets: true,
-        },
-    },
 } as ComponentMeta<typeof ArticleListItem>
 
 const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />

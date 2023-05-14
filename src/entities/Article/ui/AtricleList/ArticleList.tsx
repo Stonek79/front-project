@@ -21,7 +21,7 @@ interface ArticleListProps {
 const getSkeleton = (view: ArticleViewTypes) => new Array(view === ArticleView.CARDS ? 6 : 3)
     .fill(0)
 // eslint-disable-next-line react/no-array-index-key
-    .map((_, i) => <ArticleListItemSkeleton key={Date.now() + i} className={cls.card} view={view} />)
+    .map((_, i) => <ArticleListItemSkeleton key={i} className={cls.card} view={view} />)
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
@@ -56,7 +56,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     }
 
     return (
-        <div className={cn}>
+        <div data-testid="ArticleList" className={cn}>
             {articles?.length > 0
                 ? articles?.map(renderArticles)
                 : null}
