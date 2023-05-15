@@ -1,9 +1,9 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { VStack } from '@/shared/ui/Stack';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { useNotifications } from '../../api/notificationApi';
-import { NotificationItem } from '../../ui/NotificationItem/NotificationItem';
+import { VStack } from '@/shared/ui/Stack'
+import { Skeleton } from '@/shared/ui/Skeleton'
+import { useNotifications } from '../../api/notificationApi'
+import { NotificationItem } from '../../ui/NotificationItem/NotificationItem'
 
 interface NotificationListProps {
     className?: string
@@ -11,7 +11,9 @@ interface NotificationListProps {
 
 export const NotificationList = memo((props: NotificationListProps) => {
     const { className } = props
-    const { data, isLoading } = useNotifications(null, { pollingInterval: 25000 })
+    const { data, isLoading } = useNotifications(null, {
+        pollingInterval: 25000,
+    })
     const cn = classNames('', {}, [className])
 
     if (isLoading) {
@@ -26,7 +28,9 @@ export const NotificationList = memo((props: NotificationListProps) => {
 
     return (
         <VStack gap="16" max className={cn}>
-            {data?.map((item) => <NotificationItem item={item} key={item.id} />)}
+            {data?.map((item) => (
+                <NotificationItem item={item} key={item.id} />
+            ))}
         </VStack>
-    );
-});
+    )
+})

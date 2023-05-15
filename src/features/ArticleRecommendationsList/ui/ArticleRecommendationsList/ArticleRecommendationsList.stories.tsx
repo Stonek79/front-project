@@ -1,11 +1,11 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Article, ArticleTypes, ArticleBlockTypes } from '@/entities/Article';
-import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Article, ArticleTypes, ArticleBlockTypes } from '@/entities/Article'
+import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator'
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { ArticleRecommendationsList } from './ArticleRecommendationsList'
-import { Theme } from '@/shared/const/theme';
+import { Theme } from '@/shared/const/theme'
 
 const data: Article = {
     id: '1',
@@ -82,14 +82,19 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [SuspenseDecorator, StoreDecorator({
-        article: {
-            data,
-        },
-    })],
+    decorators: [
+        SuspenseDecorator,
+        StoreDecorator({
+            article: {
+                data,
+            },
+        }),
+    ],
 } as ComponentMeta<typeof ArticleRecommendationsList>
 
-const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => <ArticleRecommendationsList {...args} />
+const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => (
+    <ArticleRecommendationsList {...args} />
+)
 
 export const Normal = Template.bind({})
 Normal.args = {}

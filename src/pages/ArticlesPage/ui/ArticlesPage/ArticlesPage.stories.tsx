@@ -2,9 +2,7 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
-import {
-    Article,
-} from '@/entities/Article'
+import { Article } from '@/entities/Article'
 import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator'
 import ArticlesPage from './ArticlesPage'
 
@@ -20,16 +18,13 @@ const article = {
     },
     views: 1022,
     createdAt: '26.02.2022',
-    type: [
-        'IT',
-        'SCIENCE',
-        'POLITICS',
-        'NEWS',
-    ],
+    type: ['IT', 'SCIENCE', 'POLITICS', 'NEWS'],
     blocks: [],
 } as Article
 
-const articles = new Array(9).fill(article).map((art, ind) => ({ ...art, id: `${ind}` }))
+const articles = new Array(9)
+    .fill(article)
+    .map((art, ind) => ({ ...art, id: `${ind}` }))
 
 export default {
     title: 'pages/ArticlesPage',
@@ -37,23 +32,26 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [SuspenseDecorator, StoreDecorator({
-        articlesPage: {
-            ids: articles.map((art) => art.id),
-            entities: {
+    decorators: [
+        SuspenseDecorator,
+        StoreDecorator({
+            articlesPage: {
+                ids: articles.map((art) => art.id),
+                entities: {
+                    data: article,
+                },
+            },
+            profile: {
+                data: {
+                    id: '1',
+                    username: 'user',
+                },
+            },
+            article: {
                 data: article,
             },
-        },
-        profile: {
-            data: {
-                id: '1',
-                username: 'user',
-            },
-        },
-        article: {
-            data: article,
-        },
-    })],
+        }),
+    ],
 } as ComponentMeta<typeof ArticlesPage>
 
 const Template: ComponentStory<typeof ArticlesPage> = (args) => (
@@ -61,5 +59,4 @@ const Template: ComponentStory<typeof ArticlesPage> = (args) => (
 )
 
 export const Normal = Template.bind({})
-Normal.args = {
-}
+Normal.args = {}

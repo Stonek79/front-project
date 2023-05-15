@@ -2,11 +2,11 @@ import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { createOptionsList } from '@/shared/lib/createOptionsList/createOptionsList'
-import { ListBox } from '@/shared/ui/Popups';
+import { ListBox } from '@/shared/ui/Popups'
 import { Countries } from '../../model/types/countries'
 
 interface CountrySelectProps {
-    className?: string;
+    className?: string
     value?: Countries
     readonly?: boolean
     onChange?: (value: Countries) => void
@@ -15,16 +15,17 @@ interface CountrySelectProps {
 const options = createOptionsList(Countries)
 
 export const CountrySelect = memo((props: CountrySelectProps) => {
-    const {
-        className, value, onChange, readonly,
-    } = props
+    const { className, value, onChange, readonly } = props
     const { t } = useTranslation()
 
     const cn = classNames('', {}, [className])
 
-    const onChangeHandler = useCallback((value: string) => {
-        onChange?.(value as Countries)
-    }, [onChange])
+    const onChangeHandler = useCallback(
+        (value: string) => {
+            onChange?.(value as Countries)
+        },
+        [onChange],
+    )
 
     return (
         <ListBox
@@ -37,4 +38,4 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
             direction="bottom right"
         />
     )
-});
+})

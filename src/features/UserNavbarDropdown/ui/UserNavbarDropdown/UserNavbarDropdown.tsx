@@ -1,12 +1,12 @@
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Avatar } from '@/shared/ui/Avatar';
-import { Dropdown } from '@/shared/ui/Popups';
-import { isUserAdmin, isUserManager, User } from '@/entities/User';
+import { Avatar } from '@/shared/ui/Avatar'
+import { Dropdown } from '@/shared/ui/Popups'
+import { isUserAdmin, isUserManager, User } from '@/entities/User'
 import cls from './UserNavbarDropdown.module.scss'
-import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/router';
+import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/router'
 
 interface UserNavbarDropdownProps {
     className?: string
@@ -23,10 +23,14 @@ export const UserNavbarDropdown = memo((props: UserNavbarDropdownProps) => {
 
     const isAdminPanelAvailable = isAdmin || isManager
 
-    const adminPanel = isAdminPanelAvailable ? [{
-        content: t('Admin'),
-        href: getRouteAdminPanel(),
-    }] : []
+    const adminPanel = isAdminPanelAvailable
+        ? [
+              {
+                  content: t('Admin'),
+                  href: getRouteAdminPanel(),
+              },
+          ]
+        : []
 
     if (!authData) {
         return null
@@ -39,7 +43,6 @@ export const UserNavbarDropdown = memo((props: UserNavbarDropdownProps) => {
             items={[
                 ...adminPanel,
                 {
-
                     content: t('Profile'),
                     href: getRouteProfile(authData.id),
                 },
@@ -48,7 +51,14 @@ export const UserNavbarDropdown = memo((props: UserNavbarDropdownProps) => {
                     onClick: onLogOut,
                 },
             ]}
-            trigger={<Avatar fallbackInverted className={cls.avatar} size={30} src={authData.avatar} />}
+            trigger={
+                <Avatar
+                    fallbackInverted
+                    className={cls.avatar}
+                    size={30}
+                    src={authData.avatar}
+                />
+            }
         />
-    );
-});
+    )
+})

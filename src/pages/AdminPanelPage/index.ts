@@ -1,1 +1,1 @@
-export { AdminPanelPageAsync as AdminPanelPage } from '../AdminPanelPage/ui/AdminPanelPage.async';
+export { AdminPanelPageAsync as AdminPanelPage } from '../AdminPanelPage/ui/AdminPanelPage.async'

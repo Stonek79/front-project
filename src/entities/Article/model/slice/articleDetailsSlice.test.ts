@@ -2,7 +2,7 @@ import { DeepPartial } from '@reduxjs/toolkit'
 import { ArticleDetailsSchema } from '../types/articleDetailsSchema'
 import { articleDetailsReducer } from './articleDetailsSlice'
 import { fetchArticleById } from '../../model/services/fetchArticleById'
-import { ArticleTypes } from '../../model/consts/consts';
+import { ArticleTypes } from '../../model/consts/consts'
 
 const testData = {
     id: '1',
@@ -25,11 +25,15 @@ describe('articleDetailsSlice test', () => {
             isLoading: false,
             error: 'error',
         }
-        expect(articleDetailsReducer(state as ArticleDetailsSchema, fetchArticleById.pending))
-            .toEqual({
-                isLoading: true,
-                validateErrors: undefined,
-            })
+        expect(
+            articleDetailsReducer(
+                state as ArticleDetailsSchema,
+                fetchArticleById.pending,
+            ),
+        ).toEqual({
+            isLoading: true,
+            validateErrors: undefined,
+        })
     })
 
     test('fetchArticleById fulfilled', () => {
@@ -38,10 +42,14 @@ describe('articleDetailsSlice test', () => {
             data: undefined,
         }
 
-        expect(articleDetailsReducer(state as ArticleDetailsSchema, fetchArticleById.fulfilled(testData, '', '')))
-            .toEqual({
-                isLoading: false,
-                data: testData,
-            })
+        expect(
+            articleDetailsReducer(
+                state as ArticleDetailsSchema,
+                fetchArticleById.fulfilled(testData, '', ''),
+            ),
+        ).toEqual({
+            isLoading: false,
+            data: testData,
+        })
     })
 })

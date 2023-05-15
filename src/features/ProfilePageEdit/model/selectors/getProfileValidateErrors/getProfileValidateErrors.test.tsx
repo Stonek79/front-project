@@ -1,5 +1,5 @@
 import { StateSchema } from '@/app/providers/StoreProvider'
-import { ValidateProfileErrors } from '@/entities/Profile';
+import { ValidateProfileErrors } from '@/entities/Profile'
 import { getProfileValidateErrors } from './getProfileValidateErrors'
 
 const errors = {
@@ -25,6 +25,8 @@ describe('get Profile ValidateErrors test', () => {
 
     test('should return undefined', () => {
         const state: DeepPartial<StateSchema> = {}
-        expect(getProfileValidateErrors(state as StateSchema)).toEqual(undefined)
+        expect(getProfileValidateErrors(state as StateSchema)).toEqual(
+            undefined,
+        )
     })
 })

@@ -1,14 +1,14 @@
 import { memo } from 'react'
 import { useParams } from 'react-router-dom'
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Page } from '@/widgets/Page'
 import { VStack } from '@/shared/ui/Stack'
 import { ProfilePageEdit } from '@/features/ProfilePageEdit'
-import { ProfileRating } from '@/features/ProfileRating';
+import { ProfileRating } from '@/features/ProfileRating'
 
 interface ProfilePageProps {
-    className?: string;
+    className?: string
 }
 
 const ProfilePage = (props: ProfilePageProps) => {
@@ -19,11 +19,7 @@ const ProfilePage = (props: ProfilePageProps) => {
     const cn = classNames('', {}, [className])
 
     if (!id && __PROJECT__ !== 'storybook') {
-        return (
-            <Page className={cn}>
-                {t('Profile page error')}
-            </Page>
-        );
+        return <Page className={cn}>{t('Profile page error')}</Page>
     }
 
     return (
@@ -33,7 +29,7 @@ const ProfilePage = (props: ProfilePageProps) => {
                 <ProfileRating userId={id} />
             </VStack>
         </Page>
-    );
-};
+    )
+}
 
 export default memo(ProfilePage)

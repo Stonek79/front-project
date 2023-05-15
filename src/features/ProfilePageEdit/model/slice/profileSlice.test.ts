@@ -1,10 +1,10 @@
 import { DeepPartial } from '@reduxjs/toolkit'
 import { Currency } from '@/entities/Currency'
 import { Countries } from '@/entities/Country'
-import { ValidateProfileErrors } from '@/entities/Profile';
+import { ValidateProfileErrors } from '@/entities/Profile'
 import { ProfileSchema } from '../types/profilePageEditSchema'
 import { profileActions, profileReducer } from './profileSlice'
-import { updateProfileData } from '../services/UpdateProfileData';
+import { updateProfileData } from '../services/UpdateProfileData'
 
 const testData = {
     firstname: 'Alex',
@@ -21,28 +21,43 @@ describe('profileSlice test', () => {
         const state: DeepPartial<ProfileSchema> = {
             readonly: true,
         }
-        expect(profileReducer(state as ProfileSchema, profileActions.setReadonly(true))).toEqual({ readonly: true })
+        expect(
+            profileReducer(
+                state as ProfileSchema,
+                profileActions.setReadonly(true),
+            ),
+        ).toEqual({ readonly: true })
     })
 
     test('cancel update profile data', () => {
         const state: DeepPartial<ProfileSchema> = {
-            readonly: true, validateErrors: undefined, data: testData, form: { firstname: 'name' },
+            readonly: true,
+            validateErrors: undefined,
+            data: testData,
+            form: { firstname: 'name' },
         }
-        expect(profileReducer(state as ProfileSchema, profileActions.cancelEdit()))
-            .toEqual({
-                readonly: true, validateErrors: undefined, data: testData, form: testData,
-            })
+        expect(
+            profileReducer(state as ProfileSchema, profileActions.cancelEdit()),
+        ).toEqual({
+            readonly: true,
+            validateErrors: undefined,
+            data: testData,
+            form: testData,
+        })
     })
 
     test('update profile data', () => {
         const state: DeepPartial<ProfileSchema> = {
             form: { firstname: 'name' },
         }
-        expect(profileReducer(state as ProfileSchema, profileActions
-            .updateProfile({ firstname: 'name' })))
-            .toEqual({
-                form: { firstname: 'name' },
-            })
+        expect(
+            profileReducer(
+                state as ProfileSchema,
+                profileActions.updateProfile({ firstname: 'name' }),
+            ),
+        ).toEqual({
+            form: { firstname: 'name' },
+        })
     })
 
     test('update profile data pending', () => {
@@ -59,11 +74,12 @@ describe('profileSlice test', () => {
                 data: [ValidateProfileErrors.NO_DATA],
             },
         }
-        expect(profileReducer(state as ProfileSchema, updateProfileData.pending))
-            .toEqual({
-                isLoading: true,
-                validateErrors: undefined,
-            })
+        expect(
+            profileReducer(state as ProfileSchema, updateProfileData.pending),
+        ).toEqual({
+            isLoading: true,
+            validateErrors: undefined,
+        })
     })
 
     test('update profile data fulfilled', () => {
@@ -81,13 +97,17 @@ describe('profileSlice test', () => {
                 data: [ValidateProfileErrors.NO_DATA],
             },
         }
-        expect(profileReducer(state as ProfileSchema, updateProfileData.fulfilled(testData, '')))
-            .toEqual({
-                isLoading: false,
-                readonly: true,
-                data: testData,
-                form: testData,
-                validateErrors: undefined,
-            })
+        expect(
+            profileReducer(
+                state as ProfileSchema,
+                updateProfileData.fulfilled(testData, ''),
+            ),
+        ).toEqual({
+            isLoading: false,
+            readonly: true,
+            data: testData,
+            form: testData,
+            validateErrors: undefined,
+        })
     })
 })

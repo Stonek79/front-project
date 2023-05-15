@@ -48,35 +48,50 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
 
     const debounceFetchData = useDebounce(fetchData, 500)
 
-    const onChangeView = useCallback((view: ArticleViewTypes) => {
-        dispatch(articlesPageActions.setView(view))
-        dispatch(articlesPageActions.setPage(1))
-        fetchData()
-    }, [dispatch, fetchData])
+    const onChangeView = useCallback(
+        (view: ArticleViewTypes) => {
+            dispatch(articlesPageActions.setView(view))
+            dispatch(articlesPageActions.setPage(1))
+            fetchData()
+        },
+        [dispatch, fetchData],
+    )
 
-    const onChangeOrder = useCallback((newOrder: SortOrder) => {
-        dispatch(articlesPageActions.setOrder(newOrder))
-        dispatch(articlesPageActions.setPage(1))
-        fetchData()
-    }, [dispatch, fetchData])
+    const onChangeOrder = useCallback(
+        (newOrder: SortOrder) => {
+            dispatch(articlesPageActions.setOrder(newOrder))
+            dispatch(articlesPageActions.setPage(1))
+            fetchData()
+        },
+        [dispatch, fetchData],
+    )
 
-    const onChangeSort = useCallback((newSort: ArticleSortFieldTypes) => {
-        dispatch(articlesPageActions.setSort(newSort))
-        dispatch(articlesPageActions.setPage(1))
-        fetchData()
-    }, [dispatch, fetchData])
+    const onChangeSort = useCallback(
+        (newSort: ArticleSortFieldTypes) => {
+            dispatch(articlesPageActions.setSort(newSort))
+            dispatch(articlesPageActions.setPage(1))
+            fetchData()
+        },
+        [dispatch, fetchData],
+    )
 
-    const onChangeSearch = useCallback((newSearch: string) => {
-        dispatch(articlesPageActions.setSearch(newSearch))
-        dispatch(articlesPageActions.setPage(1))
-        debounceFetchData()
-    }, [debounceFetchData, dispatch])
+    const onChangeSearch = useCallback(
+        (newSearch: string) => {
+            dispatch(articlesPageActions.setSearch(newSearch))
+            dispatch(articlesPageActions.setPage(1))
+            debounceFetchData()
+        },
+        [debounceFetchData, dispatch],
+    )
 
-    const onChangeType = useCallback((value: ArticleTypesType) => {
-        dispatch(articlesPageActions.setType(value))
-        dispatch(articlesPageActions.setPage(1))
-        fetchData()
-    }, [dispatch, fetchData])
+    const onChangeType = useCallback(
+        (value: ArticleTypesType) => {
+            dispatch(articlesPageActions.setType(value))
+            dispatch(articlesPageActions.setPage(1))
+            fetchData()
+        },
+        [dispatch, fetchData],
+    )
 
     return (
         <div className={cn}>

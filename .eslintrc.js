@@ -10,6 +10,7 @@ module.exports = {
         'airbnb',
         'plugin:i18next/recommended',
         'plugin:react-hooks/recommended',
+        'prettier',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -28,17 +29,21 @@ module.exports = {
         'unused-imports',
     ],
     rules: {
-        'react/jsx-indent': [2, 4],
-        'react/jsx-indent-props': [2, 4],
-        'react/jsx-filename-extension': [2, {
-            extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        }],
+        'react/jsx-filename-extension': [
+            2,
+            {
+                extensions: ['.js', '.jsx', '.ts', '.tsx'],
+            },
+        ],
+        'react/no-array-index-key': 'warn',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        'react/jsx-max-props-per-line': ['error', { maximum: 4 }],
         'import/no-unresolved': 'off',
         'unused-imports/no-unused-imports': 'error',
         'import/prefer-default-export': 'off',
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
-        'react/jsx-props-no-spreading': 'warn',
+        'react/jsx-props-no-spreading': 'off',
         'react/function-component-definition': 'off',
         'linebreak-style': 'off',
         'no-shadow': 'off',
@@ -49,10 +54,14 @@ module.exports = {
         'no-undef': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
-        '@typescript-eslint/no-unused-vars': ['warn', {
-            argsIgnorePattern: '^_',
-        }],
-        'i18next/no-literal-string': ['error',
+        '@typescript-eslint/no-unused-vars': [
+            'warn',
+            {
+                argsIgnorePattern: '^_',
+            },
+        ],
+        'i18next/no-literal-string': [
+            'error',
             {
                 markupOnly: true,
                 ignoreAttribute: [
@@ -71,11 +80,13 @@ module.exports = {
         ],
         'max-len': ['warn', { code: 120, ignoreComments: true }],
         semi: 0,
-        indent: [2, 4],
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
-        'fsd-paths-checker-plugin/fsd-paths-checker-plugin': ['error', { alias: '@' }],
+        'fsd-paths-checker-plugin/fsd-paths-checker-plugin': [
+            'error',
+            { alias: '@' },
+        ],
         'fsd-paths-checker-plugin/layer-import-control': [
             'error',
             {
@@ -87,7 +98,11 @@ module.exports = {
             'error',
             {
                 alias: '@',
-                testFiles: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
+                testFiles: [
+                    '**/*.test.*',
+                    '**/*.stories.*',
+                    '**/StoreDecorator.tsx',
+                ],
             },
         ],
     },
@@ -105,4 +120,4 @@ module.exports = {
             },
         },
     ],
-};
+}

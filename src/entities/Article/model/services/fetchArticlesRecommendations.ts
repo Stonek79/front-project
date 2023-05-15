@@ -19,7 +19,9 @@ export const fetchArticlesRecommendations = createAsyncThunk<
             })
 
             if (!res.data) {
-                return rejectWithValue(res.status === 404 ? '404' : 'server error')
+                return rejectWithValue(
+                    res.status === 404 ? '404' : 'server error',
+                )
             }
 
             return res.data

@@ -8,12 +8,16 @@ import { Avatar } from '@/shared/ui/Avatar'
 import { Currency, CurrencySelect } from '@/entities/Currency'
 import { Countries, CountrySelect } from '@/entities/Country'
 import { HStack, VStack } from '@/shared/ui/Stack'
-import { ValidateProfileErrors } from '../../model/consts/consts';
-import { Profile, ValidateErrors, ValidateProfileErrorsType } from '../../model/types/profile'
+import { ValidateProfileErrors } from '../../model/consts/consts'
+import {
+    Profile,
+    ValidateErrors,
+    ValidateProfileErrorsType,
+} from '../../model/types/profile'
 import cls from './ProfileCard.module.scss'
 
 interface ProfileCardProps {
-    className?: string;
+    className?: string
     data?: Profile
     error?: ValidateErrors
     isLoading?: boolean
@@ -62,14 +66,18 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
     const cnLoading = classNames(cls.ProfileCard, {}, [className, cls.loading])
     const cnError = classNames(cls.ProfileCard, {}, [className, cls.error])
 
-    const getErrorsFields = (errors: ValidateProfileErrorsType[], field?: string) => errors.map((err) => (
-        <Text
-            key={err}
-            theme={TextTheme.ERROR}
-            text={validateErrorTranslates[err]}
-            data-testid={`ProfileCard-${field}-field-error`}
-        />
-    ))
+    const getErrorsFields = (
+        errors: ValidateProfileErrorsType[],
+        field?: string,
+    ) =>
+        errors.map((err) => (
+            <Text
+                key={err}
+                theme={TextTheme.ERROR}
+                text={validateErrorTranslates[err]}
+                data-testid={`ProfileCard-${field}-field-error`}
+            />
+        ))
 
     if (isLoading) {
         return (
@@ -99,10 +107,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         <VStack max gap="8" className={cn}>
             {data?.avatar && (
                 <HStack max justify="center">
-                    <Avatar
-                        src={data.avatar}
-                        alt={t('Avatar')}
-                    />
+                    <Avatar src={data.avatar} alt={t('Avatar')} />
                 </HStack>
             )}
             <Input
@@ -113,7 +118,9 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 readonly={readonly}
                 data-testid="ProfileCard-firstname-field-input"
             />
-            {validateErrors?.firstname.length ? getErrorsFields(validateErrors?.firstname, 'firstname') : null}
+            {validateErrors?.firstname.length
+                ? getErrorsFields(validateErrors?.firstname, 'firstname')
+                : null}
             <Input
                 value={data?.lastname}
                 placeholder={t('Last name')}
@@ -122,7 +129,9 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 readonly={readonly}
                 data-testid="ProfileCard-lastname-field-input"
             />
-            {validateErrors?.lastname.length ? getErrorsFields(validateErrors?.lastname, 'lastname') : null}
+            {validateErrors?.lastname.length
+                ? getErrorsFields(validateErrors?.lastname, 'lastname')
+                : null}
             <Input
                 value={data?.age}
                 placeholder={t('Age')}
@@ -131,7 +140,9 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 readonly={readonly}
                 data-testid="ProfileCard-age-field-input"
             />
-            {validateErrors?.age.length ? getErrorsFields(validateErrors?.age, 'age') : null}
+            {validateErrors?.age.length
+                ? getErrorsFields(validateErrors?.age, 'age')
+                : null}
             <Input
                 value={data?.city}
                 placeholder={t('City')}
@@ -140,7 +151,9 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 readonly={readonly}
                 data-testid="ProfileCard-city-field-input"
             />
-            {validateErrors?.city.length ? getErrorsFields(validateErrors?.city, 'city') : null}
+            {validateErrors?.city.length
+                ? getErrorsFields(validateErrors?.city, 'city')
+                : null}
             <Input
                 value={data?.username}
                 placeholder={t('Username')}
@@ -149,7 +162,9 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 readonly={readonly}
                 data-testid="ProfileCard-username-field-input"
             />
-            {validateErrors?.username.length ? getErrorsFields(validateErrors?.username, 'username') : null}
+            {validateErrors?.username.length
+                ? getErrorsFields(validateErrors?.username, 'username')
+                : null}
             <Input
                 value={data?.avatar}
                 placeholder={t('Avatar')}
@@ -165,7 +180,9 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 className={cls.input}
                 data-testid="ProfileCard-currency-field-input"
             />
-            {validateErrors?.currency.length ? getErrorsFields(validateErrors?.currency, 'currency') : null}
+            {validateErrors?.currency.length
+                ? getErrorsFields(validateErrors?.currency, 'currency')
+                : null}
             <CountrySelect
                 value={data?.country}
                 onChange={onChangeCountry}
@@ -173,7 +190,9 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 className={cls.input}
                 data-testid="ProfileCard-country-field-input"
             />
-            {validateErrors?.country.length ? getErrorsFields(validateErrors?.country, 'country') : null}
+            {validateErrors?.country.length
+                ? getErrorsFields(validateErrors?.country, 'country')
+                : null}
         </VStack>
-    );
-});
+    )
+})

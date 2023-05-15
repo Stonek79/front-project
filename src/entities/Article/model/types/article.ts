@@ -1,15 +1,20 @@
 import { User } from '@/entities/User'
 import {
-    ArticleBlockTypes, ArticleSortField, ArticleTypes, ArticleView,
-} from '../consts/consts';
+    ArticleBlockTypes,
+    ArticleSortField,
+    ArticleTypes,
+    ArticleView,
+} from '../consts/consts'
 
-export type ArticleTypesType = typeof ArticleTypes[keyof typeof ArticleTypes]
-export type ArticleBlockTypesType = typeof ArticleBlockTypes[keyof typeof ArticleBlockTypes]
-export type ArticleViewTypes = typeof ArticleView[keyof typeof ArticleView]
-export type ArticleSortFieldTypes = typeof ArticleSortField[keyof typeof ArticleSortField]
+export type ArticleTypesType = (typeof ArticleTypes)[keyof typeof ArticleTypes]
+export type ArticleBlockTypesType =
+    (typeof ArticleBlockTypes)[keyof typeof ArticleBlockTypes]
+export type ArticleViewTypes = (typeof ArticleView)[keyof typeof ArticleView]
+export type ArticleSortFieldTypes =
+    (typeof ArticleSortField)[keyof typeof ArticleSortField]
 
 export interface ArticleBlockBase {
-    id: string,
+    id: string
     type: ArticleBlockTypesType
 }
 
@@ -30,16 +35,19 @@ export interface ArticleTextBlock extends ArticleBlockBase {
     paragraphs: string[]
 }
 
-export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock
+export type ArticleBlock =
+    | ArticleCodeBlock
+    | ArticleImageBlock
+    | ArticleTextBlock
 
 export interface Article {
-    id: string,
-    title: string,
-    subtitle: string,
-    img: string,
-    user: User,
-    views: number,
-    createdAt: string,
-    type: ArticleTypesType[],
+    id: string
+    title: string
+    subtitle: string
+    img: string
+    user: User
+    views: number
+    createdAt: string
+    type: ArticleTypesType[]
     blocks: ArticleBlock[]
 }

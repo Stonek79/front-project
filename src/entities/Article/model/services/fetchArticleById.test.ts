@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 import { fetchArticleById } from './fetchArticleById'
-import { ArticleTypes } from '../../model/consts/consts';
+import { ArticleTypes } from '../../model/consts/consts'
 
 jest.mock('axios')
 

@@ -4,7 +4,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Article } from '../../model/types/article'
 import { ArticleEdit } from './ArticleEdit'
-import { ArticleTypes, ArticleBlockTypes } from '../../model/consts/consts';
+import { ArticleTypes, ArticleBlockTypes } from '../../model/consts/consts'
 import { Theme } from '@/shared/const/theme'
 
 const data: Article = {
@@ -89,20 +89,27 @@ export default {
     },
 } as ComponentMeta<typeof ArticleEdit>
 
-const Template: ComponentStory<typeof ArticleEdit> = (args) => <ArticleEdit {...args} />
+const Template: ComponentStory<typeof ArticleEdit> = (args) => (
+    <ArticleEdit {...args} />
+)
 
 export const Normal = Template.bind({})
 Normal.args = {}
-Normal.decorators = [StoreDecorator({
-    article: {
-        data,
-    },
-})]
+Normal.decorators = [
+    StoreDecorator({
+        article: {
+            data,
+        },
+    }),
+]
 
 export const NormalDark = Template.bind({})
 NormalDark.args = {}
-NormalDark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    article: {
-        data,
-    },
-})]
+NormalDark.decorators = [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+        article: {
+            data,
+        },
+    }),
+]

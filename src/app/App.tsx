@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navbar } from '@/widgets/Navbar'
 import { Sidebar } from '@/widgets/Sidebar'
 import { getUserInitData, userActions } from '@/entities/User'
-import { AppRouter } from './providers/router';
+import { AppRouter } from './providers/router'
 
 function App() {
     const dispatch = useDispatch()

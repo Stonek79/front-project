@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { ArticleListItem } from './ArticleListItem'
 import { Article } from '../../model/types/article'
-import { ArticleView } from '../../model/consts/consts';
+import { ArticleView } from '../../model/consts/consts'
 import { Theme } from '@/shared/const/theme'
 
 const article = {
@@ -18,12 +18,7 @@ const article = {
     },
     views: 1022,
     createdAt: '26.02.2022',
-    type: [
-        'IT',
-        'SCIENCE',
-        'POLITICS',
-        'NEWS',
-    ],
+    type: ['IT', 'SCIENCE', 'POLITICS', 'NEWS'],
     blocks: [
         {
             id: '1',
@@ -94,7 +89,9 @@ export default {
     },
 } as ComponentMeta<typeof ArticleListItem>
 
-const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />
+const Template: ComponentStory<typeof ArticleListItem> = (args) => (
+    <ArticleListItem {...args} />
+)
 
 export const NormalList = Template.bind({})
 NormalList.args = {

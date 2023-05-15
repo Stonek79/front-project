@@ -29,7 +29,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
 
     useInitialEffect(() => {
         dispatch(initArticlesPage(searchParams))
-    });
+    })
 
     return (
         <ArticleList

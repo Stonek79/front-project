@@ -1,1 +1,1 @@
-export { articleDetailsCommentReducers } from './model/slices/articleDetailCommentSlice';
+export { articleDetailsCommentReducers } from './model/slices/articleDetailCommentSlice'

@@ -1,6 +1,6 @@
-import { UserRoles } from '../consts/consts';
+import { UserRoles } from '../consts/consts'
 
-export type UserRole = typeof UserRoles[keyof typeof UserRoles]
+export type UserRole = (typeof UserRoles)[keyof typeof UserRoles]
 
 export interface User {
     id: string

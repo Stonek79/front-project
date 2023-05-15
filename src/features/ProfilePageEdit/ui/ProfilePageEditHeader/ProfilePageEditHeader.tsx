@@ -16,34 +16,34 @@ interface ProfilePageEditHeaderProps {
     className?: string
 }
 
-export const ProfilePageEditHeader = memo((props: ProfilePageEditHeaderProps) => {
-    const { className } = props
-    const { t } = useTranslation()
-    const dispatch = useAppDispatch()
-    const authData = useSelector(getUserAuthData)
-    const profileData = useSelector(getProfileData)
-    const canEdit = authData?.id === profileData?.id
-    const readonly = useSelector(getProfileReadonly)
-    const cn = classNames('', {}, [className])
+export const ProfilePageEditHeader = memo(
+    (props: ProfilePageEditHeaderProps) => {
+        const { className } = props
+        const { t } = useTranslation()
+        const dispatch = useAppDispatch()
+        const authData = useSelector(getUserAuthData)
+        const profileData = useSelector(getProfileData)
+        const canEdit = authData?.id === profileData?.id
+        const readonly = useSelector(getProfileReadonly)
+        const cn = classNames('', {}, [className])
 
-    const onEdit = useCallback(() => {
-        dispatch(profileActions.setReadonly(false))
-    }, [dispatch])
+        const onEdit = useCallback(() => {
+            dispatch(profileActions.setReadonly(false))
+        }, [dispatch])
 
-    const onCancelEdit = useCallback(() => {
-        dispatch(profileActions.cancelEdit())
-    }, [dispatch])
+        const onCancelEdit = useCallback(() => {
+            dispatch(profileActions.cancelEdit())
+        }, [dispatch])
 
-    const onSave = useCallback(() => {
-        dispatch(updateProfileData())
-    }, [dispatch])
+        const onSave = useCallback(() => {
+            dispatch(updateProfileData())
+        }, [dispatch])
 
-    return (
-        <HStack justify="between" max className={cn}>
-            <Text title={t('Profile')} />
-            {canEdit && (
-                readonly
-                    ? (
+        return (
+            <HStack justify="between" max className={cn}>
+                <Text title={t('Profile')} />
+                {canEdit &&
+                    (readonly ? (
                         <Button
                             theme={ButtonTheme.OUTLINE}
                             onClick={onEdit}
@@ -51,8 +51,7 @@ export const ProfilePageEditHeader = memo((props: ProfilePageEditHeaderProps) =>
                         >
                             {t('Edit profile')}
                         </Button>
-                    )
-                    : (
+                    ) : (
                         <HStack gap="8">
                             <Button
                                 theme={ButtonTheme.OUTLINE_RED}
@@ -69,8 +68,8 @@ export const ProfilePageEditHeader = memo((props: ProfilePageEditHeaderProps) =>
                                 {t('Save')}
                             </Button>
                         </HStack>
-                    )
-            )}
-        </HStack>
-    );
-})
+                    ))}
+            </HStack>
+        )
+    },
+)

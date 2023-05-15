@@ -10,9 +10,15 @@ export type { ArticleDetailsRecommendationsSchema } from './model/types/articleD
 export { ArticleList } from './ui/AtricleList/ArticleList'
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails'
 export type {
-    Article, ArticleViewTypes, ArticleTypesType, ArticleSortFieldTypes,
+    Article,
+    ArticleViewTypes,
+    ArticleTypesType,
+    ArticleSortFieldTypes,
 } from './model/types/article'
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema'
 export {
-    ArticleView, ArticleTypes, ArticleSortField, ArticleBlockTypes,
-} from './model/consts/consts';
+    ArticleView,
+    ArticleTypes,
+    ArticleSortField,
+    ArticleBlockTypes,
+} from './model/consts/consts'

@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { ArticleView } from '../../model/consts/consts';
+import { ArticleView } from '../../model/consts/consts'
 import { ArticleList } from './ArticleList'
 import { Article } from '../../model/types/article'
-import { Theme } from '@/shared/const/theme';
+import { Theme } from '@/shared/const/theme'
 
 const article = {
     id: '1',
@@ -18,12 +18,7 @@ const article = {
     },
     views: 1022,
     createdAt: '26.02.2022',
-    type: [
-        'IT',
-        'SCIENCE',
-        'POLITICS',
-        'NEWS',
-    ],
+    type: ['IT', 'SCIENCE', 'POLITICS', 'NEWS'],
     blocks: [
         {
             id: '1',
@@ -86,7 +81,9 @@ const article = {
     ],
 } as Article
 
-const articles = new Array(9).fill(article).map((art, ind) => ({ ...art, id: `${ind}` }))
+const articles = new Array(9)
+    .fill(article)
+    .map((art, ind) => ({ ...art, id: `${ind}` }))
 export default {
     title: 'entities/ArticleList',
     component: ArticleList,
@@ -95,7 +92,9 @@ export default {
     },
 } as ComponentMeta<typeof ArticleList>
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />
+const Template: ComponentStory<typeof ArticleList> = (args) => (
+    <ArticleList {...args} />
+)
 
 export const NormalList = Template.bind({})
 NormalList.args = {

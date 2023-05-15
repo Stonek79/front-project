@@ -1,0 +1,8 @@
+# Ignore artifacts:
+/build/
+/cypress/
+/node_modules/
+/docs/
+*.css
+*.html
+*.scss

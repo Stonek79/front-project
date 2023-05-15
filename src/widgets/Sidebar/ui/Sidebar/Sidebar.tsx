@@ -10,7 +10,7 @@ import cls from './Sidebar.module.scss'
 import { getSidebarItems } from '../../model/selectors/getSidebarItems'
 
 interface SidebarProps {
-    className?: string;
+    className?: string
 }
 
 export const Sidebar = memo((props: SidebarProps) => {
@@ -22,21 +22,24 @@ export const Sidebar = memo((props: SidebarProps) => {
         setCollapsed((prev) => !prev)
     }
 
-    const itemsList = useMemo(() => sidebarItemsList.map((item) => (
-        <SidebarItem
-            key={item.path}
-            item={item}
-            collapsed={collapsed}
-        />
-    )), [collapsed, sidebarItemsList])
+    const itemsList = useMemo(
+        () =>
+            sidebarItemsList.map((item) => (
+                <SidebarItem
+                    key={item.path}
+                    item={item}
+                    collapsed={collapsed}
+                />
+            )),
+        [collapsed, sidebarItemsList],
+    )
 
-    const cn = classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])
+    const cn = classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
+        className,
+    ])
 
     return (
-        <aside
-            data-testid="sidebar"
-            className={cn}
-        >
+        <aside data-testid="sidebar" className={cn}>
             <Button
                 data-testid="sidebar-toggle"
                 onClick={onToggle}

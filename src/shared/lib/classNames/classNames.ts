@@ -12,5 +12,6 @@ export function classNames(
             .filter(([_, value]) => Boolean(value))
             .map(([className]) => className),
     ]
-        .join(' ').trim();
+        .join(' ')
+        .trim()
 }

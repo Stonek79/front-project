@@ -1,12 +1,12 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleRating.module.scss'
-import { RatingCard } from '@/entities/Rating';
-import { useArticleRating, useRateArticle } from '../../api/ArticleRatingApi';
-import { getUserAuthData } from '@/entities/User';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { RatingCard } from '@/entities/Rating'
+import { useArticleRating, useRateArticle } from '../../api/ArticleRatingApi'
+import { getUserAuthData } from '@/entities/User'
+import { Skeleton } from '@/shared/ui/Skeleton'
 
 export interface ArticleRatingProps {
     className?: string
@@ -24,29 +24,38 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
 
     const [rateArticleMutation] = useRateArticle()
 
-    const handleRateArticle = useCallback((rate: number, feedback?: string) => {
-        try {
-            rateArticleMutation({
-                articleId,
-                userId: userData?.id ?? '',
-                feedback,
-                starRate: rate,
-            })
-        } catch (e) {
-            console.log(e)
-        }
-    }, [articleId, rateArticleMutation, userData?.id])
+    const handleRateArticle = useCallback(
+        (rate: number, feedback?: string) => {
+            try {
+                rateArticleMutation({
+                    articleId,
+                    userId: userData?.id ?? '',
+                    feedback,
+                    starRate: rate,
+                })
+            } catch (e) {
+                console.log(e)
+            }
+        },
+        [articleId, rateArticleMutation, userData?.id],
+    )
 
-    const onAccept = useCallback((starsCount: number, feedback?: string) => {
-        handleRateArticle(starsCount, feedback)
-    }, [handleRateArticle])
+    const onAccept = useCallback(
+        (starsCount: number, feedback?: string) => {
+            handleRateArticle(starsCount, feedback)
+        },
+        [handleRateArticle],
+    )
 
-    const onCancel = useCallback((starsCount: number) => {
-        handleRateArticle(starsCount)
-    }, [handleRateArticle])
+    const onCancel = useCallback(
+        (starsCount: number) => {
+            handleRateArticle(starsCount)
+        },
+        [handleRateArticle],
+    )
 
     if (isLoading) {
-        return (<Skeleton width="100%" height={140} />)
+        return <Skeleton width="100%" height={140} />
     }
 
     const cn = classNames(cls.ArticleRating, {}, [className])
@@ -62,7 +71,7 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
             hasFeedback
             starRate={rating}
         />
-    );
-});
+    )
+})
 
-export default ArticleRating;
+export default ArticleRating

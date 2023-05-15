@@ -13,19 +13,19 @@ const options = {
 
 describe('Counter test', () => {
     test('get current counter', () => {
-        ComponentRender(<Counter />, options);
-        expect(screen.getByTestId('value-title')).toHaveTextContent('42');
-    });
+        ComponentRender(<Counter />, options)
+        expect(screen.getByTestId('value-title')).toHaveTextContent('42')
+    })
 
     test('counter increment', async () => {
-        ComponentRender(<Counter />, options);
+        ComponentRender(<Counter />, options)
         await userEvent.click(screen.getByTestId('increment-btn'))
-        expect(screen.getByTestId('value-title')).toHaveTextContent('43');
-    });
+        expect(screen.getByTestId('value-title')).toHaveTextContent('43')
+    })
 
     test('counter decrement', async () => {
-        ComponentRender(<Counter />, options);
+        ComponentRender(<Counter />, options)
         await userEvent.click(screen.getByTestId('decrement-btn'))
-        expect(screen.getByTestId('value-title')).toHaveTextContent('41');
-    });
-});
+        expect(screen.getByTestId('value-title')).toHaveTextContent('41')
+    })
+})

@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
+import { SuspenseDecorator } from '@/shared/config/storybook/SuspenseDecorator/SuspenseDecorator'
 import { ArticleDetailsComments } from './ArticleDetailsComments'
-import { Theme } from '@/shared/const/theme';
+import { Theme } from '@/shared/const/theme'
 
 export default {
     title: 'pages/ArticleDetailsComments',
@@ -12,14 +12,19 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [SuspenseDecorator, StoreDecorator({
-        comments: {
-            ids: [],
-        },
-    })],
+    decorators: [
+        SuspenseDecorator,
+        StoreDecorator({
+            comments: {
+                ids: [],
+            },
+        }),
+    ],
 } as ComponentMeta<typeof ArticleDetailsComments>
 
-const Template: ComponentStory<typeof ArticleDetailsComments> = (args) => <ArticleDetailsComments {...args} />
+const Template: ComponentStory<typeof ArticleDetailsComments> = (args) => (
+    <ArticleDetailsComments {...args} />
+)
 
 export const Normal = Template.bind({})
 Normal.args = {

@@ -1,9 +1,9 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Dropdown } from './Dropdown'
-import { Button } from '../../../Button/Button';
-import { Theme } from '@/shared/const/theme';
+import { Button } from '../../../Button/Button'
+import { Theme } from '@/shared/const/theme'
 
 export default {
     title: 'shared/Dropdown',
@@ -11,11 +11,13 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof Dropdown>;
+} as ComponentMeta<typeof Dropdown>
 
-const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} />;
+const Template: ComponentStory<typeof Dropdown> = (args) => (
+    <Dropdown {...args} />
+)
 
-export const Normal = Template.bind({});
+export const Normal = Template.bind({})
 Normal.args = {
     trigger: <Button>Open</Button>,
     direction: 'top left',
@@ -30,9 +32,9 @@ Normal.args = {
             content: 'content 3',
         },
     ],
-};
+}
 
-export const NormalDark = Template.bind({});
+export const NormalDark = Template.bind({})
 NormalDark.args = {
     trigger: <Button>Open</Button>,
     direction: 'top left',
@@ -47,5 +49,5 @@ NormalDark.args = {
             content: 'content 3',
         },
     ],
-};
-NormalDark.decorators = [ThemeDecorator(Theme.DARK)];
+}
+NormalDark.decorators = [ThemeDecorator(Theme.DARK)]

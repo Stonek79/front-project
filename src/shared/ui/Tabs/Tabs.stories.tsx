@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Tabs } from './Tabs'
-import { Theme } from '@/shared/const/theme';
+import { Theme } from '@/shared/const/theme'
 
 export default {
     title: 'shared/Tabs',

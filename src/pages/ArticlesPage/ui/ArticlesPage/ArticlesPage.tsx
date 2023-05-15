@@ -1,7 +1,10 @@
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Page } from '@/widgets/Page'
 import { ArticleInfiniteList } from '../../ui/ArticleInfiniteList/ArticleInfiniteList'
@@ -12,7 +15,7 @@ import cls from './ArticlesPage.module.scss'
 import { getArticlesHasMore } from '../../models/selectors/articlesPageSelectors'
 
 interface ArticlesPageProps {
-    className?: string;
+    className?: string
 }
 
 const reducer: ReducersList = {
@@ -34,7 +37,11 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
-            <Page data-testid="ArticlesPage" onScrollEnd={onLoadNextPage} className={cn}>
+            <Page
+                data-testid="ArticlesPage"
+                onScrollEnd={onLoadNextPage}
+                className={cn}
+            >
                 <ArticlesPageFilters />
                 <ArticleInfiniteList />
             </Page>

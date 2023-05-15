@@ -15,42 +15,46 @@ interface ArticlesSortSelectorProps {
 }
 
 export const ArticlesSortSelector = memo((props: ArticlesSortSelectorProps) => {
-    const {
-        className, onChangeSort, sort, onChangeOrder, order,
-    } = props
+    const { className, onChangeSort, sort, onChangeOrder, order } = props
     const { t } = useTranslation()
 
     const cn = classNames(cls.ArticlesSortSelector, {}, [className])
 
-    const orderOptions = useMemo<SelectOptions<SortOrder>[]>(() => [
-        {
-            value: 'asc',
-            content: t('ascending'),
-        },
-        {
-            value: 'desc',
-            content: t('descending'),
-        },
-    ], [t])
+    const orderOptions = useMemo<SelectOptions<SortOrder>[]>(
+        () => [
+            {
+                value: 'asc',
+                content: t('ascending'),
+            },
+            {
+                value: 'desc',
+                content: t('descending'),
+            },
+        ],
+        [t],
+    )
 
-    const sortFieldOptions = useMemo<SelectOptions<ArticleSortFieldTypes>[]>(() => [
-        {
-            value: ArticleSortField.ALL,
-            content: t('by default'),
-        },
-        {
-            value: ArticleSortField.CREATED,
-            content: t('by creating'),
-        },
-        {
-            value: ArticleSortField.TITLE,
-            content: t('by title'),
-        },
-        {
-            value: ArticleSortField.VIEW,
-            content: t('by views'),
-        },
-    ], [t])
+    const sortFieldOptions = useMemo<SelectOptions<ArticleSortFieldTypes>[]>(
+        () => [
+            {
+                value: ArticleSortField.ALL,
+                content: t('by default'),
+            },
+            {
+                value: ArticleSortField.CREATED,
+                content: t('by creating'),
+            },
+            {
+                value: ArticleSortField.TITLE,
+                content: t('by title'),
+            },
+            {
+                value: ArticleSortField.VIEW,
+                content: t('by views'),
+            },
+        ],
+        [t],
+    )
 
     return (
         <div className={cn}>

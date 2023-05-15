@@ -14,6 +14,8 @@ export const Overlay = memo((props: OverlayProps) => {
     const cn = classNames(cls.Overlay, {}, [className])
 
     return (
-        <div className={cn} onClick={onClick}>{children}</div>
-    );
-});
+        <div className={cn} onClick={onClick}>
+            {children}
+        </div>
+    )
+})

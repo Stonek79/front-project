@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './StarRating.module.scss'
 import StarIcon from '../../assets/icons/star.svg'
-import { Icon } from '../Icon/Icon';
+import { Icon } from '../Icon/Icon'
 
 interface StarRatingProps {
     className?: string
@@ -15,12 +15,7 @@ interface StarRatingProps {
 const stars = [1, 2, 3, 4, 5]
 
 export const StarRating = memo((props: StarRatingProps) => {
-    const {
-        className,
-        onSelect,
-        size = 30,
-        selectedStars = 0,
-    } = props
+    const { className, onSelect, size = 30, selectedStars = 0 } = props
     const { t } = useTranslation()
     const [hoveredStar, setHoveredStar] = useState(selectedStars)
     const [isSelected, setIsSelected] = useState(Boolean(selectedStars))
@@ -53,13 +48,14 @@ export const StarRating = memo((props: StarRatingProps) => {
                 <Icon
                     width={size}
                     height={size}
-                    className={
-                        classNames(
-                            cls.normal,
-                            { [cls.starIcon]: !isSelected, [cls.hovered]: Boolean(hoveredStar >= star) },
-                            [],
-                        )
-                    }
+                    className={classNames(
+                        cls.normal,
+                        {
+                            [cls.starIcon]: !isSelected,
+                            [cls.hovered]: Boolean(hoveredStar >= star),
+                        },
+                        [],
+                    )}
                     Svg={StarIcon}
                     key={star}
                     onMouseLeave={onLeave}
@@ -68,8 +64,7 @@ export const StarRating = memo((props: StarRatingProps) => {
                     data-testid={`StarRating.${star}`}
                     data-selected={hoveredStar >= star}
                 />
-
             ))}
         </div>
-    );
-});
+    )
+})

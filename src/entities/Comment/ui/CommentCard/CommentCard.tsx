@@ -7,10 +7,10 @@ import { AppLink } from '@/shared/ui/AppLink'
 import { HStack, VStack } from '@/shared/ui/Stack'
 import { Comment } from '../../model/types/comment'
 import cls from './CommentCard.module.scss'
-import { getRouteProfile } from '@/shared/const/router';
+import { getRouteProfile } from '@/shared/const/router'
 
 interface CommentCardProps {
-    className?: string;
+    className?: string
     comment?: Comment
     isLoading?: boolean
 }
@@ -18,7 +18,9 @@ interface CommentCardProps {
 export const CommentCard = memo((props: CommentCardProps) => {
     const { className, comment, isLoading } = props
 
-    const cn = classNames(cls.CommentCard, { [cls.loading]: isLoading }, [className])
+    const cn = classNames(cls.CommentCard, { [cls.loading]: isLoading }, [
+        className,
+    ])
 
     if (isLoading || !comment) {
         return (
@@ -36,10 +38,13 @@ export const CommentCard = memo((props: CommentCardProps) => {
         <VStack data-testid="CommentCard.Content" gap="8" max className={cn}>
             <AppLink to={getRouteProfile(comment.user.id)}>
                 <HStack gap="8">
-                    {
-                        comment.user.avatar
-                        && <Avatar size={30} alt={comment.user.username} src={comment?.user.avatar} />
-                    }
+                    {comment.user.avatar && (
+                        <Avatar
+                            size={30}
+                            alt={comment.user.username}
+                            src={comment?.user.avatar}
+                        />
+                    )}
                     <Text title={comment.user.username} />
                 </HStack>
             </AppLink>

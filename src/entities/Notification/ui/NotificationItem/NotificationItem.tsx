@@ -1,10 +1,10 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Card, CardTheme } from '@/shared/ui/Card';
-import { AppLink } from '@/shared/ui/AppLink';
-import { Text } from '@/shared/ui/Text';
+import { Card, CardTheme } from '@/shared/ui/Card'
+import { AppLink } from '@/shared/ui/AppLink'
+import { Text } from '@/shared/ui/Text'
 import cls from './NotificationItem.module.scss'
-import { Notifications } from '../../model/types/notifications';
+import { Notifications } from '../../model/types/notifications'
 
 interface NotificationItemProps {
     className?: string
@@ -30,5 +30,5 @@ export const NotificationItem = memo((props: NotificationItemProps) => {
         )
     }
 
-    return content;
-});
+    return content
+})

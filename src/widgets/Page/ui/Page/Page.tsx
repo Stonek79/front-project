@@ -1,6 +1,4 @@
-import {
-    MutableRefObject, ReactNode, useRef, UIEvent,
-} from 'react'
+import { MutableRefObject, ReactNode, useRef, UIEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -12,7 +10,7 @@ import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle'
 import { scrollSafeActions } from '../../model/slices/scrollSafeSlice'
 import { getSafeScrollByPAth } from '../../model/selectors/getSafeScroll'
 import cls from './Page.module.scss'
-import { TestProps } from '@/shared/types/tests';
+import { TestProps } from '@/shared/types/tests'
 
 interface PageProps extends TestProps {
     className?: string
@@ -21,17 +19,14 @@ interface PageProps extends TestProps {
     isLoading?: boolean
 }
 
-export const Page = ((props: PageProps) => {
-    const {
-        className,
-        children,
-        onScrollEnd,
-        isLoading,
-    } = props
+export const Page = (props: PageProps) => {
+    const { className, children, onScrollEnd, isLoading } = props
 
     const dispatch = useAppDispatch()
     const { pathname } = useLocation()
-    const scrollPosition = useSelector((state: StateSchema) => getSafeScrollByPAth(state, pathname))
+    const scrollPosition = useSelector((state: StateSchema) =>
+        getSafeScrollByPAth(state, pathname),
+    )
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
     const cn = classNames(cls.Page, {}, [className])
@@ -49,10 +44,12 @@ export const Page = ((props: PageProps) => {
     })
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
-        dispatch(scrollSafeActions.setScrollPosition({
-            position: e.currentTarget.scrollTop,
-            path: pathname,
-        }))
+        dispatch(
+            scrollSafeActions.setScrollPosition({
+                position: e.currentTarget.scrollTop,
+                path: pathname,
+            }),
+        )
     }, 500)
 
     return (
@@ -65,7 +62,7 @@ export const Page = ((props: PageProps) => {
             data-testid={props['data-testid'] ?? 'Page'}
         >
             {children}
-            {!isLoading && (<div className={cls.trigger} ref={triggerRef} />)}
+            {!isLoading && <div className={cls.trigger} ref={triggerRef} />}
         </main>
     )
-})
+}

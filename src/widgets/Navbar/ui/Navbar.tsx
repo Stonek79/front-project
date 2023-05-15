@@ -4,19 +4,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/shared/ui/Button'
 import { LoginModal } from '@/features/AuthByUsername'
-import {
-    getUserAuthData, userActions,
-} from '@/entities/User'
+import { getUserAuthData, userActions } from '@/entities/User'
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text'
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink'
-import { HStack } from '@/shared/ui/Stack';
-import { NotificationButton } from '@/features/NotificationButton';
-import { UserNavbarDropdown } from '@/features/UserNavbarDropdown';
+import { HStack } from '@/shared/ui/Stack'
+import { NotificationButton } from '@/features/NotificationButton'
+import { UserNavbarDropdown } from '@/features/UserNavbarDropdown'
 import cls from './Navbar.module.scss'
-import { getRouteArticleNew } from '@/shared/const/router';
+import { getRouteArticleNew } from '@/shared/const/router'
 
 interface NavbarProps {
-    className?: string;
+    className?: string
 }
 
 export const Navbar = memo((props: NavbarProps) => {
@@ -54,11 +52,14 @@ export const Navbar = memo((props: NavbarProps) => {
                     theme={AppLinkTheme.SECONDARY}
                     to={getRouteArticleNew()}
                 >
-                    { t('Add article') }
+                    {t('Add article')}
                 </AppLink>
                 <HStack gap="16" className={cls.actions}>
                     <NotificationButton />
-                    <UserNavbarDropdown authData={authData} onLogOut={onLogOut} />
+                    <UserNavbarDropdown
+                        authData={authData}
+                        onLogOut={onLogOut}
+                    />
                 </HStack>
             </header>
         )

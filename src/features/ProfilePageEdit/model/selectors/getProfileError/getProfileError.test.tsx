@@ -1,5 +1,5 @@
 import { StateSchema } from '@/app/providers/StoreProvider'
-import { ValidateProfileErrors } from '@/entities/Profile';
+import { ValidateProfileErrors } from '@/entities/Profile'
 import { getProfileError } from './getProfileError'
 
 describe('get Profile Error test', () => {
@@ -18,7 +18,9 @@ describe('get Profile Error test', () => {
                 },
             },
         }
-        expect(getProfileError(state as StateSchema)).toHaveProperty('data', [ValidateProfileErrors.NO_DATA])
+        expect(getProfileError(state as StateSchema)).toHaveProperty('data', [
+            ValidateProfileErrors.NO_DATA,
+        ])
     })
 
     test('should return undefined', () => {

@@ -6,14 +6,15 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { Currency } from '@/entities/Currency'
 import { Countries } from '@/entities/Country'
 import { ProfileCard } from '@/entities/Profile'
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { VStack } from '@/shared/ui/Stack'
 import { ProfilePageEditHeader } from '../../ui/ProfilePageEditHeader/ProfilePageEditHeader'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'
-import {
-    getProfileValidateErrors,
-} from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors'
+import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors'
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading'
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError'
 import { fetchProfileData } from '../../model/services/FetchProfileData'
@@ -45,54 +46,94 @@ export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
         }
     })
 
-    const onChangeFirstname = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({
-            firstname: value || '',
-        }))
-    }, [dispatch])
+    const onChangeFirstname = useCallback(
+        (value?: string) => {
+            dispatch(
+                profileActions.updateProfile({
+                    firstname: value || '',
+                }),
+            )
+        },
+        [dispatch],
+    )
 
-    const onChangeLastname = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({
-            lastname: value || '',
-        }))
-    }, [dispatch])
+    const onChangeLastname = useCallback(
+        (value?: string) => {
+            dispatch(
+                profileActions.updateProfile({
+                    lastname: value || '',
+                }),
+            )
+        },
+        [dispatch],
+    )
 
-    const onChangeAge = useCallback((value?: string) => {
-        const valueHandler = value?.replace(/\D+/gm, '')
-        dispatch(profileActions.updateProfile({
-            age: Number(valueHandler) || '',
-        }))
-    }, [dispatch])
+    const onChangeAge = useCallback(
+        (value?: string) => {
+            const valueHandler = value?.replace(/\D+/gm, '')
+            dispatch(
+                profileActions.updateProfile({
+                    age: Number(valueHandler) || '',
+                }),
+            )
+        },
+        [dispatch],
+    )
 
-    const onChangeCity = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({
-            city: value || '',
-        }))
-    }, [dispatch])
+    const onChangeCity = useCallback(
+        (value?: string) => {
+            dispatch(
+                profileActions.updateProfile({
+                    city: value || '',
+                }),
+            )
+        },
+        [dispatch],
+    )
 
-    const onChangeUsername = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({
-            username: value || '',
-        }))
-    }, [dispatch])
+    const onChangeUsername = useCallback(
+        (value?: string) => {
+            dispatch(
+                profileActions.updateProfile({
+                    username: value || '',
+                }),
+            )
+        },
+        [dispatch],
+    )
 
-    const onChangeAvatar = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({
-            avatar: value || '',
-        }))
-    }, [dispatch])
+    const onChangeAvatar = useCallback(
+        (value?: string) => {
+            dispatch(
+                profileActions.updateProfile({
+                    avatar: value || '',
+                }),
+            )
+        },
+        [dispatch],
+    )
 
-    const onChangeCurrency = useCallback((value?: Currency) => {
-        dispatch(profileActions.updateProfile({
-            currency: value,
-        }))
-    }, [dispatch])
+    const onChangeCurrency = useCallback(
+        (value?: Currency) => {
+            dispatch(
+                profileActions.updateProfile({
+                    currency: value,
+                }),
+            )
+        },
+        [dispatch],
+    )
 
-    const onChangeCountry = useCallback((value?: Countries) => {
-        dispatch(profileActions.updateProfile({
-            country: value,
-        }))
-    }, [dispatch])
+    const onChangeCountry = useCallback(
+        (value?: Countries) => {
+            dispatch(
+                profileActions.updateProfile({
+                    country: value,
+                }),
+            )
+        },
+        [dispatch],
+    )
 
     return (
         <DynamicModuleLoader reducers={reducers}>

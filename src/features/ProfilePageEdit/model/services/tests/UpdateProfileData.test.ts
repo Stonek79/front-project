@@ -1,7 +1,7 @@
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 import { Currency } from '@/entities/Currency'
 import { Countries } from '@/entities/Country'
-import { ValidateProfileErrors } from '@/entities/Profile';
+import { ValidateProfileErrors } from '@/entities/Profile'
 import { updateProfileData } from '../UpdateProfileData'
 
 jest.mock('axios')
@@ -44,7 +44,9 @@ describe('UpdateProfileData test', () => {
 
         expect(thunk.api.put).toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('rejected')
-        expect(result.payload).toHaveProperty('data', [ValidateProfileErrors.NO_DATA])
+        expect(result.payload).toHaveProperty('data', [
+            ValidateProfileErrors.NO_DATA,
+        ])
     })
 
     test('rejected with error REQUIRED', async () => {
@@ -59,6 +61,8 @@ describe('UpdateProfileData test', () => {
 
         expect(thunk.api.put).not.toHaveBeenCalled()
         expect(result.meta.requestStatus).toBe('rejected')
-        expect(result.payload).toHaveProperty('username', [ValidateProfileErrors.REQUIRED])
+        expect(result.payload).toHaveProperty('username', [
+            ValidateProfileErrors.REQUIRED,
+        ])
     })
 })

@@ -18,7 +18,7 @@ const ArticleEditPage = (props: ArticleEditPageProps) => {
         <Page className={cn}>
             {/* TODO add editor widget */}
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            {!id ? <Text text="New article" /> : <ArticleEdit /> }
+            {!id ? <Text text="New article" /> : <ArticleEdit />}
         </Page>
     )
 }

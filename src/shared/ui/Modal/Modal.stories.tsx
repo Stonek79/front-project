@@ -5,7 +5,8 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Modal } from './Modal'
 import { Theme } from '@/shared/const/theme'
 
-const lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n Accusamus cumque debitis deleniti ex nam nihil nisi, quasi tempore voluptas voluptates.\n'
+const lorem =
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n Accusamus cumque debitis deleniti ex nam nihil nisi, quasi tempore voluptas voluptates.\n'
 
 export default {
     title: 'shared/Modal',

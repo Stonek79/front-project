@@ -1,15 +1,11 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Page } from '@/widgets/Page'
 
 const AboutPage = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation()
 
-    return (
-        <Page data-testid="AboutPage">
-            {t('О сайте')}
-        </Page>
-    );
-};
+    return <Page data-testid="AboutPage">{t('О сайте')}</Page>
+}
 
-export default AboutPage;
+export default AboutPage

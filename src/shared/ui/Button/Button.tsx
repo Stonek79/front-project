@@ -8,20 +8,20 @@ export enum ButtonTheme {
     OUTLINE = 'outline',
     OUTLINE_RED = 'outline_red',
     BG = 'background',
-    BG_INVERTED = 'backgroundInverted'
+    BG_INVERTED = 'backgroundInverted',
 }
 
 export enum ButtonSize {
     L = 'size_l',
     M = 'size_m',
-    XL = 'size_xl'
+    XL = 'size_xl',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    className?: string;
-    theme?: ButtonTheme;
-    square?: boolean;
-    size?: ButtonSize;
+    className?: string
+    theme?: ButtonTheme
+    square?: boolean
+    size?: ButtonSize
     disabled?: boolean
     children?: ReactNode
     fullWidth?: boolean

@@ -43,7 +43,7 @@ const article: Article = {
             ],
         },
     ],
-};
+}
 
 export default {
     title: 'pages/ArticleDetailPage',
@@ -57,9 +57,7 @@ export default {
                 url: `${__API__}/article-ratings?userId=1&articleId=1`,
                 method: 'GET',
                 status: 200,
-                response: [
-                    { starRate: 4 },
-                ],
+                response: [{ starRate: 4 }],
             },
             {
                 url: `${__API__}/articles?_limit=3`,
@@ -75,25 +73,29 @@ export default {
     },
 } as ComponentMeta<typeof ArticleDetailPage>
 
-const Template: ComponentStory<typeof ArticleDetailPage> = (args) => <ArticleDetailPage {...args} />
+const Template: ComponentStory<typeof ArticleDetailPage> = (args) => (
+    <ArticleDetailPage {...args} />
+)
 
 export const Normal = Template.bind({})
-Normal.args = {
-}
-Normal.decorators = [SuspenseDecorator, StoreDecorator({
-    user: {
-        authData: {
-            id: '1',
-            username: 'admin',
+Normal.args = {}
+Normal.decorators = [
+    SuspenseDecorator,
+    StoreDecorator({
+        user: {
+            authData: {
+                id: '1',
+                username: 'admin',
+            },
         },
-    },
-    article: {
-        data: article,
-    },
-    articlesRecommendations: {
-        ids: [],
-    },
-    comments: {
-        ids: [],
-    },
-})]
+        article: {
+            data: article,
+        },
+        articlesRecommendations: {
+            ids: [],
+        },
+        comments: {
+            ids: [],
+        },
+    }),
+]

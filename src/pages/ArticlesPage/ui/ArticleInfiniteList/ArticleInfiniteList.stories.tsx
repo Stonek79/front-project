@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Article } from '@/entities/Article'
 import { ArticleInfiniteList } from './ArticleInfiniteList'
-import { Theme } from '@/shared/const/theme';
+import { Theme } from '@/shared/const/theme'
 
 const article = {
     id: '1',
@@ -18,16 +18,13 @@ const article = {
     },
     views: 1022,
     createdAt: '26.02.2022',
-    type: [
-        'IT',
-        'SCIENCE',
-        'POLITICS',
-        'NEWS',
-    ],
+    type: ['IT', 'SCIENCE', 'POLITICS', 'NEWS'],
     blocks: [],
 } as Article
 
-const articles = new Array(9).fill(article).map((art, ind) => ({ ...art, id: `${ind}` }))
+const articles = new Array(9)
+    .fill(article)
+    .map((art, ind) => ({ ...art, id: `${ind}` }))
 
 export default {
     title: 'pages/ArticleInfiniteList',
@@ -35,29 +32,31 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [StoreDecorator({
-        articlesPage: {
-            ids: articles.map((art) => art.id),
-        },
-        article: {
-            data: article,
-        },
-    })],
+    decorators: [
+        StoreDecorator({
+            articlesPage: {
+                ids: articles.map((art) => art.id),
+            },
+            article: {
+                data: article,
+            },
+        }),
+    ],
     parameters: {
         mockData: [
             {
                 url: `${__API__}/articles?order=asc&sort=&search=&type=ALL`,
                 method: 'GET',
                 status: 200,
-                response: [
-                    articles,
-                ],
+                response: [articles],
             },
         ],
     },
 } as ComponentMeta<typeof ArticleInfiniteList>
 
-const Template: ComponentStory<typeof ArticleInfiniteList> = (args) => <ArticleInfiniteList {...args} />
+const Template: ComponentStory<typeof ArticleInfiniteList> = (args) => (
+    <ArticleInfiniteList {...args} />
+)
 
 export const Normal = Template.bind({})
 Normal.args = {}

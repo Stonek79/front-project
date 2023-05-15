@@ -1,4 +1,8 @@
-import { Profile, ValidateErrors, ValidateProfileErrors } from '@/entities/Profile'
+import {
+    Profile,
+    ValidateErrors,
+    ValidateProfileErrors,
+} from '@/entities/Profile'
 
 export const ValidateProfileData = (profile?: Profile) => {
     const errors: ValidateErrors = {
@@ -22,15 +26,8 @@ export const ValidateProfileData = (profile?: Profile) => {
         return errors
     }
 
-    const {
-        firstname,
-        lastname,
-        age,
-        city,
-        username,
-        country,
-        currency,
-    } = profile as Profile
+    const { firstname, lastname, age, city, username, country, currency } =
+        profile as Profile
 
     const minLength = 2
     const maxLength = 16
@@ -63,11 +60,17 @@ export const ValidateProfileData = (profile?: Profile) => {
         errors.country.push(ValidateProfileErrors.REQUIRED)
     }
 
-    if (firstname && (firstname.length > maxLength || firstname.length < minLength)) {
+    if (
+        firstname &&
+        (firstname.length > maxLength || firstname.length < minLength)
+    ) {
         errors.firstname.push(ValidateProfileErrors.INCORRECT_LENGTH)
     }
 
-    if (lastname && (lastname.length > maxLength || lastname.length < minLength)) {
+    if (
+        lastname &&
+        (lastname.length > maxLength || lastname.length < minLength)
+    ) {
         errors.lastname.push(ValidateProfileErrors.INCORRECT_LENGTH)
     }
 
@@ -75,7 +78,10 @@ export const ValidateProfileData = (profile?: Profile) => {
         errors.city.push(ValidateProfileErrors.INCORRECT_LENGTH)
     }
 
-    if (username && (username.length > maxLength || username.length < minLength)) {
+    if (
+        username &&
+        (username.length > maxLength || username.length < minLength)
+    ) {
         errors.username.push(ValidateProfileErrors.INCORRECT_LENGTH)
     }
 

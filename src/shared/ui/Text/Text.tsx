@@ -5,7 +5,7 @@ import cls from './Text.module.scss'
 export enum TextTheme {
     PRIMARY = 'primary',
     ERROR = 'error',
-    INVERTED = 'secondary'
+    INVERTED = 'secondary',
 }
 
 export enum TextAlign {
@@ -21,7 +21,7 @@ export enum TextSize {
 }
 
 interface TextProps {
-    className?: string;
+    className?: string
     text?: string
     title?: string
     theme?: TextTheme
@@ -51,12 +51,28 @@ export const Text = memo((props: TextProps) => {
 
     const HeaderTag = mapSizeToHeaderTag[size]
 
-    const cn = classNames('', {}, [className, cls[theme], cls[align], cls[size]])
+    const cn = classNames('', {}, [
+        className,
+        cls[theme],
+        cls[align],
+        cls[size],
+    ])
 
     return (
         <div className={cn}>
-            {title && <HeaderTag data-testid={`${dataTestId}-header`} className={cls.title}>{title}</HeaderTag>}
-            {text && <p data-testid={`${dataTestId}-paragraph`} className={cls.text}>{text}</p>}
+            {title && (
+                <HeaderTag
+                    data-testid={`${dataTestId}-header`}
+                    className={cls.title}
+                >
+                    {title}
+                </HeaderTag>
+            )}
+            {text && (
+                <p data-testid={`${dataTestId}-paragraph`} className={cls.text}>
+                    {text}
+                </p>
+            )}
         </div>
-    );
-});
+    )
+})

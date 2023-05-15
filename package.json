@@ -11,10 +11,11 @@
         "start:dev:vite": "concurrently \"npm run start:vite\" \"npm run start:dev:server\"",
         "build:prod": "webpack  --env mode=production apiUrl=https://frontprojectserver-amityurist.b4a.run/",
         "build:dev": "webpack  --env mode=development",
-        "lint:ts": "eslint \"**/*.{ts,tsx}\"",
-        "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
-        "lint:scss": "npx stylelint \"**/*.scss\"",
-        "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
+        "prettier": "npx prettier --write  \"src/**/*.{js,ts,tsx,json}\"",
+        "lint:ts": "eslint \"src/**/*.{ts,tsx}\"",
+        "lint:ts:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+        "lint:scss": "npx stylelint \"src/**/*.scss\"",
+        "lint:scss:fix": "npx stylelint \"src/**/*.scss\" --fix",
         "test:unit": "jest --config ./config/jest/jest.config.ts",
         "test:ui": "npx loki test",
         "test:ui:ok": "npx loki approve",
@@ -30,8 +31,7 @@
         "postinstall": "rm -rf ./node-modules/.cache"
     },
     "lint-staged": {
-        "linters": { "**/*.{ts,tsx}": "eslint" },
-        "ignore": ["node_modules", "dist", "package-lock.json"]
+        "src/**/*.{js,ts,tsx,json}": ["eslint", "prettier --list-different"]
     },
     "keywords": [],
     "author": "",
@@ -77,6 +77,7 @@
         "cypress": "^12.12.0",
         "eslint": "^8.10.0",
         "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-fsd-paths-checker-plugin": "^0.0.13",
         "eslint-plugin-i18next": "^5.1.2",
         "eslint-plugin-import": "^2.25.4",
@@ -96,6 +97,7 @@
         "lint-staged": "^13.0.3",
         "loki": "^0.28.1",
         "mini-css-extract-plugin": "^2.5.3",
+        "prettier": "2.8.8",
         "react-editor-js": "^2.1.0",
         "react-refresh": "^0.12.0",
         "reg-cli": "^0.17.6",

@@ -5,18 +5,20 @@ import { HStack } from '@/shared/ui/Stack'
 import { ArticleCodeBlock } from '../../model/types/article'
 
 interface ArticleCodeBlockComponentProps {
-    className?: string;
+    className?: string
     block: ArticleCodeBlock
 }
 
-export const ArticleCodeBlockComponent = memo((props: ArticleCodeBlockComponentProps) => {
-    const { className, block } = props
+export const ArticleCodeBlockComponent = memo(
+    (props: ArticleCodeBlockComponentProps) => {
+        const { className, block } = props
 
-    const cn = classNames('', {}, [className])
+        const cn = classNames('', {}, [className])
 
-    return (
-        <HStack className={cn}>
-            <Code text={block.code} />
-        </HStack>
-    )
-})
+        return (
+            <HStack className={cn}>
+                <Code text={block.code} />
+            </HStack>
+        )
+    },
+)

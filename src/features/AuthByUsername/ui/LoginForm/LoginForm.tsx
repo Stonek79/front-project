@@ -5,7 +5,10 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/shared/ui/Button'
 import { Input } from '@/shared/ui/Input'
 import { Text, TextTheme } from '@/shared/ui/Text'
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { getPassword } from '../../model/selectors/getPassword/getPassword'
 import { getUsername } from '../../model/selectors/getUsername/getUsername'
@@ -16,7 +19,7 @@ import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import cls from './LoginForm.module.scss'
 
 export interface LoginFormProps {
-    className?: string;
+    className?: string
 }
 
 const initialReducers: ReducersList = {
@@ -35,23 +38,26 @@ const LoginForm = memo((props: LoginFormProps) => {
     const { className } = props
     const cn = classNames(cls.LoginForm, {}, [className])
 
-    const onChangeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value))
-    }, [dispatch])
+    const onChangeUsername = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setUsername(value))
+        },
+        [dispatch],
+    )
 
-    const onChangePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value))
-    }, [dispatch])
+    const onChangePassword = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setPassword(value))
+        },
+        [dispatch],
+    )
 
     const onLoginClick = useCallback(() => {
         dispatch(loginByUsername({ username, password }))
     }, [dispatch, password, username])
 
     return (
-        <DynamicModuleLoader
-            reducers={initialReducers}
-            removeAfterUnmount
-        >
+        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <div className={cn}>
                 <Text title={t('authForm')} />
                 {error && <Text text={error} theme={TextTheme.ERROR} />}

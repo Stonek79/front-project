@@ -1,9 +1,9 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import ArticleRating from './ArticleRating'
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
-import { Theme } from '@/shared/const/theme';
+import { Theme } from '@/shared/const/theme'
 
 export default {
     title: 'features/ArticleRating',
@@ -11,21 +11,25 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    decorators: [StoreDecorator({
-        user: {
-            authData: {
-                id: '1',
+    decorators: [
+        StoreDecorator({
+            user: {
+                authData: {
+                    id: '1',
+                },
             },
-        },
-    })],
-} as ComponentMeta<typeof ArticleRating>;
+        }),
+    ],
+} as ComponentMeta<typeof ArticleRating>
 
-const Template: ComponentStory<typeof ArticleRating> = (args) => <ArticleRating {...args} />;
+const Template: ComponentStory<typeof ArticleRating> = (args) => (
+    <ArticleRating {...args} />
+)
 
-export const Normal = Template.bind({});
+export const Normal = Template.bind({})
 Normal.args = {
     articleId: '1',
-};
+}
 Normal.parameters = {
     mockData: [
         {
@@ -37,11 +41,11 @@ Normal.parameters = {
     ],
 }
 
-export const NormalDark = Template.bind({});
+export const NormalDark = Template.bind({})
 NormalDark.args = {
     articleId: '1',
-};
-NormalDark.decorators = [ThemeDecorator(Theme.DARK)];
+}
+NormalDark.decorators = [ThemeDecorator(Theme.DARK)]
 NormalDark.parameters = {
     mockData: [
         {
@@ -53,10 +57,10 @@ NormalDark.parameters = {
     ],
 }
 
-export const Normal4Stars = Template.bind({});
+export const Normal4Stars = Template.bind({})
 Normal4Stars.args = {
     articleId: '1',
-};
+}
 Normal4Stars.parameters = {
     mockData: [
         {
@@ -72,10 +76,10 @@ Normal4Stars.parameters = {
     ],
 }
 
-export const NormalDark4Stars = Template.bind({});
+export const NormalDark4Stars = Template.bind({})
 NormalDark4Stars.args = {
     articleId: '1',
-};
+}
 NormalDark4Stars.decorators = [ThemeDecorator(Theme.DARK)]
 NormalDark4Stars.parameters = {
     mockData: [

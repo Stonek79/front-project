@@ -8,9 +8,7 @@ import { CommentList } from '@/entities/Comment'
 import { VStack } from '@/shared/ui/Stack'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
-import {
-    fetchCommentsByArticleId,
-} from '../../model/services/FetchCommentsByArticleId/fetchCommentsByArticleId'
+import { fetchCommentsByArticleId } from '../../model/services/FetchCommentsByArticleId/fetchCommentsByArticleId'
 import { addCommentForArticle } from '../../model/services/AddCommentForArticle/AddCommentForArticle'
 import { getArticleComments } from '../../model/slices/articleDetailCommentSlice'
 import { getIsLoadingComments } from '../../model/selectors/comments'
@@ -20,31 +18,36 @@ interface ArticleDetailsCommentsProps {
     id?: string
 }
 
-export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) => {
-    const { className, id } = props
-    const { t } = useTranslation()
-    const comments = useSelector(getArticleComments.selectAll)
-    const commentsIsLoading = useSelector(getIsLoadingComments)
-    const dispatch = useAppDispatch()
+export const ArticleDetailsComments = memo(
+    (props: ArticleDetailsCommentsProps) => {
+        const { className, id } = props
+        const { t } = useTranslation()
+        const comments = useSelector(getArticleComments.selectAll)
+        const commentsIsLoading = useSelector(getIsLoadingComments)
+        const dispatch = useAppDispatch()
 
-    const onSendComment = useCallback((text: string) => {
-        dispatch(addCommentForArticle(text))
-    }, [dispatch])
+        const onSendComment = useCallback(
+            (text: string) => {
+                dispatch(addCommentForArticle(text))
+            },
+            [dispatch],
+        )
 
-    useInitialEffect(() => {
-        dispatch(fetchCommentsByArticleId(id))
-    })
+        useInitialEffect(() => {
+            dispatch(fetchCommentsByArticleId(id))
+        })
 
-    const cn = classNames('', {}, [className])
+        const cn = classNames('', {}, [className])
 
-    return (
-        <VStack gap="8" max className={cn}>
-            <Text
-                size={TextSize.L}
-                title={t('Comments')}
-            />
-            <AddCommentForm onSendComment={onSendComment} />
-            <CommentList isLoading={commentsIsLoading} comments={comments} />
-        </VStack>
-    )
-})
+        return (
+            <VStack gap="8" max className={cn}>
+                <Text size={TextSize.L} title={t('Comments')} />
+                <AddCommentForm onSendComment={onSendComment} />
+                <CommentList
+                    isLoading={commentsIsLoading}
+                    comments={comments}
+                />
+            </VStack>
+        )
+    },
+)

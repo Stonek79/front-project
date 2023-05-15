@@ -1,12 +1,12 @@
 import React, { memo, useCallback, useState } from 'react'
-import { BrowserView, MobileView } from 'react-device-detect';
-import { NotificationList } from '@/entities/Notification';
+import { BrowserView, MobileView } from 'react-device-detect'
+import { NotificationList } from '@/entities/Notification'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
-import NotificationIcon from '@/shared/assets/icons/notification.svg';
-import { Popover } from '@/shared/ui/Popups';
-import { Drawer } from '@/shared/ui/Drawer';
+import { Button, ButtonTheme } from '@/shared/ui/Button'
+import { Icon } from '@/shared/ui/Icon'
+import NotificationIcon from '@/shared/assets/icons/notification.svg'
+import { Popover } from '@/shared/ui/Popups'
+import { Drawer } from '@/shared/ui/Drawer'
 import cls from './NotificationButton.module.scss'
 
 interface NotificationButtonProps {
@@ -15,32 +15,28 @@ interface NotificationButtonProps {
 
 export const NotificationButton = memo((props: NotificationButtonProps) => {
     const { className } = props
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
     const onOpenDrawer = useCallback(() => {
-        setIsOpen(true);
+        setIsOpen(true)
     }, [])
 
     const onCloseDrawer = useCallback(() => {
-        setIsOpen(false);
+        setIsOpen(false)
     }, [])
 
     const cn = classNames(cls.NotificationButton, {}, [className])
 
-    const trigger = ((
+    const trigger = (
         <Button onClick={onOpenDrawer} theme={ButtonTheme.CLEAR}>
             <Icon Svg={NotificationIcon} inverted />
         </Button>
-    ))
+    )
 
     return (
         <div>
             <BrowserView>
-                <Popover
-                    className={cn}
-                    trigger={trigger}
-                    direction="top right"
-                >
+                <Popover className={cn} trigger={trigger} direction="top right">
                     <NotificationList className={cls.notifications} />
                 </Popover>
             </BrowserView>
@@ -55,5 +51,5 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
                 </Drawer>
             </MobileView>
         </div>
-    );
-});
+    )
+})

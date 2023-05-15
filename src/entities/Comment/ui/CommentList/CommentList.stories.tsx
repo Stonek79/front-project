@@ -11,7 +11,9 @@ export default {
     },
 } as ComponentMeta<typeof CommentList>
 
-const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />
+const Template: ComponentStory<typeof CommentList> = (args) => (
+    <CommentList {...args} />
+)
 
 export const Normal = Template.bind({})
 Normal.args = {
@@ -27,10 +29,10 @@ Normal.args = {
             user: { id: '1', username: 'Petya' },
         },
     ],
-};
+}
 
-export const Loading = Template.bind({});
+export const Loading = Template.bind({})
 Loading.args = {
     comments: [],
     isLoading: true,
-};
+}

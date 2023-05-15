@@ -1,6 +1,6 @@
 import { Currency } from '@/entities/Currency'
 import { Countries } from '@/entities/Country'
-import { ValidateProfileErrors } from '@/entities/Profile';
+import { ValidateProfileErrors } from '@/entities/Profile'
 import { ValidateProfileData } from '../ValidateProfileData'
 
 jest.mock('axios')
@@ -35,13 +35,22 @@ describe('Validate Profile Data test', () => {
 
     test('with errors REQUIRED, INCORRECT_AGE, INCORRECT_LENGTH', async () => {
         const withErrors = {
-            ...testData, firstname: undefined, age: '234', username: 'X',
+            ...testData,
+            firstname: undefined,
+            age: '234',
+            username: 'X',
         }
         const result = ValidateProfileData(withErrors)
 
-        expect(result).toHaveProperty('firstname', [ValidateProfileErrors.REQUIRED])
-        expect(result).toHaveProperty('age', [ValidateProfileErrors.INCORRECT_AGE])
-        expect(result).toHaveProperty('username', [ValidateProfileErrors.INCORRECT_LENGTH])
+        expect(result).toHaveProperty('firstname', [
+            ValidateProfileErrors.REQUIRED,
+        ])
+        expect(result).toHaveProperty('age', [
+            ValidateProfileErrors.INCORRECT_AGE,
+        ])
+        expect(result).toHaveProperty('username', [
+            ValidateProfileErrors.INCORRECT_LENGTH,
+        ])
     })
 
     test('with all errors', async () => {
@@ -55,14 +64,30 @@ describe('Validate Profile Data test', () => {
             username: 'X',
         }
 
-        const result = ValidateProfileData({ ...withErrors, currency: undefined, country: undefined })
+        const result = ValidateProfileData({
+            ...withErrors,
+            currency: undefined,
+            country: undefined,
+        })
 
-        expect(result).toHaveProperty('firstname', [ValidateProfileErrors.REQUIRED])
-        expect(result).toHaveProperty('lastname', [ValidateProfileErrors.INCORRECT_LENGTH])
-        expect(result).toHaveProperty('age', [ValidateProfileErrors.INCORRECT_AGE])
-        expect(result).toHaveProperty('username', [ValidateProfileErrors.INCORRECT_LENGTH])
-        expect(result).toHaveProperty('currency', [ValidateProfileErrors.REQUIRED])
-        expect(result).toHaveProperty('country', [ValidateProfileErrors.REQUIRED])
+        expect(result).toHaveProperty('firstname', [
+            ValidateProfileErrors.REQUIRED,
+        ])
+        expect(result).toHaveProperty('lastname', [
+            ValidateProfileErrors.INCORRECT_LENGTH,
+        ])
+        expect(result).toHaveProperty('age', [
+            ValidateProfileErrors.INCORRECT_AGE,
+        ])
+        expect(result).toHaveProperty('username', [
+            ValidateProfileErrors.INCORRECT_LENGTH,
+        ])
+        expect(result).toHaveProperty('currency', [
+            ValidateProfileErrors.REQUIRED,
+        ])
+        expect(result).toHaveProperty('country', [
+            ValidateProfileErrors.REQUIRED,
+        ])
         expect(result).toHaveProperty('city', [ValidateProfileErrors.REQUIRED])
     })
 })

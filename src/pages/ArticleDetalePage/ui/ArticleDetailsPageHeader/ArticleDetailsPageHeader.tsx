@@ -7,41 +7,41 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { getArticleDetailsData } from '@/entities/Article'
 import { HStack } from '@/shared/ui/Stack'
 import { getCanEditArticle } from '../../model/selectors/article'
-import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/router';
+import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/router'
 
 interface ArticleDetailsPageHeaderProps {
     className?: string
 }
 
-export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderProps) => {
-    const { className } = props
-    const { t } = useTranslation()
-    const navigate = useNavigate()
-    const isEdit = useSelector(getCanEditArticle)
-    const article = useSelector(getArticleDetailsData)
+export const ArticleDetailsPageHeader = memo(
+    (props: ArticleDetailsPageHeaderProps) => {
+        const { className } = props
+        const { t } = useTranslation()
+        const navigate = useNavigate()
+        const isEdit = useSelector(getCanEditArticle)
+        const article = useSelector(getArticleDetailsData)
 
-    const cn = classNames('', {}, [className])
+        const cn = classNames('', {}, [className])
 
-    const onBackToArticles = useCallback(() => {
-        navigate(getRouteArticles())
-    }, [navigate])
+        const onBackToArticles = useCallback(() => {
+            navigate(getRouteArticles())
+        }, [navigate])
 
-    const onEditArticle = useCallback(() => {
-        if (article) {
-            navigate(getRouteArticleEdit(article.id))
-        }
-    }, [article, navigate])
+        const onEditArticle = useCallback(() => {
+            if (article) {
+                navigate(getRouteArticleEdit(article.id))
+            }
+        }, [article, navigate])
 
-    return (
-        <HStack max justify="between" className={cn}>
-            <Button onClick={onBackToArticles}>
-                {t('Back to articles')}
-            </Button>
-            {isEdit && (
-                <Button onClick={onEditArticle}>
-                    { t('Edit article') }
+        return (
+            <HStack max justify="between" className={cn}>
+                <Button onClick={onBackToArticles}>
+                    {t('Back to articles')}
                 </Button>
-            )}
-        </HStack>
-    )
-})
+                {isEdit && (
+                    <Button onClick={onEditArticle}>{t('Edit article')}</Button>
+                )}
+            </HStack>
+        )
+    },
+)

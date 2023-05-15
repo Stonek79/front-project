@@ -1,9 +1,9 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Countries } from '../../model/types/countries';
+import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Countries } from '../../model/types/countries'
 import { CountrySelect } from './CountrySelect'
-import { Theme } from '@/shared/const/theme';
+import { Theme } from '@/shared/const/theme'
 
 export default {
     title: 'entities/CountrySelect',
@@ -11,17 +11,19 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof CountrySelect>;
+} as ComponentMeta<typeof CountrySelect>
 
-const Template: ComponentStory<typeof CountrySelect> = (args) => <CountrySelect {...args} />;
+const Template: ComponentStory<typeof CountrySelect> = (args) => (
+    <CountrySelect {...args} />
+)
 
-export const PrimaryNormal = Template.bind({});
+export const PrimaryNormal = Template.bind({})
 PrimaryNormal.args = {
     value: Countries.USA,
-};
+}
 
-export const PrimaryDarkBig = Template.bind({});
+export const PrimaryDarkBig = Template.bind({})
 PrimaryDarkBig.args = {
     value: Countries.USA,
-};
-PrimaryDarkBig.decorators = [ThemeDecorator(Theme.DARK)];
+}
+PrimaryDarkBig.decorators = [ThemeDecorator(Theme.DARK)]

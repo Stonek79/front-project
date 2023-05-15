@@ -25,13 +25,9 @@ export const SidebarItem = (props: SidebarItemProps) => {
     }
 
     return (
-        <AppLink
-            theme={AppLinkTheme.SECONDARY}
-            to={path}
-            className={cn}
-        >
+        <AppLink theme={AppLinkTheme.SECONDARY} to={path} className={cn}>
             <Icon className={cls.icon} />
             <span className={cls.link}>{t(text)}</span>
         </AppLink>
-    );
-};
+    )
+}

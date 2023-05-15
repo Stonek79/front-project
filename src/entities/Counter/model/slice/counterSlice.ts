@@ -1,5 +1,5 @@
 import { CounterSchema } from '../types/counterSchema'
-import { buildSlice } from '@/shared/lib/helpers/store';
+import { buildSlice } from '@/shared/lib/helpers/store'
 
 const initialState: CounterSchema = {
     value: 0,

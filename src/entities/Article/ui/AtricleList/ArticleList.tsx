@@ -6,7 +6,7 @@ import cls from './ArticleList.module.scss'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { Article, ArticleViewTypes } from '../../model/types/article'
 import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSceleton'
-import { ArticleView } from '../../model/consts/consts';
+import { ArticleView } from '../../model/consts/consts'
 
 // TODO add virtualization
 
@@ -18,10 +18,13 @@ interface ArticleListProps {
     target?: HTMLAttributeAnchorTarget
 }
 
-const getSkeleton = (view: ArticleViewTypes) => new Array(view === ArticleView.CARDS ? 6 : 3)
-    .fill(0)
-// eslint-disable-next-line react/no-array-index-key
-    .map((_, i) => <ArticleListItemSkeleton key={i} className={cls.card} view={view} />)
+const getSkeleton = (view: ArticleViewTypes) =>
+    new Array(view === ArticleView.CARDS ? 6 : 3)
+        .fill(0)
+        // eslint-disable-next-line react/no-array-index-key
+        .map((_, i) => (
+            <ArticleListItemSkeleton key={i} className={cls.card} view={view} />
+        ))
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
@@ -57,10 +60,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     return (
         <div data-testid="ArticleList" className={cn}>
-            {articles?.length > 0
-                ? articles?.map(renderArticles)
-                : null}
-            {isLoading && getSkeleton(view) }
+            {articles?.length > 0 ? articles?.map(renderArticles) : null}
+            {isLoading && getSkeleton(view)}
         </div>
     )
 })
