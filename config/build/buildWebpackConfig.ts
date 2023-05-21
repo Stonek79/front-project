@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import TerserPlugin from 'terser-webpack-plugin'
 import { BuildOptions } from './types/config'
 import { buildPlugins } from './buildPlugins'
 import { buildLoaders } from './buildLoaders'
@@ -11,6 +12,13 @@ export function buildWebpackConfig(
     const { paths, mode, isDev } = options
 
     return {
+        optimization: {
+            minimizer: [
+                new TerserPlugin({
+                    parallel: true,
+                }),
+            ],
+        },
         mode,
         entry: paths.entry,
         output: {
@@ -24,7 +32,7 @@ export function buildWebpackConfig(
             rules: buildLoaders(options),
         },
         resolve: buildResolvers(options),
-        // devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
+        devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
         devServer: isDev ? buildDevServer(options) : undefined,
     }
 }
