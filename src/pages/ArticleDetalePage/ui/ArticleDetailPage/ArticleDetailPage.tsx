@@ -29,7 +29,10 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     const { className } = props
     const { id = '1' } = useParams<{ id: string }>()
     const { t } = useTranslation()
-    const isArticlesRatingEnabled = getFeatureFlags('isArticleRatingEnabled')
+    const isArticlesRatingEnabled =
+        __PROJECT__ === 'storybook'
+            ? true
+            : getFeatureFlags('isArticleRatingEnabled')
 
     const cn = classNames(cls.ArticleDetailPage, {}, [className])
 

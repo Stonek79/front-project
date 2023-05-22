@@ -25,7 +25,7 @@
         "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
         "test:e2e": "cypress open",
         "storybook": "start-storybook -p 6006 -c ./config/storybook",
-        "storybook:build": "storybook-build -c ./config/storybook",
+        "storybook:build": "build-storybook -c ./config/storybook",
         "prepare": "husky install",
         "create:slice": "node ./scripts/createSlice/index.js",
         "postinstall": "rm -rf ./node-modules/.cache"
@@ -146,13 +146,16 @@
         "react-router-dom": "^6.2.1"
     },
     "loki": {
+        "fetchFailIgnore": true,
+        "verboseRenderer": true,
         "configurations": {
             "chrome.laptop": {
                 "target": "chrome.docker",
+                "deviceScaleFactor": 1,
+                "mobile": false,
                 "width": 1366,
                 "height": 768
             },
-            "fetchFailIgnore": true,
             "chrome.iphone7": {
                 "target": "chrome.docker",
                 "preset": "iPhone 7"
