@@ -15,6 +15,7 @@ import { articleDetailsCommentReducers } from '../../model/slices/articleDetailC
 import cls from './ArticleDetailPage.module.scss'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import { ArticleRating } from '@/features/ArticleRating'
+import { getFeatureFlags } from '@/shared/lib/features'
 
 interface ArticleDetailPageProps {
     className?: string
@@ -28,6 +29,7 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     const { className } = props
     const { id = '1' } = useParams<{ id: string }>()
     const { t } = useTranslation()
+    const isArticlesRatingEnabled = getFeatureFlags('isArticleRatingEnabled')
 
     const cn = classNames(cls.ArticleDetailPage, {}, [className])
 
@@ -50,7 +52,9 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    <ArticleRating articleId={id} />
+                    {isArticlesRatingEnabled && (
+                        <ArticleRating articleId={id} />
+                    )}
                     <ArticleRecommendationsList />
                     <ArticleDetailsComments id={id} />
                 </VStack>
