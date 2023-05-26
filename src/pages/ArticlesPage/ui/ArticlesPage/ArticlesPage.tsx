@@ -13,6 +13,7 @@ import { fetchNextArticlesPage } from '../../models/services/fetchNextArticlesPa
 import { articlesPageReducer } from '../../models/slices/articlesPageSlice'
 import cls from './ArticlesPage.module.scss'
 import { getArticlesHasMore } from '../../models/selectors/articlesPageSelectors'
+import { ArticlesPageGreating } from '@/features/ArticlesPageGreating'
 
 interface ArticlesPageProps {
     className?: string
@@ -44,6 +45,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
             >
                 <ArticlesPageFilters />
                 <ArticleInfiniteList />
+                <ArticlesPageGreating />
             </Page>
         </DynamicModuleLoader>
     )

@@ -1,21 +1,31 @@
 import React, { Suspense, useEffect } from 'react'
 import './styles/index.scss'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Navbar } from '@/widgets/Navbar'
 import { Sidebar } from '@/widgets/Sidebar'
-import { getUserInitData, userActions } from '@/entities/User'
+import { getUserInitData, initAuthData } from '@/entities/User'
 import { AppRouter } from './providers/router'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { PageLoader } from '@/widgets/PageLoader'
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme'
+import { classNames } from '@/shared/lib/classNames/classNames'
 
 function App() {
-    const dispatch = useDispatch()
+    const { theme } = useTheme()
+    const dispatch = useAppDispatch()
     const inited = useSelector(getUserInitData)
 
+    const cn = classNames('app', {}, [theme])
     useEffect(() => {
-        dispatch(userActions.initAuthData())
+        dispatch(initAuthData())
     }, [dispatch])
 
+    if (!inited) {
+        return <PageLoader />
+    }
+
     return (
-        <div className="app">
+        <div className={cn}>
             <Suspense fallback="">
                 <Navbar />
                 <div className="content-page">

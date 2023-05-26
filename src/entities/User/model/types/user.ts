@@ -1,5 +1,6 @@
 import { UserRoles } from '../consts/consts'
 import { FeatureFlags } from '@/shared/types/featureFlags'
+import { JsonSettings } from './jsonSettings'
 
 export type UserRole = (typeof UserRoles)[keyof typeof UserRoles]
 
@@ -9,6 +10,7 @@ export interface User {
     avatar?: string
     features?: FeatureFlags
     roles?: UserRole[]
+    jsonSettings?: JsonSettings
 }
 
 export interface UserSchema {
