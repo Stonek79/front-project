@@ -15,7 +15,8 @@ import { articleDetailsCommentReducers } from '../../model/slices/articleDetailC
 import cls from './ArticleDetailPage.module.scss'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import { ArticleRating } from '@/features/ArticleRating'
-import { getFeatureFlags } from '@/shared/lib/features'
+import { ToggleComponentFeatures } from '@/shared/lib/features'
+import { Card, CardTheme } from '@/shared/ui/Card'
 
 interface ArticleDetailPageProps {
     className?: string
@@ -29,10 +30,6 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     const { className } = props
     const { id = '1' } = useParams<{ id: string }>()
     const { t } = useTranslation()
-    const isArticlesRatingEnabled =
-        __PROJECT__ === 'storybook'
-            ? true
-            : getFeatureFlags('isArticleRatingEnabled')
 
     const cn = classNames(cls.ArticleDetailPage, {}, [className])
 
@@ -55,9 +52,15 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    {isArticlesRatingEnabled && (
-                        <ArticleRating articleId={id} />
-                    )}
+                    <ToggleComponentFeatures
+                        feature="isArticleRatingEnabled"
+                        on={<ArticleRating articleId={id} />}
+                        off={
+                            <Card max theme={CardTheme.NORMAL}>
+                                {t('Article rating is in progress')}
+                            </Card>
+                        }
+                    />
                     <ArticleRecommendationsList />
                     <ArticleDetailsComments id={id} />
                 </VStack>

@@ -1,5 +1,4 @@
 import { HTMLAttributes, memo, ReactNode } from 'react'
-import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './Card.module.scss'
 
@@ -23,7 +22,6 @@ export const Card = memo((props: CardProps) => {
         max,
         ...otherProps
     } = props
-    const { t } = useTranslation()
 
     const cn = classNames(cls.Card, { [cls.max]: max }, [className, cls[theme]])
 

@@ -24,11 +24,12 @@
         "test:ui:json": "node scripts/generate-visual-json-report.js",
         "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
         "test:e2e": "cypress open",
-        "storybook": "start-storybook -p 6006 -c ./config/storybook",
+        "storybook": "start-storybook 6006 -c ./config/storybook",
         "storybook:build": "build-storybook -c ./config/storybook",
         "prepare": "husky install",
         "create:slice": "node ./scripts/createSlice/index.js",
-        "postinstall": "rm -rf ./node-modules/.cache"
+        "postinstall": "rm -rf ./node-modules/.cache",
+        "remove-feature": "ts-node ./scripts/remove-features.ts"
     },
     "lint-staged": {
         "src/**/*.{js,ts,tsx,json}": [

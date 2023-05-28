@@ -75,6 +75,7 @@ module.exports = {
                     'justify',
                     'role',
                     'target',
+                    'feature',
                 ],
             },
         ],
@@ -105,6 +106,9 @@ module.exports = {
                 ],
             },
         ],
+        'react/no-unstable-nested-components': 'warn',
+        'react/no-unused-prop-types': 'off',
+        'react/prop-types': 'off',
     },
     globals: {
         __IS_DEV__: true,
