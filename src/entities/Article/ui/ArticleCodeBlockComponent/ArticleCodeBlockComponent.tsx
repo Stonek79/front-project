@@ -1,7 +1,7 @@
 import { memo } from 'react'
+import { Code } from '@/shared/ui/deprecated/Code'
+import { HStack } from '@/shared/ui/deprecated/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Code } from '@/shared/ui/Code'
-import { HStack } from '@/shared/ui/Stack'
 import { ArticleCodeBlock } from '../../model/types/article'
 
 interface ArticleCodeBlockComponentProps {

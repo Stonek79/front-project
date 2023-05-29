@@ -1,0 +1,70 @@
+.SidebarRedesigned {
+    position: relative;
+    height: 100%;
+    width: 220px;
+    border-radius: 32px;
+    background: var(--light-bg-redesigned);
+}
+
+.switchers {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.collapseBtn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: rotate(90deg);
+}
+
+.items {
+    margin-top: 40px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.link {
+    margin-left: 10px;
+    opacity: 1;
+}
+
+.collapsed {
+    width: 50px;
+
+    .switchers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .items {
+        margin-left: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .lang {
+        margin-left: 0;
+    }
+
+    .link {
+        opacity: 0;
+        transition: 0.2s opacity;
+        width: 0;
+    }
+
+    .collapseBtn {
+        transform: rotate(-90deg);
+    }
+}
+
+.appLogo {
+    padding-top: 20px;
+}

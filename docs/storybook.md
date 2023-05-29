@@ -3,7 +3,7 @@
 The project describes story cases for each component.
 Requests to the server are mocked using storybook-addon-mock.
 
-The file with the stories is created next to the component with the .stories.tsx extension
+The file with the stories is created next to the component with the MainLayout.stories.tsx extension
 
 You can run storybook with the command:
 - `npm run storybook`

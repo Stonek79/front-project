@@ -11,6 +11,7 @@ import { scrollSafeActions } from '../../model/slices/scrollSafeSlice'
 import { getSafeScrollByPAth } from '../../model/selectors/getSafeScroll'
 import cls from './Page.module.scss'
 import { TestProps } from '@/shared/types/tests'
+import { toggleFeatures } from '@/shared/lib/features'
 
 interface PageProps extends TestProps {
     className?: string
@@ -29,8 +30,14 @@ export const Page = (props: PageProps) => {
     )
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
-    const cn = classNames(cls.Page, {}, [className])
-    const pageId = 'PAGE_ID'
+
+    const designedClass = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => cls.PageRedesigned,
+        off: () => cls.Page,
+    })
+
+    const cn = classNames(designedClass, {}, [className])
 
     useInfiniteScroll({
         triggerRef,
@@ -54,7 +61,6 @@ export const Page = (props: PageProps) => {
 
     return (
         <main
-            id={pageId}
             ref={wrapperRef}
             className={cn}
             onScroll={onScroll}

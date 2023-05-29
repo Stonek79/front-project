@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Button, ButtonTheme } from '@/shared/ui/Button'
 import { Page } from '@/widgets/Page'
 import cls from './ErrorPage.module.scss'
 

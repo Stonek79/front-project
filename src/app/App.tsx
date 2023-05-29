@@ -9,6 +9,8 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { PageLoader } from '@/widgets/PageLoader'
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme'
 import { classNames } from '@/shared/lib/classNames/classNames'
+import { ToggleComponentFeatures } from '@/shared/lib/features'
+import { MainLayout } from '@/shared/layouts'
 
 function App() {
     const { theme } = useTheme()
@@ -16,6 +18,8 @@ function App() {
     const inited = useSelector(getUserInitData)
 
     const cn = classNames('app', {}, [theme])
+    const cnRedesigned = classNames('app-redesigned', {}, [theme])
+
     useEffect(() => {
         dispatch(initAuthData())
     }, [dispatch])
@@ -25,15 +29,33 @@ function App() {
     }
 
     return (
-        <div className={cn}>
-            <Suspense fallback="">
-                <Navbar />
-                <div className="content-page">
-                    <Sidebar />
-                    {inited && <AppRouter />}
+        <ToggleComponentFeatures
+            feature="isAppRedesigned"
+            on={
+                <div className={cnRedesigned}>
+                    <Suspense fallback="">
+                        <MainLayout
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                            /* eslint-disable-next-line i18next/no-literal-string */
+                            toolbar={<div>sdfkjbsdljfgbldjfb</div>}
+                        />
+                    </Suspense>
                 </div>
-            </Suspense>
-        </div>
+            }
+            off={
+                <div className={cn}>
+                    <Suspense fallback="">
+                        <Navbar />
+                        <div className="content-page">
+                            <Sidebar />
+                            {inited && <AppRouter />}
+                        </div>
+                    </Suspense>
+                </div>
+            }
+        />
     )
 }
 

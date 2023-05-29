@@ -1,12 +1,12 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleRating.module.scss'
 import { RatingCard } from '@/entities/Rating'
 import { useArticleRating, useRateArticle } from '../../api/ArticleRatingApi'
 import { getUserAuthData } from '@/entities/User'
-import { Skeleton } from '@/shared/ui/Skeleton'
 
 export interface ArticleRatingProps {
     className?: string

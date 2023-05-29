@@ -1,20 +1,20 @@
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
+import { Text, TextAlign, TextSize } from '@/shared/ui/deprecated/Text'
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
+import { Avatar } from '@/shared/ui/deprecated/Avatar'
+import { Icon } from '@/shared/ui/deprecated/Icon'
+import { HStack, VStack } from '@/shared/ui/deprecated/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { Text, TextAlign, TextSize } from '@/shared/ui/Text'
-import { Skeleton } from '@/shared/ui/Skeleton'
-import { Avatar } from '@/shared/ui/Avatar'
 import EyeIcon from '@/shared/assets/icons/eye.svg'
 import DateIcon from '@/shared/assets/icons/date-schedule.svg'
-import { Icon } from '@/shared/ui/Icon'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { HStack, VStack } from '@/shared/ui/Stack'
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent'
 import {
     getArticleDetailsData,

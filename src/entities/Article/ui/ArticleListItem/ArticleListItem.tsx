@@ -1,13 +1,15 @@
 import React, { HTMLAttributeAnchorTarget, memo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Text } from '@/shared/ui/deprecated/Text'
+import { Icon } from '@/shared/ui/deprecated/Icon'
+import { Card } from '@/shared/ui/deprecated/Card'
+import { Avatar } from '@/shared/ui/deprecated/Avatar'
+import { Button } from '@/shared/ui/deprecated/Button'
+import { AppLink } from '@/shared/ui/deprecated/AppLink'
+import { AppImage } from '@/shared/ui/deprecated/AppImage'
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Text } from '@/shared/ui/Text'
-import { Icon } from '@/shared/ui/Icon'
 import ViewIcon from '@/shared/assets/icons/eye.svg'
-import { Card } from '@/shared/ui/Card'
-import { Avatar } from '@/shared/ui/Avatar'
-import { Button } from '@/shared/ui/Button'
-import { AppLink } from '@/shared/ui/AppLink'
 import { ARTICLE_LIST_ITEM_ID_KEY } from '@/shared/const/localstarage'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import {
@@ -18,8 +20,6 @@ import {
 import cls from './ArticleListItem.module.scss'
 import { ArticleBlockTypes, ArticleView } from '../../model/consts/consts'
 import { getRouteArticleDetail } from '@/shared/const/router'
-import { AppImage } from '@/shared/ui/AppImage'
-import { Skeleton } from '@/shared/ui/Skeleton'
 
 interface ArticleListItemProps {
     className?: string

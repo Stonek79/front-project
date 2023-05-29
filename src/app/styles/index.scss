@@ -3,6 +3,7 @@
 @import "./themes/normal";
 @import "./themes/dark";
 @import "./themes/lilac";
+@import "./themes/orange";
 
 .app_dark_theme,
 .app_modal,
@@ -15,6 +16,13 @@ body {
 .app {
     background: var(--bg-color);
     min-height: 100vh;
+}
+
+.app-redesigned {
+    background: var(--bg-redesigned);
+    min-height: 100vh;
+    font: var(--font-m-redesigned);
+    color: var(--text-redesigned);
 }
 
 .content-page {

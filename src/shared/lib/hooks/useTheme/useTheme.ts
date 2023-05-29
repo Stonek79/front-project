@@ -20,6 +20,9 @@ export function useTheme(): UseThemeResult {
                 newTheme = Theme.LILAC
                 break
             case Theme.LILAC:
+                newTheme = Theme.ORANGE
+                break
+            case Theme.ORANGE:
                 newTheme = Theme.DARK
                 break
             default:

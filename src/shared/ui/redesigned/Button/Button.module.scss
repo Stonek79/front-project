@@ -1,0 +1,59 @@
+.Button {
+    cursor: pointer;
+    color: var(--text-redesigned);
+    padding: 6px 15px;
+
+    &:hover {
+        color: var(--accent-redesigned);
+    }
+}
+
+.clear,
+.clearInverted {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.square {
+    padding: 0;
+}
+
+.square.m {
+    width: var(--font-line-m);
+    height: var(--font-line-m);
+    font: var(--font-m-redesigned);
+}
+
+.square.l {
+    width: var(--font-line-l);
+    height: var(--font-line-l);
+    font: var(--font-l-redesigned);
+}
+
+.square.xl {
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
+    font: var(--font-xl-redesigned);
+}
+
+.l {
+    font: var(--font-l-redesigned);
+}
+
+.xl {
+    font: var(--font-xl-redesigned);
+}
+
+.m {
+    font: var(--font-m-redesigned);
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+.fullWidth {
+    width: 100%;
+}

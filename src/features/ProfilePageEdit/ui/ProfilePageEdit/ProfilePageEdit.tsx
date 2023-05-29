@@ -1,5 +1,6 @@
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
+import { VStack } from '@/shared/ui/deprecated/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
@@ -10,7 +11,6 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { VStack } from '@/shared/ui/Stack'
 import { ProfilePageEditHeader } from '../../ui/ProfilePageEditHeader/ProfilePageEditHeader'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm'

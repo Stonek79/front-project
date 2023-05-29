@@ -1,6 +1,8 @@
 import { memo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { VStack } from '@/shared/ui/deprecated/Stack'
+import { Card, CardTheme } from '@/shared/ui/deprecated/Card'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { ArticleDetails } from '@/entities/Article'
 import {
@@ -8,7 +10,6 @@ import {
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { Page } from '@/widgets/Page'
-import { VStack } from '@/shared/ui/Stack'
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList'
 import { ArticleDetailsComments } from '../../ui/ArticleDetailsComments/ArticleDetailsComments'
 import { articleDetailsCommentReducers } from '../../model/slices/articleDetailCommentSlice'
@@ -16,7 +17,6 @@ import cls from './ArticleDetailPage.module.scss'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import { ArticleRating } from '@/features/ArticleRating'
 import { ToggleComponentFeatures } from '@/shared/lib/features'
-import { Card, CardTheme } from '@/shared/ui/Card'
 
 interface ArticleDetailPageProps {
     className?: string
