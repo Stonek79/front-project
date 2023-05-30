@@ -6,10 +6,6 @@ interface PortalProps {
     container?: Element
 }
 
-/**
- * The component is outdated, we use the new one from the redesigned folder
- * @deprecated
- */
 export const Portal: FC<PortalProps> = (props) => {
     const { children, container = document.body } = props
 

@@ -1,0 +1,52 @@
+.popup {
+    position: relative;
+}
+
+.active {
+    background: var(--light-bg-redesigned);
+}
+
+.trigger {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    background: var(--dark-bg-redesigned);
+    position: absolute;
+    z-index: 10000;
+    border-radius: 18px;
+    border: 1px solid var(--accent-redesigned);
+    overflow: hidden;
+
+    &.topRight {
+        top: 100%;
+        right: 0;
+    }
+
+    &.topLeft {
+        top: 100%;
+        left: 0;
+    }
+
+    &.bottomRight {
+        bottom: 100%;
+        right: 0;
+    }
+
+    &.bottomLeft {
+        bottom: 100%;
+        left: 0;
+    }
+}
+
+.disabled {
+    opacity: 0.7;
+}

@@ -4,7 +4,7 @@ import { useInitialEffect } from './useInitialEffect/useInitialEffect'
 export interface UseInfiniteScrollOptions {
     callback?: () => void
     triggerRef: MutableRefObject<HTMLElement>
-    wrapperRef: MutableRefObject<HTMLElement>
+    wrapperRef?: MutableRefObject<HTMLElement>
     isLoading?: boolean
 }
 
@@ -17,7 +17,7 @@ export function useInfiniteScroll({
     const observer = useRef<IntersectionObserver | null>(null)
 
     useInitialEffect(() => {
-        const wrapperElement = wrapperRef.current
+        const wrapperElement = wrapperRef?.current || null
         const triggerElement = triggerRef.current
 
         if (callback && !isLoading) {

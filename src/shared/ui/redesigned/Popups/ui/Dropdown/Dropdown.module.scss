@@ -1,0 +1,14 @@
+.menuItem {
+    padding: 10px 25px;
+    width: 100%;
+    border: none;
+    background: var(--dark-bg-redesigned);
+    outline: none;
+    color: var(--text-redesigned);
+    cursor: pointer;
+
+    &.active {
+        background: var(--light-bg-redesigned);
+        overflow: hidden;
+    }
+}
