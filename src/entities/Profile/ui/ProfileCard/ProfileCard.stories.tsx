@@ -7,6 +7,7 @@ import { Countries } from '@/entities/Country'
 import { ProfileCard } from './ProfileCard'
 import AvatarImg from '../../../../shared/assets/avatar.jpg'
 import { Theme } from '@/shared/const/theme'
+import { FeatureFlagDecorator } from '@/shared/config/storybook/FeatureFlagDecorator/FeatureFlagDecorator'
 
 const data = {
     firstname: 'Alex',
@@ -37,6 +38,16 @@ Readonly.args = {
     isLoading: false,
     data,
 }
+
+export const ReadonlyRedesigned = Template.bind({})
+ReadonlyRedesigned.args = {
+    readonly: true,
+    isLoading: false,
+    data,
+}
+ReadonlyRedesigned.decorators = [
+    FeatureFlagDecorator({ isAppRedesigned: true }),
+]
 
 export const ReadonlyDark = Template.bind({})
 ReadonlyDark.args = {
