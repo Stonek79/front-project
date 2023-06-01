@@ -1,5 +1,5 @@
 import { Listbox } from '@headlessui/react'
-import { Fragment, memo, ReactNode } from 'react'
+import { Fragment, ReactNode, useMemo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button } from '../../../Button/Button'
 import { HStack } from '../../../../redesigned/Stack'
@@ -7,24 +7,27 @@ import cls from './ListBox.module.scss'
 import clsPopup from '../../styles/Popups.module.scss'
 import { DropdownDirection } from '../../../../../types/ui'
 import { MapDirectionClass } from '../../styles/consts'
+import { Icon } from '../../../Icon'
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg'
 
-export interface ListBoxItems {
+export interface ListBoxItem<T extends string> {
     value: string
     content: ReactNode
     disabled?: boolean
 }
 
-interface ListBoxProps {
+interface ListBoxProps<T extends string> {
+    items?: ListBoxItem<T>[]
     className?: string
-    items?: ListBoxItems[]
-    label?: string
-    value?: string
+    value?: T
     defaultValue?: string
-    onChange: (value: string) => void
+    onChange: (value: T) => void
     readonly?: boolean
     direction?: DropdownDirection
+    label?: string
 }
-export const ListBox = memo((props: ListBoxProps) => {
+
+export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
     const {
         items,
         className,
@@ -41,6 +44,11 @@ export const ListBox = memo((props: ListBoxProps) => {
         MapDirectionClass[direction],
     ])
 
+    const selectedItem = useMemo(
+        () => items?.find((item) => item.value === value),
+        [items, value],
+    )
+
     return (
         <HStack gap="4">
             {label && <span>{`${label}>`}</span>}
@@ -52,7 +60,13 @@ export const ListBox = memo((props: ListBoxProps) => {
                 onChange={onChange}
             >
                 <Listbox.Button as="div" className={clsPopup.trigger}>
-                    <Button disabled={readonly}>{value ?? defaultValue}</Button>
+                    <Button
+                        variant="filled"
+                        disabled={readonly}
+                        addonRight={<Icon Svg={ArrowIcon} />}
+                    >
+                        {selectedItem?.content ?? defaultValue}
+                    </Button>
                 </Listbox.Button>
                 <Listbox.Options className={optionsCN}>
                     {items?.map((item) => (
@@ -80,4 +94,4 @@ export const ListBox = memo((props: ListBoxProps) => {
             </Listbox>
         </HStack>
     )
-})
+}

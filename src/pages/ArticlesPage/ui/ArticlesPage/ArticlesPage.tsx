@@ -14,6 +14,10 @@ import { articlesPageReducer } from '../../models/slices/articlesPageSlice'
 import cls from './ArticlesPage.module.scss'
 import { getArticlesHasMore } from '../../models/selectors/articlesPageSelectors'
 import { ArticlesPageGreating } from '@/features/ArticlesPageGreating'
+import { ToggleComponentFeatures } from '@/shared/lib/features'
+import { StickyLayout } from '@/shared/layouts'
+import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer'
+import { FiltersContainer } from '../FiltersContainer/FiltersContainer'
 
 interface ArticlesPageProps {
     className?: string
@@ -36,17 +40,41 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         }
     }, [dispatch, hasMore])
 
+    const content = (
+        <ToggleComponentFeatures
+            feature="isAppRedesigned"
+            on={
+                <StickyLayout
+                    left={<ViewSelectorContainer />}
+                    right={<FiltersContainer />}
+                    content={
+                        <Page
+                            data-testid="ArticlesPage"
+                            onScrollEnd={onLoadNextPage}
+                            className={cn}
+                        >
+                            <ArticleInfiniteList />
+                            <ArticlesPageGreating />
+                        </Page>
+                    }
+                />
+            }
+            off={
+                <Page
+                    data-testid="ArticlesPage"
+                    onScrollEnd={onLoadNextPage}
+                    className={cn}
+                >
+                    <ArticlesPageFilters />
+                    <ArticleInfiniteList />
+                    <ArticlesPageGreating />
+                </Page>
+            }
+        />
+    )
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
-            <Page
-                data-testid="ArticlesPage"
-                onScrollEnd={onLoadNextPage}
-                className={cn}
-            >
-                <ArticlesPageFilters />
-                <ArticleInfiniteList />
-                <ArticlesPageGreating />
-            </Page>
+            {content}
         </DynamicModuleLoader>
     )
 }

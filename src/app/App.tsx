@@ -39,7 +39,7 @@ function App() {
                             content={<AppRouter />}
                             sidebar={<Sidebar />}
                             /* eslint-disable-next-line i18next/no-literal-string */
-                            toolbar={<div>sdfkjbsdljfgbldjfb</div>}
+                            toolbar={<div>fgbldjfb</div>}
                         />
                     </Suspense>
                 </div>

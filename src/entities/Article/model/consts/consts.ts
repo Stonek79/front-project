@@ -2,7 +2,7 @@ export const ArticleSortField = {
     VIEW: 'views',
     TITLE: 'title',
     CREATED: 'createdAt',
-    ALL: '',
+    ALL: 'default',
 } as const
 
 export const ArticleBlockTypes = {

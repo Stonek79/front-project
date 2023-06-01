@@ -78,6 +78,7 @@ module.exports = {
                     'feature',
                     'color',
                     'variant',
+                    'cardBorder',
                 ],
             },
         ],

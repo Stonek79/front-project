@@ -1,6 +1,5 @@
 .Card {
     padding: 15px;
-    border-radius: 12px;
 }
 
 .normal {
@@ -9,6 +8,18 @@
 
 .outline {
     border: 1px solid var(--accent-redesigned);
+}
+
+.light {
+    background: var(--light-bg-redesigned);
+}
+
+.standard {
+    border-radius: 12px;
+}
+
+.rounded {
+    border-radius: 40px;
 }
 
 .max {

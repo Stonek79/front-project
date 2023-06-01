@@ -2,8 +2,9 @@ import { HTMLAttributes, memo, ReactNode } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './Card.module.scss'
 
-export type CardVariant = 'normal' | 'outline'
+export type CardVariant = 'normal' | 'outline' | 'light'
 export type CardPaddings = '0' | '8' | '16' | '24' | '32'
+export type CardBorder = 'standard' | 'rounded'
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string
@@ -11,6 +12,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     variant?: CardVariant
     max?: boolean
     cardPaddings?: CardPaddings
+    cardBorder?: CardBorder
 }
 
 const mapPaddingsToClass: Record<CardPaddings, string> = {
@@ -28,12 +30,14 @@ export const Card = memo((props: CardProps) => {
         children,
         max,
         cardPaddings = '16',
+        cardBorder = 'standard',
         ...otherProps
     } = props
 
     const cn = classNames(cls.Card, { [cls.max]: max }, [
         className,
         cls[variant],
+        cls[cardBorder],
         cls[mapPaddingsToClass[cardPaddings]],
     ])
 

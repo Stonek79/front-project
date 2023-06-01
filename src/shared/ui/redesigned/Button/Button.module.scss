@@ -2,14 +2,34 @@
     cursor: pointer;
     color: var(--text-redesigned);
     padding: 6px 15px;
+    display: flex;
+    align-items: center;
 
     &:hover {
         color: var(--accent-redesigned);
+
+        .addonLeft svg,
+        .addonRight svg {
+            color: var(--accent-redesigned);
+        }
     }
 }
 
-.clear,
-.clearInverted {
+.withAddonLeft {
+    padding: 0 16px;
+}
+
+.withAddonRight {
+    padding: 0 16px;
+}
+
+.addonLeft,
+.addonRight {
+    display: flex;
+    color: var(--hint-redesigned);
+}
+
+.clear {
     padding: 0;
     border: none;
     background: none;
@@ -18,6 +38,13 @@
 
 .square {
     padding: 0;
+}
+
+.filled {
+    background: var(--light-bg-redesigned);
+    border: none;
+    outline: none;
+    border-radius: 34px;
 }
 
 .square.m {
