@@ -2,6 +2,7 @@ export enum AppRoutes {
     MAIN = 'main',
     ABOUT = 'about',
     PROFILE = 'profile',
+    SETTINGS = 'settings',
     ARTICLES = 'articles',
     ARTICLE_DETAILS = 'article_details',
     ARTICLE_NEW = 'article_new',
@@ -13,6 +14,7 @@ export enum AppRoutes {
 }
 
 export const getRouteMain = () => '/'
+export const getRouteSettings = () => '/settings'
 export const getRouteAbout = () => '/about'
 export const getRouteProfile = (id: string) => `/profile/${id}`
 export const getRouteArticles = () => '/articles'
