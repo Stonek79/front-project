@@ -53,8 +53,11 @@ export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
                     firstname: value || '',
                 }),
             )
+            if (profileErrors?.firstname?.length) {
+                dispatch(profileActions.resetError('firstname'))
+            }
         },
-        [dispatch],
+        [dispatch, profileErrors?.firstname],
     )
 
     const onChangeLastname = useCallback(
@@ -64,8 +67,11 @@ export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
                     lastname: value || '',
                 }),
             )
+            if (profileErrors?.lastname?.length) {
+                dispatch(profileActions.resetError('lastname'))
+            }
         },
-        [dispatch],
+        [dispatch, profileErrors?.lastname],
     )
 
     const onChangeAge = useCallback(
@@ -76,8 +82,11 @@ export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
                     age: Number(valueHandler) || '',
                 }),
             )
+            if (profileErrors?.age?.length) {
+                dispatch(profileActions.resetError('age'))
+            }
         },
-        [dispatch],
+        [dispatch, profileErrors?.age],
     )
 
     const onChangeCity = useCallback(
@@ -87,8 +96,11 @@ export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
                     city: value || '',
                 }),
             )
+            if (profileErrors?.city?.length) {
+                dispatch(profileActions.resetError('city'))
+            }
         },
-        [dispatch],
+        [dispatch, profileErrors?.city],
     )
 
     const onChangeUsername = useCallback(
@@ -98,8 +110,11 @@ export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
                     username: value || '',
                 }),
             )
+            if (profileErrors?.username?.length) {
+                dispatch(profileActions.resetError('username'))
+            }
         },
-        [dispatch],
+        [dispatch, profileErrors?.username],
     )
 
     const onChangeAvatar = useCallback(

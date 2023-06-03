@@ -1,5 +1,6 @@
 .Card {
     padding: 15px;
+    display: grid;
 }
 
 .normal {
@@ -27,21 +28,41 @@
 }
 
 .gap_0 {
-    padding: 0;
+    gap: 0;
 }
 
 .gap_8 {
-    padding: 8px;
+    gap: 8px;
 }
 
 .gap_16 {
-    padding: 16px;
+    gap: 16px;
 }
 
 .gap_24 {
-    padding: 24px;
+    gap: 24px;
 }
 
 .gap_32 {
+    gap: 32px;
+}
+
+.pad_0 {
+    padding: 0;
+}
+
+.pad_8 {
+    padding: 8px;
+}
+
+.pad_16 {
+    padding: 16px;
+}
+
+.pad_24 {
+    padding: 24px;
+}
+
+.pad_32 {
     padding: 32px;
 }

@@ -10,17 +10,23 @@ import {
 } from 'react'
 import { classNames, Mods } from '@/shared/lib/classNames/classNames'
 import cls from './Input.module.scss'
+import { HStack } from '../Stack'
+import { Text } from '../Text'
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange' | 'readOnly'
+    'value' | 'onChange' | 'readOnly' | 'size'
 >
+
+type InputSize = 's' | 'm' | 'l'
 
 interface InputProps extends HTMLInputProps {
     className?: string
     placeholder?: string
     value?: string | number
+    label?: string
     type?: string
+    size?: InputSize
     autofocus?: boolean
     onChange?: (value: string) => void
     isOpenModal?: boolean
@@ -33,6 +39,7 @@ export const Input = memo((props: InputProps) => {
     const {
         type = 'text',
         value,
+        label,
         onChange,
         className,
         placeholder,
@@ -41,6 +48,7 @@ export const Input = memo((props: InputProps) => {
         isOpenModal,
         addonLeft,
         addonRight,
+        size = 'm',
         ...otherProps
     } = props
 
@@ -53,7 +61,7 @@ export const Input = memo((props: InputProps) => {
         [cls.withAddonLeft]: Boolean(addonLeft),
         [cls.withAddonRight]: Boolean(addonRight),
     }
-    const cn = classNames(cls.Input, mode, [className])
+    const cn = classNames(cls.Input, mode, [className, cls[size]])
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value)
@@ -74,7 +82,7 @@ export const Input = memo((props: InputProps) => {
         }
     }, [autofocus, isOpenModal])
 
-    return (
+    const input = (
         <div className={cn}>
             <div className={cls.addonLeft}>{addonLeft}</div>
             <input
@@ -92,4 +100,15 @@ export const Input = memo((props: InputProps) => {
             <div className={cls.addonRight}>{addonRight}</div>
         </div>
     )
+
+    if (label) {
+        return (
+            <HStack gap="8" max>
+                <Text text={label} />
+                {input}
+            </HStack>
+        )
+    }
+
+    return input
 })

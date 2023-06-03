@@ -79,6 +79,8 @@ module.exports = {
                     'color',
                     'variant',
                     'cardBorder',
+                    'size',
+                    'wrap',
                 ],
             },
         ],

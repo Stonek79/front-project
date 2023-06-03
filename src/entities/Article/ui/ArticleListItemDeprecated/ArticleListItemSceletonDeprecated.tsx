@@ -1,17 +1,12 @@
 import React, { memo } from 'react'
-import { Card } from '@/shared/ui/deprecated/Card'
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card'
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import cls from './ArticleListItem.module.scss'
+import cls from './ArticleListItemDeprecated.module.scss'
 import { ArticleView } from '../../model/consts/consts'
-import { ArticleViewTypes } from '../../model/types/article'
+import { ArticleListItemSkeletonProps } from '../ArticleListItem/ArticleListItemSkeleton'
 
-interface ArticleListItemSkeletonProps {
-    className?: string
-    view: ArticleViewTypes
-}
-
-export const ArticleListItemSkeleton = memo(
+export const ArticleListItemSkeletonDeprecated = memo(
     (props: ArticleListItemSkeletonProps) => {
         const { className, view } = props
 
@@ -19,51 +14,59 @@ export const ArticleListItemSkeleton = memo(
 
         if (view === ArticleView.LIST) {
             return (
-                <Card className={cn}>
+                <CardDeprecated className={cn}>
                     <div className={cls.card}>
                         <div className={cls.header}>
-                            <Skeleton width={30} height={30} border="50%" />
-                            <Skeleton
+                            <SkeletonDeprecated
+                                width={30}
+                                height={30}
+                                border="50%"
+                            />
+                            <SkeletonDeprecated
                                 width={150}
                                 height={16}
                                 className={cls.username}
                             />
-                            <Skeleton
+                            <SkeletonDeprecated
                                 width={150}
                                 height={16}
                                 className={cls.date}
                             />
                         </div>
-                        <Skeleton
+                        <SkeletonDeprecated
                             width={150}
                             height={24}
                             className={cls.title}
                         />
-                        <Skeleton height={200} className={cls.img} />
+                        <SkeletonDeprecated height={200} className={cls.img} />
                         <div className={cls.footer}>
-                            <Skeleton height={36} width={200} />
+                            <SkeletonDeprecated height={36} width={200} />
                         </div>
                     </div>
-                </Card>
+                </CardDeprecated>
             )
         }
 
         return (
-            <Card className={cn}>
+            <CardDeprecated className={cn}>
                 <div className={cls.card}>
                     <div className={cls.imageWrapper}>
-                        <Skeleton
+                        <SkeletonDeprecated
                             width={200}
                             height={200}
                             className={cls.img}
                         />
                     </div>
                     <div className={cls.infoWrapper}>
-                        <Skeleton width={110} height={16} />
+                        <SkeletonDeprecated width={110} height={16} />
                     </div>
                 </div>
-                <Skeleton width={130} height={16} className={cls.title} />
-            </Card>
+                <SkeletonDeprecated
+                    width={130}
+                    height={16}
+                    className={cls.title}
+                />
+            </CardDeprecated>
         )
     },
 )

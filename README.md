@@ -110,7 +110,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Currency } from '@/entities/Currency'
 import { Countries } from '@/entities/Country'
-import { ProfileCard } from './ProfileCard'
+import { ProfileCardDeprecated } from './ProfileCardDeprecated'
 import AvatarImg from '../../../../shared/assets/avatar.jpg'
 import { Theme } from '@/shared/const/theme';
 
@@ -126,14 +126,14 @@ const data = {
 }
 
 export default {
-    title: 'entities/ProfileCard',
-    component: ProfileCard,
+    title: 'entities/ProfileCardDeprecated',
+    component: ProfileCardDeprecated,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ProfileCard>;
+} as ComponentMeta<typeof ProfileCardDeprecated>;
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
+const Template: ComponentStory<typeof ProfileCardDeprecated> = (args) => <ProfileCardDeprecated {...args} />;
 
 export const Readonly = Template.bind({});
 Readonly.args = {

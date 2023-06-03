@@ -1,7 +1,7 @@
 export const updateProfile = (firstname: string, lastname: string) => {
     cy.getByTestId('ProfilePageEditHeader-edit').click()
-    cy.getByTestId('ProfileCard-firstname-field-input').clear().type(firstname)
-    cy.getByTestId('ProfileCard-lastname-field-input').clear().type(lastname)
+    cy.getByTestId('ProfileCardDeprecated-firstname-field-input').clear().type(firstname)
+    cy.getByTestId('ProfileCardDeprecated-lastname-field-input').clear().type(lastname)
     cy.getByTestId('ProfilePageEditHeader-save').click()
 }
 

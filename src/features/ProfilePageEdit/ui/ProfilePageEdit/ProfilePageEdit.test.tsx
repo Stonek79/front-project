@@ -51,26 +51,26 @@ describe('features/ProfilePageEdit', () => {
         ).toBeInTheDocument()
 
         await userEvent.clear(
-            screen.getByTestId('ProfileCard-firstname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-firstname-field-input'),
         )
         await userEvent.clear(
-            screen.getByTestId('ProfileCard-lastname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-lastname-field-input'),
         )
 
         await userEvent.type(
-            screen.getByTestId('ProfileCard-firstname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-firstname-field-input'),
             'user',
         )
         await userEvent.type(
-            screen.getByTestId('ProfileCard-lastname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-lastname-field-input'),
             'users',
         )
 
         expect(
-            screen.getByTestId('ProfileCard-firstname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-firstname-field-input'),
         ).toHaveValue('user')
         expect(
-            screen.getByTestId('ProfileCard-lastname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-lastname-field-input'),
         ).toHaveValue('users')
 
         await userEvent.click(
@@ -78,10 +78,10 @@ describe('features/ProfilePageEdit', () => {
         )
 
         expect(
-            screen.getByTestId('ProfileCard-firstname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-firstname-field-input'),
         ).toHaveValue('admin')
         expect(
-            screen.getByTestId('ProfileCard-lastname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-lastname-field-input'),
         ).toHaveValue('admin')
     })
 
@@ -93,53 +93,65 @@ describe('features/ProfilePageEdit', () => {
         ).toBeInTheDocument()
 
         await userEvent.clear(
-            screen.getByTestId('ProfileCard-firstname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-firstname-field-input'),
         )
         await userEvent.type(
-            screen.getByTestId('ProfileCard-firstname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-firstname-field-input'),
             'X',
         )
 
         await userEvent.clear(
-            screen.getByTestId('ProfileCard-lastname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-lastname-field-input'),
         )
 
         await userEvent.type(
-            screen.getByTestId('ProfileCard-age-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-age-field-input'),
             '12345',
         )
 
         await userEvent.clear(
-            screen.getByTestId('ProfileCard-username-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-username-field-input'),
         )
         await userEvent.type(
-            screen.getByTestId('ProfileCard-username-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-username-field-input'),
             'usersdfknzsdfsdfzsdfkljgnzdjfbgjksdfbglsjkdbf',
         )
 
         await userEvent.clear(
-            screen.getByTestId('ProfileCard-city-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-city-field-input'),
         )
 
         await userEvent.click(screen.getByTestId('ProfilePageEditHeader-save'))
 
         expect(
-            screen.getByTestId('ProfileCard-firstname-field-error-paragraph'),
+            screen.getByTestId(
+                'ProfileCardDeprecated-firstname-field-error-paragraph',
+            ),
         ).toBeInTheDocument()
         expect(
-            screen.getByTestId('ProfileCard-lastname-field-error-paragraph'),
+            screen.getByTestId(
+                'ProfileCardDeprecated-lastname-field-error-paragraph',
+            ),
         ).toBeInTheDocument()
         expect(
-            screen.getByTestId('ProfileCard-lastname-field-error-paragraph'),
+            screen.getByTestId(
+                'ProfileCardDeprecated-lastname-field-error-paragraph',
+            ),
         ).toBeInTheDocument()
         expect(
-            screen.getByTestId('ProfileCard-age-field-error-paragraph'),
+            screen.getByTestId(
+                'ProfileCardDeprecated-age-field-error-paragraph',
+            ),
         ).toBeInTheDocument()
         expect(
-            screen.getByTestId('ProfileCard-city-field-error-paragraph'),
+            screen.getByTestId(
+                'ProfileCardDeprecated-city-field-error-paragraph',
+            ),
         ).toBeInTheDocument()
         expect(
-            screen.getByTestId('ProfileCard-username-field-error-paragraph'),
+            screen.getByTestId(
+                'ProfileCardDeprecated-username-field-error-paragraph',
+            ),
         ).toBeInTheDocument()
     })
 
@@ -148,7 +160,7 @@ describe('features/ProfilePageEdit', () => {
         ComponentRender(<ProfilePageEdit id="1" />, options)
         await userEvent.click(screen.getByTestId('ProfilePageEditHeader-edit'))
         await userEvent.type(
-            screen.getByTestId('ProfileCard-firstname-field-input'),
+            screen.getByTestId('ProfileCardDeprecated-firstname-field-input'),
             'user',
         )
 

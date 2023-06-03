@@ -24,6 +24,13 @@ export const profileSlice = createSlice({
             state.validateErrors = undefined
             state.form = state.data
         },
+        resetError: (state, action: PayloadAction<string>) => {
+            if (state.validateErrors)
+                state.validateErrors = {
+                    ...state.validateErrors,
+                    [action.payload]: [],
+                }
+        },
         updateProfile: (state, action: PayloadAction<Profile>) => {
             state.form = {
                 ...state.form,

@@ -1,14 +1,13 @@
 import React, { HTMLAttributeAnchorTarget, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text, TextAlign } from '@/shared/ui/deprecated/Text'
-import { classNames } from '@/shared/lib/classNames/classNames'
-import cls from './ArticleList.module.scss'
+import { Text } from '@/shared/ui/redesigned/Text'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { Article, ArticleViewTypes } from '../../model/types/article'
-import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListItemSceleton'
+import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
 import { ArticleView } from '../../model/consts/consts'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 
-// TODO add virtualization
+// TODO add virtualization?
 
 interface ArticleListProps {
     className?: string
@@ -22,9 +21,7 @@ const getSkeleton = (view: ArticleViewTypes) =>
     new Array(view === ArticleView.CARDS ? 6 : 3)
         .fill(0)
         // eslint-disable-next-line react/no-array-index-key
-        .map((_, i) => (
-            <ArticleListItemSkeleton key={i} className={cls.card} view={view} />
-        ))
+        .map((_, i) => <ArticleListItemSkeleton key={i} view={view} />)
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
@@ -35,11 +32,10 @@ export const ArticleList = memo((props: ArticleListProps) => {
         view = ArticleView.CARDS,
     } = props
     const { t } = useTranslation()
-    const cn = classNames(cls.ArticleList, {}, [className, cls[view]])
 
     const renderArticles = (article: Article) => (
         <ArticleListItem
-            className={cls.card}
+            className={className}
             key={article.id}
             article={article}
             view={view}
@@ -49,19 +45,16 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     if (!isLoading && !articles.length) {
         return (
-            <div className={cls.text}>
-                <Text
-                    title={t('Articles not found')}
-                    align={TextAlign.CENTER}
-                />
-            </div>
+            <HStack justify="center">
+                <Text title={t('Articles not found')} align="center" />
+            </HStack>
         )
     }
 
     return (
-        <div data-testid="ArticleList" className={cn}>
+        <HStack wrap="wrap" gap="32" data-testid="ArticleList">
             {articles?.length > 0 ? articles?.map(renderArticles) : null}
             {isLoading && getSkeleton(view)}
-        </div>
+        </HStack>
     )
 })
