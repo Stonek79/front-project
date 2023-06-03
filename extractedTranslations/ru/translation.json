@@ -82,5 +82,6 @@
     "Recommendations list error": "Recommendations list error",
   "Profile page error": "Profile page error",
     "Welcome to the Articles Page": "Welcome to the Articles Page",
-  "Here you can read articles for different themes": "Here you can read articles for different themes"
+  "Here you can read articles for different themes": "Here you can read articles for different themes",
+    "{{count}} views": "{{count}} views"
 }

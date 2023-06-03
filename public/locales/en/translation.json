@@ -78,6 +78,9 @@
   "serverError": "Server Error",
   "short-lng": "Ru",
   "throw error": "Throw error",
+  "{{count}} views_zero": "{{count}} views",
+  "{{count}} views_one": "{{count}} view",
+  "{{count}} views_other": "{{count}} views",
   "Главная страница": "Main page",
   "О сайте": "О сайте",
   "Обновить страницу": "Reload page",
@@ -86,5 +89,6 @@
   "Статья не найдена": "Article not found",
   "Страница не найдена": "Page not found",
   "Тестовый пример": "Test example",
-  "Язык": "Русский"
+  "Язык": "Русский",
+  "{{count}} views": "{{count}} views"
 }
