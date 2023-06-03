@@ -7,7 +7,6 @@
     opacity: 0;
     pointer-events: none;
     z-index: 100;
-    color: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,5 +34,17 @@
 .isClosing {
     .content {
         transform: scale(0.2);
+    }
+}
+
+.modalNew {
+    .content {
+        background: var(--light-bg-redesigned);
+    }
+}
+
+.modalOld {
+    .content {
+        background: var(--bg-color);
     }
 }

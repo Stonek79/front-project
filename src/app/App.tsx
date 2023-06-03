@@ -33,7 +33,7 @@ const App = memo(() => {
         <ToggleComponentFeatures
             feature="isAppRedesigned"
             on={
-                <div className={cnRedesigned}>
+                <div id="app" className={cnRedesigned}>
                     <Suspense fallback="">
                         <MainLayout
                             header={<Navbar />}
@@ -46,7 +46,7 @@ const App = memo(() => {
                 </div>
             }
             off={
-                <div className={cn}>
+                <div id="app" className={cn}>
                     <Suspense fallback="">
                         <Navbar />
                         <div className="content-page">

@@ -5,9 +5,10 @@ import {
     useAnimationLibs,
 } from '@/shared/lib/components/AnimationProvider'
 import cls from './Drawer.module.scss'
-import { Portal } from '../../redesigned/Portal/Portal'
-import { Overlay } from '../../redesigned/Overlay/Overlay'
+import { Portal } from '../Portal/Portal'
+import { Overlay } from '../Overlay/Overlay'
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme'
+import { toggleFeatures } from '@/shared/lib/features'
 
 interface DrawerProps {
     className?: string
@@ -19,15 +20,23 @@ interface DrawerProps {
 
 const height = window.innerHeight - 100
 
-/**
- * The component is outdated, we use the new one from the redesigned folder
- * @deprecated
- */
 export const DrawerContent = memo((props: DrawerProps) => {
     const { Spring, Gesture } = useAnimationLibs()
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }))
     const { theme } = useTheme()
     const { className, children, onClose, isOpen, lazy } = props
+
+    const design = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => cls.drawerNew,
+        off: () => cls.drawerOld,
+    })
+    const cn = classNames(cls.Drawer, {}, [
+        className,
+        theme,
+        design,
+        'app_drawer',
+    ])
 
     // TODO fix bug with closing drawer
     const openDrawer = useCallback(() => {
@@ -84,14 +93,8 @@ export const DrawerContent = memo((props: DrawerProps) => {
     const display = y.to((py) => (py < height ? 'block' : 'none'))
 
     return (
-        <Portal>
-            <div
-                className={classNames(cls.Drawer, {}, [
-                    className,
-                    theme,
-                    'app_drawer',
-                ])}
-            >
+        <Portal container={document.getElementById('app') ?? document.body}>
+            <div className={cn}>
                 <Overlay onClick={close} />
                 <Spring.a.div
                     className={cls.sheet}
