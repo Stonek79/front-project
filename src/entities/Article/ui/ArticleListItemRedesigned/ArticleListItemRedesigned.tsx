@@ -25,7 +25,11 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
 
     const userInfo = (
         <>
-            <Avatar size={32} src={article.user.avatar} />
+            <Avatar
+                className={cls.avatar}
+                size={32}
+                src={article.user.avatar}
+            />
             <Text bold text={article.user.username} />
         </>
     )

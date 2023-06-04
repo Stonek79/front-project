@@ -1,8 +1,10 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { Input } from '@/shared/ui/deprecated/Input'
-import { Button } from '@/shared/ui/deprecated/Button'
+import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input'
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button'
+import { Input } from '@/shared/ui/redesigned/Input'
+import { Button } from '@/shared/ui/redesigned/Button'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -20,6 +22,8 @@ import {
     // getCommentFormIsLoading,
     getCommentFormText,
 } from '../../model/selectors/addCommentFormSelectors'
+import { ToggleComponentFeatures } from '@/shared/lib/features'
+import { Card } from '@/shared/ui/redesigned/Card'
 
 export interface AddCommentFormProps {
     className?: string
@@ -49,31 +53,64 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
         onSendComment(text || '')
         onCommentChange('')
     }, [onCommentChange, onSendComment, text])
+
     const cn = classNames(cls.AddCommentForm, {}, [className])
 
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
-            <HStack
-                data-testid="AddCommentForm"
-                max
-                gap="8"
-                justify="between"
-                className={cn}
-            >
-                <Input
-                    data-testid="AddCommentForm.Input"
-                    className={cls.inputComment}
-                    placeholder={t('Enter comment text')}
-                    value={text}
-                    onChange={onCommentChange}
-                />
-                <Button
-                    data-testid="AddCommentForm.Send"
-                    onClick={onSendHandler}
-                >
-                    {t('Send')}
-                </Button>
-            </HStack>
+            <ToggleComponentFeatures
+                feature="isAppRedesigned"
+                on={
+                    <Card cardPaddings="24" cardBorder="rounded" max>
+                        <HStack
+                            data-testid="AddCommentForm"
+                            max
+                            gap="8"
+                            justify="between"
+                            className={className}
+                        >
+                            <Input
+                                data-testid="AddCommentForm.Input"
+                                className={cls.inputComment}
+                                placeholder={t('Enter comment text')}
+                                value={text}
+                                onChange={onCommentChange}
+                            />
+
+                            <Button
+                                data-testid="AddCommentForm.Send"
+                                onClick={onSendHandler}
+                            >
+                                {t('Send')}
+                            </Button>
+                        </HStack>
+                    </Card>
+                }
+                off={
+                    <HStack
+                        data-testid="AddCommentForm"
+                        max
+                        gap="8"
+                        justify="between"
+                        className={cn}
+                    >
+                        <InputDeprecated
+                            data-testid="AddCommentForm.Input"
+                            className={cls.inputComment}
+                            placeholder={t('Enter comment text')}
+                            value={text}
+                            onChange={onCommentChange}
+                        />
+
+                        <ButtonDeprecated
+                            data-testid="AddCommentForm.Send"
+                            onClick={onSendHandler}
+                        >
+                            {t('Send')}
+                        </ButtonDeprecated>
+                    </HStack>
+                }
+            />
         </DynamicModuleLoader>
     )
 })

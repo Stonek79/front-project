@@ -1,6 +1,5 @@
 import { memo } from 'react'
 import { useParams } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import {
@@ -24,7 +23,6 @@ export const reducers: ReducersList = {
 const ArticleDetailPageRedesigned = (props: ArticleDetailPageProps) => {
     const { className } = props
     const { id = '1' } = useParams<{ id: string }>()
-    const { t } = useTranslation()
 
     const cn = classNames(cls.ArticleDetailPage, {}, [className])
 

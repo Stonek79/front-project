@@ -53,7 +53,8 @@
     border-radius: 34px;
 
     &:hover {
-        border: 1px solid var(--accent-redesigned);
+        border: 2px solid var(--accent-redesigned);
+        padding: 5px 14px;
     }
 }
 

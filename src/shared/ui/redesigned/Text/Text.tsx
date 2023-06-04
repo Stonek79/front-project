@@ -3,9 +3,8 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './Text.module.scss'
 
 export type TextVariant = 'primary' | 'error' | 'accent'
-
 export type TextAlign = 'right' | 'left' | 'center'
-
+export type SelfAlign = 'start' | 'end' | 'centered' | 'auto'
 export type TextSize = 's' | 'm' | 'l'
 
 interface TextProps {
@@ -14,6 +13,7 @@ interface TextProps {
     title?: string
     variant?: TextVariant
     align?: TextAlign
+    self?: SelfAlign
     size?: TextSize
     bold?: boolean
     'data-testid'?: string
@@ -22,9 +22,9 @@ interface TextProps {
 type HeaderTagType = 'h1' | 'h2' | 'h3'
 
 const mapSizeToClass: Record<TextSize, string> = {
-    s: 'size_s',
-    m: 'size_m',
-    l: 'size_l',
+    s: cls.size_s,
+    m: cls.size_m,
+    l: cls.size_l,
 }
 
 const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
@@ -41,6 +41,7 @@ export const Text = memo((props: TextProps) => {
         variant = 'primary',
         align = 'left',
         size = 'm',
+        self = 'auto',
         bold,
         'data-testid': dataTestId = 'Test',
     } = props
@@ -53,6 +54,7 @@ export const Text = memo((props: TextProps) => {
         cls[variant],
         cls[align],
         sizeClass,
+        cls[self],
     ])
 
     return (
