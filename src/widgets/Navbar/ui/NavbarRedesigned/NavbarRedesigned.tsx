@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
+import { Button } from '@/shared/ui/redesigned/Button'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { LoginModal } from '@/features/AuthByUsername'
@@ -53,7 +53,7 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
     return (
         <header className={cn}>
             <Button
-                theme={ButtonTheme.CLEAR_INVERTED}
+                variant="outline"
                 className={cls.links}
                 onClick={onOpenModal}
             >

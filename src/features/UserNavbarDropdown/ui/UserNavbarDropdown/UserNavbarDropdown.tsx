@@ -6,7 +6,11 @@ import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { isUserAdmin, isUserManager, User } from '@/entities/User'
 import cls from './UserNavbarDropdown.module.scss'
-import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/router'
+import {
+    getRouteAdminPanel,
+    getRouteProfile,
+    getRouteSettings,
+} from '@/shared/const/router'
 import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Dropdown } from '@/shared/ui/redesigned/Popups'
 import { Avatar } from '@/shared/ui/redesigned/Avatar'
@@ -44,6 +48,10 @@ export const UserNavbarDropdown = memo((props: UserNavbarDropdownProps) => {
         {
             content: t('Profile'),
             href: getRouteProfile(authData.id),
+        },
+        {
+            content: t('Settings'),
+            href: getRouteSettings(),
         },
         {
             content: t('Exit'),

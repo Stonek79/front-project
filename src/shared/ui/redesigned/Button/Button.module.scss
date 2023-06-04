@@ -6,8 +6,6 @@
     align-items: center;
 
     &:hover {
-        color: var(--accent-redesigned);
-
         .addonLeft svg,
         .addonRight svg {
             color: var(--accent-redesigned);
@@ -34,6 +32,24 @@
     border: none;
     background: none;
     outline: none;
+
+    &.normal {
+        &:hover {
+            color: var(--accent-redesigned);
+        }
+    }
+
+    &.error {
+        &:hover {
+            color: var(--cancel-redesigned);
+        }
+    }
+
+    &.success {
+        &:hover {
+            color: var(--save-redesigned);
+        }
+    }
 }
 
 .square {
@@ -45,16 +61,64 @@
     border: none;
     outline: none;
     border-radius: 34px;
+
+    &.normal {
+        background: var(--icon-redesigned);
+
+        &:hover {
+            color: var(--accent-redesigned);
+        }
+    }
+
+    &.error {
+        background: var(--cancel-redesigned);
+
+        &:hover {
+            color: var(--cancel-redesigned);
+        }
+    }
+
+    &.success {
+        background: var(--save-redesigned);
+
+        &:hover {
+            color: var(--save-redesigned);
+        }
+    }
 }
 
 .outline {
     background: var(--light-bg-redesigned);
-    border: 1px solid var(--icon-redesigned);
     border-radius: 34px;
 
-    &:hover {
-        border: 2px solid var(--accent-redesigned);
-        padding: 5px 14px;
+    &.normal {
+        border: 1px solid var(--icon-redesigned);
+
+        &:hover {
+            border: 2px solid var(--accent-redesigned);
+            padding: 5px 14px;
+            color: var(--accent-redesigned);
+        }
+    }
+
+    &.error {
+        border: 1px solid var(--cancel-redesigned);
+
+        &:hover {
+            border: 2px solid var(--cancel-redesigned);
+            padding: 5px 14px;
+            color: var(--cancel-redesigned);
+        }
+    }
+
+    &.success {
+        border: 1px solid var(--save-redesigned);
+
+        &:hover {
+            border: 2px solid var(--save-redesigned);
+            padding: 5px 14px;
+            color: var(--save-redesigned);
+        }
     }
 }
 
@@ -94,4 +158,20 @@
 
 .fullWidth {
     width: 100%;
+}
+
+.right {
+    margin-left: auto;
+}
+
+.normal {
+    color: var(--text-redesigned);
+}
+
+.success {
+    color: var(--text-redesigned);
+}
+
+.error {
+    color: var(--text-redesigned);
 }

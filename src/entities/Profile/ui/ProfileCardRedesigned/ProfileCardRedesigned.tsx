@@ -112,7 +112,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                     <Avatar size={128} src={data.avatar} alt={t('Avatar')} />
                 </HStack>
             )}
-            <HStack gap="24" max>
+            <HStack align="start" gap="24" max>
                 <VStack gap="16" max>
                     <Input
                         value={data?.firstname}

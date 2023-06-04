@@ -1,9 +1,19 @@
 import React, { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
-import { Text, TextSize, TextTheme } from '@/shared/ui/deprecated/Text'
-import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink'
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button'
+import {
+    Text as TextDeprecated,
+    TextSize,
+    TextTheme,
+} from '@/shared/ui/deprecated/Text'
+import {
+    AppLink as AppLinkDeprecated,
+    AppLinkTheme,
+} from '@/shared/ui/deprecated/AppLink'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { getUserAuthData, userActions } from '@/entities/User'
 import { LoginModal } from '@/features/AuthByUsername'
@@ -42,18 +52,18 @@ export const NavbarOriginal = memo((props: NavbarProps) => {
     if (authData) {
         return (
             <header className={cn}>
-                <Text
+                <TextDeprecated
                     theme={TextTheme.INVERTED}
                     size={TextSize.L}
                     title={t('StoneK 79')}
                     className={cls.textLink}
                 />
-                <AppLink
+                <AppLinkDeprecated
                     theme={AppLinkTheme.SECONDARY}
                     to={getRouteArticleNew()}
                 >
                     {t('Add article')}
-                </AppLink>
+                </AppLinkDeprecated>
                 <HStack gap="16" className={cls.actions}>
                     <NotificationButton />
                     <UserNavbarDropdown
@@ -67,13 +77,13 @@ export const NavbarOriginal = memo((props: NavbarProps) => {
 
     return (
         <header className={cn}>
-            <Button
+            <ButtonDeprecated
                 theme={ButtonTheme.CLEAR_INVERTED}
                 className={cls.links}
                 onClick={onOpenModal}
             >
                 {t('logIn')}
-            </Button>
+            </ButtonDeprecated>
 
             {isOpen && <LoginModal isOpen={isOpen} onClose={onCloseModal} />}
         </header>

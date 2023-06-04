@@ -69,7 +69,7 @@ export const RatingCardRedesigned = memo((props: RatingCardProps) => {
             data-testid="RatingCard"
             variant="normal"
             cardPaddings="24"
-            cardBorder="rounded"
+            cardBorder="standard"
             className={cn}
             max
         >

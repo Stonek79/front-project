@@ -50,7 +50,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
         <ToggleComponentFeatures
             feature="isAppRedesigned"
             on={
-                <Card cardPaddings="24" cardBorder="rounded" max>
+                <Card cardPaddings="24" cardBorder="standard" max>
                     <HStack
                         data-testid="CommentCard.Content"
                         gap="8"

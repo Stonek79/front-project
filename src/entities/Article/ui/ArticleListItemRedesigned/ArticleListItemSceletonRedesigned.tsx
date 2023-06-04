@@ -40,7 +40,7 @@ export const ArticleListItemSkeletonRedesigned = memo(
         }
 
         return (
-            <Card className={cn} cardBorder="rounded">
+            <Card className={cn} cardBorder="standard">
                 <Skeleton className={cls.img} />
                 <VStack className={cls.info} gap="4" max>
                     <Skeleton height={100} />
