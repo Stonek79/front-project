@@ -3,7 +3,7 @@ import './styles/index.scss'
 import { useSelector } from 'react-redux'
 import { Navbar } from '@/widgets/Navbar'
 import { Sidebar } from '@/widgets/Sidebar'
-import { getUserInitData, initAuthData } from '@/entities/User'
+import { getUserAuthData, getUserInitData, initAuthData } from '@/entities/User'
 import { AppRouter } from './providers/router'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { PageLoader } from '@/widgets/PageLoader'
@@ -17,13 +17,14 @@ const App = memo(() => {
     const { theme } = useTheme()
     const dispatch = useAppDispatch()
     const inited = useSelector(getUserInitData)
+    useSelector(getUserAuthData)
 
     const cn = classNames('app', {}, [theme])
     const cnRedesigned = classNames('app-redesigned', {}, [theme])
 
     useEffect(() => {
-        dispatch(initAuthData())
-    }, [dispatch])
+        if (!inited) dispatch(initAuthData())
+    }, [dispatch, inited])
 
     if (!inited) {
         return <PageLoader />

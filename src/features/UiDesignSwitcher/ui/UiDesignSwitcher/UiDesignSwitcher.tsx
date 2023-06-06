@@ -2,7 +2,12 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { ListBox } from '@/shared/ui/redesigned/Popups'
-import { getFeatureFlags, UpdateFeatureFlags } from '@/shared/lib/features'
+import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups'
+import {
+    getFeatureFlags,
+    ToggleComponentFeatures,
+    UpdateFeatureFlags,
+} from '@/shared/lib/features'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { getUserAuthData } from '@/entities/User'
 
@@ -41,13 +46,28 @@ export const UiDesignSwitcher = memo((props: UiDesignSwitcherProps) => {
     }
 
     return (
-        <ListBox
-            items={items}
-            label={`${t('Design switcher')}:`}
-            value={isAppRedesigned ? 'new' : 'old'}
-            className={className}
-            onChange={onChange}
-            direction="top right"
+        <ToggleComponentFeatures
+            feature="isAppRedesigned"
+            on={
+                <ListBox
+                    items={items}
+                    label={`${t('Design switcher')}:`}
+                    value={isAppRedesigned ? 'new' : 'old'}
+                    className={className}
+                    onChange={onChange}
+                    direction="top right"
+                />
+            }
+            off={
+                <ListBoxDeprecated
+                    items={items}
+                    label={`${t('Design switcher')}:`}
+                    value={isAppRedesigned ? 'new' : 'old'}
+                    className={className}
+                    onChange={onChange}
+                    direction="top right"
+                />
+            }
         />
     )
 })
