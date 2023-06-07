@@ -11,6 +11,12 @@
     opacity: 1;
 }
 
+.icon {
+    &:hover {
+        color: var(--accent-redesigned);
+    }
+}
+
 .collapsed {
     padding: 0;
     justify-content: center;

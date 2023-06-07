@@ -43,7 +43,10 @@ export const ArticleListItemSkeletonRedesigned = memo(
             <Card className={cn} cardBorder="standard">
                 <Skeleton className={cls.img} />
                 <VStack className={cls.info} gap="4" max>
-                    <Skeleton height={100} />
+                    <Skeleton height={16} />
+                    <Skeleton height={16} />
+                    <Skeleton height={16} width="90%" />
+                    <Skeleton height={16} width="80%" />
                 </VStack>
                 <VStack className={cls.info} gap="4">
                     <HStack justify="between" max>

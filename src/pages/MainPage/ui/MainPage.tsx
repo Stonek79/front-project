@@ -5,6 +5,7 @@ import { Page } from '@/widgets/Page'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { VStack } from '@/shared/ui/redesigned/Stack'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 
 const MainPage = () => {
     const { t } = useTranslation()
@@ -42,7 +43,11 @@ const MainPage = () => {
             <VStack align="center" gap="8" max>
                 {t('Главная страница')}
                 <Card cardBorder="rounded" cardPaddings="16">
-                    <AppImage src={img} />
+                    {img ? (
+                        <AppImage src={img} />
+                    ) : (
+                        <Skeleton width={500} height={700} />
+                    )}
                 </Card>
             </VStack>
         </Page>

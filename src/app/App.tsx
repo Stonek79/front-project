@@ -10,13 +10,16 @@ import { PageLoader } from '@/widgets/PageLoader'
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { ToggleComponentFeatures } from '@/shared/lib/features'
-import { MainLayout } from '@/shared/layouts'
+import { AppLoaderLayout, MainLayout } from '@/shared/layouts'
 import { withTheme } from './providers/ThemeProvider/ui/withTheme'
+import { useAppToolbar } from './lib/useAppToolbar'
 
 const App = memo(() => {
     const { theme } = useTheme()
     const dispatch = useAppDispatch()
     const inited = useSelector(getUserInitData)
+    const toolbar = useAppToolbar()
+
     useSelector(getUserAuthData)
 
     const cn = classNames('app', {}, [theme])
@@ -27,7 +30,21 @@ const App = memo(() => {
     }, [dispatch, inited])
 
     if (!inited) {
-        return <PageLoader />
+        return (
+            <ToggleComponentFeatures
+                feature="isAppRedesigned"
+                on={
+                    <div id="app" className={cnRedesigned}>
+                        <AppLoaderLayout />
+                    </div>
+                }
+                off={
+                    <div id="app" className={cn}>
+                        <PageLoader />
+                    </div>
+                }
+            />
+        )
     }
 
     return (
@@ -41,7 +58,7 @@ const App = memo(() => {
                             content={<AppRouter />}
                             sidebar={<Sidebar />}
                             /* eslint-disable-next-line i18next/no-literal-string */
-                            toolbar={<div>fgbldjfb</div>}
+                            toolbar={toolbar}
                         />
                     </Suspense>
                 </div>
