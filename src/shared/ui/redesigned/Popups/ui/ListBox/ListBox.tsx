@@ -44,10 +44,11 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
         MapDirectionClass[direction],
     ])
 
-    const selectedItem = useMemo(
-        () => items?.find((item) => item.value === value),
-        [items, value],
-    )
+    const selectedItem = useMemo(() => {
+        const result = items?.find((item) => item.value === value)
+
+        return result?.content
+    }, [items, value])
 
     return (
         <HStack gap="4">
@@ -65,7 +66,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                         disabled={readonly}
                         addonRight={<Icon Svg={ArrowIcon} />}
                     >
-                        {selectedItem?.content ?? defaultValue}
+                        <div>{selectedItem ?? defaultValue}</div>
                     </Button>
                 </Listbox.Button>
                 <Listbox.Options className={optionsCN}>

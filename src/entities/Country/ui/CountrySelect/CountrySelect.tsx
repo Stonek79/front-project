@@ -38,6 +38,7 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
         items: options,
         direction: 'bottom right' as const,
     }
+
     return (
         <ToggleComponentFeatures
             feature="isAppRedesigned"
