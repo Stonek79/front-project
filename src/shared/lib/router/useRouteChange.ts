@@ -14,6 +14,5 @@ export const useRouteChange = () => {
         })
     }, [location.pathname])
 
-    console.log(appRoute)
     return appRoute
 }

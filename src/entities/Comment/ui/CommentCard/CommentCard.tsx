@@ -36,13 +36,31 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
     if (isLoading || !comment) {
         return (
-            <VStack max className={cn}>
-                <HStack>
-                    <Skeleton height={30} width={30} border="50%" />
-                    <Skeleton height={20} width={90} />
-                </HStack>
-                <Skeleton height={60} width="100%" />
-            </VStack>
+            <ToggleComponentFeatures
+                feature="isAppRedesigned"
+                on={
+                    <HStack gap="16" max className={cn}>
+                        <VStack align="center" gap="8">
+                            <Skeleton height={30} width={30} border="50%" />
+                            <Skeleton height={20} width={60} />
+                        </VStack>
+                        <VStack gap="8" max>
+                            <Skeleton height={16} width="100%" />
+                            <Skeleton height={16} width="90%" />
+                            <Skeleton height={16} width="85%" />
+                        </VStack>
+                    </HStack>
+                }
+                off={
+                    <VStack max className={cn}>
+                        <HStack>
+                            <Skeleton height={30} width={30} border="50%" />
+                            <Skeleton height={20} width={90} />
+                        </HStack>
+                        <Skeleton height={60} width="100%" />
+                    </VStack>
+                }
+            />
         )
     }
 

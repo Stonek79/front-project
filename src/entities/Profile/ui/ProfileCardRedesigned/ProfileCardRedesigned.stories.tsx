@@ -21,11 +21,9 @@ const data = {
 }
 
 export default {
-    title: 'entities/ProfileCardDeprecated',
+    title: 'entities/ProfileCardRedesigned',
     component: ProfileCardRedesigned,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
+    decorators: [FeatureFlagDecorator({ isAppRedesigned: true })],
 } as ComponentMeta<typeof ProfileCardRedesigned>
 
 const Template: ComponentStory<typeof ProfileCardRedesigned> = (args) => (
@@ -38,16 +36,6 @@ Readonly.args = {
     isLoading: false,
     data,
 }
-
-export const ReadonlyRedesigned = Template.bind({})
-ReadonlyRedesigned.args = {
-    readonly: true,
-    isLoading: false,
-    data,
-}
-ReadonlyRedesigned.decorators = [
-    FeatureFlagDecorator({ isAppRedesigned: true }),
-]
 
 export const ReadonlyDark = Template.bind({})
 ReadonlyDark.args = {

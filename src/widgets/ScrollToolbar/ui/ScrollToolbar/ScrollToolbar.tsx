@@ -15,7 +15,7 @@ export const ScrollToolbar = memo((props: ScrollToolbarProps) => {
 
     return (
         <VStack justify="center" align="center" max className={cn}>
-            <ScrollToTopButton />
+            <ScrollToTopButton className={cls.btnColor} />
         </VStack>
     )
 })

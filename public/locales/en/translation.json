@@ -82,6 +82,7 @@
   "{{count}} views": "{{count}} views",
   "{{count}} views_one": "{{count}} view",
   "{{count}} views_other": "{{count}} views",
+  "{{count}} views_plural": "{{count}} views_plural",
   "{{count}} views_zero": "{{count}} views",
   "Главная страница": "Main page",
   "О сайте": "О сайте",

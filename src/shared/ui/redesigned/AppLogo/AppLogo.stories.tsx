@@ -5,7 +5,7 @@ import { AppLogo } from './AppLogo'
 import { Theme } from '@/shared/const/theme'
 
 export default {
-    title: '/AppLogo',
+    title: 'shared/AppLogo',
     component: AppLogo,
     argTypes: {
         backgroundColor: { control: 'color' },

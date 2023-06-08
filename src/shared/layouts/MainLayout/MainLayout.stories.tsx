@@ -5,7 +5,7 @@ import { MainLayout } from './MainLayout'
 import { Theme } from '@/shared/const/theme'
 
 export default {
-    title: '/MainLayout',
+    title: 'shared/MainLayout',
     component: MainLayout,
     argTypes: {
         backgroundColor: { control: 'color' },
