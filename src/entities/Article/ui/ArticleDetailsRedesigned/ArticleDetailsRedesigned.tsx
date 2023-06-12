@@ -50,7 +50,11 @@ export const ArticleDetailsRedesigned = memo((props: ArticleDetailsProps) => {
         switch (block.type) {
             case ArticleBlockTypes.CODE:
                 return (
-                    <ArticleCodeBlockComponent key={block.id} block={block} />
+                    <ArticleCodeBlockComponent
+                        textareaId={`${block.id + block.code.length}details`}
+                        key={block.id}
+                        block={block}
+                    />
                 )
             case ArticleBlockTypes.IMAGE:
                 return (
@@ -119,6 +123,7 @@ export const ArticleDetailsRedesigned = memo((props: ArticleDetailsProps) => {
             </VStack>
         )
     }
+
     return (
         <DynamicModuleLoader
             reducers={articleDetailsReducers}

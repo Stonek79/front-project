@@ -1,0 +1,26 @@
+.input {
+    border: 1px solid var(--icon-redesigned);
+    border-radius: 16px;
+    outline: none;
+    background: none;
+    overflow-y: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    color: var(--text-redesigned);
+    padding: 10px;
+    display: block;
+    min-width: 500px;
+    margin: 0 0 5px;
+
+    &::placeholder {
+        color: var(--hint-redesigned);
+    }
+}
+
+.focused {
+    border: 2px solid var(--accent-redesigned);
+}
+
+.wrap {
+    white-space: nowrap;
+}

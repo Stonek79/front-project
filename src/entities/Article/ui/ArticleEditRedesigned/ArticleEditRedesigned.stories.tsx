@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Article } from '../../model/types/article'
-import { ArticleEdit } from './ArticleEdit'
+import { ArticleEditRedesigned } from './ArticleEditRedesigned'
 import { ArticleTypes, ArticleBlockTypes } from '../../model/consts/consts'
 import { Theme } from '@/shared/const/theme'
 
@@ -82,15 +82,15 @@ const data: Article = {
 }
 
 export default {
-    title: 'entities/ArticleEdit',
-    component: ArticleEdit,
+    title: 'entities/ArticleEditRedesigned',
+    component: ArticleEditRedesigned,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ArticleEdit>
+} as ComponentMeta<typeof ArticleEditRedesigned>
 
-const Template: ComponentStory<typeof ArticleEdit> = (args) => (
-    <ArticleEdit {...args} />
+const Template: ComponentStory<typeof ArticleEditRedesigned> = (args) => (
+    <ArticleEditRedesigned {...args} />
 )
 
 export const Normal = Template.bind({})

@@ -9,6 +9,7 @@ export const ArticleBlockTypes = {
     CODE: 'CODE',
     IMAGE: 'IMAGE',
     TEXT: 'TEXT',
+    HEADER: 'HEADER',
 } as const
 
 export const ArticleTypes = {

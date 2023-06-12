@@ -33,6 +33,8 @@ interface InputProps extends HTMLInputProps {
     readonly?: boolean
     addonLeft?: ReactElement
     addonRight?: ReactElement
+    wrap?: boolean
+    labelBold?: boolean
 }
 
 export const Input = memo((props: InputProps) => {
@@ -49,6 +51,8 @@ export const Input = memo((props: InputProps) => {
         addonLeft,
         addonRight,
         size = 'm',
+        wrap = false,
+        labelBold = false,
         ...otherProps
     } = props
 
@@ -104,7 +108,11 @@ export const Input = memo((props: InputProps) => {
     if (label) {
         return (
             <HStack gap="8" max>
-                <Text text={label} />
+                <Text
+                    className={wrap ? cls.wrap : ''}
+                    bold={labelBold}
+                    text={label}
+                />
                 {input}
             </HStack>
         )

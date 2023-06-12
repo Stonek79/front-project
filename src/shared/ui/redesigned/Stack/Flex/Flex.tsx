@@ -76,8 +76,10 @@ export const Flex = (props: FlexProps) => {
         [cls.max]: max,
     }
 
+    const cn = classNames(cls.Flex, mods, classes)
+
     return (
-        <div className={classNames(cls.Flex, mods, classes)} {...otherProps}>
+        <div className={cn} {...otherProps}>
             {children}
         </div>
     )

@@ -82,6 +82,7 @@ module.exports = {
                     'size',
                     'wrap',
                     'self',
+                    'text',
                 ],
             },
         ],

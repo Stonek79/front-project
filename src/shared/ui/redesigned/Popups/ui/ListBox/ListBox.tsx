@@ -60,14 +60,12 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
                 value={value}
                 onChange={onChange}
             >
-                <Listbox.Button as="div" className={clsPopup.trigger}>
-                    <Button
-                        variant="filled"
-                        disabled={readonly}
-                        addonRight={<Icon Svg={ArrowIcon} />}
-                    >
-                        <div>{selectedItem ?? defaultValue}</div>
-                    </Button>
+                <Listbox.Button
+                    as={Button}
+                    variant="filled"
+                    addonRight={<Icon Svg={ArrowIcon} />}
+                >
+                    <div>{selectedItem ?? defaultValue}</div>
                 </Listbox.Button>
                 <Listbox.Options className={optionsCN}>
                     {items?.map((item) => (

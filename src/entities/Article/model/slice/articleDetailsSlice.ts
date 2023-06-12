@@ -4,6 +4,7 @@ import { ArticleDetailsSchema } from '../types/articleDetailsSchema'
 import { fetchArticleById } from '../../model/services/fetchArticleById'
 
 const initialState: ArticleDetailsSchema = {
+    form: undefined,
     data: undefined,
     error: undefined,
     isLoading: false,
@@ -12,7 +13,17 @@ const initialState: ArticleDetailsSchema = {
 export const articleDetailsSlice = createSlice({
     name: 'article',
     initialState,
-    reducers: {},
+    reducers: {
+        cancelEdit: (state) => {
+            state.form = state.data
+        },
+        updateArticle: (state, action: PayloadAction<Article>) => {
+            state.form = {
+                ...state.form,
+                ...action.payload,
+            }
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchArticleById.pending, (state) => {
@@ -24,6 +35,7 @@ export const articleDetailsSlice = createSlice({
                 (state, action: PayloadAction<Article>) => {
                     state.isLoading = false
                     state.data = action.payload
+                    state.form = action.payload
                 },
             )
             .addCase(fetchArticleById.rejected, (state, action) => {

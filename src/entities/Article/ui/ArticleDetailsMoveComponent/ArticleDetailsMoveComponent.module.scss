@@ -1,0 +1,41 @@
+.ArticleDetailsMoveComponent {
+    position: relative;
+    width: 100%;
+}
+
+.btn {
+    position: absolute;
+    opacity: 0.3;
+    background: var(--light-bg-redesigned);
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    z-index: 100;
+
+    &:hover {
+        opacity: 1;
+        border: 2px solid var(--icon-redesigned);
+    }
+}
+
+.upBtn {
+    transform: rotate(180deg);
+}
+
+.downBtn {
+    bottom: 0;
+}
+
+.deleteBtn {
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    border: none;
+
+    &:hover {
+        opacity: 1;
+        border: 2px solid var(--cancel-redesigned);
+    }
+}

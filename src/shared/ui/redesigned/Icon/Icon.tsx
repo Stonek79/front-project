@@ -32,13 +32,17 @@ export const Icon = memo((props: IconProps) => {
         ...otherProps
     } = props
 
-    const cn = classNames(cls.Icon, { [cls.inactive]: active }, [className])
+    const cn = classNames(cls.Icon, { [cls.inactive]: active }, [
+        cls.clear,
+        className,
+    ])
+    const iconCn = classNames(cls.Icon, { [cls.inactive]: active }, [className])
 
     const svg = (
         <Svg
             height={height}
             width={width}
-            className={cn}
+            className={iconCn}
             {...otherProps}
             onClick={undefined}
         />
@@ -47,7 +51,7 @@ export const Icon = memo((props: IconProps) => {
     if (clickable) {
         return (
             <button
-                className={cls.clear}
+                className={cn}
                 onClick={props.onClick}
                 type="button"
                 style={{ height, width }}

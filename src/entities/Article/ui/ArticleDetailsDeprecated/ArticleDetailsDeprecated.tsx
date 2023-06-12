@@ -57,7 +57,11 @@ export const ArticleDetailsDeprecated = memo((props: ArticleDetailsProps) => {
         switch (block.type) {
             case ArticleBlockTypes.CODE:
                 return (
-                    <ArticleCodeBlockComponent key={block.id} block={block} />
+                    <ArticleCodeBlockComponent
+                        textareaId={`${block.id + block.code.length}deprecated`}
+                        key={block.id}
+                        block={block}
+                    />
                 )
             case ArticleBlockTypes.IMAGE:
                 return (

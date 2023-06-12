@@ -16,15 +16,10 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     const { className } = props
     const { id = '1' } = useParams<{ id: string }>()
     const { t } = useTranslation()
+    const cn = classNames(cls.ArticleDetailsPage, {}, [className])
 
     if (!id) {
-        return (
-            <Page
-                className={classNames(cls.ArticleDetailsPage, {}, [className])}
-            >
-                {t('Статья не найдена')}
-            </Page>
-        )
+        return <Page className={cn}>{t('Статья не найдена')}</Page>
     }
 
     return (

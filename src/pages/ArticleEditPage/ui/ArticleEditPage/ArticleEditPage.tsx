@@ -1,9 +1,6 @@
-import { useParams } from 'react-router-dom'
-import { Text } from '@/shared/ui/deprecated/Text'
-import { classNames } from '@/shared/lib/classNames/classNames'
-import { Page } from '@/widgets/Page'
-import { ArticleEdit } from '@/entities/Article'
-import cls from './ArticleEditPage.module.scss'
+import { ToggleComponentFeatures } from '@/shared/lib/features'
+import { ArticleEditPageRedesignedAsync } from '../ArticleEditPageRedesigned/ArticleEditPageRedesigned.async'
+import { ArticleEditPageDeprecatedAsync } from '../ArticleEditPageDeprecated/ArticleEditPageDeprecated.async'
 
 interface ArticleEditPageProps {
     className?: string
@@ -11,15 +8,13 @@ interface ArticleEditPageProps {
 
 const ArticleEditPage = (props: ArticleEditPageProps) => {
     const { className } = props
-    const { id } = useParams<{ id: string }>()
-    const cn = classNames(cls.ArticleEditPage, {}, [className])
 
     return (
-        <Page className={cn}>
-            {/* TODO add editor widget */}
-            {/* eslint-disable-next-line i18next/no-literal-string */}
-            {!id ? <Text text="New article" /> : <ArticleEdit />}
-        </Page>
+        <ToggleComponentFeatures
+            feature="isAppRedesigned"
+            on={<ArticleEditPageRedesignedAsync className={className} />}
+            off={<ArticleEditPageDeprecatedAsync className={className} />}
+        />
     )
 }
 
