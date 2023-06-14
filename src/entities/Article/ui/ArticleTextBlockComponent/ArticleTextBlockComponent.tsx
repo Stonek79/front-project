@@ -101,20 +101,28 @@ export const ArticleTextBlockComponent = memo(
                                         }
                                     />
                                 ) : (
-                                    <Text
-                                        key={block.paragraphs.join('/n')}
-                                        text={block.paragraphs.join('/n')}
-                                        className={cls.paragraph}
-                                    />
+                                    <>
+                                        {block.paragraphs.map((paragraph) => (
+                                            <Text
+                                                key={paragraph.length}
+                                                text={paragraph}
+                                                className={cls.paragraph}
+                                            />
+                                        ))}
+                                    </>
                                 )}
                             </VStack>
                         }
                         off={
-                            <TextDeprecated
-                                key={block.paragraphs.join('/n')}
-                                text={block.paragraphs.join('/n')}
-                                className={cls.paragraph}
-                            />
+                            <>
+                                {block.paragraphs.map((paragraph) => (
+                                    <TextDeprecated
+                                        key={paragraph.length}
+                                        text={paragraph}
+                                        className={cls.paragraph}
+                                    />
+                                ))}
+                            </>
                         }
                     />
                 )}

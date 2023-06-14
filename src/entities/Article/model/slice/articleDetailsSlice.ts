@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Article } from '../types/article'
 import { ArticleDetailsSchema } from '../types/articleDetailsSchema'
 import { fetchArticleById } from '../../model/services/fetchArticleById'
+import { editArticle } from '../services/editArticle'
 
 const initialState: ArticleDetailsSchema = {
     form: undefined,
@@ -39,6 +40,23 @@ export const articleDetailsSlice = createSlice({
                 },
             )
             .addCase(fetchArticleById.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
+        builder
+            .addCase(editArticle.pending, (state) => {
+                state.error = undefined
+                state.isLoading = true
+            })
+            .addCase(
+                editArticle.fulfilled,
+                (state, action: PayloadAction<Article>) => {
+                    state.isLoading = false
+                    state.data = action.payload
+                    state.form = action.payload
+                },
+            )
+            .addCase(editArticle.rejected, (state, action) => {
                 state.isLoading = false
                 state.error = action.payload
             })

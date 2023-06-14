@@ -3,6 +3,8 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './Icon.module.scss'
 
 type SvgProps = Omit<SVGProps<SVGSVGElement>, 'onClick'>
+// type OnClick = (() => void) | ((value: <T>) => T)
+type OnClick<T> = (args?: T) => T
 
 interface IconBaseProps extends SvgProps {
     className?: string
@@ -12,7 +14,7 @@ interface IconBaseProps extends SvgProps {
 
 interface IconClickEnableProps extends IconBaseProps {
     clickable: true
-    onClick: () => void
+    onClick: OnClick<any>
 }
 
 interface IconClickDisableProps extends IconBaseProps {

@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { memo } from 'react'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Page } from '@/widgets/Page'
@@ -26,4 +27,4 @@ const ArticleEditPageRedesigned = (props: ArticleEditPageProps) => {
     )
 }
 
-export default ArticleEditPageRedesigned
+export default memo(ArticleEditPageRedesigned)

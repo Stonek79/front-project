@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleEditAdditionBlock.module.scss'
@@ -6,33 +6,36 @@ import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { Avatar } from '@/shared/ui/redesigned/Avatar'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { Button } from '@/shared/ui/redesigned/Button'
-import { User } from '@/entities/User'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { Article, articleDetailsActions, editArticle } from '@/entities/Article'
 
 interface ArticleEditAdditionBlockProps {
     className?: string
-    author: User
-    createdAt: string
-    views: number
+    article: Article
 }
 
 export const ArticleEditAdditionBlock = memo(
     (props: ArticleEditAdditionBlockProps) => {
-        const { className, author, views, createdAt } = props
+        const { className, article } = props
         const { t } = useTranslation()
+        const dispatch = useAppDispatch()
 
         const cn = classNames(cls.ArticleEditAdditionInfo, {}, [className])
+        const { views, createdAt, user, id } = article
 
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        const onCancelEdit = () => {}
+        const onCancelEdit = useCallback(() => {
+            dispatch(articleDetailsActions.cancelEdit())
+        }, [dispatch])
 
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        const onSave = () => {}
+        const onSave = useCallback(() => {
+            if (article) dispatch(editArticle(article))
+        }, [article, dispatch])
 
         return (
             <VStack gap="32" className={cn}>
                 <HStack gap="8">
-                    <Avatar src={author.avatar} size={32} />
-                    <Text text={author.username} bold />
+                    <Avatar src={user.avatar} size={32} />
+                    <Text text={user.username} bold />
                     <Text text={createdAt} />
                 </HStack>
                 <Button variant="outline" color="error" onClick={onCancelEdit}>
