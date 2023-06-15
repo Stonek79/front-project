@@ -85,7 +85,13 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
         skeleton
     ) : (
         <VStack max gap="16">
-            <Card cardBorder="none" cardPaddings="24" variant="light" max>
+            <Card
+                cardBorder="none"
+                gap="8"
+                cardPaddings="24"
+                variant="light"
+                max
+            >
                 <VStack gap="16" max>
                     <Text title={articleData?.title} bold size="l" />
                     <Input
@@ -135,7 +141,7 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
     return (
         <DynamicModuleLoader
             reducers={articleDetailsReducers}
-            removeAfterUnmount={false}
+            removeAfterUnmount={Boolean(false)}
         >
             <Card max>{content}</Card>
         </DynamicModuleLoader>

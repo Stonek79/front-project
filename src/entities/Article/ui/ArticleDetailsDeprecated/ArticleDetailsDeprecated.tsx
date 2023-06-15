@@ -1,6 +1,7 @@
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
+import { nanoid } from 'nanoid'
 import {
     Text as TextDeprecated,
     TextAlign,
@@ -58,7 +59,7 @@ export const ArticleDetailsDeprecated = memo((props: ArticleDetailsProps) => {
             case ArticleBlockTypes.CODE:
                 return (
                     <ArticleCodeBlockComponent
-                        textareaId={`${block.id + block.code.length}deprecated`}
+                        textareaId={nanoid(10)}
                         key={block.id}
                         block={block}
                     />

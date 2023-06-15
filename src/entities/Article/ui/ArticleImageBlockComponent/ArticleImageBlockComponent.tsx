@@ -8,6 +8,7 @@ import cls from './ArticleImageBlockComponent.module.scss'
 import { ArticleImageBlock } from '../../model/types/article'
 import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Input } from '@/shared/ui/redesigned/Input'
+import { AppImage } from '@/shared/ui/redesigned/AppImage'
 
 interface ArticleImageBlockComponentProps {
     className?: string
@@ -32,7 +33,11 @@ export const ArticleImageBlockComponent = memo(
 
         return (
             <VStack max gap="16" align="center" className={cn}>
-                <img src={block.src} alt={block.title} className={cls.img} />
+                <AppImage
+                    src={block.src}
+                    alt={block.title ?? 'IMAGE'}
+                    className={cls.img}
+                />
                 {block.title && (
                     <ToggleComponentFeatures
                         feature="isAppRedesigned"

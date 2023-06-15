@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string */
 import { memo, ReactNode } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleDetailsMoveComponent.module.scss'
@@ -57,6 +58,19 @@ export const ArticleDetailsMoveComponent = memo(
             )
         }
 
+        const handleDeleteBlock = () => {
+            const withRemovedBlock = blocks.filter(
+                (item) => item.id !== block.id,
+            )
+
+            dispatch(
+                articleDetailsActions.updateArticle({
+                    ...articleData,
+                    blocks: withRemovedBlock,
+                }),
+            )
+        }
+
         return (
             <div className={cn}>
                 <div className={upBtnCn}>
@@ -68,8 +82,11 @@ export const ArticleDetailsMoveComponent = memo(
                         onClick={handleMoveUp}
                     />
                 </div>
-                {/* eslint-disable-next-line i18next/no-literal-string */}
-                <button type="button" className={deleteBtnCn}>
+                <button
+                    type="button"
+                    onClick={handleDeleteBlock}
+                    className={deleteBtnCn}
+                >
                     ❌
                 </button>
                 {children}

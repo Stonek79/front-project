@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import { nanoid } from 'nanoid'
 import {
     Article,
     ArticleBlock,
@@ -123,91 +124,80 @@ export const ArticleBlocksComponent = memo(
             switch (block.type) {
                 case ArticleBlockTypes.CODE:
                     return (
-                        <ArticleDetailsMoveComponent
-                            key={block.id}
-                            articleData={articleData}
-                            block={block}
+                        <Card
+                            cardBorder="none"
+                            cardPaddings="24"
+                            variant="light"
+                            max
                         >
-                            <Card
-                                cardBorder="none"
-                                cardPaddings="24"
-                                variant="light"
-                                max
-                            >
-                                <ArticleCodeBlockComponent
-                                    block={block}
-                                    textareaId={`${
-                                        block.id + block.code.length
-                                    }edit`}
-                                    editCode={(value) =>
-                                        onChangeBlockCode(value, block)
-                                    }
-                                    editable
-                                />
-                            </Card>
-                        </ArticleDetailsMoveComponent>
+                            <ArticleCodeBlockComponent
+                                block={block}
+                                textareaId={nanoid(10)}
+                                editCode={(value) =>
+                                    onChangeBlockCode(value, block)
+                                }
+                                editable
+                            />
+                        </Card>
                     )
                 case ArticleBlockTypes.IMAGE:
                     return (
-                        <ArticleDetailsMoveComponent
-                            key={block.id}
-                            articleData={articleData}
-                            block={block}
+                        <Card
+                            cardBorder="none"
+                            cardPaddings="24"
+                            variant="light"
+                            max
                         >
-                            <Card
-                                cardBorder="none"
-                                cardPaddings="24"
-                                variant="light"
-                                max
-                            >
-                                <ArticleImageBlockComponent
-                                    block={block}
-                                    editSrc={(value) =>
-                                        onChangeBlockImageSrc(value, block)
-                                    }
-                                    editTitle={(value) =>
-                                        onChangeBlockImageTitle(value, block)
-                                    }
-                                    editable
-                                />
-                            </Card>
-                        </ArticleDetailsMoveComponent>
+                            <ArticleImageBlockComponent
+                                block={block}
+                                editSrc={(value) =>
+                                    onChangeBlockImageSrc(value, block)
+                                }
+                                editTitle={(value) =>
+                                    onChangeBlockImageTitle(value, block)
+                                }
+                                editable
+                            />
+                        </Card>
                     )
                 case ArticleBlockTypes.TEXT:
                     return (
-                        <ArticleDetailsMoveComponent
-                            key={block.id}
-                            articleData={articleData}
-                            block={block}
+                        <Card
+                            cardBorder="none"
+                            cardPaddings="24"
+                            variant="light"
+                            max
                         >
-                            <Card
-                                cardBorder="none"
-                                cardPaddings="24"
-                                variant="light"
-                                max
-                            >
-                                <ArticleTextBlockComponent
-                                    gap="8"
-                                    block={block}
-                                    editable
-                                    editParagraphFn={(value) =>
-                                        onChangeBlockTextParagraphs(
-                                            value,
-                                            block,
-                                        )
-                                    }
-                                    editTitleFn={(value) =>
-                                        onChangeBlockTextTitle(value, block)
-                                    }
-                                />
-                            </Card>
-                        </ArticleDetailsMoveComponent>
+                            <ArticleTextBlockComponent
+                                gap="8"
+                                block={block}
+                                editable
+                                editParagraphFn={(value) =>
+                                    onChangeBlockTextParagraphs(value, block)
+                                }
+                                editTitleFn={(value) =>
+                                    onChangeBlockTextTitle(value, block)
+                                }
+                            />
+                        </Card>
                     )
                 default:
                     return null
             }
         }
 
-        return <>{blocks.map(renderBlock)}</>
+        return (
+            <>
+                {blocks.map((block) => (
+                    <ArticleDetailsMoveComponent
+                        key={block.id}
+                        articleData={articleData}
+                        block={block}
+                    >
+                        {renderBlock(block)}
+                    </ArticleDetailsMoveComponent>
+                ))}
+            </>
+        )
     },
 )

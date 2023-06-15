@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { nanoid } from 'nanoid'
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { VStack } from '@/shared/ui/redesigned/Stack'
@@ -104,7 +105,7 @@ export const ArticleTextBlockComponent = memo(
                                     <>
                                         {block.paragraphs.map((paragraph) => (
                                             <Text
-                                                key={paragraph.length}
+                                                key={nanoid(10)}
                                                 text={paragraph}
                                                 className={cls.paragraph}
                                             />

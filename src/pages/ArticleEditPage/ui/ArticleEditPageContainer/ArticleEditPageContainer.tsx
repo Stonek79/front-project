@@ -15,12 +15,12 @@ export const ArticleEditPageContainer = memo(
         const { className } = props
         const article = useSelector(getArticleDetailsFormData)
 
-        const cn = classNames(cls.AdditionalInfoContainer, {}, [className])
+        const cn = classNames(cls.ArticleEditPageContainer, {}, [className])
 
         if (!article) return null
 
         return (
-            <Card className={cn} cardPaddings="24" cardBorder="rounded">
+            <Card className={cn} cardPaddings="32" cardBorder="rounded">
                 <ArticleEditAdditionBlock article={article} />
             </Card>
         )

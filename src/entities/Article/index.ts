@@ -14,9 +14,11 @@ export { ArticleList } from './ui/AtricleList/ArticleList'
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails'
 export type {
     Article,
+    ArticleBlock,
     ArticleViewTypes,
     ArticleTypesType,
     ArticleSortFieldTypes,
+    ArticleBlockTypesType,
 } from './model/types/article'
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema'
 export {
@@ -24,4 +26,7 @@ export {
     ArticleTypes,
     ArticleSortField,
     ArticleBlockTypes,
+    NewArticleCodeBlock,
+    NewArticleImageBlock,
+    NewArticleTextBlock,
 } from './model/consts/consts'

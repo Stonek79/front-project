@@ -9,7 +9,6 @@ export const ArticleBlockTypes = {
     CODE: 'CODE',
     IMAGE: 'IMAGE',
     TEXT: 'TEXT',
-    HEADER: 'HEADER',
 } as const
 
 export const ArticleTypes = {
@@ -23,3 +22,23 @@ export const ArticleView = {
     LIST: 'LIST',
     CARDS: 'CARDS',
 } as const
+
+export const NewArticleCodeBlock = {
+    id: '',
+    type: 'CODE',
+    code: 'Code text',
+}
+
+export const NewArticleImageBlock = {
+    id: '',
+    type: 'IMAGE',
+    src: 'Img link',
+    title: 'Image title',
+}
+
+export const NewArticleTextBlock = {
+    id: '',
+    type: 'TEXT',
+    title: 'Text block title',
+    paragraphs: ['Text block content'],
+}

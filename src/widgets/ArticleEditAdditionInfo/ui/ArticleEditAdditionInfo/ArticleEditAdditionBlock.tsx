@@ -1,13 +1,13 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleEditAdditionBlock.module.scss'
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
-import { Avatar } from '@/shared/ui/redesigned/Avatar'
-import { Text } from '@/shared/ui/redesigned/Text'
+import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Article, articleDetailsActions, editArticle } from '@/entities/Article'
+import { ArticleAddBlocksContainer } from '@/features/ArticleAddBlocksContainer'
 
 interface ArticleEditAdditionBlockProps {
     className?: string
@@ -19,9 +19,9 @@ export const ArticleEditAdditionBlock = memo(
         const { className, article } = props
         const { t } = useTranslation()
         const dispatch = useAppDispatch()
+        const navigate = useNavigate()
 
         const cn = classNames(cls.ArticleEditAdditionInfo, {}, [className])
-        const { views, createdAt, user, id } = article
 
         const onCancelEdit = useCallback(() => {
             dispatch(articleDetailsActions.cancelEdit())
@@ -31,20 +31,34 @@ export const ArticleEditAdditionBlock = memo(
             if (article) dispatch(editArticle(article))
         }, [article, dispatch])
 
+        const onBack = useCallback(() => {
+            navigate(-1)
+        }, [navigate])
+
         return (
             <VStack gap="32" className={cn}>
-                <HStack gap="8">
-                    <Avatar src={user.avatar} size={32} />
-                    <Text text={user.username} bold />
-                    <Text text={createdAt} />
-                </HStack>
-                <Button variant="outline" color="error" onClick={onCancelEdit}>
-                    {t('Cancel edit')}
-                </Button>
-                <Button variant="outline" color="success" onClick={onSave}>
-                    {t('Save')}
-                </Button>
-                <Text text={t('{{count}} views', { count: views })} />
+                <ArticleAddBlocksContainer articleData={article} />
+                <VStack gap="16">
+                    <Button
+                        fullWidth
+                        variant="filled"
+                        color="error"
+                        onClick={onCancelEdit}
+                    >
+                        {t('Cancel edit')}
+                    </Button>
+                    <Button
+                        fullWidth
+                        variant="filled"
+                        color="success"
+                        onClick={onSave}
+                    >
+                        {t('Save')}
+                    </Button>
+                    <Button fullWidth variant="outline" onClick={onBack}>
+                        {t('Back')}
+                    </Button>
+                </VStack>
             </VStack>
         )
     },

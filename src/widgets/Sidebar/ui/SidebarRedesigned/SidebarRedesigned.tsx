@@ -48,13 +48,14 @@ export const SidebarRedesigned = memo((props: SidebarProps) => {
             <VStack role="navigation" gap="8" className={cls.items}>
                 {itemsList}
             </VStack>
-            <Icon
-                data-testid="sidebar-toggle"
-                onClick={onToggle}
-                className={cls.collapseBtn}
-                Svg={ArrowIcon}
-                clickable
-            />
+            <div className={cls.collapseBtn}>
+                <Icon
+                    data-testid="sidebar-toggle"
+                    onClick={onToggle}
+                    Svg={ArrowIcon}
+                    clickable
+                />
+            </div>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher short={collapsed} className={cls.lang} />
