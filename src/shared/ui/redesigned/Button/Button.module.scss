@@ -35,7 +35,7 @@
 
     &.normal {
         &:hover {
-            color: var(--accent-redesigned);
+            color: var(--text-redesigned);
         }
     }
 
@@ -64,7 +64,7 @@
 
     &.normal {
         &:hover {
-            color: var(--accent-redesigned);
+            color: var(--text-redesigned);
         }
     }
 
@@ -73,6 +73,9 @@
 
         &:hover {
             color: var(--cancel-redesigned);
+            border: 2px solid var(--cancel-redesigned);
+            background: none;
+            padding: 4px 13px;
         }
     }
 
@@ -81,6 +84,9 @@
 
         &:hover {
             color: var(--save-redesigned);
+            border: 2px solid var(--save-redesigned);
+            background: none;
+            padding: 4px 13px;
         }
     }
 }

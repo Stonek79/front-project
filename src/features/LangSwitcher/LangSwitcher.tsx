@@ -16,19 +16,16 @@ interface LangSwitcherProps {
 export const LangSwitcher = memo((props: LangSwitcherProps) => {
     const { className, short } = props
     const { t, i18n } = useTranslation()
-
     const toggle = async () => {
         await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
     }
-
-    const btnName = short ? 'short-lng' : 'Язык'
 
     return (
         <ToggleComponentFeatures
             feature="isAppRedesigned"
             on={
                 <Button onClick={toggle} variant="clear">
-                    {t(btnName)}
+                    {short ? t('short-lng') : t('Язык')}
                 </Button>
             }
             off={
@@ -37,7 +34,7 @@ export const LangSwitcher = memo((props: LangSwitcherProps) => {
                     theme={ButtonTheme.BG_INVERTED}
                     onClick={toggle}
                 >
-                    {t(btnName)}
+                    {short ? t('short-lng') : t('Язык')}
                 </ButtonDeprecated>
             }
         />

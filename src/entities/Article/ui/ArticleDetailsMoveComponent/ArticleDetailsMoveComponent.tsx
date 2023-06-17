@@ -1,5 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
-import { memo, ReactNode } from 'react'
+import { memo, ReactNode, useCallback } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleDetailsMoveComponent.module.scss'
 import { Icon } from '@/shared/ui/redesigned/Icon'
@@ -13,11 +13,14 @@ interface ArticleDetailsMoveComponentProps {
     children: ReactNode
     articleData: Article
     block: ArticleBlock
+    setIsOpen: (value: boolean) => void
+    setData: (data: any) => void
 }
 
 export const ArticleDetailsMoveComponent = memo(
     (props: ArticleDetailsMoveComponentProps) => {
-        const { className, children, articleData, block } = props
+        const { className, children, articleData, block, setIsOpen, setData } =
+            props
         const dispatch = useAppDispatch()
 
         const cn = classNames(cls.ArticleDetailsMoveComponent, {}, [className])
@@ -26,6 +29,11 @@ export const ArticleDetailsMoveComponent = memo(
         const deleteBtnCn = classNames(cls.btn, {}, [cls.deleteBtn])
 
         const { blocks } = articleData
+
+        const onOpenModal = useCallback(() => {
+            setIsOpen(true)
+            setData(block)
+        }, [block, setData, setIsOpen])
 
         const handleMoveUp = () => {
             const position = blocks.indexOf(block)
@@ -42,6 +50,7 @@ export const ArticleDetailsMoveComponent = memo(
                 }),
             )
         }
+
         const handleMoveDown = () => {
             const position = blocks.indexOf(block)
             const tempBlocks = [...blocks]
@@ -54,19 +63,6 @@ export const ArticleDetailsMoveComponent = memo(
                 articleDetailsActions.updateArticle({
                     ...articleData,
                     blocks: tempBlocks,
-                }),
-            )
-        }
-
-        const handleDeleteBlock = () => {
-            const withRemovedBlock = blocks.filter(
-                (item) => item.id !== block.id,
-            )
-
-            dispatch(
-                articleDetailsActions.updateArticle({
-                    ...articleData,
-                    blocks: withRemovedBlock,
                 }),
             )
         }
@@ -84,7 +80,7 @@ export const ArticleDetailsMoveComponent = memo(
                 </div>
                 <button
                     type="button"
-                    onClick={handleDeleteBlock}
+                    onClick={onOpenModal}
                     className={deleteBtnCn}
                 >
                     ❌

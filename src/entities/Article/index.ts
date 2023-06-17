@@ -1,12 +1,14 @@
 export { getArticleDetailsFormData } from './model/selectors/articleDetails'
 export { editArticle } from './model/services/editArticle'
-export { ArticleEdit } from './ui/ArticleEdit/ArticleEdit'
 export { getArticleDetailsData } from './model/selectors/articleDetails'
 export {
     articleDetailsPageRecommendationsSliceReducer,
     getArticlesRecommendations,
 } from './model/slice/articleDetailsPageRecommendationsSlice'
-export { articleDetailsActions } from './model/slice/articleDetailsSlice'
+export {
+    articleDetailsActions,
+    articleDetailsReducer,
+} from './model/slice/articleDetailsSlice'
 export { getArticlesRecommendationsIsLoading } from './model/selectors/articlesRecommendations'
 export { fetchArticlesRecommendations } from './model/services/fetchArticlesRecommendations'
 export type { ArticleDetailsRecommendationsSchema } from './model/types/articleDetailsRecommendationsSchema'

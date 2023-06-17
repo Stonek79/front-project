@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -8,6 +8,7 @@ import { Button } from '@/shared/ui/redesigned/Button'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Article, articleDetailsActions, editArticle } from '@/entities/Article'
 import { ArticleAddBlocksContainer } from '@/features/ArticleAddBlocksContainer'
+import { ConfirmationModal } from '@/features/ConfirmationModal'
 
 interface ArticleEditAdditionBlockProps {
     className?: string
@@ -20,12 +21,17 @@ export const ArticleEditAdditionBlock = memo(
         const { t } = useTranslation()
         const dispatch = useAppDispatch()
         const navigate = useNavigate()
+        const [isOpen, setIsOpen] = useState(false)
 
         const cn = classNames(cls.ArticleEditAdditionInfo, {}, [className])
 
-        const onCancelEdit = useCallback(() => {
-            dispatch(articleDetailsActions.cancelEdit())
-        }, [dispatch])
+        const onOpenModal = useCallback(() => {
+            setIsOpen(true)
+        }, [])
+
+        const onCloseModal = useCallback(() => {
+            setIsOpen(false)
+        }, [])
 
         const onSave = useCallback(() => {
             if (article) dispatch(editArticle(article))
@@ -35,6 +41,11 @@ export const ArticleEditAdditionBlock = memo(
             navigate(-1)
         }, [navigate])
 
+        const onConfirm = useCallback(() => {
+            dispatch(articleDetailsActions.cancelEdit())
+            onCloseModal()
+        }, [dispatch, onCloseModal])
+
         return (
             <VStack gap="32" className={cn}>
                 <ArticleAddBlocksContainer articleData={article} />
@@ -43,7 +54,7 @@ export const ArticleEditAdditionBlock = memo(
                         fullWidth
                         variant="filled"
                         color="error"
-                        onClick={onCancelEdit}
+                        onClick={onOpenModal}
                     >
                         {t('Cancel edit')}
                     </Button>
@@ -59,6 +70,14 @@ export const ArticleEditAdditionBlock = memo(
                         {t('Back')}
                     </Button>
                 </VStack>
+                {isOpen && (
+                    <ConfirmationModal
+                        isOpen={isOpen}
+                        header={`${t('Confirm cancellation')}?`}
+                        onClose={onCloseModal}
+                        onConfirm={onConfirm}
+                    />
+                )}
             </VStack>
         )
     },

@@ -19,11 +19,13 @@ import { ArticleBlockTypes } from '../../model/consts/consts'
 interface ArticleBlocksComponentProps {
     className?: string
     articleData: Article
+    setIsOpen: () => void
+    setData: (data: any) => void
 }
 
 export const ArticleBlocksComponent = memo(
     (props: ArticleBlocksComponentProps) => {
-        const { articleData } = props
+        const { articleData, setIsOpen, setData } = props
         const dispatch = useAppDispatch()
 
         const { blocks } = articleData
@@ -193,6 +195,8 @@ export const ArticleBlocksComponent = memo(
                         key={block.id}
                         articleData={articleData}
                         block={block}
+                        setIsOpen={setIsOpen}
+                        setData={setData}
                     >
                         {renderBlock(block)}
                     </ArticleDetailsMoveComponent>

@@ -6,6 +6,7 @@ import {
     LOCAL_STORAGE_CURRENT_DESIGN_KEY,
     USER_LOCALSTORAGE_KEY,
 } from '@/shared/const/localstarage'
+import { setFeatureFlags } from '@/shared/lib/features'
 
 export const initAuthData = createAsyncThunk<User, void, ThunkConfig<string>>(
     'user/initAuthData',
@@ -15,6 +16,7 @@ export const initAuthData = createAsyncThunk<User, void, ThunkConfig<string>>(
         const userId = localStorage.getItem(USER_LOCALSTORAGE_KEY)
 
         if (!userId) {
+            setFeatureFlags({ isAppRedesigned: true })
             return rejectWithValue('server error')
         }
 

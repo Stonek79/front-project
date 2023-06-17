@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import {
     DynamicModuleLoader,
     ReducersList,
@@ -8,20 +8,21 @@ import {
 import {
     articleDetailsActions,
     articleDetailsReducer,
-} from '../../model/slice/articleDetailsSlice'
+} from '../../../entities/Article/model/slice/articleDetailsSlice'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import {
     getArticleDetailsFormData,
     getArticleIsLoadingData,
-} from '../../model/selectors/articleDetails'
+} from '../../../entities/Article/model/selectors/articleDetails'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { Input } from '@/shared/ui/redesigned/Input'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
-import cls from '../ArticleDetailsRedesigned/ArticleDetailsRedesigned.module.scss'
-import { ArticleBlocksComponent } from '../ArticleBlocksComponent/ArticleBlocksComponent'
+import cls from '../../../entities/Article/ui/ArticleDetailsRedesigned/ArticleDetailsRedesigned.module.scss'
+import { ArticleBlocksComponent } from '../../../entities/Article/ui/ArticleBlocksComponent/ArticleBlocksComponent'
+import { ConfirmationModal } from '../../ConfirmationModal'
 
 export interface ArticleEditProps {
     className?: string
@@ -49,9 +50,19 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
     const articleData = useSelector(getArticleDetailsFormData)
     const isLoading = useSelector(getArticleIsLoadingData)
     const dispatch = useAppDispatch()
+    const [isOpen, setIsOpen] = useState(false)
+    const [data, setData] = useState<any>('')
 
     if (!articleData) {
         return null
+    }
+
+    const onOpenModal = () => {
+        setIsOpen(true)
+    }
+
+    const onCloseModal = () => {
+        setIsOpen(false)
     }
 
     const onChangeTitle = (value: string) => {
@@ -79,6 +90,21 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
                 img: value,
             }),
         )
+    }
+
+    const handleDeleteBlock = () => {
+        const withRemovedBlock = articleData.blocks.filter(
+            (item) => item.id !== data.id,
+        )
+
+        dispatch(
+            articleDetailsActions.updateArticle({
+                ...articleData,
+                blocks: withRemovedBlock,
+            }),
+        )
+
+        setIsOpen(false)
     }
 
     const content = isLoading ? (
@@ -132,7 +158,11 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
             </Card>
             <VStack data-testid="ArticleDetails.body" gap="4" max>
                 <VStack max gap="16" align="center">
-                    <ArticleBlocksComponent articleData={articleData} />
+                    <ArticleBlocksComponent
+                        setIsOpen={onOpenModal}
+                        articleData={articleData}
+                        setData={setData}
+                    />
                 </VStack>
             </VStack>
         </VStack>
@@ -144,6 +174,14 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
             removeAfterUnmount={Boolean(false)}
         >
             <Card max>{content}</Card>
+            {isOpen && (
+                <ConfirmationModal
+                    header={`${t('Delete block')}?`}
+                    isOpen={isOpen}
+                    onClose={onCloseModal}
+                    onConfirm={handleDeleteBlock}
+                />
+            )}
         </DynamicModuleLoader>
     )
 })

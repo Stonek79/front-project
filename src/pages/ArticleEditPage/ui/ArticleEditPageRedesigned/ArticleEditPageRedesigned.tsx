@@ -3,10 +3,10 @@ import { memo } from 'react'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Page } from '@/widgets/Page'
-import { ArticleEdit } from '@/entities/Article'
 import cls from './ArticleEditPageRedesigned.module.scss'
 import { StickyLayout } from '@/shared/layouts'
 import { ArticleEditPageContainer } from '../ArticleEditPageContainer/ArticleEditPageContainer'
+import { ArticleEdit } from '@/features/ArticleEdit'
 
 interface ArticleEditPageProps {
     className?: string

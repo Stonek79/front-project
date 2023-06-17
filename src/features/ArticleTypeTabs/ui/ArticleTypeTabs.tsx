@@ -54,7 +54,7 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
             feature="isAppRedesigned"
             on={
                 <VStack gap="8" className={cn}>
-                    <Text text={`${t('Topicks')}:`} />
+                    <Text text={`${t('Topics')}:`} />
                     <Tabs
                         direction="column"
                         tabs={tabs}

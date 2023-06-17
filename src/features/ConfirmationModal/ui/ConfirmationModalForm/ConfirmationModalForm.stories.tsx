@@ -1,19 +1,19 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { ArticleEditAdditionBlock } from './ArticleEditAdditionBlock'
+import ConfirmationModalForm from './ConfirmationModalForm'
 import { Theme } from '@/shared/const/theme'
 
 export default {
-    title: 'widgets/ArticleEditAdditionBlock',
-    component: ArticleEditAdditionBlock,
+    title: 'features/ConfirmationModalForm',
+    component: ConfirmationModalForm,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ArticleEditAdditionBlock>
+} as ComponentMeta<typeof ConfirmationModalForm>
 
-const Template: ComponentStory<typeof ArticleEditAdditionBlock> = (args) => (
-    <ArticleEditAdditionBlock {...args} />
+const Template: ComponentStory<typeof ConfirmationModalForm> = (args) => (
+    <ConfirmationModalForm {...args} />
 )
 
 export const Normal = Template.bind({})
