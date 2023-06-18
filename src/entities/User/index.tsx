@@ -1,3 +1,4 @@
+export { addUserMutation } from './api/userApi'
 export {
     getUserRoles,
     isUserAdmin,

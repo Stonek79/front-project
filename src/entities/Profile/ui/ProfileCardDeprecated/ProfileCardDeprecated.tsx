@@ -67,10 +67,10 @@ export const ProfileCardDeprecated = memo((props: ProfileCardProps) => {
         )
     }
 
-    if (error?.data.length) {
+    if (error) {
         return (
             <HStack max justify="center" className={cnError}>
-                {getErrorsFields(error?.data, 'data')}
+                {error}
             </HStack>
         )
     }

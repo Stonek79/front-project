@@ -9,7 +9,7 @@ import { Countries } from '@/entities/Country'
 export interface ProfileCardProps {
     className?: string
     data?: Profile
-    error?: ValidateErrors
+    error?: string
     isLoading?: boolean
     readonly?: boolean
     validateErrors?: ValidateErrors

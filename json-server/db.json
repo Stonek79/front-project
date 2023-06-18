@@ -689,13 +689,14 @@
     {
       "id": "1",
       "firstname": "Alex",
-      "lastname": "StoneK",
+      "lastname": "Smith",
       "age": 42,
       "currency": "USD",
       "country": "USA",
       "city": "Moscow",
       "username": "admin",
-      "avatar": "https://graph.digiseller.ru/img.ashx?idp=1738637&maxlength=400&keepratio=1"
+      "avatar": "https://graph.digiseller.ru/img.ashx?idp=1738637&maxlength=400&keepratio=1",
+      "userId": "1"
     },
     {
       "id": "2",
@@ -706,7 +707,8 @@
       "country": "USA",
       "city": "Sin City",
       "username": "user",
-      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+      "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg",
+      "userId": "2"
     }
   ],
   "users": [
@@ -724,7 +726,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_light_theme",
+        "theme": "app_orange_theme",
         "isArticlesPageOpened": true
       },
       "avatar": "https://graph.digiseller.ru/img.ashx?idp=1738637&maxlength=400&keepratio=1"

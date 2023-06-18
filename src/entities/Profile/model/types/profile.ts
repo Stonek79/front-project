@@ -12,6 +12,7 @@ export interface Profile {
     city?: string
     username?: string
     avatar?: string
+    userId?: string
 }
 
 export type ValidateProfileErrorsType =

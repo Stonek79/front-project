@@ -45,7 +45,7 @@ server.post('/login', (req, res) => {
             return res.json(userFromBd)
         }
 
-        return res.status(403).json({ message: 'User not found' })
+        return res.status(403).json('User not found')
     } catch (e) {
         console.log(e)
         return res.status(500).json({ message: e.message })
@@ -56,7 +56,7 @@ server.post('/login', (req, res) => {
 // eslint-disable-next-line
 server.use((req, res, next) => {
     if (!req.headers.authorization) {
-        console.log(req.headers.authorization, req.headers.authorization, 'REQ')
+        console.log(req.headers.authorization, 'REQ')
         return res.status(403).json({ message: 'AUTH ERROR' })
     }
 

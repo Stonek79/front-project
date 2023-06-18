@@ -19,6 +19,7 @@ import { ArticlesPageSchema } from '@/pages/ArticlesPage'
 import { ScrollSafeSchema } from '@/widgets/Page'
 import { rtkApi } from '@/shared/api/rtkApi'
 import { ProfileSchema } from '@/features/ProfilePageEdit'
+import { SignUpSchema } from '@/features/SignUpNewUser'
 
 export interface StateSchema {
     counter: CounterSchema
@@ -28,6 +29,7 @@ export interface StateSchema {
 
     // async reducers
     loginForm?: LoginSchema
+    signUpForm?: SignUpSchema
     profile?: ProfileSchema
     article?: ArticleDetailsSchema
     comments?: ArticleDetailsCommentsSchema

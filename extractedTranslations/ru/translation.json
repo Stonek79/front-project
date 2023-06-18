@@ -102,5 +102,16 @@
     "Confirm": "Confirm",
     "Confirm cancellation": "Confirm cancellation",
     "Delete block": "Delete block",
-    "About Page": "About Page"
+    "About Page": "About Page",
+    "Sign up": "Sign up",
+    "Create": "Create",
+  "Fill": "Fill",
+    "Passwords must match": "Passwords must match",
+  "All fields mast be filled": "All fields mast be filled",
+  "Min length 3 character": "Min length 3 character",
+  "Max length 20 characters": "Max length 20 characters",
+  "Repeat password": "Repeat password",
+  "signUp": "signUp",
+    "Username already exist": "Username already exist",
+    "notCorrectUserData": "notCorrectUserData"
 }

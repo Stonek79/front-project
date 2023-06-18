@@ -7,6 +7,7 @@ export type UserRole = (typeof UserRoles)[keyof typeof UserRoles]
 export interface User {
     id: string
     username: string
+    password?: string
     avatar?: string
     features?: FeatureFlags
     roles?: UserRole[]

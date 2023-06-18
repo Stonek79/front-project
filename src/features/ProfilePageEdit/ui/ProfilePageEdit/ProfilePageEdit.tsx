@@ -28,6 +28,7 @@ interface ProfilePageEditProps {
 const reducers: ReducersList = {
     profile: profileReducer,
 }
+
 export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
     const { className, id } = props
 

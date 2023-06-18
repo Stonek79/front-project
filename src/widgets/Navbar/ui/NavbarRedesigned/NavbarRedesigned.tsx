@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -9,6 +10,7 @@ import { getUserAuthData, userActions } from '@/entities/User'
 import { NotificationButton } from '@/features/NotificationButton'
 import { UserNavbarDropdown } from '@/features/UserNavbarDropdown'
 import cls from './NavbarRedesigned.module.scss'
+import { SignUpNewUser } from '@/features/SignUpNewUser'
 
 interface NavbarProps {
     className?: string
@@ -19,7 +21,11 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
     const { t } = useTranslation()
     const dispatch = useDispatch()
     const [isOpen, setIsOpen] = useState(false)
+    const [hasSignUp, setHasSingUp] = useState(false)
+    const [isOpenSignUp, setIsOpenSignUp] = useState(false)
+
     const authData = useSelector(getUserAuthData)
+    const navigate = useNavigate()
 
     const cn = classNames(cls.NavbarRedesigned, {}, [className])
 
@@ -35,6 +41,17 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
         setIsOpen(false)
         dispatch(userActions.logout())
     }, [dispatch])
+
+    const handleSignUp = useCallback(() => {
+        setIsOpenSignUp(true)
+
+        setHasSingUp(true)
+    }, [])
+
+    const handleCloseSignUp = useCallback(() => {
+        setIsOpenSignUp(false)
+        setHasSingUp(false)
+    }, [])
 
     if (authData) {
         return (
@@ -52,15 +69,27 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
 
     return (
         <header className={cn}>
-            <Button
-                variant="outline"
-                className={cls.links}
-                onClick={onOpenModal}
-            >
-                {t('logIn')}
-            </Button>
-
-            {isOpen && <LoginModal isOpen={isOpen} onClose={onCloseModal} />}
+            <HStack gap="16" justify="between">
+                <Button
+                    variant="outline"
+                    className={cls.links}
+                    onClick={onOpenModal}
+                >
+                    {t('logIn')}
+                </Button>
+                {!hasSignUp && (
+                    <Button onClick={handleSignUp}>{t('Sign up')}</Button>
+                )}
+                {isOpen && (
+                    <LoginModal isOpen={isOpen} onClose={onCloseModal} />
+                )}
+                {isOpenSignUp && (
+                    <SignUpNewUser
+                        isOpen={isOpenSignUp}
+                        onClose={handleCloseSignUp}
+                    />
+                )}
+            </HStack>
         </header>
     )
 })

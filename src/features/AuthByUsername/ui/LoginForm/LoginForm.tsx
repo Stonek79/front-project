@@ -46,6 +46,11 @@ const LoginForm = memo((props: LoginFormProps) => {
     const { className } = props
     const cn = classNames(cls.LoginForm, {}, [className])
 
+    const loginError =
+        error === 'Request failed with status code 403'
+            ? t('notCorrectUserData')
+            : error
+
     const onChangeUsername = useCallback(
         (value: string) => {
             dispatch(loginActions.setUsername(value))
@@ -71,7 +76,7 @@ const LoginForm = memo((props: LoginFormProps) => {
                 on={
                     <VStack className={cn} gap="16">
                         <Text title={t('authForm')} />
-                        {error && <Text text={error} variant="error" />}
+                        {error && <Text text={loginError} variant="error" />}
                         <Input
                             autofocus
                             type="text"

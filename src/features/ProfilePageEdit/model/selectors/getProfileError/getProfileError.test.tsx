@@ -6,16 +6,7 @@ describe('get Profile Error test', () => {
     test('should return Profile Error', () => {
         const state: DeepPartial<StateSchema> = {
             profile: {
-                error: {
-                    firstname: [],
-                    lastname: [],
-                    age: [],
-                    city: [],
-                    username: [],
-                    currency: [],
-                    country: [],
-                    data: [ValidateProfileErrors.NO_DATA],
-                },
+                error: '',
             },
         }
         expect(getProfileError(state as StateSchema)).toHaveProperty('data', [

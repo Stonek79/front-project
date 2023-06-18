@@ -4,7 +4,7 @@ export interface ProfileSchema {
     data?: Profile
     form?: Profile
     isLoading: boolean
-    error?: ValidateErrors
+    error?: string
     readonly: boolean
     validateErrors?: ValidateErrors
 }

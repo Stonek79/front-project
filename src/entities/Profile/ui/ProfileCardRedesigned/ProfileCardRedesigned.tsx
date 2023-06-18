@@ -57,6 +57,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
     } = props
     const { t } = useTranslation()
 
+    console.log(data, error, validateErrors)
     const validateErrorTranslates = {
         [ValidateProfileErrors.NO_DATA]: t('noData'),
         [ValidateProfileErrors.REQUIRED]: t('required'),
@@ -89,10 +90,10 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
         )
     }
 
-    if (error?.data.length) {
+    if (error) {
         return (
             <HStack max justify="center" className={cnError}>
-                {getErrorsFields(error?.data, 'data')}
+                <Text text={error} />
             </HStack>
         )
     }
