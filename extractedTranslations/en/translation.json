@@ -113,5 +113,6 @@
   "Repeat password": "Repeat password",
   "signUp": "signUp",
     "Username already exist": "Username already exist",
-    "notCorrectUserData": "notCorrectUserData"
+    "notCorrectUserData": "notCorrectUserData",
+    "Contact me": "Contact me"
 }

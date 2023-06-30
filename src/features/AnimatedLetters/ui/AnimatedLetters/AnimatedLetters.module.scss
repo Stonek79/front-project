@@ -1,0 +1,33 @@
+.text-animate {
+    display: inline-block;
+    opacity: 0;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+    min-width: 10px;
+
+    &:global {
+        animation-name: bounceIn;
+    }
+}
+
+.text-animate-hover {
+    min-width: 10px;
+    display: inline-block;
+    animation-fill-mode: both;
+}
+
+.text-animate-hover:hover {
+    &:global {
+        animation-name: rubberBand;
+    }
+
+    animation-duration: 1s;
+    color: var(--accent-redesigned);
+}
+
+@for $i from 1 through 55 {
+    .text-animate._#{$i} {
+        animation-delay: #{$i / 10}s;
+    }
+}

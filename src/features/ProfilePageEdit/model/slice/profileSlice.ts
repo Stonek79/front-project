@@ -48,10 +48,12 @@ export const profileSlice = createSlice({
             })
             .addCase(
                 fetchProfileData.fulfilled,
-                (state, action: PayloadAction<Profile>) => {
+                (state, action: PayloadAction<Profile[]>) => {
                     state.isLoading = false
-                    state.data = action.payload
-                    state.form = action.payload
+                    // eslint-disable-next-line prefer-destructuring
+                    state.data = action.payload[0]
+                    // eslint-disable-next-line prefer-destructuring
+                    state.form = action.payload[0]
                 },
             )
             .addCase(fetchProfileData.rejected, (state, { payload }) => {

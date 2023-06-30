@@ -3,20 +3,20 @@ import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { Profile } from '@/entities/Profile'
 
 export const fetchProfileData = createAsyncThunk<
-    Profile,
+    Profile[],
     string,
     ThunkConfig<string>
 >('profile/fetchProfileData', async (userId, thunkAPI) => {
     const { extra, rejectWithValue } = thunkAPI
 
     try {
-        const { data } = await extra.api.get<Profile>(`/profile/`, {
+        const { data } = await extra.api.get<Profile[]>(`/profile/`, {
             params: {
                 userId,
                 _expand: 'user',
             },
         })
-
+        console.log(data, 'fetc')
         if (!data) {
             return rejectWithValue('serverError')
         }

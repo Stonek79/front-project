@@ -1,0 +1,9 @@
+export const nameArray = ['t', 'o', 'n', 'e', 'k', '79', '', '-']
+export const jobArray = ['k', 'e', 'e', 'n', ' ']
+export const jobArray2 = [' ', 'f', 'r', 'o', 'n', 't', 'e', 'n', 'd', ' ']
+export const jobArray3 = ['d', 'e', 'v', 'e', 'l', 'o', 'p', 'e', 'r']
+export const footerSign = 'TypeScript / JavaScript / React'
+export const HLetter = 'H'
+export const iLetter = 'i,'
+export const ILetter = 'I'
+export const mLetter = "'m"
