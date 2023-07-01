@@ -1,128 +1,96 @@
+:root {
+    --size: "m";
+}
+
 .home-page {
     overflow: hidden;
-    width: 100%;
-    will-change: contents;
-    height: 80vh;
+    position: relative;
+    justify-content: center;
+    height: 90%;
     z-index: 1;
-    transform-style: preserve-3d;
+}
 
-    .text-zone {
-        position: absolute;
-        left: 10%;
-        top: 50%;
-        transform: translateY(-50%);
-        min-width: 540px;
-        max-height: 90%;
-        z-index: 1;
+.letters {
+    color: var(--text-redesigned);
+    font-size: 4rem;
+    line-height: 3rem;
+    margin: 0;
+    font-family: Coolvetica, fantasy;
+    font-weight: 500;
+}
+
+.footerSign {
+    color: var(--text-redesigned);
+    font-size: var(--size);
+    letter-spacing: 3px;
+    animation-duration: 1s;
+    animation-delay: 1.8s;
+    animation-fill-mode: backwards;
+    z-index: 1;
+
+    &:global {
+        animation-name: fadeIn;
+    }
+}
+
+.flat-button {
+    color: var(--text-redesigned);
+    letter-spacing: 4px;
+    border: 1px solid var(--accent-redesigned);
+    animation-duration: 1s;
+    animation-delay: 1.7s;
+    animation-fill-mode: backwards;
+    border-radius: 0;
+    z-index: 1;
+
+    &:global {
+        animation-name: fadeIn;
     }
 
-    h1 {
+    &:hover {
+        background: var(--light-bg-redesigned);
         color: var(--text-redesigned);
-        font-size: 66px;
-        line-height: 53px;
-        margin: 0;
-        font-family: Coolvetica, fantasy;
-        font-weight: 500;
+    }
+}
 
-        &::before {
-            content: "<h1>";
-            font-family: "La Belle Aurore", cursive;
-            color: var(--accent-redesigned);
-            font-size: 24px;
-            font-weight: 700;
-            position: absolute;
-            margin-top: -50px;
-            left: -50px;
-            opacity: 0.8;
-            animation-duration: 1s;
-            animation-delay: 1s;
-            animation-fill-mode: backwards;
+.text-zone {
+    margin-left: 55px;
+    z-index: 1;
+}
 
-            &:global {
-                animation-name: fadeIn;
-            }
-        }
+.img {
+    margin-left: 20px;
+    width: 66px;
+    height: auto;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
 
-        &::after {
-            content: "<h1/>";
-            font-family: "La Belle Aurore", cursive;
-            color: var(--accent-redesigned);
-            font-size: 24px;
-            position: absolute;
-            margin-top: 50px;
-            left: -45px;
-            opacity: 0.8;
-            animation-duration: 1s;
-            animation-delay: 1s;
-            animation-fill-mode: backwards;
-
-            &:global {
-                animation-name: fadeIn;
-            }
-        }
-
-        img {
-            margin-left: 20px;
-            width: 66px;
-            height: auto;
-            animation-delay: 1s;
-            animation-duration: 1s;
-            animation-fill-mode: both;
-            animation-timing-function: linear;
-            animation-iteration-count: 1;
-
-            &:global {
-                animation-name: rotateIn;
-            }
-
-            &:hover {
-                &:global {
-                    animation-name: rubberBand;
-                }
-
-                animation-delay: 0s;
-            }
-        }
+    &:global {
+        animation-name: rotateIn;
     }
 
-    h2 {
-        color: var(--text-redesigned);
-        margin-top: 50px;
-        font-weight: 400;
-        letter-spacing: 3px;
-        animation-duration: 1s;
-        animation-delay: 1.8s;
-        animation-fill-mode: backwards;
-
+    &:hover {
         &:global {
-            animation-name: fadeIn;
+            animation-name: rubberBand;
         }
+
+        animation-delay: 0s;
     }
+}
 
-    .flat-button {
-        color: var(--text-redesigned);
-        font-size: 13px;
-        font-weight: 400;
-        letter-spacing: 4px;
-        font-family: sans-serif;
-        text-decoration: none;
-        padding: 10px 18px;
-        border: 1px solid var(--accent-redesigned);
-        margin-top: 25px;
-        float: left;
-        white-space: nowrap;
-        animation-duration: 1s;
-        animation-delay: 1.7s;
-        animation-fill-mode: backwards;
+.tags {
+    font-family: var(--font-family-tags);
+    opacity: 0.7;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: backwards;
+    z-index: 1;
 
-        &:global {
-            animation-name: fadeIn;
-        }
-
-        &:hover {
-            background: var(--light-bg-redesigned);
-            color: var(--text-redesigned);
-        }
+    &:global {
+        animation-name: fadeIn;
     }
 }
 
@@ -142,22 +110,12 @@
 }
 
 @media (max-width: 768px) {
-    .home-page {
-        .text-zone {
-            min-width: 90%;
-        }
+    .letters {
+        font-size: 3rem;
+        line-height: 2rem;
+    }
 
-        h1 {
-            font-size: 46px;
-            line-height: 40px;
-
-            img {
-                margin: 0;
-            }
-        }
-
-        h2 {
-            font-size: 1em;
-        }
+    .footerSign {
+        --size: "s";
     }
 }

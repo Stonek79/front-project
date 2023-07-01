@@ -75,6 +75,13 @@
     }
 }
 
+.cursive {
+    .title,
+    .text {
+        font-family: var(--font-family-tags);
+    }
+}
+
 .start {
     align-self: start;
 }

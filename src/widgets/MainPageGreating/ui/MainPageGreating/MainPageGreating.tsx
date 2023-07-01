@@ -17,7 +17,9 @@ import {
     mLetter,
     nameArray,
 } from '../../model/consts/consts'
-import { VStack } from '@/shared/ui/redesigned/Stack'
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
+import { Text, TextSize } from '@/shared/ui/redesigned/Text'
+import { Button } from '@/shared/ui/redesigned/Button'
 
 interface MainPageGreatingProps {
     className?: string
@@ -25,9 +27,25 @@ interface MainPageGreatingProps {
 
 export const MainPageGreating = ({ className }: MainPageGreatingProps) => {
     const [letterClass, setLetterClass] = useState('text-animate')
+    const [size, setSize] = useState<TextSize>(
+        window.innerWidth >= 768 ? 'm' : 's',
+    )
+    const [width, setWidth] = useState(window.innerWidth)
     const { t } = useTranslation()
 
     const cn = classNames('', {}, [className, cls['home-page']])
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768 && window.innerWidth >= width) {
+            setSize('m')
+            setWidth(window.innerWidth)
+        }
+
+        if (window.innerWidth < 768 && window.innerWidth < width) {
+            setSize('s')
+            setWidth(window.innerWidth)
+        }
+    })
 
     useEffect(() => {
         const timer = setTimeout(
@@ -38,45 +56,78 @@ export const MainPageGreating = ({ className }: MainPageGreatingProps) => {
     }, [])
 
     return (
-        <div className={cn}>
-            <VStack className={cls['text-zone']}>
-                <h1>
-                    <span className={cls[letterClass]}>{HLetter}</span>
-                    <span className={`${cls[letterClass]} _12`}>{iLetter}</span>
-                    <br />
-                    <span className={`${cls[letterClass]} _13`}>{ILetter}</span>
-                    <span className={`${cls[letterClass]} _14`}>{mLetter}</span>
-                    <img src={MyLogoTitle} alt="Web Developer Name" />
-                    <AnimatedLetters
-                        letterClass={letterClass}
-                        strArray={nameArray}
-                        index={15}
-                    />
-                    <br />
-                    <AnimatedLetters
-                        letterClass={letterClass}
-                        strArray={jobArray}
-                        index={23}
-                    />
-                    <AnimatedLetters
-                        letterClass={letterClass}
-                        strArray={jobArray2}
-                        index={28}
-                    />
-                    <br />
-                    <AnimatedLetters
-                        letterClass={letterClass}
-                        strArray={jobArray3}
-                        index={38}
-                    />
-                </h1>
-                <h2>{footerSign}</h2>
+        <VStack className={cn} max>
+            <VStack gap="8" max>
+                <Text
+                    className={cls.tags}
+                    cursive
+                    self="start"
+                    variant="accent"
+                    title="<h1>"
+                    align="right"
+                />
+                <VStack className={cls['text-zone']}>
+                    <HStack className={cls.letters}>
+                        <span className={cls[letterClass]}>{HLetter}</span>
+                        <span className={`${cls[letterClass]} _12`}>
+                            {iLetter}
+                        </span>
+                    </HStack>
+                    <HStack className={cls.letters}>
+                        <span className={`${cls[letterClass]} _13`}>
+                            {ILetter}
+                        </span>
+                        <span className={`${cls[letterClass]} _14`}>
+                            {mLetter}
+                        </span>
+                        <img
+                            className={cls.img}
+                            src={MyLogoTitle}
+                            alt="Web Developer Name"
+                        />
+                        <AnimatedLetters
+                            letterClass={letterClass}
+                            strArray={nameArray}
+                            index={15}
+                        />
+                    </HStack>
+                    <HStack className={cls.letters}>
+                        <AnimatedLetters
+                            letterClass={letterClass}
+                            strArray={jobArray}
+                            index={23}
+                        />
+                        <AnimatedLetters
+                            letterClass={letterClass}
+                            strArray={jobArray2}
+                            index={28}
+                        />
+                    </HStack>
+                    <HStack className={cls.letters}>
+                        <AnimatedLetters
+                            letterClass={letterClass}
+                            strArray={jobArray3}
+                            index={38}
+                        />
+                    </HStack>
+                </VStack>
+                <Text
+                    className={cls.tags}
+                    cursive
+                    variant="accent"
+                    title="<h1 />"
+                />
+                <Text
+                    size={size}
+                    className={cls.footerSign}
+                    title={footerSign}
+                />
                 {/* TODO add contact page */}
-                <AppLink to="/contact" className={cls['flat-button']}>
-                    {t('Contact me')}
-                </AppLink>
+                <Button className={cls['flat-button']}>
+                    <AppLink to="/contact">{t('Contact me')}</AppLink>
+                </Button>
             </VStack>
             <MainLogo />
-        </div>
+        </VStack>
     )
 }

@@ -16,7 +16,8 @@ interface TextProps {
     self?: SelfAlign
     size?: TextSize
     bold?: boolean
-    'data-testid'?: string
+    cursive?: boolean
+    'data-testing'?: string
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3'
@@ -43,13 +44,14 @@ export const Text = memo((props: TextProps) => {
         size = 'm',
         self = 'auto',
         bold,
-        'data-testid': dataTestId = 'Test',
+        cursive,
+        'data-testing': dataTestId = 'Test',
     } = props
 
     const HeaderTag = mapSizeToHeaderTag[size]
     const sizeClass = mapSizeToClass[size]
 
-    const cn = classNames('', { [cls.bold]: bold }, [
+    const cn = classNames('', { [cls.bold]: bold, [cls.cursive]: cursive }, [
         className,
         cls[variant],
         cls[align],
