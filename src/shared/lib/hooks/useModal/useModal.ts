@@ -29,6 +29,7 @@ export const useModal = (props: UseModalProps) => {
     const close = useCallback(() => {
         if (onClose) {
             setIsClosing(true)
+
             timerRef.current = setTimeout(() => {
                 onClose()
                 setIsClosing(false)

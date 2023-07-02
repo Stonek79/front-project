@@ -6,8 +6,9 @@ export type CardVariant = 'normal' | 'outline' | 'light'
 export type CardPaddings = '0' | '4' | '8' | '16' | '24' | '32'
 export type CardGap = '0' | '4' | '8' | '16' | '24' | '32'
 export type CardBorder = 'none' | 'standard' | 'rounded' | 'partial'
+type OnClick<T> = (args?: T) => T
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
+interface BaseCardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string
     children?: ReactNode
     variant?: CardVariant
@@ -16,6 +17,17 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     cardBorder?: CardBorder
     gap?: CardGap
 }
+
+interface ClickableCardProps extends BaseCardProps {
+    clickable: true
+    onClick: OnClick<any>
+}
+
+interface CommonCardProps extends BaseCardProps {
+    clickable?: false
+}
+
+type CardProps = ClickableCardProps | CommonCardProps
 
 const mapPaddingsToClass: Record<CardPaddings, string> = {
     '0': 'pad_0',
@@ -44,16 +56,29 @@ export const Card = memo((props: CardProps) => {
         cardPaddings = '16',
         cardBorder = 'standard',
         gap = '0',
+        clickable,
         ...otherProps
     } = props
 
-    const cn = classNames(cls.Card, { [cls.max]: max }, [
-        className,
-        cls[variant],
-        cls[cardBorder],
-        cls[mapPaddingsToClass[cardPaddings]],
-        cls[mapGapToClass[gap]],
-    ])
+    const cn = classNames(
+        cls.Card,
+        { [cls.max]: max, [cls.cursor]: clickable },
+        [
+            className,
+            cls[variant],
+            cls[cardBorder],
+            cls[mapPaddingsToClass[cardPaddings]],
+            cls[mapGapToClass[gap]],
+        ],
+    )
+
+    if (clickable) {
+        return (
+            <div {...otherProps} onClick={props.onClick} className={cn}>
+                {children}
+            </div>
+        )
+    }
 
     return (
         <div {...otherProps} className={cn}>

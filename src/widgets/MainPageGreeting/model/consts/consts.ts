@@ -7,3 +7,4 @@ export const HLetter = 'H'
 export const iLetter = 'i,'
 export const ILetter = 'I'
 export const mLetter = "'m"
+export const maxWidth = 768

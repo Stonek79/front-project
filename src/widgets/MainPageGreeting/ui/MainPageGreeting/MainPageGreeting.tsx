@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import MyLogoTitle from '@/shared/assets/my-logo.png'
-import cls from './MainPageGreating.module.scss'
+import cls from './MainPageGreeting.module.scss'
 import { MainLogo } from '@/features/MainLogo'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { AnimatedLetters } from '@/features/AnimatedLetters'
@@ -14,38 +14,37 @@ import {
     jobArray,
     jobArray2,
     jobArray3,
+    maxWidth,
     mLetter,
     nameArray,
 } from '../../model/consts/consts'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { Text, TextSize } from '@/shared/ui/redesigned/Text'
 import { Button } from '@/shared/ui/redesigned/Button'
+import { useResizeObserver } from '@/shared/lib/hooks/useResizeObserver/useResizeObserver'
+import { AppRoutes } from '@/shared/const/router'
 
-interface MainPageGreatingProps {
+interface MainPageGreetingProps {
     className?: string
 }
 
-export const MainPageGreating = ({ className }: MainPageGreatingProps) => {
+export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
     const [letterClass, setLetterClass] = useState('text-animate')
-    const [size, setSize] = useState<TextSize>(
-        window.innerWidth >= 768 ? 'm' : 's',
-    )
-    const [width, setWidth] = useState(window.innerWidth)
-    const { t } = useTranslation()
+    const sizeRef = useRef(document.body)
+    const { width } = useResizeObserver({ element: sizeRef })
 
+    const [size, setSize] = useState<TextSize>(width >= maxWidth ? 'm' : 's')
+
+    const { t } = useTranslation()
     const cn = classNames('', {}, [className, cls['home-page']])
 
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768 && window.innerWidth >= width) {
-            setSize('m')
-            setWidth(window.innerWidth)
-        }
+    if (size === 'm' && width < maxWidth) {
+        setSize('s')
+    }
 
-        if (window.innerWidth < 768 && window.innerWidth < width) {
-            setSize('s')
-            setWidth(window.innerWidth)
-        }
-    })
+    if (size === 's' && width >= maxWidth) {
+        setSize('m')
+    }
 
     useEffect(() => {
         const timer = setTimeout(
@@ -56,8 +55,8 @@ export const MainPageGreating = ({ className }: MainPageGreatingProps) => {
     }, [])
 
     return (
-        <VStack className={cn} max>
-            <VStack gap="8" max>
+        <VStack className={cn}>
+            <VStack gap="8">
                 <Text
                     className={cls.tags}
                     cursive
@@ -123,9 +122,16 @@ export const MainPageGreating = ({ className }: MainPageGreatingProps) => {
                     title={footerSign}
                 />
                 {/* TODO add contact page */}
-                <Button className={cls['flat-button']}>
-                    <AppLink to="/contact">{t('Contact me')}</AppLink>
-                </Button>
+                <HStack justify="between" max>
+                    <Button className={cls['flat-button']}>
+                        <AppLink to="/contact">{t('Contact me')}</AppLink>
+                    </Button>
+                    <Button className={cls['flat-button']}>
+                        <AppLink to={AppRoutes.ABOUT}>
+                            {t('About Page')}
+                        </AppLink>
+                    </Button>
+                </HStack>
             </VStack>
             <MainLogo />
         </VStack>

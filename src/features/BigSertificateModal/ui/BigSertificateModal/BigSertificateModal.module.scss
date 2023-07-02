@@ -1,0 +1,12 @@
+.content {
+    transform: scale(1);
+}
+
+.img {
+    max-height: 80vh;
+}
+
+.isClosing {
+    transition: 0.3s transform;
+    transform: scale(0.2);
+}

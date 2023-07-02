@@ -1,0 +1,105 @@
+:root {
+    --cube-size: 100px;
+    --cube-aria: 200px;
+}
+
+.stage-cube-cont {
+    width: 100%;
+    min-height: 350px;
+    padding-top: 75px;
+    overflow: hidden;
+    display: flex;
+}
+
+.cubespinner {
+    animation-name: spincube;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 12s;
+    transform-style: preserve-3d;
+    transform-origin: 100px 100px 0;
+    margin-left: calc(50% - 100px);
+
+    div {
+        position: absolute;
+        width: var(--cube-aria);
+        height: var(--cube-aria);
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: rgb(255 255 255 / 40%);
+        text-align: center;
+        font-size: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 20px 0 lightyellow;
+    }
+
+    .face1 {
+        transform: translateZ(var(--cube-size));
+        color: #dd0031;
+    }
+
+    .face2 {
+        transform: rotateY(90deg) translateZ(var(--cube-size));
+        color: #f06529;
+    }
+
+    .face3 {
+        transform: rotateY(90deg) rotateX(90deg) translateZ(var(--cube-size));
+        color: #28a4d9;
+    }
+
+    .face4 {
+        transform: rotateY(180deg) rotateZ(90deg) translateZ(var(--cube-size));
+        color: #5ed4f4;
+    }
+
+    .face5 {
+        transform: rotateY(-90deg) rotateZ(90deg) translateZ(var(--cube-size));
+        color: #efd81d;
+    }
+
+    .face6 {
+        transform: rotateX(-90deg) translateZ(var(--cube-size));
+        color: #ec4d28;
+    }
+}
+
+@keyframes spincube {
+    from,
+    to {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    16% {
+        transform: rotateY(-90deg);
+    }
+
+    33% {
+        transform: rotateY(-90deg) rotateZ(90deg);
+    }
+
+    50% {
+        transform: rotateY(-180deg) rotateZ(90deg);
+    }
+
+    66% {
+        transform: rotateY(-270deg) rotateX(90deg);
+    }
+
+    83% {
+        transform: rotateX(90deg);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --cube-size: 80px;
+        --cube-aria: 150px;
+    }
+
+    .stage-cube-cont {
+        padding-top: 18%;
+    }
+}

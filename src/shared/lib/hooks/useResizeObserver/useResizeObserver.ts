@@ -1,47 +1,33 @@
-import { MutableRefObject, useEffect } from 'react'
-// eslint-disable-next-line fsd-paths-checker-plugin/layer-import-control
-import { ArticleView } from '@/entities/Article'
+import { MutableRefObject, useMemo, useState } from 'react'
 
 interface useResizeObserverProps {
-    page: number
-    // initState: (limit: number) => void,
-    // fetchArticles: (page: number) => void,
-    view: string
     element: MutableRefObject<HTMLElement>
+    startWidth?: number
+    startHeight?: number
 }
 
 export const useResizeObserver = ({
-    page,
-    view,
     element,
+    startHeight = element.current.offsetHeight,
+    startWidth = element.current.offsetWidth,
 }: useResizeObserverProps) => {
-    useEffect(() => {
-        const resizeObserver = new ResizeObserver((entries) => {
-            // eslint-disable-next-line no-restricted-syntax
-            for (const entry of entries) {
-                if (entry.contentBoxSize) {
-                    const heightLimit = Math.floor(
-                        entry.contentBoxSize[0].blockSize / 325,
-                    ) // hardcoded height
-                    const widthLimit = Math.floor(
-                        entry.contentBoxSize[0].inlineSize / 260,
-                    ) // hardcoded width
-                    const limit =
-                        view === ArticleView.LIST
-                            ? 3
-                            : (heightLimit + 1) * widthLimit
-                    // initState(limit)
-                    // fetchArticles(page)
-                    console.log(limit, 'limit')
-                } else {
-                    resizeObserver.unobserve(element.current)
-                    console.log(' ResizeObserverEntry error')
-                }
-            }
-            resizeObserver.unobserve(element.current)
-            console.log('Size changed')
-        })
+    const [height, setHeight] = useState(startHeight)
+    const [width, setWidth] = useState(startWidth)
 
-        resizeObserver.observe(element.current)
-    }, [element, page, view])
+    const resizeObserver = new ResizeObserver((entries) => {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const entry of entries) {
+            if (entry.contentBoxSize[0].inlineSize !== width) {
+                setWidth(entry.contentBoxSize[0].inlineSize)
+            }
+
+            if (entry.contentBoxSize[0].blockSize !== height) {
+                setHeight(entry.contentBoxSize[0].blockSize)
+            }
+        }
+    })
+
+    resizeObserver.observe(element.current)
+
+    return useMemo(() => ({ height, width }), [height, width])
 }
