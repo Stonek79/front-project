@@ -1,22 +1,14 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { Page } from '@/widgets/Page'
-import { VStack } from '@/shared/ui/redesigned/Stack'
-import { Text } from '@/shared/ui/redesigned/Text'
 import { AboutPageInforBlock } from '@/widgets/AboutPageInfoBlock'
+import { TagsLayout } from '@/shared/layouts'
 
-const AboutPage = () => {
-    const { t } = useTranslation()
-
-    return (
-        <Page data-testid="AboutPage">
-            <VStack gap="16" justify="center" align="center">
-                <Text bold text={t('About Page')} />
-                <Text text={t('The page is in development')} />
-                <AboutPageInforBlock />
-            </VStack>
-        </Page>
-    )
-}
+const AboutPage = () => (
+    <Page data-testid="AboutPage">
+        <TagsLayout>
+            <AboutPageInforBlock />
+        </TagsLayout>
+    </Page>
+)
 
 export default AboutPage

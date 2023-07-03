@@ -61,7 +61,7 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
                     className={cls.tags}
                     cursive
                     self="start"
-                    variant="accent"
+                    variant="tag"
                     title="<h1>"
                     align="right"
                 />
@@ -113,7 +113,7 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
                 <Text
                     className={cls.tags}
                     cursive
-                    variant="accent"
+                    variant="tag"
                     title="<h1 />"
                 />
                 <Text

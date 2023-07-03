@@ -26,6 +26,16 @@
     }
 }
 
+.tag {
+    .title {
+        color: var(--tag-color);
+    }
+
+    .text {
+        color: var(--tag-color);
+    }
+}
+
 .left {
     text-align: left;
 }

@@ -52,7 +52,7 @@ const App = memo(() => {
             feature="isAppRedesigned"
             on={
                 <div id="app" className={cnRedesigned}>
-                    <Suspense fallback="">
+                    <Suspense fallback={<AppLoaderLayout />}>
                         <MainLayout
                             header={<Navbar />}
                             content={<AppRouter />}

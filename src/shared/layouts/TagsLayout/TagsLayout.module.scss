@@ -1,0 +1,36 @@
+.tagsLayout {
+    overflow: hidden;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.top-tags,
+.bottom-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tags {
+    color: var(--tag-color);
+    opacity: 0.6;
+    margin: 10px 0;
+    font-size: 18px;
+    font-family: "La Belle Aurore", cursive;
+}
+
+.tag-html {
+    margin-left: 10px;
+    transition: all 0.5s ease-in-out;
+    transform: translateX(-280%);
+}
+
+.tag-body {
+    margin-left: 20px;
+    transition: all 0.9s ease-in-out;
+    transform: translateX(-280%);
+
+    .loaded {
+        transform: translateX(0%);
+    }
+}
