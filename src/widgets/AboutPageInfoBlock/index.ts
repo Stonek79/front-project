@@ -1,1 +1,1 @@
-export { AboutPageInforBlock } from './ui/AboutPageInfoBlock/AboutPageInfoBlock'
+export { AboutPageInfoBlock } from './ui/AboutPageInfoBlock/AboutPageInfoBlock'

@@ -42,7 +42,6 @@ export const Textarea = memo((props: InputProps) => {
         value,
         label,
         onChange,
-        className,
         placeholder,
         autofocus,
         readonly,
@@ -51,19 +50,17 @@ export const Textarea = memo((props: InputProps) => {
         labelBold = false,
         ...otherProps
     } = props
-    const [height, setHeight] = useState(100)
+    const [height, setHeight] = useState(0)
+    const [isFocused, setIsFocused] = useState(false)
+    const ref = useRef() as MutableRefObject<HTMLTextAreaElement>
 
     useEffect(() => {
-        if (document.getElementById(textareaId)?.scrollHeight) {
-            const currentHeight =
-                document.getElementById(textareaId)?.scrollHeight
-            // @ts-ignore
+        const currentHeight = ref?.current?.scrollHeight
+
+        if (currentHeight) {
             setHeight(currentHeight)
         }
     }, [height, textareaId])
-
-    const [isFocused, setIsFocused] = useState(false)
-    const ref = useRef() as MutableRefObject<HTMLTextAreaElement>
 
     const inputCn = classNames(cls.input, { [cls.focused]: isFocused }, [])
 

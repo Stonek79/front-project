@@ -42,7 +42,7 @@ const ConfirmationModalForm = memo((props: ConfirmationModalFormProps) => {
                         color="error"
                         onClick={onCancel}
                     >
-                        {t('Cancel')}
+                        {t('No')}
                     </Button>
                     <Button
                         size="l"
@@ -50,7 +50,7 @@ const ConfirmationModalForm = memo((props: ConfirmationModalFormProps) => {
                         color="success"
                         onClick={onConfirm}
                     >
-                        {t('Confirm')}
+                        {t('Yes')}
                     </Button>
                 </HStack>
             </VStack>

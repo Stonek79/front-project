@@ -18,6 +18,10 @@ export const articleDetailsSlice = createSlice({
         cancelEdit: (state) => {
             state.form = state.data
         },
+        setNewArticleForm: (state, { payload }: PayloadAction<Article>) => {
+            state.form = payload
+            state.data = payload
+        },
         updateArticle: (state, action: PayloadAction<Article>) => {
             state.form = {
                 ...state.form,

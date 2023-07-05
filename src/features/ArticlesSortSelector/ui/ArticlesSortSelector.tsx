@@ -65,7 +65,7 @@ export const ArticlesSortSelector = memo((props: ArticlesSortSelectorProps) => {
             feature="isAppRedesigned"
             on={
                 <VStack gap="8">
-                    <Text text={t('Sort by')} />
+                    <Text text={`${t('Sort by')}:`} />
                     <ListBox
                         value={sort}
                         onChange={onChangeSort}

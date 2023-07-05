@@ -8,8 +8,8 @@ interface useResizeObserverProps {
 
 export const useResizeObserver = ({
     element,
-    startHeight = element.current.offsetHeight,
-    startWidth = element.current.offsetWidth,
+    startHeight = element?.current?.offsetHeight || 0,
+    startWidth = element?.current?.offsetWidth || 0,
 }: useResizeObserverProps) => {
     const [height, setHeight] = useState(startHeight)
     const [width, setWidth] = useState(startWidth)
@@ -27,7 +27,7 @@ export const useResizeObserver = ({
         }
     })
 
-    resizeObserver.observe(element.current)
+    if (element?.current) resizeObserver.observe(element.current)
 
     return useMemo(() => ({ height, width }), [height, width])
 }

@@ -19,9 +19,9 @@ import { SpinnedCube } from '@/features/SpinnedCube'
 import { AppLink } from '@/shared/ui/redesigned/AppLink'
 import { useResizeObserver } from '@/shared/lib/hooks/useResizeObserver/useResizeObserver'
 import { Flex } from '@/shared/ui/redesigned/Stack/Flex/Flex'
-import { BigSertificateModal } from '@/features/BigSertificateModal'
+import { BigCertificateModal } from '@/features/BigCertificateModal'
 
-export const AboutPageInforBlock = () => {
+export const AboutPageInfoBlock = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
     const [isOpen, setIsOpen] = useState(false)
     const [imgPath, setImgPath] = useState('')
@@ -91,7 +91,7 @@ export const AboutPageInforBlock = () => {
             </VStack>
             <SpinnedCube />
             {isOpen && (
-                <BigSertificateModal
+                <BigCertificateModal
                     isOpen={isOpen}
                     onClose={onCloseModal}
                     img={imgPath}

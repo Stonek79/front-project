@@ -25,15 +25,12 @@ interface ArticleAddBlocksContainerProps {
 const newBlocks = {
     [ArticleBlockTypes.TEXT]: {
         ...NewArticleTextBlock,
-        id: nanoid(10),
     },
     [ArticleBlockTypes.IMAGE]: {
         ...NewArticleImageBlock,
-        id: nanoid(10),
     },
     [ArticleBlockTypes.CODE]: {
         ...NewArticleCodeBlock,
-        id: nanoid(10),
     },
 }
 
@@ -46,7 +43,7 @@ export const ArticleAddBlocksContainer = memo(
         const cn = classNames(cls.ArticleAddBlocksContainer, {}, [className])
 
         const addBlock = (type: ArticleBlockTypesType) => {
-            const newBlock = newBlocks[type]
+            const newBlock = { ...newBlocks[type], id: nanoid(10) }
             const blocks = [newBlock, ...articleData.blocks]
 
             dispatch(

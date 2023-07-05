@@ -6,3 +6,11 @@
     gap: 8px;
     justify-self: left;
 }
+
+.cardLink {
+    justify-content: center;
+}
+
+.cardLink > :first-child {
+    padding: 20px;
+}

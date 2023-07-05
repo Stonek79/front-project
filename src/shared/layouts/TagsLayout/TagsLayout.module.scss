@@ -1,7 +1,12 @@
+.indent {
+    margin-left: 100px;
+    height: 100%;
+}
+
 .tagsLayout {
     overflow: hidden;
-    height: 100%;
     box-sizing: border-box;
+    height: 100%;
 }
 
 .top-tags,
@@ -15,7 +20,7 @@
     color: var(--tag-color);
     opacity: 0.6;
     margin: 10px 0;
-    font-size: 18px;
+    font-size: 24px;
     font-family: "La Belle Aurore", cursive;
 }
 
@@ -29,8 +34,8 @@
     margin-left: 20px;
     transition: all 0.9s ease-in-out;
     transform: translateX(-280%);
+}
 
-    .loaded {
-        transform: translateX(0%);
-    }
+.loaded {
+    transform: translateX(0%);
 }

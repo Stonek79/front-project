@@ -10,6 +10,7 @@ import cls from './Button.module.scss'
 
 export type ButtonVariant = 'clear' | 'outline' | 'filled'
 export type ButtonColor = 'normal' | 'success' | 'error'
+export type TextWrap = 'normal' | 'nowrap'
 
 export type ButtonSize = 'l' | 'm' | 'xl'
 
@@ -25,6 +26,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     addonRight?: ReactElement
     right?: boolean
     color?: ButtonColor
+    wrap?: TextWrap
 }
 
 export const Button = forwardRef(
@@ -41,6 +43,7 @@ export const Button = forwardRef(
             color = 'normal',
             addonLeft,
             addonRight,
+            wrap = 'nowrap',
             ...otherProps
         } = props
 
@@ -58,6 +61,7 @@ export const Button = forwardRef(
             cls[variant],
             cls[size],
             cls[color],
+            cls[wrap],
         ])
 
         return (

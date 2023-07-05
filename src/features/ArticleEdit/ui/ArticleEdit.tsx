@@ -23,10 +23,12 @@ import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import cls from '../../../entities/Article/ui/ArticleDetailsRedesigned/ArticleDetailsRedesigned.module.scss'
 import { ArticleBlocksComponent } from '../../../entities/Article/ui/ArticleBlocksComponent/ArticleBlocksComponent'
 import { ConfirmationModal } from '../../ConfirmationModal'
+import { Article } from '@/entities/Article'
 
 export interface ArticleEditProps {
     className?: string
-    id: string
+    id?: string
+    articleBaseData?: Article
 }
 
 const articleDetailsReducers: ReducersList = {
@@ -45,11 +47,14 @@ const skeleton = (
 )
 
 export const ArticleEdit = memo((props: ArticleEditProps) => {
+    const { articleBaseData } = props
     const { t } = useTranslation()
-
-    const articleData = useSelector(getArticleDetailsFormData)
-    const isLoading = useSelector(getArticleIsLoadingData)
     const dispatch = useAppDispatch()
+
+    const articleData =
+        useSelector(getArticleDetailsFormData) || articleBaseData
+    const isLoading = useSelector(getArticleIsLoadingData)
+
     const [isOpen, setIsOpen] = useState(false)
     const [data, setData] = useState<any>('')
 

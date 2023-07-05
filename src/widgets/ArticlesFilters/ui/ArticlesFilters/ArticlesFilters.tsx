@@ -11,6 +11,8 @@ import { Input } from '@/shared/ui/redesigned/Input'
 import SearchIcon from '@/shared/assets/icons/search.svg'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import { VStack } from '@/shared/ui/redesigned/Stack'
+import { AppLink } from '@/shared/ui/redesigned/AppLink'
+import { getRouteArticleNew } from '@/shared/const/router'
 
 interface ArticlesFiltersProps {
     className?: string
@@ -41,27 +43,34 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
     const cn = classNames(cls.ArticlesFilters, {}, [className, cls.getVStack])
 
     return (
-        <Card className={cn} cardPaddings="24">
-            <VStack gap="8">
-                <Input
-                    addonLeft={<Icon Svg={SearchIcon} />}
-                    value={search}
-                    size="s"
-                    onChange={onChangeSearch}
-                    placeholder={t('Search')}
-                />
-                <ArticleTypeTabs
-                    value={type}
-                    onChangeType={onChangeType}
-                    className={cls.tabs}
-                />
-                <ArticlesSortSelector
-                    sort={sort}
-                    order={order}
-                    onChangeOrder={onChangeOrder}
-                    onChangeSort={onChangeSort}
-                />
-            </VStack>
-        </Card>
+        <VStack gap="32">
+            <Card className={cn} cardPaddings="24">
+                <VStack gap="8">
+                    <Input
+                        addonLeft={<Icon Svg={SearchIcon} />}
+                        value={search}
+                        size="s"
+                        onChange={onChangeSearch}
+                        placeholder={t('Search')}
+                    />
+                    <ArticleTypeTabs
+                        value={type}
+                        onChangeType={onChangeType}
+                        className={cls.tabs}
+                    />
+                    <ArticlesSortSelector
+                        sort={sort}
+                        order={order}
+                        onChangeOrder={onChangeOrder}
+                        onChangeSort={onChangeSort}
+                    />
+                </VStack>
+            </Card>
+            <Card className={cls.cardLink} cardPaddings="4" max>
+                <AppLink to={getRouteArticleNew()}>
+                    {t('Add New Article')}
+                </AppLink>
+            </Card>
+        </VStack>
     )
 })

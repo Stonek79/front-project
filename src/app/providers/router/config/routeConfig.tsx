@@ -24,6 +24,7 @@ import {
 } from '@/shared/const/router'
 import { AppRoutesProps } from '@/shared/types/router'
 import { SettingsPage } from '@/pages/SettingsPage'
+import { ArticleNewPage } from '@/pages/ArticleNewPage'
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
@@ -55,7 +56,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
     [AppRoutes.ARTICLE_NEW]: {
         path: getRouteArticleNew(),
-        element: <ArticleEditPage />,
+        element: <ArticleNewPage />,
         authOnly: true,
     },
     [AppRoutes.ARTICLE_EDIT]: {

@@ -114,5 +114,8 @@
   "signUp": "signUp",
     "Username already exist": "Username already exist",
     "notCorrectUserData": "notCorrectUserData",
-    "Contact me": "Contact me"
+    "Contact me": "Contact me",
+    "Add New Article": "Add New Article",
+    "Yes": "Yes",
+  "No": "No"
 }

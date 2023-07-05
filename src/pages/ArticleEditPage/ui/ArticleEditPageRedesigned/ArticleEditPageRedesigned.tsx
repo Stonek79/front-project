@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import { memo } from 'react'
-import { Text } from '@/shared/ui/redesigned/Text'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Page } from '@/widgets/Page'
 import cls from './ArticleEditPageRedesigned.module.scss'
@@ -19,7 +18,7 @@ const ArticleEditPageRedesigned = (props: ArticleEditPageProps) => {
 
     const content = (
         <Page className={cn}>
-            {!id ? <Text text="New article" /> : <ArticleEdit id={id} />}
+            <ArticleEdit id={id} />
         </Page>
     )
     return (
