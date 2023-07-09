@@ -11,7 +11,7 @@ export const ArticleNewPageContainer = memo(() => {
 
     return (
         <Card cardPaddings="32" cardBorder="rounded">
-            <ArticleEditAdditionBlock article={articleData} />
+            <ArticleEditAdditionBlock isNew article={articleData} />
         </Card>
     )
 })

@@ -1,25 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { Article } from '../types/article'
 import { ThunkConfig } from '@/app/providers/StoreProvider'
-import { setEditArticleMutation } from '../../api/articlesApi'
+import { setNewArticleMutation } from '../../api/articlesApi'
 
-export const editArticle = createAsyncThunk<
+export const addNewArticle = createAsyncThunk<
     Article,
     Article,
     ThunkConfig<string>
->('article/editArticle', async (articleData, thunkAPI) => {
+>('article/addNewArticle', async (newArticle, thunkAPI) => {
     const { rejectWithValue, dispatch } = thunkAPI
 
-    if (!articleData) {
+    if (!newArticle) {
         return rejectWithValue('no article data')
     }
 
     try {
-        const { user, ...spread } = articleData
+        const { user, ...rest } = newArticle
+
         const res = await dispatch(
-            setEditArticleMutation({
-                ...spread,
-            }),
+            setNewArticleMutation({ ...rest, userId: user.id }),
         ).unwrap()
 
         if (!res) {

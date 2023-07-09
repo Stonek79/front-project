@@ -25,7 +25,7 @@ export const ArticleAdditionInfo = memo((props: ArticleAdditionInfoProps) => {
     const articleData = useSelector(getArticleDetailsData)
 
     const canEdit =
-        authData?.id === articleData?.user.id ||
+        authData?.id === (articleData?.userId || articleData?.user.id) ||
         authData?.roles?.includes('admin')
 
     const cn = classNames(cls.ArticleAdditionInfo, {}, [className])

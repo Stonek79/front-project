@@ -10,7 +10,16 @@ const articlesApi = rtkApi.injectEndpoints({
                 body: { ...editedArticle },
             }),
         }),
+        addNewArticle: build.mutation<Article, Partial<Article>>({
+            query: (newArticle) => ({
+                url: `/articles`,
+                method: 'POST',
+                body: newArticle,
+            }),
+        }),
     }),
 })
 
 export const setEditArticleMutation = articlesApi.endpoints.editArticle.initiate
+export const setNewArticleMutation =
+    articlesApi.endpoints.addNewArticle.initiate

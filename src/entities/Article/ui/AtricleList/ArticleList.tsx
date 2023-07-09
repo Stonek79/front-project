@@ -7,8 +7,6 @@ import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkele
 import { ArticleView } from '../../model/consts/consts'
 import { HStack } from '@/shared/ui/redesigned/Stack'
 
-// TODO add virtualization?
-
 interface ArticleListProps {
     className?: string
     articles: Article[]

@@ -17,6 +17,7 @@
   "All topics": "All topics",
   "Article Subtitle": "Article Subtitle",
   "Article Title": "Article Title",
+  "Article Types": "Article Types",
   "Article detail page": "Article detail page",
   "Article not found": "Article not found",
   "Article rating is in progress": "Article rating is in progress",
@@ -125,5 +126,6 @@
   "{{count}} views_one": "{{count}} view",
   "{{count}} views_other": "{{count}} views",
   "{{count}} views_plural": "{{count}} views_plural",
-  "{{count}} views_zero": "{{count}} views"
+  "{{count}} views_zero": "{{count}} views",
+  "Ошибка при загрузке статей": "Ошибка при загрузке статей"
 }

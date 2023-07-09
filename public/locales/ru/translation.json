@@ -17,6 +17,7 @@
   "All topics": "Все темы",
   "Article Subtitle": "Подзаголовок статьи",
   "Article Title": "Заголовок статьи",
+  "Article Types": "Article Types",
   "Article detail page": "Детальная страница статьи",
   "Article not found": "Статья не найдена",
   "Article rating is in progress": "Статья в процессе оценки",
@@ -128,5 +129,6 @@
   "{{count}} views_few": "{{count}} просмотра",
   "{{count}} views_many": "{{count}} просмотров",
   "{{count}} views_one": "{{count}} просмотр",
-  "{{count}} views_zero": "{{count}} просмотров"
+  "{{count}} views_zero": "{{count}} просмотров",
+  "Ошибка при загрузке статей": "Ошибка при загрузке статей"
 }

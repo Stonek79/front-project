@@ -6,9 +6,18 @@ import cls from './ArticleEditPageRedesigned.module.scss'
 import { StickyLayout } from '@/shared/layouts'
 import { ArticleEditPageContainer } from '../ArticleEditPageContainer/ArticleEditPageContainer'
 import { ArticleEdit } from '@/features/ArticleEdit'
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
+import { articleDetailsReducer } from '@/entities/Article'
 
 interface ArticleEditPageProps {
     className?: string
+}
+
+const reducer: ReducersList = {
+    article: articleDetailsReducer,
 }
 
 const ArticleEditPageRedesigned = (props: ArticleEditPageProps) => {
@@ -17,9 +26,11 @@ const ArticleEditPageRedesigned = (props: ArticleEditPageProps) => {
     const cn = classNames(cls.ArticleEditPage, {}, [className])
 
     const content = (
-        <Page className={cn}>
-            <ArticleEdit id={id} />
-        </Page>
+        <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
+            <Page className={cn}>
+                <ArticleEdit id={id} />
+            </Page>
+        </DynamicModuleLoader>
     )
     return (
         <StickyLayout content={content} right={<ArticleEditPageContainer />} />

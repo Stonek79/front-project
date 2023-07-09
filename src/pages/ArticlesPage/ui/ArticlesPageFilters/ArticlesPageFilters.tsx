@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/shared/ui/redesigned/Card'
-import { Input } from '@/shared/ui/deprecated/Input'
+import { Input } from '@/shared/ui/redesigned/Input'
 import { ArticleViewSelector } from '@/features/ArticleViewSelector'
 import { ArticlesSortSelector } from '@/features/ArticlesSortSelector'
 import { ArticleTypeTabs } from '@/features/ArticleTypeTabs'

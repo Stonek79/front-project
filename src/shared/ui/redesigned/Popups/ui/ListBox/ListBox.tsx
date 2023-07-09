@@ -25,6 +25,7 @@ interface ListBoxProps<T extends string> {
     readonly?: boolean
     direction?: DropdownDirection
     label?: string
+    multiselect?: boolean
 }
 
 export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
@@ -37,6 +38,7 @@ export const ListBox = <T extends string>(props: ListBoxProps<T>) => {
         readonly,
         direction = 'bottom right',
         onChange,
+        multiselect,
     } = props
 
     const cn = classNames(clsPopup.popup, {}, [className])

@@ -5,8 +5,8 @@ import { fetchArticlesList } from '../../models/services/fetchArticlesList'
 import {
     getArticlesHasMore,
     getArticlesPages,
-    getIsLoadingArticles,
 } from '../../models/selectors/articlesPageSelectors'
+import { getArticleIsLoadingData } from '@/entities/Article'
 
 export const fetchNextArticlesPage = createAsyncThunk<
     void,
@@ -15,11 +15,16 @@ export const fetchNextArticlesPage = createAsyncThunk<
 >('articlesPage/fetchNextArticlesPage', async (_, thunkAPI) => {
     const { getState, dispatch } = thunkAPI
     const hasMore = getArticlesHasMore(getState())
-    const isLoading = getIsLoadingArticles(getState())
     const page = getArticlesPages(getState())
+    const isLoading = getArticleIsLoadingData(getState())
 
-    if (hasMore && !isLoading) {
-        dispatch(articlesPageActions.setPage(page + 1))
-        dispatch(fetchArticlesList({}))
+    try {
+        if (hasMore && !isLoading) {
+            dispatch(articlesPageActions.setPage(page + 1))
+
+            dispatch(fetchArticlesList({}))
+        }
+    } catch (e) {
+        console.log(e)
     }
 })

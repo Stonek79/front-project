@@ -40,12 +40,13 @@ const articlesPageSlice = createSlice({
         sort: ArticleSortField.ALL,
         order: 'asc',
         search: '',
-        limit: 9,
+        limit: 10,
         type: ArticleTypes.ALL,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ArticleViewTypes>) => {
             state.view = action.payload
+            state.limit = action.payload === ArticleView.LIST ? 4 : 10
             localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload)
         },
         setPage: (state, action: PayloadAction<number>) => {
@@ -69,7 +70,7 @@ const articlesPageSlice = createSlice({
             ) as ArticleViewTypes
 
             state.view = view
-            state.limit = view === ArticleView.LIST ? 3 : 9
+            state.limit = view === ArticleView.LIST ? 4 : 10
 
             state._inited = true
         },

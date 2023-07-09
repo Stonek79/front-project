@@ -46,6 +46,19 @@ export interface Article {
     subtitle: string
     img: string
     user: User
+    userId?: string
+    views: number
+    createdAt: string
+    type: ArticleTypesType[]
+    blocks: ArticleBlock[]
+}
+
+export type NewArticle = {
+    userId: string
+    id: string
+    title: string
+    subtitle: string
+    img: string
     views: number
     createdAt: string
     type: ArticleTypesType[]

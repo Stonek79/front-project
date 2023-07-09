@@ -16,7 +16,7 @@ export const fetchProfileData = createAsyncThunk<
                 _expand: 'user',
             },
         })
-        console.log(data, 'fetc')
+
         if (!data) {
             return rejectWithValue('serverError')
         }

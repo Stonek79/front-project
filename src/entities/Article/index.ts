@@ -1,6 +1,11 @@
-export { getArticleDetailsFormData } from './model/selectors/articleDetails'
+export { ArticleBlocksComponent } from './ui/ArticleBlocksComponent/ArticleBlocksComponent'
+export {
+    getArticleDetailsFormData,
+    getArticleIsLoadingData,
+    getArticleDetailsData,
+} from './model/selectors/articleDetails'
 export { editArticle } from './model/services/editArticle'
-export { getArticleDetailsData } from './model/selectors/articleDetails'
+export { addNewArticle } from './model/services/addNewArticle'
 export {
     articleDetailsPageRecommendationsSliceReducer,
     getArticlesRecommendations,
@@ -11,9 +16,9 @@ export {
 } from './model/slice/articleDetailsSlice'
 export { getArticlesRecommendationsIsLoading } from './model/selectors/articlesRecommendations'
 export { fetchArticlesRecommendations } from './model/services/fetchArticlesRecommendations'
-export type { ArticleDetailsRecommendationsSchema } from './model/types/articleDetailsRecommendationsSchema'
 export { ArticleList } from './ui/AtricleList/ArticleList'
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails'
+export type { ArticleDetailsRecommendationsSchema } from './model/types/articleDetailsRecommendationsSchema'
 export type {
     Article,
     ArticleBlock,
@@ -21,6 +26,7 @@ export type {
     ArticleTypesType,
     ArticleSortFieldTypes,
     ArticleBlockTypesType,
+    NewArticle,
 } from './model/types/article'
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema'
 export {

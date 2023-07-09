@@ -5,25 +5,25 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import {
-    articleDetailsActions,
-    articleDetailsReducer,
-} from '../../../entities/Article/model/slice/articleDetailsSlice'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
-import {
-    getArticleDetailsFormData,
-    getArticleIsLoadingData,
-} from '../../../entities/Article/model/selectors/articleDetails'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { Input } from '@/shared/ui/redesigned/Input'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
-import cls from '../../../entities/Article/ui/ArticleDetailsRedesigned/ArticleDetailsRedesigned.module.scss'
-import { ArticleBlocksComponent } from '../../../entities/Article/ui/ArticleBlocksComponent/ArticleBlocksComponent'
 import { ConfirmationModal } from '../../ConfirmationModal'
-import { Article } from '@/entities/Article'
+import {
+    ArticleTypesType,
+    ArticleBlocksComponent,
+    articleDetailsActions,
+    articleDetailsReducer,
+    getArticleDetailsFormData,
+    getArticleIsLoadingData,
+    Article,
+} from '@/entities/Article'
+import { ArticleTypeSelector } from './ArticleTypeSelector'
+import cls from './ArticleEdit.module.scss'
 
 export interface ArticleEditProps {
     className?: string
@@ -97,6 +97,29 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
         )
     }
 
+    const onAddType = (value: ArticleTypesType) => {
+        const newTypes = new Set([...articleData.type, value])
+        const types = Array.from(newTypes)
+
+        dispatch(
+            articleDetailsActions.updateArticle({
+                ...articleData,
+                type: types,
+            }),
+        )
+    }
+
+    const onRemoveType = (value: ArticleTypesType) => {
+        const types = articleData.type.filter((type) => type !== value)
+
+        dispatch(
+            articleDetailsActions.updateArticle({
+                ...articleData,
+                type: types,
+            }),
+        )
+    }
+
     const handleDeleteBlock = () => {
         const withRemovedBlock = articleData.blocks.filter(
             (item) => item.id !== data.id,
@@ -156,8 +179,15 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
                         wrap
                         labelBold
                         label={`${t('Image Path')}:`}
-                        value={articleData?.img}
+                        value={articleData.img}
                         onChange={onChangeMainImage}
+                    />
+                </VStack>
+                <VStack gap="16" max>
+                    <ArticleTypeSelector
+                        onRemoveType={onRemoveType}
+                        types={articleData.type}
+                        onAddType={onAddType}
                     />
                 </VStack>
             </Card>

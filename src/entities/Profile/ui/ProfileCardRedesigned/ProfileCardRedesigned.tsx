@@ -57,7 +57,6 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
     } = props
     const { t } = useTranslation()
 
-    console.log(data, error, validateErrors)
     const validateErrorTranslates = {
         [ValidateProfileErrors.NO_DATA]: t('noData'),
         [ValidateProfileErrors.REQUIRED]: t('required'),
