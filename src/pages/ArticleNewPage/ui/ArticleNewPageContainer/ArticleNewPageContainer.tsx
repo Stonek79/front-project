@@ -3,15 +3,26 @@ import { useSelector } from 'react-redux'
 import { getArticleDetailsFormData } from '@/entities/Article'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { ArticleEditAdditionBlock } from '@/widgets/ArticleEditAdditionInfo'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { articlesPageActions } from '../../../ArticlesPage/models/slices/articlesPageSlice'
 
 export const ArticleNewPageContainer = memo(() => {
     const articleData = useSelector(getArticleDetailsFormData)
+    const dispatch = useAppDispatch()
 
     if (!articleData) return null
 
+    const hasUpdate = () => {
+        dispatch(articlesPageActions.setHaseReload())
+    }
+
     return (
         <Card cardPaddings="32" cardBorder="rounded">
-            <ArticleEditAdditionBlock isNew article={articleData} />
+            <ArticleEditAdditionBlock
+                hasUpdate={hasUpdate}
+                isNew
+                article={articleData}
+            />
         </Card>
     )
 })

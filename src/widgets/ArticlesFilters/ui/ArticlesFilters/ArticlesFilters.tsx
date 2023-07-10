@@ -66,7 +66,13 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
                     />
                 </VStack>
             </Card>
-            <Card className={cls.cardLink} cardPaddings="4" max>
+            <Card
+                variant="outline"
+                className={cls.cardLink}
+                cardBorder="rounded"
+                cardPaddings="4"
+                max
+            >
                 <AppLink to={getRouteArticleNew()}>
                     {t('Add New Article')}
                 </AppLink>

@@ -1,3 +1,4 @@
+export { deleteArticle } from './model/services/deleteArticle'
 export { ArticleBlocksComponent } from './ui/ArticleBlocksComponent/ArticleBlocksComponent'
 export {
     getArticleDetailsFormData,

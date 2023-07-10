@@ -18,7 +18,7 @@ interface ArticleInfiniteListProps {
 
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const { className } = props
-    const articles = useSelector(getArticles.selectAll) // TODO fix page loaders
+    const articles = useSelector(getArticles.selectAll)
     const isLoading = useSelector(getIsLoadingArticles)
     const view = useSelector(getArticlesView)
     const error = useSelector(getArticlesPageError)

@@ -20,11 +20,12 @@ interface ArticleEditAdditionBlockProps {
     className?: string
     article: Article
     isNew?: boolean
+    hasUpdate?: () => void
 }
 
 export const ArticleEditAdditionBlock = memo(
     (props: ArticleEditAdditionBlockProps) => {
-        const { className, article, isNew = false } = props
+        const { className, article, isNew = false, hasUpdate } = props
         const { t } = useTranslation()
         const dispatch = useAppDispatch()
         const navigate = useNavigate()
@@ -44,6 +45,9 @@ export const ArticleEditAdditionBlock = memo(
             if (article && isNew) {
                 try {
                     dispatch(addNewArticle(article))
+
+                    if (hasUpdate) hasUpdate()
+
                     navigate(getRouteArticleEdit(article.id))
                 } catch (e) {
                     navigate(getRouteNotFound())
@@ -51,7 +55,7 @@ export const ArticleEditAdditionBlock = memo(
             } else if (article) {
                 dispatch(editArticle(article))
             }
-        }, [article, dispatch, isNew, navigate])
+        }, [article, dispatch, hasUpdate, isNew, navigate])
 
         const onBack = useCallback(() => {
             navigate(-1)

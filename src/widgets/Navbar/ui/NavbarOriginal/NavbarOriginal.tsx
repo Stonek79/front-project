@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import {
     Button as ButtonDeprecated,
     ButtonTheme,
@@ -22,6 +22,7 @@ import { NotificationButton } from '@/features/NotificationButton'
 import { UserNavbarDropdown } from '@/features/UserNavbarDropdown'
 import cls from './NavbarOriginal.module.scss'
 import { getRouteArticleNew } from '@/shared/const/router'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 interface NavbarProps {
     className?: string
@@ -30,7 +31,7 @@ interface NavbarProps {
 export const NavbarOriginal = memo((props: NavbarProps) => {
     const { className } = props
     const { t } = useTranslation()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const [isOpen, setIsOpen] = useState(false)
     const authData = useSelector(getUserAuthData)
 

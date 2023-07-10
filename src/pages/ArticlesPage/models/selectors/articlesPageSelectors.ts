@@ -32,3 +32,6 @@ export const getArticlesPageType = (state: StateSchema) =>
 export const [useArticleItemById] = buildSelector(
     (state, id: string) => state.articlesPage?.entities[id],
 )
+
+export const getArticlesHasUpdate = (state: StateSchema) =>
+    state.articlesPage?.hasReload ?? false
