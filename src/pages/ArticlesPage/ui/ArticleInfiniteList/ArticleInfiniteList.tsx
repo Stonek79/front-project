@@ -2,8 +2,11 @@ import { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { ArticleList } from '@/entities/Article'
-import { getArticles } from '../../models/slices/articlesPageSlice'
+import { Article, ArticleList } from '@/entities/Article'
+import {
+    articlesPageActions,
+    getArticles,
+} from '../../models/slices/articlesPageSlice'
 import {
     getArticlesPageError,
     getArticlesView,
@@ -11,6 +14,7 @@ import {
 } from '../../models/selectors/articlesPageSelectors'
 import { Text } from '@/shared/ui/redesigned/Text'
 import cls from './ArticleInfiniteList.module.scss'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 interface ArticleInfiniteListProps {
     className?: string
@@ -23,11 +27,16 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const view = useSelector(getArticlesView)
     const error = useSelector(getArticlesPageError)
     const { t } = useTranslation()
+    const dispatch = useAppDispatch()
 
     const cn = classNames(cls.ArticleInfiniteList, {}, [className])
 
     if (error) {
-        return <Text text={t('Ошибка при загрузке статей')} />
+        return <Text text={t('Error loading articles')} />
+    }
+
+    const updateViews = (article: Article) => {
+        dispatch(articlesPageActions.upsertArticle(article))
     }
 
     return (
@@ -36,6 +45,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
             isLoading={isLoading}
             view={view}
             articles={articles}
+            updateViews={updateViews}
         />
     )
 })

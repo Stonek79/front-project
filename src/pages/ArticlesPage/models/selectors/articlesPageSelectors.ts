@@ -11,7 +11,7 @@ export const getArticlesView = (state: StateSchema) =>
 export const getArticlesPages = (state: StateSchema) =>
     state.articlesPage?.page || 1
 export const getArticlesLimit = (state: StateSchema) =>
-    state.articlesPage?.limit || 9
+    state.articlesPage?.limit || 10
 export const getArticlesHasMore = (state: StateSchema) =>
     state.articlesPage?.hasMore
 export const getArticlesPageInited = (state: StateSchema) =>
@@ -32,6 +32,3 @@ export const getArticlesPageType = (state: StateSchema) =>
 export const [useArticleItemById] = buildSelector(
     (state, id: string) => state.articlesPage?.entities[id],
 )
-
-export const getArticlesHasUpdate = (state: StateSchema) =>
-    state.articlesPage?.hasReload ?? false

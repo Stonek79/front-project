@@ -17,7 +17,6 @@ interface SidebarProps {
 
 export const SidebarRedesigned = memo((props: SidebarProps) => {
     const { className } = props
-    // TODO add collapsed to state, not work if reload
     const [collapsed, setCollapsed] = useState(false)
     const sidebarItemsList = useSelector(getSidebarItems)
 

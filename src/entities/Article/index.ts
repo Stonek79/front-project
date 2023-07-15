@@ -1,12 +1,16 @@
-export { deleteArticle } from './model/services/deleteArticle'
+export {
+    useDeleteArticleMutation,
+    usePrefetch,
+    useAddNewArticleMutation,
+    useEditArticleMutation,
+    useEditArticleViewMutation,
+} from './api/articlesApi'
 export { ArticleBlocksComponent } from './ui/ArticleBlocksComponent/ArticleBlocksComponent'
 export {
     getArticleDetailsFormData,
     getArticleIsLoadingData,
     getArticleDetailsData,
 } from './model/selectors/articleDetails'
-export { editArticle } from './model/services/editArticle'
-export { addNewArticle } from './model/services/addNewArticle'
 export {
     articleDetailsPageRecommendationsSliceReducer,
     getArticlesRecommendations,

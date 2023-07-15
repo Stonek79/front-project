@@ -10,7 +10,6 @@ import {
 export interface ArticlesPageSchema extends EntityState<Article> {
     isLoading?: boolean
     error?: string
-    hasReload?: boolean
 
     // pagination
     page: number

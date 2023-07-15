@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { useSelector } from 'react-redux'
-import { getArticleDetailsFormData } from '@/entities/Article'
+import { Article, getArticleDetailsFormData } from '@/entities/Article'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { ArticleEditAdditionBlock } from '@/widgets/ArticleEditAdditionInfo'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -12,14 +12,14 @@ export const ArticleNewPageContainer = memo(() => {
 
     if (!articleData) return null
 
-    const hasUpdate = () => {
-        dispatch(articlesPageActions.setHaseReload())
+    const setArticle = (article: Article) => {
+        dispatch(articlesPageActions.upsertArticle(article))
     }
 
     return (
         <Card cardPaddings="32" cardBorder="rounded">
             <ArticleEditAdditionBlock
-                hasUpdate={hasUpdate}
+                upsertArticle={setArticle}
                 isNew
                 article={articleData}
             />

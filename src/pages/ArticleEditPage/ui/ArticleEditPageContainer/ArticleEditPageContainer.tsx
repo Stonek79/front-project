@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleEditPageContainer.module.scss'
-import { getArticleDetailsFormData } from '@/entities/Article'
+import { Article, getArticleDetailsFormData } from '@/entities/Article'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { ArticleEditAdditionBlock } from '@/widgets/ArticleEditAdditionInfo'
 import { VStack } from '@/shared/ui/redesigned/Stack'
@@ -24,16 +24,23 @@ export const ArticleEditPageContainer = memo(
 
         if (!article) return null
 
-        const hasUpdate = () => {
-            dispatch(articlesPageActions.setHaseReload())
+        const onDelete = (id?: string) => {
+            dispatch(articlesPageActions.deleteData(id))
+        }
+
+        const onUpdate = (article: Article) => {
+            dispatch(articlesPageActions.upsertArticle(article))
         }
 
         return (
             <VStack gap="32" max>
                 <Card className={cn} cardPaddings="32" cardBorder="rounded">
-                    <ArticleEditAdditionBlock article={article} />
+                    <ArticleEditAdditionBlock
+                        upsertArticle={onUpdate}
+                        article={article}
+                    />
                 </Card>
-                <ArticleDeleteButton hasUpdate={hasUpdate} id={article.id} />
+                <ArticleDeleteButton onDelete={onDelete} id={article.id} />
             </VStack>
         )
     },

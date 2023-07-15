@@ -13,6 +13,7 @@ interface ArticleListProps {
     isLoading?: boolean
     view?: ArticleViewTypes
     target?: HTMLAttributeAnchorTarget
+    updateViews?: (article: Article) => void
 }
 
 const getSkeleton = (view: ArticleViewTypes) =>
@@ -28,6 +29,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         articles,
         isLoading,
         view = ArticleView.CARDS,
+        updateViews,
     } = props
     const { t } = useTranslation()
 
@@ -38,6 +40,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
             article={article}
             view={view}
             target={target}
+            updateViews={updateViews}
         />
     )
 

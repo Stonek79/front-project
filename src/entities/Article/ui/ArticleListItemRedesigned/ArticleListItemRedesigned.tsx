@@ -17,11 +17,14 @@ import { ArticleBlockTypes, ArticleView } from '../../model/consts/consts'
 import { getRouteArticleDetail } from '@/shared/const/router'
 import { ArticleListItemProps } from '../ArticleListItem/ArticleListItem'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
+import { useEditArticleViewMutation } from '../../api/articlesApi'
 
 export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
-    const { className, article, view, target, index } = props
+    const { className, article, view, target, index, updateViews } = props
 
     const { t } = useTranslation()
+
+    const [editArticleView] = useEditArticleViewMutation()
 
     const userInfo = (
         <>
@@ -40,8 +43,21 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
         </HStack>
     )
 
+    const handleArticlesViewCount = () => {
+        const { views, ...rest } = article
+
+        if (updateViews)
+            editArticleView({
+                ...rest,
+                views: views + 1,
+            })
+                .unwrap()
+                .then((article) => updateViews(article))
+    }
+
     const onClickHandle = () => {
         sessionStorage.setItem(ARTICLE_LIST_ITEM_ID_KEY, JSON.stringify(index))
+        handleArticlesViewCount()
     }
 
     const cn = classNames('', {}, [className, cls[view]])
@@ -99,7 +115,12 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
             target={target}
             to={getRouteArticleDetail(article.id)}
         >
-            <Card className={cn} cardBorder="standard">
+            <Card
+                clickable
+                onClick={handleArticlesViewCount}
+                className={cn}
+                cardBorder="standard"
+            >
                 <AppImage
                     fallback={<Skeleton width="100%" height={200} />}
                     src={article.img}

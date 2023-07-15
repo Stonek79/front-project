@@ -7,10 +7,10 @@ import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import {
-    addNewArticle,
     Article,
     articleDetailsActions,
-    editArticle,
+    useAddNewArticleMutation,
+    useEditArticleMutation,
 } from '@/entities/Article'
 import { ArticleAddBlocksContainer } from '@/features/ArticleAddBlocksContainer'
 import { ConfirmationModal } from '@/features/ConfirmationModal'
@@ -20,17 +20,18 @@ interface ArticleEditAdditionBlockProps {
     className?: string
     article: Article
     isNew?: boolean
-    hasUpdate?: () => void
+    upsertArticle?: (article: Article) => void
 }
 
 export const ArticleEditAdditionBlock = memo(
     (props: ArticleEditAdditionBlockProps) => {
-        const { className, article, isNew = false, hasUpdate } = props
+        const { className, article, isNew = false, upsertArticle } = props
         const { t } = useTranslation()
         const dispatch = useAppDispatch()
         const navigate = useNavigate()
         const [isOpen, setIsOpen] = useState(false)
-
+        const [addNewArticle] = useAddNewArticleMutation()
+        const [editArticle] = useEditArticleMutation()
         const cn = classNames(cls.ArticleEditAdditionInfo, {}, [className])
 
         const onOpenModal = useCallback(() => {
@@ -42,20 +43,28 @@ export const ArticleEditAdditionBlock = memo(
         }, [])
 
         const onSave = useCallback(() => {
-            if (article && isNew) {
+            const { user, ...rest } = article
+
+            if (article && isNew && upsertArticle) {
                 try {
-                    dispatch(addNewArticle(article))
-
-                    if (hasUpdate) hasUpdate()
-
-                    navigate(getRouteArticleEdit(article.id))
+                    addNewArticle({ ...rest, userId: user.id }).then(() => {
+                        upsertArticle(article)
+                        navigate(getRouteArticleEdit(article.id))
+                    })
                 } catch (e) {
                     navigate(getRouteNotFound())
                 }
-            } else if (article) {
-                dispatch(editArticle(article))
+            } else if (article && upsertArticle) {
+                editArticle({ ...rest }).then(() => upsertArticle(article))
             }
-        }, [article, dispatch, hasUpdate, isNew, navigate])
+        }, [
+            article,
+            isNew,
+            upsertArticle,
+            addNewArticle,
+            navigate,
+            editArticle,
+        ])
 
         const onBack = useCallback(() => {
             navigate(-1)

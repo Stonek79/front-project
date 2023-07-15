@@ -38,14 +38,11 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
     const { t } = useTranslation()
     const cn = classNames('', {}, [className, cls['home-page']])
 
-    console.log(width, size)
     if (size === 'm' && width < maxWidth) {
-        console.log('S')
         setSize('s')
     }
 
     if (size === 's' && width >= maxWidth) {
-        console.log('M')
         setSize('m')
     }
 

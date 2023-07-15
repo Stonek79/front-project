@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react'
+import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -10,15 +10,9 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Page } from '@/widgets/Page'
 import { ArticleInfiniteList } from '../../ui/ArticleInfiniteList/ArticleInfiniteList'
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
-import {
-    articlesPageActions,
-    articlesPageReducer,
-} from '../../models/slices/articlesPageSlice'
+import { articlesPageReducer } from '../../models/slices/articlesPageSlice'
 import cls from './ArticlesPage.module.scss'
-import {
-    getArticlesHasMore,
-    getArticlesHasUpdate,
-} from '../../models/selectors/articlesPageSelectors'
+import { getArticlesHasMore } from '../../models/selectors/articlesPageSelectors'
 import { ArticlesPageGreating } from '@/features/ArticlesPageGreating'
 import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { StickyLayout } from '@/shared/layouts'
@@ -28,7 +22,6 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { initArticlesPage } from '../../models/services/initArticlesPage'
 import { getArticleIsLoadingData } from '@/entities/Article'
 import { fetchNextArticlesPage } from '../../models/services/fetchNextArticlesPage'
-import { fetchArticlesList } from '../../models/services/fetchArticlesList'
 
 interface ArticlesPageProps {
     className?: string
@@ -44,7 +37,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const isLoading = useSelector(getArticleIsLoadingData)
     const hasMore = useSelector(getArticlesHasMore) || true
     const [searchParams] = useSearchParams()
-    const hasUpdate = useSelector(getArticlesHasUpdate)
 
     const cn = classNames(cls.ArticlesPage, {}, [className])
 
@@ -57,13 +49,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     useInitialEffect(() => {
         dispatch(initArticlesPage(searchParams))
     })
-
-    useEffect(() => {
-        if (hasUpdate) {
-            dispatch(articlesPageActions.reloadData())
-            dispatch(fetchArticlesList({}))
-        }
-    }, [dispatch, hasUpdate])
 
     const content = (
         <ToggleComponentFeatures

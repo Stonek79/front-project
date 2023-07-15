@@ -1,23 +1,23 @@
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useCallback, useState } from 'react'
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { deleteArticle } from '@/entities/Article'
+import { useDeleteArticleMutation } from '@/entities/Article'
 import { getRouteArticles } from '@/shared/const/router'
 import { ArticleDelete } from '@/features/ArticleDelete'
 import { ConfirmationModal } from '@/features/ConfirmationModal'
 
 interface ArticleDeleteButtonProps {
     id: string
-    hasUpdate?: () => void
+    onDelete: (id?: string) => void
 }
 
 export const ArticleDeleteButton = (props: ArticleDeleteButtonProps) => {
-    const { id, hasUpdate } = props
+    const { id, onDelete } = props
     const { t } = useTranslation()
-    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
+
+    const [deleteArticle] = useDeleteArticleMutation()
 
     const onOpenModal = useCallback(() => {
         setIsOpen(true)
@@ -27,15 +27,17 @@ export const ArticleDeleteButton = (props: ArticleDeleteButtonProps) => {
         setIsOpen(false)
     }, [])
 
-    const onDelete = useCallback(() => {
-        if (id) {
-            dispatch(deleteArticle(id))
-
-            if (hasUpdate) hasUpdate()
-
-            navigate(getRouteArticles())
-        }
-    }, [dispatch, hasUpdate, id, navigate])
+    const onHandleDelete = useCallback(
+        (id: string) => {
+            deleteArticle(id)
+                .unwrap()
+                .then(() => {
+                    onDelete(id)
+                    return navigate(getRouteArticles())
+                })
+        },
+        [deleteArticle, onDelete, navigate],
+    )
 
     return (
         <>
@@ -45,7 +47,7 @@ export const ArticleDeleteButton = (props: ArticleDeleteButtonProps) => {
                     isOpen={isOpen}
                     header={`${t('Delete article')}?`}
                     onClose={onCloseModal}
-                    onConfirm={onDelete}
+                    onConfirm={() => onHandleDelete(id)}
                 />
             )}
         </>

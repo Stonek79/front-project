@@ -31,7 +31,6 @@ const articlesPageSlice = createSlice({
     initialState: articlesAdapter.getInitialState<ArticlesPageSchema>({
         isLoading: false,
         error: undefined,
-        hasReload: false,
         ids: [],
         entities: {},
         view: ArticleView.CARDS,
@@ -65,14 +64,11 @@ const articlesPageSlice = createSlice({
         setType: (state, action: PayloadAction<ArticleTypesType>) => {
             state.type = action.payload
         },
-        setHaseReload: (state) => {
-            state.hasReload = true
+        deleteData: (state, action) => {
+            articlesAdapter.removeOne(state, action.payload)
         },
-        reloadData: (state) => {
-            state.ids = []
-            state.entities = {}
-            state.page = 1
-            state.hasReload = false
+        upsertArticle: (state, action) => {
+            articlesAdapter.upsertOne(state, action.payload)
         },
         initState: (state) => {
             const view = localStorage.getItem(

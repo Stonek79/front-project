@@ -1,5 +1,5 @@
 import { rtkApi } from '@/shared/api/rtkApi'
-import { Article } from '../model/types/article'
+import { Article, NewArticle } from '../model/types/article'
 
 const articlesApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
@@ -10,7 +10,7 @@ const articlesApi = rtkApi.injectEndpoints({
                 body: { ...editedArticle },
             }),
         }),
-        addNewArticle: build.mutation<Article, Partial<Article>>({
+        addNewArticle: build.mutation<Article, Partial<NewArticle>>({
             query: (newArticle) => ({
                 url: `/articles`,
                 method: 'POST',
@@ -23,11 +23,20 @@ const articlesApi = rtkApi.injectEndpoints({
                 method: 'DELETE',
             }),
         }),
+        editArticleView: build.mutation<Article, Partial<Article>>({
+            query: ({ id, ...article }) => ({
+                url: `/articles/${id}`,
+                method: 'PUT',
+                body: article,
+            }),
+        }),
     }),
 })
 
-export const setEditArticleMutation = articlesApi.endpoints.editArticle.initiate
-export const setNewArticleMutation =
-    articlesApi.endpoints.addNewArticle.initiate
-export const setDeleteArticleMutation =
-    articlesApi.endpoints.deleteArticle.initiate
+export const {
+    useDeleteArticleMutation,
+    useAddNewArticleMutation,
+    useEditArticleMutation,
+    useEditArticleViewMutation,
+    usePrefetch,
+} = articlesApi

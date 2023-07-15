@@ -10,6 +10,7 @@ export interface ArticleListItemProps {
     view: ArticleViewTypes
     target?: HTMLAttributeAnchorTarget
     index?: number
+    updateViews?: (article: Article) => void
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => (

@@ -1,6 +1,4 @@
 {
-  "": "",
-  "About": "About",
   "About Page": "About Page",
   "About us": "About us",
   "Access not allowed": "Access not allowed",
@@ -50,6 +48,7 @@
   "Enter password": "Enter password",
   "Enter text": "Enter text",
   "Enter username": "Enter username",
+  "Error loading articles": "Error loading articles",
   "Exit": "Exit",
   "Fill": "Fill",
   "First name": "FirstName",
@@ -127,6 +126,5 @@
   "{{count}} views_one": "{{count}} view",
   "{{count}} views_other": "{{count}} views",
   "{{count}} views_plural": "{{count}} views_plural",
-  "{{count}} views_zero": "{{count}} views",
-  "Ошибка при загрузке статей": "Ошибка при загрузке статей"
+  "{{count}} views_zero": "{{count}} views"
 }
