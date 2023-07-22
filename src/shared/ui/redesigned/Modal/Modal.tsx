@@ -13,10 +13,11 @@ interface ModalProps {
     isOpen?: boolean
     onClose?: () => void
     lazy?: boolean
+    clearBack?: boolean
 }
 
 export const Modal = (props: ModalProps) => {
-    const { children, className, isOpen, onClose, lazy } = props
+    const { children, className, isOpen, onClose, lazy, clearBack } = props
 
     const { theme } = useTheme()
 
@@ -37,6 +38,7 @@ export const Modal = (props: ModalProps) => {
         off: () => cls.modalOld,
     })
     const cn = classNames(cls.Modal, mods, [className, theme, design])
+    const cnContent = classNames(cls.content, { [cls.clearBack]: clearBack })
 
     if (lazy && !isMounted) {
         return null
@@ -46,7 +48,7 @@ export const Modal = (props: ModalProps) => {
         <Portal container={document.getElementById('app') ?? document.body}>
             <div className={cn}>
                 <Overlay className={className} onClick={close} />
-                <div className={cls.content}>{children}</div>
+                <div className={cnContent}>{children}</div>
             </div>
         </Portal>
     )

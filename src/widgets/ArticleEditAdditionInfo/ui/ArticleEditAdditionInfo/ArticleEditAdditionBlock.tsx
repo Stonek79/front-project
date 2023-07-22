@@ -15,6 +15,7 @@ import {
 import { ArticleAddBlocksContainer } from '@/features/ArticleAddBlocksContainer'
 import { ConfirmationModal } from '@/features/ConfirmationModal'
 import { getRouteArticleEdit, getRouteNotFound } from '@/shared/const/router'
+import { SuccessModal } from '@/features/SuccessModal'
 
 interface ArticleEditAdditionBlockProps {
     className?: string
@@ -30,6 +31,8 @@ export const ArticleEditAdditionBlock = memo(
         const dispatch = useAppDispatch()
         const navigate = useNavigate()
         const [isOpen, setIsOpen] = useState(false)
+        const [isOpenSuccess, setIsOpenSuccess] = useState(false)
+        const [successText, setSuccessText] = useState('')
         const [addNewArticle] = useAddNewArticleMutation()
         const [editArticle] = useEditArticleMutation()
         const cn = classNames(cls.ArticleEditAdditionInfo, {}, [className])
@@ -42,20 +45,35 @@ export const ArticleEditAdditionBlock = memo(
             setIsOpen(false)
         }, [])
 
+        const onCloseSuccess = useCallback(() => {
+            setIsOpenSuccess(false)
+        }, [])
+
         const onSave = useCallback(() => {
             const { user, ...rest } = article
 
             if (article && isNew && upsertArticle) {
                 try {
-                    addNewArticle({ ...rest, userId: user.id }).then(() => {
-                        upsertArticle(article)
-                        navigate(getRouteArticleEdit(article.id))
-                    })
+                    addNewArticle({ ...rest, userId: user.id })
+                        .unwrap()
+                        .then(() => {
+                            upsertArticle(article)
+                            navigate(getRouteArticleEdit(article.id))
+                        })
                 } catch (e) {
                     navigate(getRouteNotFound())
                 }
             } else if (article && upsertArticle) {
-                editArticle({ ...rest }).then(() => upsertArticle(article))
+                editArticle({ ...rest })
+                    .unwrap()
+                    .then((res) => {
+                        setIsOpenSuccess(true)
+                        upsertArticle(res)
+                        setSuccessText(
+                            'The article has been successfully edited',
+                        )
+                        setTimeout(() => setIsOpenSuccess(false), 2000)
+                    })
             }
         }, [
             article,
@@ -105,6 +123,13 @@ export const ArticleEditAdditionBlock = memo(
                         header={`${t('Confirm cancellation')}?`}
                         onClose={onCloseModal}
                         onConfirm={onConfirm}
+                    />
+                )}
+                {isOpenSuccess && (
+                    <SuccessModal
+                        text={successText}
+                        onClose={onCloseSuccess}
+                        isOpen={isOpenSuccess}
                     />
                 )}
             </VStack>

@@ -3,10 +3,10 @@ import { Article, NewArticle } from '../model/types/article'
 
 const articlesApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        editArticle: build.mutation<Article, Partial<Article>>({
+        editArticle: build.mutation<Article, Partial<NewArticle>>({
             query: ({ id, ...editedArticle }) => ({
                 url: `/articles/${id}`,
-                method: 'PATCH',
+                method: 'PUT',
                 body: { ...editedArticle },
             }),
         }),

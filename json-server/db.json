@@ -103,11 +103,9 @@
       "id": "1"
     },
     {
-      "id": "2",
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://planeta-eruditov.ru/wp-content/uploads/2021/02/write-high-quality-python-scripts-1600x800.jpg",
-      "views": 2,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -124,14 +122,14 @@
             "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
           ]
         }
-      ]
+      ],
+      "views": 14,
+      "id": "2"
     },
     {
-      "id": "3",
       "title": "Kotlin news 2019",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://masterjosh.com/storage/logos/miDzAjCbLFnqVGgz2yT0rxTcsAP2ZoxA9bIWxOen.jpg",
-      "views": 3,
       "createdAt": "26.02.2019",
       "userId": "1",
       "type": [
@@ -148,7 +146,9 @@
             "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
           ]
         }
-      ]
+      ],
+      "views": 4,
+      "id": "3"
     },
     {
       "id": "4",
@@ -538,7 +538,6 @@
       "title": "Javascript news СВЕЖАЯ",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 21,
       "createdAt": "26.04.2022",
       "userId": "1",
       "type": [
@@ -550,49 +549,33 @@
           "type": "TEXT",
           "title": "Text block title sdcsdc",
           "paragraphs": [
-            "Text block content\nasdas\nsad\nsadf\nsd\nf"
+            "Text block content\nasdas\nsad\nsadf\nsd\nADADADADADADADADADAD"
           ]
         }
       ],
+      "views": 23,
       "id": "rCpW3lE"
     },
     {
       "title": "Article title XXX",
       "subtitle": "Article subtitle XXX",
       "img": "/avatar.jpg",
-      "type": [],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "hF2AX3KTjK",
           "type": "TEXT",
           "title": "Text block title",
           "paragraphs": [
-            "Text block content"
+            "Text block content\nText block content\nText block content\nText block content\nText block content\nSDSDSDS\nText block content"
           ]
         }
       ],
       "createdAt": "07.07.2023",
       "userId": "1",
-      "user": {
-        "id": "1",
-        "username": "admin",
-        "password": "123",
-        "roles": [
-          "admin",
-          "manager"
-        ],
-        "features": {
-          "isArticleRatingEnabled": true,
-          "isCounterEnabled": true,
-          "isAppRedesigned": true
-        },
-        "jsonSettings": {
-          "theme": "app_orange_theme",
-          "isArticlesPageOpened": true
-        },
-        "avatar": "https://graph.digiseller.ru/img.ashx?idp=1738637&maxlength=400&keepratio=1"
-      },
-      "views": 25,
+      "views": 40,
       "id": "7qhukkYtUs"
     }
   ],
@@ -723,7 +706,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_orange_theme",
+        "theme": "app_light_theme",
         "isArticlesPageOpened": true
       },
       "avatar": "https://graph.digiseller.ru/img.ashx?idp=1738637&maxlength=400&keepratio=1"

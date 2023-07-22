@@ -2,7 +2,7 @@ import { HTMLAttributes, memo, ReactNode } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './Card.module.scss'
 
-export type CardVariant = 'normal' | 'outline' | 'light'
+export type CardVariant = 'normal' | 'outline' | 'light' | 'clear'
 export type CardPaddings = '0' | '4' | '8' | '16' | '24' | '32'
 export type CardGap = '0' | '4' | '8' | '16' | '24' | '32'
 export type CardBorder = 'none' | 'standard' | 'rounded' | 'partial'

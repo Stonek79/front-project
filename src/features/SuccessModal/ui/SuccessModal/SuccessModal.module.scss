@@ -1,0 +1,10 @@
+.content {
+    transform: scale(1);
+    min-height: 50px;
+    width: 100%;
+}
+
+.isClosing {
+    transition: 0.3s transform;
+    transform: scale(0.2);
+}
