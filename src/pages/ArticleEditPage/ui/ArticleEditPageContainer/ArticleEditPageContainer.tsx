@@ -1,8 +1,13 @@
-import { memo } from 'react'
+import { memo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleEditPageContainer.module.scss'
-import { Article, getArticleDetailsFormData } from '@/entities/Article'
+import {
+    Article,
+    getArticleDetailsFormData,
+    fetchArticleById,
+} from '@/entities/Article'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { ArticleEditAdditionBlock } from '@/widgets/ArticleEditAdditionInfo'
 import { VStack } from '@/shared/ui/redesigned/Stack'
@@ -19,10 +24,17 @@ export const ArticleEditPageContainer = memo(
         const { className } = props
         const article = useSelector(getArticleDetailsFormData)
         const dispatch = useAppDispatch()
+        const { id } = useParams<{ id: string }>()
 
         const cn = classNames(cls.ArticleEditPageContainer, {}, [className])
 
-        if (!article) return null
+        useEffect(() => {
+            if (!article && id) {
+                dispatch(fetchArticleById(id))
+            }
+        }, [article, dispatch, id])
+
+        if (!id || !article) return null
 
         const onDelete = (id?: string) => {
             dispatch(articlesPageActions.deleteData(id))

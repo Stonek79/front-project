@@ -1,3 +1,4 @@
+export { fetchArticleById } from './model/services/fetchArticleById'
 export {
     useDeleteArticleMutation,
     usePrefetch,
