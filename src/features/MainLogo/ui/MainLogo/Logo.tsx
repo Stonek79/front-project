@@ -1,6 +1,6 @@
 import { LegacyRef, MutableRefObject, useEffect, useRef } from 'react'
-import gsap from 'gsap-trial'
-import DrawSVGPlugin from 'gsap-trial/DrawSVGPlugin'
+import gsap from 'gsap'
+import DrawSVGPlugin from 'gsap/DrawSVGPlugin'
 import LogoS from '@/shared/assets/logo-s.png'
 import cls from './Logo.module.scss'
 
@@ -20,7 +20,7 @@ export const MainLogo = () => {
             // @ts-ignore
             .from(outlineLogoRef?.current, {
                 drawSVG: 0,
-                duration: 20,
+                duration: 2,
             })
 
         gsap.fromTo(
