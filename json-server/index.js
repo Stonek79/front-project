@@ -22,6 +22,7 @@ server.use(jsonServer.bodyParser)
 
 // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи,
 // и проверки создания нового пользователя
+// eslint-disable-next-line consistent-return
 server.use(async (req, res, next) => {
     if (req.path === '/users') {
         const { username } = req.body

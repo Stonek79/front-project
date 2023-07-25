@@ -2,28 +2,41 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { User, addUserMutation, userActions } from '@/entities/User'
 import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { signUpErrors } from '../consts/consts'
+import { createProfile } from '../../../ProfilePageEdit/model/services/CreateProfile'
 
-export const addNewUser = createAsyncThunk<User, User, ThunkConfig<string>>(
-    'users/addNewUser',
-    async (newUser: User, thunkAPI) => {
-        const { dispatch, rejectWithValue } = thunkAPI
+interface AddNewUserProps {
+    newUser: User
+    profileRoute?: (id: string) => void
+}
 
-        try {
-            const res = await dispatch(addUserMutation(newUser)).unwrap()
+export const addNewUser = createAsyncThunk<
+    User,
+    AddNewUserProps,
+    ThunkConfig<string>
+>('users/addNewUser', async ({ newUser, profileRoute }, thunkAPI) => {
+    const { dispatch, rejectWithValue } = thunkAPI
 
-            if (!res) {
-                throw Error('server error')
-            }
+    try {
+        const res = await dispatch(addUserMutation(newUser)).unwrap()
 
-            dispatch(userActions.setAuthData(res))
-
-            return res
-        } catch (e: any | unknown) {
-            console.log(e)
-            if (e.status === 409) {
-                return rejectWithValue(signUpErrors.EXIST)
-            }
-            return rejectWithValue(e.data.message)
+        if (!res) {
+            throw Error('server error')
         }
-    },
-)
+
+        dispatch(userActions.setAuthData(res))
+        dispatch(
+            createProfile({
+                user: res,
+                profileRoute,
+            }),
+        )
+
+        return res
+    } catch (e: any | unknown) {
+        console.log(e)
+        if (e.status === 409) {
+            return rejectWithValue(signUpErrors.EXIST)
+        }
+        return rejectWithValue(e.data.message)
+    }
+})

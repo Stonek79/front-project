@@ -21,9 +21,7 @@ import { signUpActions, signUpReducer } from '../../model/slice/signUpSlice'
 import { addNewUser } from '../../model/services/AddNewUser'
 import { getConfirmedPassword } from '../../model/selectors/getConfirmedPassword'
 import { newUserSchema, signUpErrors } from '../../model/consts/consts'
-import { createProfile } from '../../../ProfilePageEdit/model/services/CreateProfile'
 import { getRouteProfile } from '@/shared/const/router'
-import { User } from '@/entities/User'
 
 export interface SignUpNewUserFormProps {
     className?: string
@@ -58,6 +56,13 @@ const SignUpNewUserForm = memo((props: SignUpNewUserFormProps) => {
     }
 
     const errorMessage = signUpValidateErrors[error]
+
+    const profileRoute = useCallback(
+        (id: string) => {
+            navigate(getRouteProfile(id))
+        },
+        [navigate],
+    )
 
     const onChangeUsername = useCallback(
         (value: string) => {
@@ -99,13 +104,8 @@ const SignUpNewUserForm = memo((props: SignUpNewUserFormProps) => {
 
         const newUser = { ...newUserSchema, username, password }
 
-        return dispatch(addNewUser(newUser)).then(({ payload }) => {
-            const user = payload as User
-            return dispatch(createProfile(user)).then((_) => {
-                navigate(getRouteProfile(user.id))
-            })
-        })
-    }, [dispatch, isEqualPasswords, navigate, password, username])
+        return dispatch(addNewUser({ newUser, profileRoute }))
+    }, [dispatch, isEqualPasswords, password, profileRoute, username])
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
