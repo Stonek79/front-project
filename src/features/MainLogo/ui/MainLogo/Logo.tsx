@@ -1,6 +1,6 @@
 import { LegacyRef, MutableRefObject, useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import DrawSVGPlugin from 'gsap/DrawSVGPlugin'
+// import DrawSVGPlugin from 'gsap/DrawSVGPlugin'
 import LogoS from '@/shared/assets/logo-s.png'
 import cls from './Logo.module.scss'
 
@@ -10,7 +10,7 @@ export const MainLogo = () => {
     const solidLogoRef = useRef() as MutableRefObject<HTMLImageElement>
 
     useEffect(() => {
-        gsap.registerPlugin(DrawSVGPlugin)
+        // gsap.registerPlugin(DrawSVGPlugin)
 
         gsap.timeline()
             .to(bgRef.current, {
