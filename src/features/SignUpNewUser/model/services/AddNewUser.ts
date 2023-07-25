@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { User, addUserMutation, userActions } from '@/entities/User'
 import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { signUpErrors } from '../consts/consts'
-import { createProfile } from '../../../ProfilePageEdit/model/services/CreateProfile'
 
 export const addNewUser = createAsyncThunk<User, User, ThunkConfig<string>>(
     'users/addNewUser',
@@ -17,7 +16,6 @@ export const addNewUser = createAsyncThunk<User, User, ThunkConfig<string>>(
             }
 
             dispatch(userActions.setAuthData(res))
-            dispatch(createProfile(res))
 
             return res
         } catch (e: any | unknown) {

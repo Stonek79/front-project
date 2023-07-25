@@ -11,6 +11,7 @@ import { NotificationButton } from '@/features/NotificationButton'
 import { UserNavbarDropdown } from '@/features/UserNavbarDropdown'
 import cls from './NavbarRedesigned.module.scss'
 import { SignUpNewUser } from '@/features/SignUpNewUser'
+import { getRouteMain } from '@/shared/const/router'
 
 interface NavbarProps {
     className?: string
@@ -38,9 +39,11 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
     }, [])
 
     const onLogOut = useCallback(() => {
-        setIsOpen(false)
         dispatch(userActions.logout())
-    }, [dispatch])
+        navigate(getRouteMain())
+        setIsOpen(false)
+        setIsOpenSignUp(false)
+    }, [dispatch, navigate])
 
     const handleSignUp = useCallback(() => {
         setIsOpenSignUp(true)

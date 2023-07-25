@@ -60,10 +60,16 @@ export const AboutPageInfoBlock = () => {
                 {aboutTextBlocks.map((block) => (
                     <Text key={block.length} text={block} />
                 ))}
-                <Text text={textWithHexlet} />
-                <AppLink to="https://ru.hexlet.io/" target="_blank">
-                    {hexlet}
-                </AppLink>
+                <div>
+                    {textWithHexlet}
+                    <AppLink
+                        className={cls.link}
+                        to="https://ru.hexlet.io/"
+                        target="_blank"
+                    >
+                        {hexlet}
+                    </AppLink>
+                </div>
                 <HStack gap="8" justify="between" max>
                     <Card
                         cardPaddings="4"

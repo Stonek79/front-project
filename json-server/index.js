@@ -20,8 +20,25 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'))
 server.use(jsonServer.defaults({}))
 server.use(jsonServer.bodyParser)
 
-// Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
+// Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи,
+// и проверки создания нового пользователя
 server.use(async (req, res, next) => {
+    if (req.path === '/users') {
+        const { username } = req.body
+
+        const db = JSON.parse(
+            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+        )
+
+        const { users = [] } = db
+
+        const userFromBd = users.find((user) => user.username === username)
+
+        if (userFromBd) {
+            return res.status(409).json('User already  exists')
+        }
+    }
+
     await new Promise((res) => {
         setTimeout(res, 800)
     })

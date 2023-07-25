@@ -13,8 +13,6 @@ export const createProfile = createAsyncThunk<
     const { username, id } = user
     const data = { ...newProfile, username, userId: id }
 
-    console.log(data)
-
     try {
         const res = await dispatch(addProfileMutation(data)).unwrap()
 
@@ -22,7 +20,7 @@ export const createProfile = createAsyncThunk<
             return rejectWithValue('serverError')
         }
 
-        return data
+        return res
     } catch (e: any | unknown) {
         return rejectWithValue(e.message)
     }

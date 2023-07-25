@@ -3,7 +3,7 @@ import { ThunkConfig } from '@/app/providers/StoreProvider'
 import { Profile } from '@/entities/Profile'
 
 export const fetchProfileData = createAsyncThunk<
-    Profile[],
+    Profile,
     string,
     ThunkConfig<string>
 >('profile/fetchProfileData', async (userId, thunkAPI) => {
@@ -21,7 +21,7 @@ export const fetchProfileData = createAsyncThunk<
             return rejectWithValue('serverError')
         }
 
-        return data
+        return data[0]
     } catch (e: any | unknown) {
         if (e.status === 404) {
             console.log(e)

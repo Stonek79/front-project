@@ -1,6 +1,7 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './SignUpNewUserForm.module.scss'
 import { VStack } from '@/shared/ui/redesigned/Stack'
@@ -20,6 +21,9 @@ import { signUpActions, signUpReducer } from '../../model/slice/signUpSlice'
 import { addNewUser } from '../../model/services/AddNewUser'
 import { getConfirmedPassword } from '../../model/selectors/getConfirmedPassword'
 import { newUserSchema, signUpErrors } from '../../model/consts/consts'
+import { createProfile } from '../../../ProfilePageEdit/model/services/CreateProfile'
+import { getRouteProfile } from '@/shared/const/router'
+import { User } from '@/entities/User'
 
 export interface SignUpNewUserFormProps {
     className?: string
@@ -33,6 +37,7 @@ const SignUpNewUserForm = memo((props: SignUpNewUserFormProps) => {
     const { className } = props
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const password = useSelector(getPassword)
     const confirmedPassword = useSelector(getConfirmedPassword)
@@ -47,7 +52,7 @@ const SignUpNewUserForm = memo((props: SignUpNewUserFormProps) => {
     const signUpValidateErrors = {
         [signUpErrors.IS_EQUAL_ERROR]: t('Passwords must match'),
         [signUpErrors.HAS_FILLED]: t('All fields mast be filled'),
-        [signUpErrors.MIN_LENGTH]: t('Min length 3 character'),
+        [signUpErrors.MIN_LENGTH]: t('Min length 4 character'),
         [signUpErrors.MAX_LENGTH]: t('Max length 20 characters'),
         [signUpErrors.EXIST]: t('Username already exist'),
     }
@@ -93,8 +98,14 @@ const SignUpNewUserForm = memo((props: SignUpNewUserFormProps) => {
         }
 
         const newUser = { ...newUserSchema, username, password }
-        return dispatch(addNewUser(newUser))
-    }, [dispatch, isEqualPasswords, password, username])
+
+        return dispatch(addNewUser(newUser)).then(({ payload }) => {
+            const user = payload as User
+            return dispatch(createProfile(user)).then((_) => {
+                navigate(getRouteProfile(user.id))
+            })
+        })
+    }, [dispatch, isEqualPasswords, navigate, password, username])
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>

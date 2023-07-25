@@ -30,7 +30,7 @@ export const ProfilePageEditHeader = memo(
         const dispatch = useAppDispatch()
         const authData = useSelector(getUserAuthData)
         const profileData = useSelector(getProfileData)
-        const canEdit = authData?.id === profileData?.id
+        const canEdit = authData?.id === profileData?.userId
         const readonly = useSelector(getProfileReadonly)
         const cn = classNames('', {}, [className])
 
