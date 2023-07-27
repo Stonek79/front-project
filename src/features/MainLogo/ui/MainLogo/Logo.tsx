@@ -1,25 +1,23 @@
-import { LegacyRef, MutableRefObject, useEffect, useRef } from 'react'
+import { MutableRefObject, useEffect, useRef } from 'react'
 import gsap from 'gsap'
-// import DrawSVGPlugin from 'gsap/DrawSVGPlugin'
+import CSSPlugin from 'gsap/CSSPlugin'
 import LogoS from '@/shared/assets/logo-s.png'
 import cls from './Logo.module.scss'
 
 export const MainLogo = () => {
     const bgRef = useRef() as MutableRefObject<HTMLImageElement>
-    const outlineLogoRef = useRef() as LegacyRef<SVGPathElement>
+    const outlineLogoRef = useRef() as MutableRefObject<SVGPathElement>
     const solidLogoRef = useRef() as MutableRefObject<HTMLImageElement>
 
     useEffect(() => {
-        // gsap.registerPlugin(DrawSVGPlugin)
+        gsap.registerPlugin(CSSPlugin)
 
         gsap.timeline()
             .to(bgRef.current, {
                 duration: 1,
                 opacity: 1,
             })
-            // @ts-ignore
             .from(outlineLogoRef?.current, {
-                drawSVG: 0,
                 duration: 2,
             })
 

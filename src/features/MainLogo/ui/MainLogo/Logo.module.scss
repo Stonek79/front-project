@@ -32,6 +32,20 @@
 .svg-container {
     stroke: var(--accent-redesigned);
     stroke-width: 10;
+    stroke-dasharray: 97203;
+    stroke-dashoffset: 97203;
+    animation-name: my-logo;
+    animation-fill-mode: forwards;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+@keyframes my-logo {
+    100% {
+        stroke: var(--accent-redesigned);
+        stroke-dashoffset: 0;
+    }
 }
 
 @media (max-width: 768px) {
