@@ -15,24 +15,26 @@ import { getUserAuthData } from '@/entities/User'
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly'
 import { profileActions } from '../../model/slice/profileSlice'
 import { updateProfileData } from '../../model/services/UpdateProfileData'
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData'
 import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Card } from '@/shared/ui/redesigned/Card'
+import { Profile } from '@/entities/Profile'
 
 interface ProfilePageEditHeaderProps {
     className?: string
+    data?: Profile
 }
 
 export const ProfilePageEditHeader = memo(
     (props: ProfilePageEditHeaderProps) => {
+        const { data } = props
         const { className } = props
         const { t } = useTranslation()
         const dispatch = useAppDispatch()
         const authData = useSelector(getUserAuthData)
-        const profileData = useSelector(getProfileData)
-        const canEdit = authData?.id === profileData?.userId
+        const profileData = data
         const readonly = useSelector(getProfileReadonly)
         const cn = classNames('', {}, [className])
+        const canEdit = authData?.id === profileData?.userId
 
         console.log(canEdit, authData, profileData, 'ProfilePageEditHeader')
 

@@ -44,6 +44,7 @@ export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
     console.log(id, profileData, 'ProfilePageEdit')
 
     useInitialEffect(() => {
+        console.log(id, 'Initial Article')
         if (id) {
             dispatch(fetchProfileData(id))
         }
@@ -156,7 +157,7 @@ export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <VStack gap="16" max className={cn}>
-                <ProfilePageEditHeader />
+                <ProfilePageEditHeader data={profileData} />
                 <ProfileCard
                     data={profileData}
                     error={profileError}
