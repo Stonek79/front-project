@@ -7,11 +7,11 @@ import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { ArticleView, ArticleViewTypes } from '@/entities/Article'
 import cls from './ArticleViewSelector.module.scss'
-import CardsIconDeprecated from '../../../shared/assets/icons/tiled-24-24.svg'
-import ListIconDeprecated from '../../../shared/assets/icons/list-24-24.svg'
+import CardsIconDeprecated from '@/shared/assets/icons/tiled-24-24.svg'
+import ListIconDeprecated from '@/shared/assets/icons/list-24-24.svg'
 
-import CardsIcon from '../../../shared/assets/icons/tile.svg'
-import ListIcon from '../../../shared/assets/icons/burger.svg'
+import CardsIcon from '@/shared/assets/icons/tile.svg'
+import ListIcon from '@/shared/assets/icons/burger.svg'
 import { ToggleComponentFeatures, toggleFeatures } from '@/shared/lib/features'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import { Card } from '@/shared/ui/redesigned/Card'
@@ -46,6 +46,10 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
     const cn = classNames(cls.ArticleViewSelector, {}, [className])
     const onClick = (newView: ArticleViewTypes) => () => {
         onViewClick?.(newView)
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        })
     }
     return (
         <ToggleComponentFeatures

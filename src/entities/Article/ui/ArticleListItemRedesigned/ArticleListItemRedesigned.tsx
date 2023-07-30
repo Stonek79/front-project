@@ -44,7 +44,7 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
     )
 
     const handleArticlesViewCount = () => {
-        const { views, ...rest } = article
+        const { views, user, ...rest } = article
 
         if (updateViews)
             editArticleView({

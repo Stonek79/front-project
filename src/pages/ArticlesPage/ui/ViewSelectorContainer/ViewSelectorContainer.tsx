@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { ArticleViewSelector } from '@/features/ArticleViewSelector'
+import { ArticleViewSelector } from '@/widgets/ArticleViewSelector'
 import { UseArticlesFilter } from '../../lib/hooks/useArticlesFilter'
 
 interface ViewSelectorContainerProps {

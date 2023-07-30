@@ -5,7 +5,7 @@ import { ArticleViewSelector } from './ArticleViewSelector'
 import { Theme } from '@/shared/const/theme'
 
 export default {
-    title: 'features/ArticleViewSelector',
+    title: 'widgets/ArticleViewSelector',
     component: ArticleViewSelector,
     argTypes: {
         backgroundColor: { control: 'color' },

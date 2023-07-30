@@ -28,9 +28,10 @@ export const Page = (props: PageProps) => {
     const scrollPosition = useSelector((state: StateSchema) =>
         getSafeScrollByPAth(state, pathname),
     )
+
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
-
+    const PageId = 'PageId'
     const designedClass = toggleFeatures({
         name: 'isAppRedesigned',
         on: () => cls.PageRedesigned,
@@ -38,6 +39,26 @@ export const Page = (props: PageProps) => {
     })
 
     const cn = classNames(designedClass, {}, [className])
+
+    toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => {
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            window.onscroll = useThrottle(() => {
+                if (pathname === '/articles') {
+                    const position =
+                        document.scrollingElement?.scrollTop || scrollPosition
+                    dispatch(
+                        scrollSafeActions.setScrollPosition({
+                            position,
+                            path: pathname,
+                        }),
+                    )
+                }
+            }, 500)
+        },
+        off: () => undefined,
+    })
 
     useInfiniteScroll({
         triggerRef,
@@ -51,7 +72,18 @@ export const Page = (props: PageProps) => {
     })
 
     useInitialEffect(() => {
-        wrapperRef.current.scrollTop = scrollPosition
+        toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => {
+                window.scrollTo({
+                    top: scrollPosition,
+                    behavior: 'smooth',
+                })
+            },
+            off: () => {
+                wrapperRef.current.scrollTop = scrollPosition
+            },
+        })
     })
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
@@ -65,6 +97,7 @@ export const Page = (props: PageProps) => {
 
     return (
         <main
+            id={PageId}
             ref={wrapperRef}
             className={cn}
             onScroll={onScroll}

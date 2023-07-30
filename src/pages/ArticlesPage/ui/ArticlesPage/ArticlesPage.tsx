@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react'
-import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import {
     DynamicModuleLoader,
@@ -12,7 +12,6 @@ import { ArticleInfiniteList } from '../../ui/ArticleInfiniteList/ArticleInfinit
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
 import { articlesPageReducer } from '../../models/slices/articlesPageSlice'
 import cls from './ArticlesPage.module.scss'
-import { getArticlesHasMore } from '../../models/selectors/articlesPageSelectors'
 import { ArticlesPageGreating } from '@/features/ArticlesPageGreating'
 import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { StickyLayout } from '@/shared/layouts'
@@ -20,8 +19,8 @@ import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorCont
 import { FiltersContainer } from '../FiltersContainer/FiltersContainer'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { initArticlesPage } from '../../models/services/initArticlesPage'
-import { getArticleIsLoadingData } from '@/entities/Article'
 import { fetchNextArticlesPage } from '../../models/services/fetchNextArticlesPage'
+import { getArticleIsLoadingData } from '@/entities/Article'
 
 interface ArticlesPageProps {
     className?: string
@@ -34,17 +33,14 @@ const reducer: ReducersList = {
 const ArticlesPage = (props: ArticlesPageProps) => {
     const { className } = props
     const dispatch = useAppDispatch()
-    const isLoading = useSelector(getArticleIsLoadingData)
-    const hasMore = useSelector(getArticlesHasMore) || true
     const [searchParams] = useSearchParams()
+    const isLoading = useSelector(getArticleIsLoadingData)
 
     const cn = classNames(cls.ArticlesPage, {}, [className])
 
     const onLoadNextPage = useCallback(() => {
-        if (hasMore && !isLoading) {
-            dispatch(fetchNextArticlesPage())
-        }
-    }, [dispatch, hasMore, isLoading])
+        dispatch(fetchNextArticlesPage())
+    }, [dispatch])
 
     useInitialEffect(() => {
         dispatch(initArticlesPage(searchParams))
@@ -62,6 +58,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                             data-testid="ArticlesPage"
                             onScrollEnd={onLoadNextPage}
                             className={cn}
+                            isLoading={isLoading}
                         >
                             <ArticleInfiniteList />
                             <ArticlesPageGreating />

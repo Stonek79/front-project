@@ -24,7 +24,7 @@ export function useInfiniteScroll({
             const options = {
                 root: wrapperElement,
                 rootMargin: '0px',
-                threshold: 1.0,
+                threshold: 0,
             }
 
             observer.current = new IntersectionObserver(([entry]) => {

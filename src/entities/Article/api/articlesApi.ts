@@ -23,7 +23,7 @@ const articlesApi = rtkApi.injectEndpoints({
                 method: 'DELETE',
             }),
         }),
-        editArticleView: build.mutation<Article, Partial<Article>>({
+        editArticleView: build.mutation<Article, Partial<NewArticle>>({
             query: ({ id, ...article }) => ({
                 url: `/articles/${id}`,
                 method: 'PUT',

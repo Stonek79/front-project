@@ -228,7 +228,7 @@ To automatically remove a feature, use the remove-feature.ts script, which takes
 - [ArticleRecommendationsList](/src/features/ArticleRecommendationsList)
 - [ArticlesSortSelector](/src/features/ArticlesSortSelector)
 - [ArticleTypeTabs](/src/features/ArticleTypeTabs)
-- [ArticleViewSelector](/src/features/ArticleViewSelector)
+- [ArticleViewSelector](/src/widgets/ArticleViewSelector)
 - [AuthByUsername](/src/features/AuthByUsername)
 - [UserNavbarDropdown](/src/features/UserNavbarDropdown)
 - [ProfilePageEdit](/src/features/ProfilePageEdit)
