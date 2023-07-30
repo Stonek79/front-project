@@ -41,6 +41,8 @@ export const ProfilePageEdit = memo((props: ProfilePageEditProps) => {
 
     const cn = classNames('', {}, [className])
 
+    console.log(id, profileData, 'ProfilePageEdit')
+
     useInitialEffect(() => {
         if (id) {
             dispatch(fetchProfileData(id))

@@ -31,7 +31,6 @@ export const Page = (props: PageProps) => {
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
-    const PageId = 'PageId'
     const designedClass = toggleFeatures({
         name: 'isAppRedesigned',
         on: () => cls.PageRedesigned,
@@ -97,7 +96,6 @@ export const Page = (props: PageProps) => {
 
     return (
         <main
-            id={PageId}
             ref={wrapperRef}
             className={cn}
             onScroll={onScroll}

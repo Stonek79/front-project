@@ -16,6 +16,7 @@ const ProfilePage = (props: ProfilePageProps) => {
     const { t } = useTranslation()
     const { id } = useParams<{ id: string }>()
 
+    console.log(id)
     const cn = classNames('', {}, [className])
 
     if (!id && __PROJECT__ !== 'storybook') {

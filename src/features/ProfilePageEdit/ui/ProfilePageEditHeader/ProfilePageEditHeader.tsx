@@ -34,6 +34,8 @@ export const ProfilePageEditHeader = memo(
         const readonly = useSelector(getProfileReadonly)
         const cn = classNames('', {}, [className])
 
+        console.log(canEdit, authData, profileData, 'ProfilePageEditHeader')
+
         const onEdit = useCallback(() => {
             dispatch(profileActions.setReadonly(false))
         }, [dispatch])
