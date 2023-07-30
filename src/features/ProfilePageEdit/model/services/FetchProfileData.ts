@@ -9,7 +9,6 @@ export const fetchProfileData = createAsyncThunk<
 >('profile/fetchProfileData', async (userId, thunkAPI) => {
     const { extra, rejectWithValue } = thunkAPI
 
-    console.log(userId, 'FETCH')
     try {
         const { data } = await extra.api.get<Profile[]>(`/profile/`, {
             params: {
@@ -22,7 +21,6 @@ export const fetchProfileData = createAsyncThunk<
             return rejectWithValue('serverError')
         }
 
-        console.log(data, 'PROFILE DATA')
         return data[0]
     } catch (e: any | unknown) {
         if (e.status === 404) {
