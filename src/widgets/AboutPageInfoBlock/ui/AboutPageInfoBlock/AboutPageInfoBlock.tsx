@@ -28,7 +28,7 @@ export const AboutPageInfoBlock = () => {
     const sizeRef = useRef(document.body)
     const { width } = useResizeObserver({ element: sizeRef })
 
-    const direction = (width: number) => (width >= 850 ? 'row' : 'column')
+    const direction = (width: number) => (width >= 1200 ? 'row' : 'column')
 
     const onOpenModal = useCallback((path: string) => {
         setIsOpen(true)
@@ -70,7 +70,7 @@ export const AboutPageInfoBlock = () => {
                         {hexlet}
                     </AppLink>
                 </div>
-                <HStack gap="8" justify="between" max>
+                <HStack gap="16" justify="center" max>
                     <Card
                         cardPaddings="4"
                         clickable
