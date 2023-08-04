@@ -44,7 +44,7 @@ export const ArticleTypeSelector = (props: ArticleTypeSelectorProps) => {
                         clickable
                         onClick={() => onRemoveType(type)}
                     >
-                        {type}
+                        {t(type)}
                     </Card>
                 ))}
             </HStack>

@@ -48,7 +48,7 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
         onViewClick?.(newView)
         window.scrollTo({
             top: 0,
-            behavior: 'smooth',
+            behavior: 'auto',
         })
     }
     return (

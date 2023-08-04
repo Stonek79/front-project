@@ -9,12 +9,8 @@ import { VStack } from '@/shared/ui/redesigned/Stack'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Card } from '@/shared/ui/redesigned/Card'
-import { Text } from '@/shared/ui/redesigned/Text'
-import { Input } from '@/shared/ui/redesigned/Input'
-import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { ConfirmationModal } from '../../ConfirmationModal'
 import {
-    ArticleTypesType,
     ArticleBlocksComponent,
     articleDetailsActions,
     articleDetailsReducer,
@@ -22,8 +18,10 @@ import {
     getArticleIsLoadingData,
     Article,
 } from '@/entities/Article'
-import { ArticleTypeSelector } from './ArticleTypeSelector'
-import cls from './ArticleEdit.module.scss'
+import { ArticleEditImgBlock } from './ArticleEditImgBlock/ArticleEditImgBlock'
+import { ArticleEditTitleBlock } from './ArticleEditTitleBlock/ArticleEditTitleBlock'
+import { ArticleEditSubtitleBlock } from './ArticleEditSubtitleBlock/ArticleEditSubtitleBlock'
+import { ArticleEditTypeBlock } from './ArticleEditTypeBlock/ArticleEditTypeBlock'
 
 export interface ArticleEditProps {
     className?: string
@@ -58,10 +56,6 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
     const [isOpen, setIsOpen] = useState(false)
     const [data, setData] = useState<any>('')
 
-    if (!articleData) {
-        return null
-    }
-
     const onOpenModal = () => {
         setIsOpen(true)
     }
@@ -70,138 +64,53 @@ export const ArticleEdit = memo((props: ArticleEditProps) => {
         setIsOpen(false)
     }
 
-    const onChangeTitle = (value: string) => {
-        dispatch(
-            articleDetailsActions.updateArticle({
-                ...articleData,
-                title: value,
-            }),
-        )
-    }
-
-    const onChangeSubtitle = (value: string) => {
-        dispatch(
-            articleDetailsActions.updateArticle({
-                ...articleData,
-                subtitle: value,
-            }),
-        )
-    }
-
-    const onChangeMainImage = (value: string) => {
-        dispatch(
-            articleDetailsActions.updateArticle({
-                ...articleData,
-                img: value,
-            }),
-        )
-    }
-
-    const onAddType = (value: ArticleTypesType) => {
-        const newTypes = new Set([...articleData.type, value])
-        const types = Array.from(newTypes)
-
-        dispatch(
-            articleDetailsActions.updateArticle({
-                ...articleData,
-                type: types,
-            }),
-        )
-    }
-
-    const onRemoveType = (value: ArticleTypesType) => {
-        const types = articleData.type.filter((type) => type !== value)
-
-        dispatch(
-            articleDetailsActions.updateArticle({
-                ...articleData,
-                type: types,
-            }),
-        )
-    }
-
     const handleDeleteBlock = () => {
-        const withRemovedBlock = articleData.blocks.filter(
-            (item) => item.id !== data.id,
-        )
+        if (articleData) {
+            const withRemovedBlock = articleData.blocks.filter(
+                (item) => item.id !== data.id,
+            )
 
-        dispatch(
-            articleDetailsActions.updateArticle({
-                ...articleData,
-                blocks: withRemovedBlock,
-            }),
-        )
+            dispatch(
+                articleDetailsActions.updateArticleBlocks(withRemovedBlock),
+            )
 
-        setIsOpen(false)
+            setIsOpen(false)
+        }
     }
 
-    const content = isLoading ? (
-        skeleton
-    ) : (
-        <VStack max gap="16">
-            <Card
-                cardBorder="none"
-                gap="8"
-                cardPaddings="24"
-                variant="light"
-                max
-            >
-                <VStack gap="16" max>
-                    <Text title={articleData?.title} bold size="l" />
-                    <Input
-                        wrap
-                        labelBold
-                        label={`${t('Article Title')}:`}
-                        value={articleData?.title}
-                        onChange={onChangeTitle}
+    const content =
+        isLoading || !articleData ? (
+            skeleton
+        ) : (
+            <VStack max gap="16">
+                <Card
+                    cardBorder="none"
+                    gap="8"
+                    cardPaddings="24"
+                    variant="light"
+                    max
+                >
+                    <ArticleEditTitleBlock title={articleData?.title} />
+                    <ArticleEditSubtitleBlock
+                        subtitle={articleData?.subtitle}
                     />
-                </VStack>
-                <VStack gap="16" max>
-                    <Text title={articleData?.subtitle} size="m" />
-                    <Input
-                        wrap
-                        labelBold
-                        label={`${t('Article Subtitle')}:`}
-                        value={articleData?.subtitle}
-                        onChange={onChangeSubtitle}
+                    <ArticleEditImgBlock
+                        imgPath={articleData?.img}
+                        title={articleData?.title}
                     />
-                </VStack>
-                <VStack gap="16" justify="center" max>
-                    <AppImage
-                        className={cls.img}
-                        src={articleData?.img}
-                        alt={articleData?.title}
-                        fallback={
-                            <Skeleton height={420} width="100%" border="16" />
-                        }
-                    />
-                    <Input
-                        wrap
-                        labelBold
-                        label={`${t('Image Path')}:`}
-                        value={articleData.img}
-                        onChange={onChangeMainImage}
-                    />
-                </VStack>
-                <VStack gap="16" max>
-                    <ArticleTypeSelector
-                        onRemoveType={onRemoveType}
-                        types={articleData.type}
-                        onAddType={onAddType}
-                    />
-                </VStack>
-            </Card>
-            <VStack data-testid="ArticleDetails.body" gap="4" max>
-                <VStack max gap="16" align="center">
-                    <ArticleBlocksComponent
-                        setIsOpen={onOpenModal}
-                        articleData={articleData}
-                        setData={setData}
-                    />
+                    <ArticleEditTypeBlock types={articleData?.type} />
+                </Card>
+                <VStack data-testid="ArticleDetails.body" gap="4" max>
+                    <VStack max gap="16" align="center">
+                        <ArticleBlocksComponent
+                            setIsOpen={onOpenModal}
+                            articleData={articleData}
+                            setData={setData}
+                        />
+                    </VStack>
                 </VStack>
             </VStack>
-        </VStack>
-    )
+        )
 
     return (
         <DynamicModuleLoader

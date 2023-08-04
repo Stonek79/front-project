@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
-import { nanoid } from 'nanoid'
 import {
     Text as TextDeprecated,
     TextAlign,
@@ -58,11 +57,7 @@ export const ArticleDetailsDeprecated = memo((props: ArticleDetailsProps) => {
         switch (block.type) {
             case ArticleBlockTypes.CODE:
                 return (
-                    <ArticleCodeBlockComponent
-                        textareaId={nanoid(10)}
-                        key={block.id}
-                        block={block}
-                    />
+                    <ArticleCodeBlockComponent key={block.id} block={block} />
                 )
             case ArticleBlockTypes.IMAGE:
                 return (

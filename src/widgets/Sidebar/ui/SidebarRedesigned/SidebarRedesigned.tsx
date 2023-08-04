@@ -10,6 +10,8 @@ import { ThemeSwitcher } from '@/features/ThemeSwitcher'
 import { LangSwitcher } from '@/features/LangSwitcher'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg'
+import { AccountsLinks } from '@/features/AccountsLinks'
+import { Flex } from '@/shared/ui/redesigned/Stack/Flex/Flex'
 
 interface SidebarProps {
     className?: string
@@ -43,7 +45,7 @@ export const SidebarRedesigned = memo((props: SidebarProps) => {
     )
 
     return (
-        <aside data-testid="sidebar" className={cn}>
+        <div data-testid="sidebar" className={cn}>
             <AppLogo size={collapsed ? 30 : 50} className={cls.appLogo} />
             <VStack role="navigation" gap="8" className={cls.items}>
                 {itemsList}
@@ -56,10 +58,16 @@ export const SidebarRedesigned = memo((props: SidebarProps) => {
                     clickable
                 />
             </div>
-            <div className={cls.switchers}>
+
+            <AccountsLinks className={cls.accounts} short={collapsed} />
+
+            <Flex
+                direction={collapsed ? 'column' : 'row'}
+                className={cls.switchers}
+            >
                 <ThemeSwitcher />
                 <LangSwitcher short={collapsed} className={cls.lang} />
-            </div>
-        </aside>
+            </Flex>
+        </div>
     )
 })

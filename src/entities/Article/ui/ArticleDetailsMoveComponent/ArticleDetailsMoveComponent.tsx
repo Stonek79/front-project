@@ -4,14 +4,14 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleDetailsMoveComponent.module.scss'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import Arrow from '@/shared/assets/icons/arrow-bottom.svg'
-import { Article, ArticleBlock } from '../../model/types/article'
+import { ArticleBlock } from '../../model/types/article'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { articleDetailsActions } from '../../model/slice/articleDetailsSlice'
 
 interface ArticleDetailsMoveComponentProps {
     className?: string
     children: ReactNode
-    articleData: Article
+    blocks: ArticleBlock[]
     block: ArticleBlock
     setIsOpen: (value: boolean) => void
     setData: (data: any) => void
@@ -19,16 +19,13 @@ interface ArticleDetailsMoveComponentProps {
 
 export const ArticleDetailsMoveComponent = memo(
     (props: ArticleDetailsMoveComponentProps) => {
-        const { className, children, articleData, block, setIsOpen, setData } =
-            props
+        const { className, children, blocks, block, setIsOpen, setData } = props
         const dispatch = useAppDispatch()
 
         const cn = classNames(cls.ArticleDetailsMoveComponent, {}, [className])
         const upBtnCn = classNames(cls.btn, {}, [cls.upBtn])
         const downBtnCn = classNames(cls.btn, {}, [cls.downBtn])
         const deleteBtnCn = classNames(cls.btn, {}, [cls.deleteBtn])
-
-        const { blocks } = articleData
 
         const onOpenModal = useCallback(() => {
             setIsOpen(true)
@@ -43,12 +40,7 @@ export const ArticleDetailsMoveComponent = memo(
             tempBlocks[position] = blocks[position - 1]
             tempBlocks[position - 1] = block
 
-            dispatch(
-                articleDetailsActions.updateArticle({
-                    ...articleData,
-                    blocks: tempBlocks,
-                }),
-            )
+            dispatch(articleDetailsActions.updateArticleBlocks(tempBlocks))
         }
 
         const handleMoveDown = () => {
@@ -59,12 +51,7 @@ export const ArticleDetailsMoveComponent = memo(
             tempBlocks[position] = blocks[position + 1]
             tempBlocks[position + 1] = block
 
-            dispatch(
-                articleDetailsActions.updateArticle({
-                    ...articleData,
-                    blocks: tempBlocks,
-                }),
-            )
+            dispatch(articleDetailsActions.updateArticleBlocks(tempBlocks))
         }
 
         return (

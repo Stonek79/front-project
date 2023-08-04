@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, useLocation } from 'react-router-dom'
-import { nanoid } from 'nanoid'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
@@ -51,11 +50,7 @@ export const ArticleDetailsRedesigned = memo((props: ArticleDetailsProps) => {
         switch (block.type) {
             case ArticleBlockTypes.CODE:
                 return (
-                    <ArticleCodeBlockComponent
-                        textareaId={nanoid(10)}
-                        key={block.id}
-                        block={block}
-                    />
+                    <ArticleCodeBlockComponent key={block.id} block={block} />
                 )
             case ArticleBlockTypes.IMAGE:
                 return (

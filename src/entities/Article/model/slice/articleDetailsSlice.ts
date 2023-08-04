@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Article } from '../types/article'
+import { Article, ArticleBlock, ArticleTypesType } from '../types/article'
 import { ArticleDetailsSchema } from '../types/articleDetailsSchema'
 import { fetchArticleById } from '../services/fetchArticleById'
 
@@ -25,6 +25,45 @@ export const articleDetailsSlice = createSlice({
             state.form = {
                 ...state.form,
                 ...action.payload,
+            }
+        },
+        updateArticleTitle: (state, action: PayloadAction<string>) => {
+            if (state.form) {
+                state.form.title = action.payload
+            }
+        },
+        updateArticleSubtitle: (state, action: PayloadAction<string>) => {
+            if (state.form) {
+                state.form.subtitle = action.payload
+            }
+        },
+        updateArticleImage: (state, action: PayloadAction<string>) => {
+            if (state.form) {
+                state.form.img = action.payload
+            }
+        },
+        updateArticleType: (
+            state,
+            action: PayloadAction<ArticleTypesType[]>,
+        ) => {
+            if (state.form) {
+                state.form.type = action.payload
+            }
+        },
+        updateArticleBlocks: (state, action: PayloadAction<ArticleBlock[]>) => {
+            if (state.form) {
+                state.form.blocks = action.payload
+            }
+        },
+        updateArticleBlock: (
+            state,
+            { payload }: PayloadAction<ArticleBlock>,
+        ) => {
+            if (state.form) {
+                const index = state.form.blocks.findIndex(
+                    (block) => block.id === payload.id,
+                )
+                state.form.blocks[index] = payload
             }
         },
     },

@@ -76,7 +76,7 @@ export const Page = (props: PageProps) => {
             on: () => {
                 window.scrollTo({
                     top: scrollPosition,
-                    behavior: 'smooth',
+                    behavior: 'auto',
                 })
             },
             off: () => {

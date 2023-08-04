@@ -15,6 +15,14 @@
     gap: 16px;
 }
 
+.accounts {
+    position: absolute;
+    bottom: 150px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .collapseBtn {
     position: absolute;
     right: 0;

@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useCallback, useEffect, useId, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { nanoid } from 'nanoid'
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text'
@@ -10,6 +10,9 @@ import cls from './ArticleTextBlockComponent.module.scss'
 import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Input } from '@/shared/ui/redesigned/Input'
 import { Textarea } from '@/shared/ui/redesigned/Textarea'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { articleDetailsActions } from '../../model/slice/articleDetailsSlice'
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
 
 export type TextGap = '4' | '8' | '16' | '24' | '32'
 
@@ -26,27 +29,61 @@ interface ArticleTextBlockComponentProps {
     block: ArticleTextBlock
     editable?: boolean
     gap?: TextGap
-    editTitleFn?: (value: string, block: ArticleTextBlock) => void
-    editParagraphFn?: (value: string, block: ArticleTextBlock) => void
 }
 
 export const ArticleTextBlockComponent = memo(
     (props: ArticleTextBlockComponentProps) => {
-        const {
-            className,
-            block,
-            gap,
-            editTitleFn = () => '',
-            editParagraphFn = () => '',
-            editable = false,
-        } = props
+        const { className, block, gap, editable = false } = props
         const { t } = useTranslation()
-
+        const textareaId = useId()
         const cn = classNames('', {}, [className, gap && gapClasses[gap]])
+
+        const dispatch = useAppDispatch()
+        const [textTitle, setTextTitle] = useState(block.title)
+        const [textParagraph, setTextParagraph] = useState(block.paragraphs)
+
+        useEffect(() => {
+            if (block) {
+                setTextTitle(block.title)
+                setTextParagraph(block.paragraphs)
+            }
+        }, [block])
+
+        const onChangeBlockImg = useCallback(
+            (
+                type: 'paragraphs' | 'title',
+                value: string,
+                block: ArticleTextBlock,
+            ) => {
+                dispatch(
+                    articleDetailsActions.updateArticleBlock({
+                        ...block,
+                        [type]: value,
+                    }),
+                )
+            },
+            [dispatch],
+        )
+
+        const debounceFetchImg = useDebounce(
+            (type: 'paragraphs' | 'title', value: string) =>
+                onChangeBlockImg(type, value, block),
+            500,
+        )
+
+        const controlledTextParagraph = (value: string) => {
+            setTextParagraph(value.split('/n'))
+            debounceFetchImg('paragraphs', value.split('/n'))
+        }
+
+        const controlledTextTitle = (value: string) => {
+            setTextTitle(value)
+            debounceFetchImg('title', value)
+        }
 
         return (
             <VStack gap={gap} max className={cn}>
-                {block.title && (
+                {textTitle && (
                     <ToggleComponentFeatures
                         feature="isAppRedesigned"
                         on={
@@ -56,19 +93,14 @@ export const ArticleTextBlockComponent = memo(
                                 gap="16"
                                 max
                             >
-                                <Text
-                                    title={block.title}
-                                    className={cls.title}
-                                />
+                                <Text title={textTitle} className={cls.title} />
                                 {editable && (
                                     <Input
                                         wrap
                                         labelBold
                                         label={`${t('Edit title')}:`}
-                                        value={block.title}
-                                        onChange={(value) =>
-                                            editTitleFn(value, block)
-                                        }
+                                        value={textTitle}
+                                        onChange={controlledTextTitle}
                                     />
                                 )}
                             </VStack>
@@ -81,7 +113,7 @@ export const ArticleTextBlockComponent = memo(
                         }
                     />
                 )}
-                {block.paragraphs && (
+                {textParagraph && (
                     <ToggleComponentFeatures
                         feature="isAppRedesigned"
                         on={
@@ -91,15 +123,10 @@ export const ArticleTextBlockComponent = memo(
                                         wrap
                                         labelBold
                                         direction="horizontal"
-                                        textareaId={
-                                            block.paragraphs.join('/n').length +
-                                            block.id
-                                        }
+                                        textareaId={textareaId}
                                         label={`${t('Edit text')}:`}
-                                        value={block.paragraphs.join('/n')}
-                                        onChange={(value) =>
-                                            editParagraphFn(value, block)
-                                        }
+                                        value={textParagraph.join('/n')}
+                                        onChange={controlledTextParagraph}
                                     />
                                 ) : (
                                     <>
