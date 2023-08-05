@@ -16,6 +16,7 @@ import {
     getRouteArticleEdit,
     getRouteArticleNew,
     getRouteArticles,
+    getRouteContacts,
     getRouteForbidden,
     getRouteMain,
     getRouteNotFound,
@@ -25,6 +26,7 @@ import {
 import { AppRoutesProps } from '@/shared/types/router'
 import { SettingsPage } from '@/pages/SettingsPage'
 import { ArticleNewPage } from '@/pages/ArticleNewPage'
+import { ContactsPage } from '@/pages/ContactsPage'
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
@@ -69,6 +71,12 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: <AdminPanelPage />,
         authOnly: true,
         roles: [UserRoles.ADMIN, UserRoles.MANAGER],
+    },
+    [AppRoutes.CONTACTS]: {
+        path: getRouteContacts(),
+        element: <ContactsPage />,
+        authOnly: true,
+        roles: [UserRoles.ADMIN],
     },
     [AppRoutes.FORBIDDEN]: {
         path: getRouteForbidden(),

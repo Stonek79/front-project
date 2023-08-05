@@ -8,6 +8,7 @@ export enum AppRoutes {
     ARTICLE_NEW = 'article_new',
     ARTICLE_EDIT = 'article_edit',
     ADMIN_PANEL = 'admin_panel',
+    CONTACTS = 'contacts',
     FORBIDDEN = 'forbidden_page',
     // last
     NOT_FOUND = 'not_found',
@@ -22,6 +23,9 @@ export const getRouteArticleDetail = (id: string) => `/articles/${id}`
 export const getRouteArticleNew = () => '/articles/new'
 export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`
 export const getRouteAdminPanel = () => '/admin'
+
+export const getRouteContacts = () => '/contacts'
+
 export const getRouteForbidden = () => '/forbidden'
 
 export const getRouteNotFound = () => '*'
@@ -36,5 +40,6 @@ export const AppRouterByPathPattern: Record<string, AppRoutes> = {
     [getRouteArticleNew()]: AppRoutes.ARTICLE_NEW,
     [getRouteArticleEdit(':id')]: AppRoutes.ARTICLE_EDIT,
     [getRouteAdminPanel()]: AppRoutes.ADMIN_PANEL,
+    [getRouteContacts()]: AppRoutes.CONTACTS,
     [getRouteForbidden()]: AppRoutes.FORBIDDEN,
 }

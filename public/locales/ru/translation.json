@@ -31,7 +31,8 @@
   "Comments": "Комментарии",
   "Confirm": "Подтвердить",
   "Confirm cancellation": "Подтверждаете отмену",
-  "Contact me": "Напиши мне",
+  "Contact me": "Связаться",
+  "Contacts page": "Страница контактов",
   "Country": "Страна",
   "Create": "Создать",
   "Currency": "Валюта",
@@ -129,5 +130,7 @@
   "{{count}} views_few": "{{count}} просмотра",
   "{{count}} views_many": "{{count}} просмотров",
   "{{count}} views_one": "{{count}} просмотр",
-  "{{count}} views_zero": "{{count}} просмотров"
+  "{{count}} views_zero": "{{count}} просмотров",
+  "You can email me:": "Вы можете написать мне:",
+  "Or you call me:": "или Вы можете позвонить мне:"
 }

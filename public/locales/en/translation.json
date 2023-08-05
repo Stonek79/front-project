@@ -31,7 +31,8 @@
   "Comments": "Comments",
   "Confirm": "Confirm",
   "Confirm cancellation": "Confirm cancellation",
-  "Contact me": "Contact me",
+  "Contact me": "Contact",
+  "Contacts page": "Contacts page",
   "Country": "Country",
   "Create": "Create",
   "Currency": "Currency",
@@ -126,5 +127,7 @@
   "{{count}} views_one": "{{count}} view",
   "{{count}} views_other": "{{count}} views",
   "{{count}} views_plural": "{{count}} views_plural",
-  "{{count}} views_zero": "{{count}} views"
+  "{{count}} views_zero": "{{count}} views",
+  "You can email me:": "You can email me:",
+  "Or you call me:": "or you call me:"
 }

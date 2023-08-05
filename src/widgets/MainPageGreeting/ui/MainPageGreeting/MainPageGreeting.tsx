@@ -121,10 +121,10 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
                     className={cls.footerSign}
                     title={footerSign}
                 />
-                {/* TODO add contact page */}
+                {/* TODO create contact page */}
                 <HStack justify="between" max>
                     <Button className={cls['flat-button']}>
-                        <AppLink to="/contact">{t('Contact me')}</AppLink>
+                        <AppLink to="/contacts">{t('Contact me')}</AppLink>
                     </Button>
                     <Button className={cls['flat-button']}>
                         <AppLink to={AppRoutes.ABOUT}>
