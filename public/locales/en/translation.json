@@ -67,6 +67,7 @@
   "No": "No",
   "No comments": "No comments",
   "Old": "Old",
+  "Or you call me:": "or you can call me:",
   "Order": "Order",
   "Page not found": "Page not found",
   "Passwords must match": "Passwords must match",
@@ -101,6 +102,7 @@
   "We will glad to get your vote": "We will glad to get your vote",
   "Welcome to the Articles Page": "Welcome to the Articles Page",
   "Yes": "Yes",
+  "You can email me:": "You can email me:",
   "Your feedback": "Your feedback",
   "ascending": "ascending",
   "authForm": "Authorization form",
@@ -127,7 +129,5 @@
   "{{count}} views_one": "{{count}} view",
   "{{count}} views_other": "{{count}} views",
   "{{count}} views_plural": "{{count}} views_plural",
-  "{{count}} views_zero": "{{count}} views",
-  "You can email me:": "You can email me:",
-  "Or you call me:": "or you call me:"
+  "{{count}} views_zero": "{{count}} views"
 }

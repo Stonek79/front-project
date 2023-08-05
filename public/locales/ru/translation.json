@@ -67,6 +67,7 @@
   "No": "Нет",
   "No comments": "Комментариев нет",
   "Old": "Старый",
+  "Or you call me:": "или Вы можете позвонить мне:",
   "Order": "Порядок",
   "Page not found": "Страница не найдена",
   "Passwords must match": "Пароли должны совпадать",
@@ -101,6 +102,7 @@
   "We will glad to get your vote": "Мы будем рады получить вашу оценку",
   "Welcome to the Articles Page": "Добро пожаловать на страницу статей",
   "Yes": "Да",
+  "You can email me:": "Вы можете написать мне:",
   "Your feedback": "Ваш отзыв",
   "ascending": "возрастанию",
   "authForm": "Форма авторизации",
@@ -130,7 +132,5 @@
   "{{count}} views_few": "{{count}} просмотра",
   "{{count}} views_many": "{{count}} просмотров",
   "{{count}} views_one": "{{count}} просмотр",
-  "{{count}} views_zero": "{{count}} просмотров",
-  "You can email me:": "Вы можете написать мне:",
-  "Or you call me:": "или Вы можете позвонить мне:"
+  "{{count}} views_zero": "{{count}} просмотров"
 }

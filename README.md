@@ -1,5 +1,9 @@
 # front-project
 
+### note: the project still is under development!
+
+#### if you find any bug or want to improve something, [do an issue](https://github.com/Stonek79/front-project/issues) or write to me <stonek79@proton.me>
+
 ## Project Launch
 
 ```
