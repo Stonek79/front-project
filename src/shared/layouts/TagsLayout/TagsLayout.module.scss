@@ -1,13 +1,13 @@
 .indent {
     margin-left: 100px;
     height: 100%;
+    display: flex;
 }
 
 .tagsLayout {
     overflow: hidden;
     box-sizing: border-box;
     height: 100%;
-    display: flex;
 }
 
 .top-tags,

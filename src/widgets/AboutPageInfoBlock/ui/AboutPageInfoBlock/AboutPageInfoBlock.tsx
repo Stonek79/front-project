@@ -17,9 +17,10 @@ import {
     hexlet,
     textWithHexlet,
     textWithHexletRu,
+    additionalInfoText,
+    additionalInfoTextRu,
 } from '../../model/consts/consts'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
-import { Text } from '@/shared/ui/redesigned/Text'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { Card } from '@/shared/ui/redesigned/Card'
 import cls from './AboutPageInfoBlock.module.scss'
@@ -28,6 +29,7 @@ import { AppLink } from '@/shared/ui/redesigned/AppLink'
 import { useResizeObserver } from '@/shared/lib/hooks/useResizeObserver/useResizeObserver'
 import { Flex } from '@/shared/ui/redesigned/Stack/Flex/Flex'
 import { BigCertificateModal } from '@/features/BigCertificateModal'
+import { Text } from '@/shared/ui/redesigned/Text'
 
 export const AboutPageInfoBlock = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
@@ -35,7 +37,7 @@ export const AboutPageInfoBlock = () => {
     const [imgPath, setImgPath] = useState('')
     const sizeRef = useRef(document.body)
     const { width } = useResizeObserver({ element: sizeRef })
-    const { t, i18n } = useTranslation()
+    const { i18n } = useTranslation()
 
     const isRuLng = i18n.language === 'ru'
 
@@ -60,7 +62,7 @@ export const AboutPageInfoBlock = () => {
 
     return (
         <Flex direction={direction(width)} max>
-            <VStack gap="16" max>
+            <VStack className={cls.aboutPageInfo} gap="8" max>
                 <HStack gap="16" className={cls.letters}>
                     <AnimatedLetters
                         letterClass={letterClass}
@@ -68,20 +70,20 @@ export const AboutPageInfoBlock = () => {
                         index={15}
                     />
                 </HStack>
-                {(isRuLng ? aboutTextBlocksRu : aboutTextBlocks).map(
-                    (block) => (
-                        <Text key={block.length} text={block} />
-                    ),
-                )}
+                <div lang={i18n.language} className={cls.text}>
+                    {isRuLng ? aboutTextBlocksRu : aboutTextBlocks}
+                </div>
                 <div>
-                    {isRuLng ? textWithHexletRu : textWithHexlet}
-                    <AppLink
-                        className={cls.link}
-                        to="https://ru.hexlet.io/"
-                        target="_blank"
-                    >
-                        {hexlet}
-                    </AppLink>
+                    <div lang={i18n.language} className={cls.text}>
+                        {isRuLng ? textWithHexletRu : textWithHexlet}
+                        <AppLink
+                            className={cls.link}
+                            to="https://ru.hexlet.io/"
+                            target="_blank"
+                        >
+                            {hexlet}
+                        </AppLink>
+                    </div>
                 </div>
                 <HStack gap="16" justify="center" max>
                     <Card
@@ -115,6 +117,16 @@ export const AboutPageInfoBlock = () => {
                         />
                     </Card>
                 </HStack>
+                {(isRuLng ? additionalInfoTextRu : additionalInfoText).map(
+                    (el) => (
+                        <Text
+                            lang={i18n.language}
+                            className={cls.text}
+                            key={el}
+                            text={el}
+                        />
+                    ),
+                )}
             </VStack>
             <SpinnedCube />
             {isOpen && (

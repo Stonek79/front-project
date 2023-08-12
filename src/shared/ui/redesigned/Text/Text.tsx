@@ -18,6 +18,7 @@ interface TextProps {
     bold?: boolean
     cursive?: boolean
     'data-testing'?: string
+    lang?: string
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3'
@@ -45,6 +46,7 @@ export const Text = memo((props: TextProps) => {
         self = 'auto',
         bold,
         cursive,
+        lang,
         'data-testing': dataTestId = 'Test',
     } = props
 
@@ -70,7 +72,11 @@ export const Text = memo((props: TextProps) => {
                 </HeaderTag>
             )}
             {text && (
-                <p data-testid={`${dataTestId}-paragraph`} className={cls.text}>
+                <p
+                    lang={lang}
+                    data-testid={`${dataTestId}-paragraph`}
+                    className={cls.text}
+                >
                     {text}
                 </p>
             )}

@@ -75,7 +75,6 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.CONTACTS]: {
         path: getRouteContacts(),
         element: <ContactsPage />,
-        authOnly: true,
         roles: [UserRoles.ADMIN],
     },
     [AppRoutes.FORBIDDEN]: {
