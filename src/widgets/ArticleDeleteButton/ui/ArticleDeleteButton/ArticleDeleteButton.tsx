@@ -27,17 +27,14 @@ export const ArticleDeleteButton = (props: ArticleDeleteButtonProps) => {
         setIsOpen(false)
     }, [])
 
-    const onHandleDelete = useCallback(
-        (id: string) => {
-            deleteArticle(id)
-                .unwrap()
-                .then(() => {
-                    onDelete(id)
-                    return navigate(getRouteArticles())
-                })
-        },
-        [deleteArticle, onDelete, navigate],
-    )
+    const onHandleDelete = useCallback(() => {
+        deleteArticle(id)
+            .unwrap()
+            .then(() => {
+                onDelete(id)
+                return navigate(getRouteArticles())
+            })
+    }, [deleteArticle, id, onDelete, navigate])
 
     return (
         <>
@@ -47,7 +44,7 @@ export const ArticleDeleteButton = (props: ArticleDeleteButtonProps) => {
                     isOpen={isOpen}
                     header={`${t('Delete article')}?`}
                     onClose={onCloseModal}
-                    onConfirm={() => onHandleDelete(id)}
+                    onConfirm={onHandleDelete}
                 />
             )}
         </>

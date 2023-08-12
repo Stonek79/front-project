@@ -557,26 +557,24 @@
       "id": "rCpW3lE"
     },
     {
-      "title": "Article title XXX",
-      "subtitle": "Article subtitle XXX",
+      "title": "Article title",
+      "subtitle": "Article subtitle",
       "img": "/images/avatar.jpg",
-      "type": [
-        "IT"
-      ],
+      "views": 0,
+      "type": [],
       "blocks": [
         {
-          "id": "hF2AX3KTjK",
+          "id": "Lm6pLKn_fD",
           "type": "TEXT",
           "title": "Text block title",
           "paragraphs": [
-            "Text block content\nText block content\nText block content\nText block content\nText block content\nSDSDSDS\nText block content"
+            "Text block content\nText block content\nText block content\nText block content\nText block content\nText block content\nText block content"
           ]
         }
       ],
-      "createdAt": "07.07.2023",
-      "userId": "1",
-      "views": 41,
-      "id": "7qhukkYtUs"
+      "id": "FD3P1R8xPP",
+      "createdAt": "12.08.2023",
+      "userId": "1"
     }
   ],
   "comments": [

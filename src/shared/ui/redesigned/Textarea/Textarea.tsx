@@ -57,10 +57,10 @@ export const Textarea = memo((props: InputProps) => {
     useEffect(() => {
         const currentHeight = ref?.current?.scrollHeight
 
-        if (currentHeight) {
+        if (Boolean(currentHeight) && currentHeight !== height) {
             setHeight(currentHeight)
         }
-    }, [height, textareaId])
+    }, [height, textareaId, ref?.current?.scrollHeight])
 
     const inputCn = classNames(cls.input, { [cls.focused]: isFocused }, [])
 

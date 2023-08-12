@@ -85,8 +85,10 @@ export const ArticleEditAdditionBlock = memo(
         ])
 
         const onBack = useCallback(() => {
-            navigate(-1)
-        }, [navigate])
+            if (isNew) {
+                navigate('/articles')
+            } else navigate(-1)
+        }, [isNew, navigate])
 
         const onConfirm = useCallback(() => {
             dispatch(articleDetailsActions.cancelEdit())
