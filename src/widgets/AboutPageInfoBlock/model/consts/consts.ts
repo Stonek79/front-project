@@ -20,21 +20,36 @@ export const textWithHexletRu =
     'Во фронтэнд разработке я с 2020 года. В поисках новых знаний прошел курсы frontend и backend-разработки ' +
     'в онлайн-школе программирования'
 
-export const additionalInfoText = [
+export const additionalInfoText =
     'This site is not a business card site, but a project where I try ' +
-        'new technologies and hone my existing skills. In appearance, this is an ordinary site ' +
-        'that allows you to create, view, edit and delete articles, but under the hood a lot of modern technologies ' +
-        '(React, Redux, Typescript, Storybook, Webpack, Vite, Jest and others) are used, including self-written plugins ' +
-        'for creating and editing code. The code architecture is based on FSD technology.',
-    'The project is still in development and will be gradually improved. ' +
-        'If you find a bug or you have suggestions for improving the site, leave a comment on github or contact me.',
-]
-export const additionalInfoTextRu = [
+    'new technologies and hone my existing skills. In appearance, this is an ordinary site ' +
+    'that allows you to create, view, edit and delete articles, but under the hood a lot of modern technologies ' +
+    '(React, Redux, Typescript, Storybook, Webpack, Vite, Jest and others) are used, including self-written plugins ' +
+    'for creating and editing code. '
+
+export const additionalInfoText2 =
+    'The code architecture is based on FSD technology. The project is still in development and will be gradually improved. ' +
+    'If you find a bug or you have suggestions for improving the site, add a comment'
+
+export const additionalInfoTextRu =
     'Этот сайт не сайт-визитка, а проект, на котором я пробую новые технологии ' +
-        'и оттачиваю имеющиеся навыки. С виду это обычный сайт, позволяющий создавать, просматривать, редактировать ' +
-        'и удалять статьи, однако под капотом использовано множество современных технологий ' +
-        '(React, Redux, Typescript, Storybook, Webpack, Vite, Jest и другие), включачя самописные плагины ' +
-        'для создания и редактирования кода. Архитектура кода базируется на технологии FSD.',
-    'Проект все еще в разработке и будет постепенно улучшаться.  Если вы нашли баг или у вас есть предложения ' +
-        'по улучшению сайта оставьте ишью на гитхабе или свяжитесь со мной.\n',
-]
+    'и оттачиваю имеющиеся навыки. С виду это обычный сайт, позволяющий создавать, просматривать, редактировать ' +
+    'и удалять статьи, однако под капотом использовано множество современных технологий ' +
+    '(React, Redux, Typescript, Storybook, Webpack, Vite, Jest и другие), включая самописные плагины ' +
+    'для создания и редактирования кода.'
+
+export const additionalInfoTextRu2 =
+    'Архитектура кода базируется на технологии FSD. Проект все еще в разработке и будет постепенно улучшаться. ' +
+    'Если вы нашли баг или у вас есть предложения по улучшению сайта оставьте ишью'
+
+export const contactWithMeRu = 'свяжитесь со мной.'
+
+export const contactWithMe = 'contact me.'
+
+export const contactGitHubRu = 'на гитхабе'
+
+export const contactGitHub = 'to github'
+
+export const orRu = ' или'
+
+export const or = ' or'

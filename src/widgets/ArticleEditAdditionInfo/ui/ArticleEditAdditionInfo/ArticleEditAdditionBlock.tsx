@@ -87,7 +87,7 @@ export const ArticleEditAdditionBlock = memo(
         const onBack = useCallback(() => {
             if (isNew) {
                 navigate('/articles')
-            } else navigate(-1)
+            }
         }, [isNew, navigate])
 
         const onConfirm = useCallback(() => {
@@ -115,9 +115,11 @@ export const ArticleEditAdditionBlock = memo(
                     >
                         {t('Save')}
                     </Button>
-                    <Button fullWidth variant="outline" onClick={onBack}>
-                        {t('Back')}
-                    </Button>
+                    {isNew && (
+                        <Button fullWidth variant="outline" onClick={onBack}>
+                            {t('Back')}
+                        </Button>
+                    )}
                 </VStack>
                 {isOpen && (
                     <ConfirmationModal

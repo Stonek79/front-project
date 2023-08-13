@@ -560,21 +560,21 @@
       "title": "Article title",
       "subtitle": "Article subtitle",
       "img": "/images/avatar.jpg",
-      "views": 0,
       "type": [],
       "blocks": [
         {
-          "id": "Lm6pLKn_fD",
+          "id": "-ugHdySwG8",
           "type": "TEXT",
           "title": "Text block title",
           "paragraphs": [
-            "Text block content\nText block content\nText block content\nText block content\nText block content\nText block content\nText block content"
+            "Text block content"
           ]
         }
       ],
-      "id": "FD3P1R8xPP",
-      "createdAt": "12.08.2023",
-      "userId": "1"
+      "createdAt": "13.08.2023",
+      "userId": "1",
+      "views": 1,
+      "id": "hxK7Frtrjw"
     }
   ],
   "comments": [
@@ -722,7 +722,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_orange_theme",
+        "theme": "app_dark_theme",
         "isArticlesPageOpened": true
       },
       "avatar": "https://graph.digiseller.ru/img.ashx?idp=1738637&maxlength=400&keepratio=1"

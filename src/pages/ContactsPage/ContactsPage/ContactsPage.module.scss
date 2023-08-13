@@ -5,3 +5,16 @@
 .tel::before {
     content: "📞 ";
 }
+
+.img {
+    border-radius: 50%;
+    align-self: center;
+}
+
+.text {
+    align-self: center;
+}
+
+a {
+    color: blue;
+}

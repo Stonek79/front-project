@@ -19,6 +19,14 @@ import {
     textWithHexletRu,
     additionalInfoText,
     additionalInfoTextRu,
+    contactGitHubRu,
+    contactGitHub,
+    additionalInfoText2,
+    additionalInfoTextRu2,
+    contactWithMeRu,
+    contactWithMe,
+    orRu,
+    or,
 } from '../../model/consts/consts'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
@@ -29,7 +37,6 @@ import { AppLink } from '@/shared/ui/redesigned/AppLink'
 import { useResizeObserver } from '@/shared/lib/hooks/useResizeObserver/useResizeObserver'
 import { Flex } from '@/shared/ui/redesigned/Stack/Flex/Flex'
 import { BigCertificateModal } from '@/features/BigCertificateModal'
-import { Text } from '@/shared/ui/redesigned/Text'
 
 export const AboutPageInfoBlock = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
@@ -117,16 +124,25 @@ export const AboutPageInfoBlock = () => {
                         />
                     </Card>
                 </HStack>
-                {(isRuLng ? additionalInfoTextRu : additionalInfoText).map(
-                    (el) => (
-                        <Text
-                            lang={i18n.language}
-                            className={cls.text}
-                            key={el}
-                            text={el}
-                        />
-                    ),
-                )}
+                {isRuLng ? additionalInfoTextRu : additionalInfoText}
+                <div lang={i18n.language} className={cls.text}>
+                    {isRuLng ? additionalInfoTextRu2 : additionalInfoText2}
+                    <AppLink
+                        className={cls.link}
+                        to="https://github.com/Stonek79/front-project/issues"
+                        target="_blank"
+                    >
+                        {isRuLng ? contactGitHubRu : contactGitHub}
+                    </AppLink>
+                    {isRuLng ? orRu : or}
+                    <AppLink
+                        className={cls.link}
+                        to="https://stonek79.site/contacts"
+                        target="_blank"
+                    >
+                        {isRuLng ? contactWithMeRu : contactWithMe}
+                    </AppLink>
+                </div>
             </VStack>
             <SpinnedCube />
             {isOpen && (
