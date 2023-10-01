@@ -8,6 +8,7 @@ interface NavbarProps {
 
 export const Navbar = (props: NavbarProps) => {
     const { className } = props
+
     return (
         <ToggleComponentFeatures
             feature="isAppRedesigned"

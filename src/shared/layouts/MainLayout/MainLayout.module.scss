@@ -38,3 +38,16 @@
     height: 100%;
     width: 100%;
 }
+
+.mobile {
+    .content {
+        padding: 8px;
+    }
+}
+
+.mobileHeader {
+    position: sticky;
+    top: 0;
+    background: var(--dark-bg-redesigned);
+    z-index: var(--overlay-z-index);
+}

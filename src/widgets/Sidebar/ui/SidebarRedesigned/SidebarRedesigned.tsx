@@ -1,17 +1,13 @@
-import { memo, useMemo, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { memo, useState } from 'react'
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { SidebarItemRedesigned } from '../SidebarItemRedesigned/SidebarItemRedesigned'
 import cls from './SidebarRedesigned.module.scss'
-import { getSidebarItems } from '../../model/selectors/getSidebarItems'
-import { VStack } from '@/shared/ui/redesigned/Stack'
 import { ThemeSwitcher } from '@/features/ThemeSwitcher'
 import { LangSwitcher } from '@/features/LangSwitcher'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg'
-import { AccountsLinks } from '@/features/AccountsLinks'
 import { Flex } from '@/shared/ui/redesigned/Stack/Flex/Flex'
+import { AccountsLinks, MenuList } from '@/features/Menu'
 
 interface SidebarProps {
     className?: string
@@ -20,23 +16,10 @@ interface SidebarProps {
 export const SidebarRedesigned = memo((props: SidebarProps) => {
     const { className } = props
     const [collapsed, setCollapsed] = useState(false)
-    const sidebarItemsList = useSelector(getSidebarItems)
 
     const onToggle = () => {
         setCollapsed((prev) => !prev)
     }
-
-    const itemsList = useMemo(
-        () =>
-            sidebarItemsList.map((item) => (
-                <SidebarItemRedesigned
-                    key={item.path}
-                    item={item}
-                    collapsed={collapsed}
-                />
-            )),
-        [collapsed, sidebarItemsList],
-    )
 
     const cn = classNames(
         cls.SidebarRedesigned,
@@ -47,9 +30,7 @@ export const SidebarRedesigned = memo((props: SidebarProps) => {
     return (
         <div data-testid="sidebar" className={cn}>
             <AppLogo size={collapsed ? 30 : 50} className={cls.appLogo} />
-            <VStack role="navigation" gap="8" className={cls.items}>
-                {itemsList}
-            </VStack>
+            <MenuList collapsed={collapsed} />
             <div className={cls.collapseBtn}>
                 <Icon
                     data-testid="sidebar-toggle"
@@ -58,9 +39,7 @@ export const SidebarRedesigned = memo((props: SidebarProps) => {
                     clickable
                 />
             </div>
-
             <AccountsLinks className={cls.accounts} short={collapsed} />
-
             <Flex
                 direction={collapsed ? 'column' : 'row'}
                 className={cls.switchers}

@@ -13,6 +13,8 @@ import cls from './ProfileCardRedesigned.module.scss'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { ProfileCardProps } from '../ProfileCard/ProfileCard'
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
+import { Flex } from '@/shared/ui/redesigned/Stack/Flex/Flex'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 const ProfileCardSkeleton = () => (
     <Card gap="8" max cardPaddings="24">
@@ -56,6 +58,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
         validateErrors,
     } = props
     const { t } = useTranslation()
+    const { isScreenMd } = useResize()
 
     const validateErrorTranslates = {
         [ValidateProfileErrors.NO_DATA]: t('noData'),
@@ -112,7 +115,12 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                     <Avatar size={128} src={data.avatar} alt={t('Avatar')} />
                 </HStack>
             )}
-            <HStack align="start" gap="24" max>
+            <Flex
+                direction={isScreenMd ? 'row' : 'column'}
+                align="start"
+                gap="24"
+                max
+            >
                 <VStack gap="16" max>
                     <Input
                         value={data?.firstname}
@@ -203,7 +211,7 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                         ? getErrorsFields(validateErrors?.country, 'country')
                         : null}
                 </VStack>
-            </HStack>
+            </Flex>
         </Card>
     )
 })

@@ -40,3 +40,11 @@
 .loaded {
     transform: translateX(0%);
 }
+
+.mobile {
+    &.indent {
+        margin-left: 40px;
+        min-height: 370px;
+        max-width: 80vw;
+    }
+}

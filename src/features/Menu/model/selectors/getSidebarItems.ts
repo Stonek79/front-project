@@ -10,7 +10,7 @@ import AboutPageIcon from '@/shared/assets/icons/Info.svg'
 import ProfilePageIcon from '@/shared/assets/icons/avatar.svg'
 import ArticlesIcon from '@/shared/assets/icons/article.svg'
 
-import { SidebarItemsType } from '../../model/types/sidebar'
+import { SidebarItemsType } from '../types/sidebar'
 import {
     getRouteAbout,
     getRouteArticles,

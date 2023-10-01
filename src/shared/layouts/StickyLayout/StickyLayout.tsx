@@ -1,5 +1,4 @@
 import { memo, ReactElement } from 'react'
-import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './StickyLayout.module.scss'
 
@@ -12,7 +11,6 @@ interface StickyLayoutProps {
 
 export const StickyLayout = memo((props: StickyLayoutProps) => {
     const { className, content, left, right } = props
-    const { t } = useTranslation()
 
     const cn = classNames(cls.StickyLayout, {}, [className])
 

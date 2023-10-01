@@ -3,6 +3,7 @@ import { VStack } from '@/shared/ui/redesigned/Stack'
 import cls from './TagsLayout.module.scss'
 import { classNames, Mods } from '@/shared/lib/classNames/classNames'
 import { Text } from '@/shared/ui/redesigned/Text'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 interface TagsLayoutProps {
     children?: ReactNode
@@ -11,6 +12,7 @@ interface TagsLayoutProps {
 export const TagsLayout = (props: TagsLayoutProps) => {
     const { children } = props
     const [isLoad, setIsLoad] = useState(false)
+    const { isScreenMd } = useResize()
 
     useEffect(() => {
         setTimeout(() => setIsLoad(true), 0)
@@ -19,6 +21,7 @@ export const TagsLayout = (props: TagsLayoutProps) => {
     const mode: Mods = { [cls.loaded]: isLoad }
     const cnTop = classNames('', {}, [cls.tags, cls['top-tags']])
     const cnBottom = classNames('', {}, [cls.tags, cls['bottom-tags']])
+    const cnIndent = classNames('', { [cls.mobile]: !isScreenMd }, [cls.indent])
 
     return (
         <VStack className={cls.tagsLayout} max>
@@ -38,7 +41,7 @@ export const TagsLayout = (props: TagsLayoutProps) => {
                     size="l"
                 />
             </VStack>
-            <div className={cls.indent}>{children}</div>
+            <div className={cnIndent}>{children}</div>
             <VStack className={cnBottom}>
                 <Text
                     className={classNames('', mode, [cls['tag-body']])}

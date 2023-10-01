@@ -1,5 +1,5 @@
-import { Project } from 'ts-morph'
 import path from 'path'
+import { Project } from 'ts-morph'
 
 const project = new Project({})
 
@@ -9,7 +9,8 @@ project.addSourceFilesAtPaths('src/**/*.tsx')
 const layers = ['app', 'pages', 'widgets', 'features', 'entities', 'shared']
 const uiPath = path.resolve(__dirname, '../../src/shared/ui')
 
-const isAbsolute = (path: string) => layers.some((layer) => path.startsWith(layer))
+const isAbsolute = (path: string) =>
+    layers.some((layer) => path.startsWith(layer))
 const files = project.getSourceFiles()
 const getUiDir = project.getDirectory(uiPath)
 const componentsDirs = getUiDir?.getDirectories()
@@ -20,14 +21,16 @@ componentsDirs?.forEach((directory) => {
 
     if (!hasIndexFile) {
         const sourceCode = `export * from './${directory.getBaseName()}'\n`
-        const file = directory.createSourceFile(indexFilePath, sourceCode, { overwrite: true })
+        const file = directory.createSourceFile(indexFilePath, sourceCode, {
+            overwrite: true,
+        })
 
         file.save()
     }
 })
 
 files.forEach((sourceFile) => {
-    const importDeclarations = sourceFile.getImportDeclarations();
+    const importDeclarations = sourceFile.getImportDeclarations()
     importDeclarations.forEach((importDeclaration) => {
         const value = importDeclaration.getModuleSpecifierValue()
         const valueWithoutAlias = value.replace('@/', '')
@@ -37,7 +40,10 @@ files.forEach((sourceFile) => {
         const hasUiDir = segments?.[1] === 'ui'
 
         if (isAbsolute(valueWithoutAlias) && hasSharedLayer && hasUiDir) {
-            const resultPath = valueWithoutAlias.split('/').slice(0, 3).join('/')
+            const resultPath = valueWithoutAlias
+                .split('/')
+                .slice(0, 3)
+                .join('/')
             importDeclaration.setModuleSpecifier(`@/${resultPath}`)
         }
     })

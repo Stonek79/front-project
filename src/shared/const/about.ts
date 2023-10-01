@@ -1,6 +1,9 @@
 export const aboutMe = ['A', 'b', 'o', 'u', 't', ' ', 'm', 'e']
 export const aboutMeRu = ['О', 'б', 'о', ' ', 'м', 'н', 'е', ' ']
 export const hexlet = 'HEXLET'
+export const githab = 'GitHub'
+export const codewars = 'Codewars'
+
 export const aboutTextBlocks =
     'I am a front-end developer, I want to try myself in some ambitious IT company ' +
     'using a modern technology stack, work on complex and diverse projects in a group of experienced developers ' +

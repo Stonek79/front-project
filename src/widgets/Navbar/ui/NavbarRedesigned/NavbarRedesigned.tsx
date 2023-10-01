@@ -12,6 +12,10 @@ import { UserNavbarDropdown } from '@/features/UserNavbarDropdown'
 import cls from './NavbarRedesigned.module.scss'
 import { SignUpNewUser } from '@/features/SignUpNewUser'
 import { getRouteMain } from '@/shared/const/router'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
+import { LangSwitcher } from '@/features/LangSwitcher'
+import { ThemeSwitcher } from '@/features/ThemeSwitcher'
+import { BurgerMenu } from '@/features/Menu'
 
 interface NavbarProps {
     className?: string
@@ -25,10 +29,15 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
     const [hasSignUp, setHasSingUp] = useState(false)
     const [isOpenSignUp, setIsOpenSignUp] = useState(false)
 
+    const { isScreenMd } = useResize()
     const authData = useSelector(getUserAuthData)
     const navigate = useNavigate()
 
-    const cn = classNames(cls.NavbarRedesigned, {}, [className])
+    const cn = classNames(cls.NavbarRedesigned, { [cls.mobile]: !isScreenMd }, [
+        className,
+    ])
+
+    const btnSize = isScreenMd ? 'm' : 's'
 
     const onOpenModal = useCallback(() => {
         setIsOpen(true)
@@ -59,9 +68,23 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
     if (authData) {
         return (
             <header className={cn}>
-                <HStack gap="16" justify="between" className={cls.actions}>
-                    <NotificationButton />
+                {!isScreenMd && <BurgerMenu />}
+                <HStack
+                    gap="16"
+                    justify={isScreenMd ? 'between' : 'end'}
+                    className={cls.actions}
+                >
+                    {!isScreenMd && (
+                        <>
+                            <ThemeSwitcher />
+                            <LangSwitcher short className={cls.lang} />
+                        </>
+                    )}
+                    <NotificationButton
+                        className={(!isScreenMd && cls.center) || ''}
+                    />
                     <UserNavbarDropdown
+                        className={(!isScreenMd && cls.center) || ''}
                         authData={authData}
                         onLogOut={onLogOut}
                     />
@@ -72,16 +95,26 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
 
     return (
         <header className={cn}>
-            <HStack gap="16" justify="between">
+            {!isScreenMd && <BurgerMenu />}
+            <HStack gap="16" justify={isScreenMd ? 'between' : 'end'}>
+                {!isScreenMd && (
+                    <>
+                        <ThemeSwitcher />
+                        <LangSwitcher short className={cls.lang} />
+                    </>
+                )}
                 <Button
                     variant="outline"
                     className={cls.links}
                     onClick={onOpenModal}
+                    size={btnSize}
                 >
                     {t('logIn')}
                 </Button>
                 {!hasSignUp && (
-                    <Button onClick={handleSignUp}>{t('Sign up')}</Button>
+                    <Button size={btnSize} onClick={handleSignUp}>
+                        {t('Sign up')}
+                    </Button>
                 )}
                 {isOpen && (
                     <LoginModal isOpen={isOpen} onClose={onCloseModal} />

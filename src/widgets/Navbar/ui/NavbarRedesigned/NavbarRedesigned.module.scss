@@ -1,5 +1,7 @@
 .NavbarRedesigned {
     padding: 8px;
+    //background-color: rgba(0, 0, 0, 0.3);
+    position: sticky;
 }
 
 .actions {
@@ -13,4 +15,25 @@
 .textLink {
     width: var(--sidebar-width);
     margin-left: 15px;
+}
+
+.mobile {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lang {
+    display: flex;
+    font-weight: bold;
+    color: var(--accent-redesigned);
+    background: var(--light-bg-redesigned);
+    border-radius: 50%;
+    min-width: 30px;
+    min-height: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.center {
+    display: flex;
 }

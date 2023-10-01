@@ -17,7 +17,7 @@
     font-weight: 500;
 }
 
-.sertificate {
+.certificate {
     width: 100%;
     max-width: 250px;
 }
@@ -28,12 +28,28 @@
 }
 
 @media (max-width: 850px) {
-    .sertificate {
+    .certificate {
         width: 150px;
     }
 
     .letters {
         font-size: 3rem;
         line-height: 2rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .certificate {
+        width: 130px;
+    }
+
+    .aboutPageInfo {
+        min-width: 90vw;
+        padding: 3px;
+    }
+
+    .letters {
+        font-size: 2rem;
+        line-height: 1.5rem;
     }
 }

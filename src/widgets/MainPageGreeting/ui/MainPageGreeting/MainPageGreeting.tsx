@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import MyLogoTitle from '@/shared/assets/my-logo.png'
 import cls from './MainPageGreeting.module.scss'
@@ -14,37 +14,27 @@ import {
     jobArray,
     jobArray2,
     jobArray3,
-    maxWidth,
     mLetter,
     nameArray,
 } from '../../model/consts/consts'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
-import { Text, TextSize } from '@/shared/ui/redesigned/Text'
+import { Text } from '@/shared/ui/redesigned/Text'
 import { Button } from '@/shared/ui/redesigned/Button'
-import { useResizeObserver } from '@/shared/lib/hooks/useResizeObserver/useResizeObserver'
 import { AppRoutes } from '@/shared/const/router'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 interface MainPageGreetingProps {
     className?: string
 }
 
 export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
-    const [letterClass, setLetterClass] = useState('text-animate')
-    const sizeRef = useRef(document.body)
-    const { width } = useResizeObserver({ element: sizeRef })
-
-    const [size, setSize] = useState<TextSize>(width >= maxWidth ? 'm' : 's')
-
     const { t } = useTranslation()
+    const [letterClass, setLetterClass] = useState('text-animate')
+    const { isScreenMd } = useResize()
+
+    const size = isScreenMd ? 'm' : 's'
+
     const cn = classNames('', {}, [className, cls['home-page']])
-
-    if (size === 'm' && width < maxWidth) {
-        setSize('s')
-    }
-
-    if (size === 's' && width >= maxWidth) {
-        setSize('m')
-    }
 
     useEffect(() => {
         const timer = setTimeout(
@@ -121,7 +111,6 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
                     className={cls.footerSign}
                     title={footerSign}
                 />
-                {/* TODO create contact page */}
                 <HStack justify="between" max>
                     <Button className={cls['flat-button']}>
                         <AppLink to="/contacts">{t('Contact me')}</AppLink>

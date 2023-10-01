@@ -9,7 +9,7 @@
     // s
     --font-size-s: 12px;
     --font-line-s: 20px;
-    --font-s: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+    --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
 
     // m
     --font-size-m: 16px;
@@ -41,7 +41,7 @@
     --red-dark: #ce0505;
 
     // redesigned
-    --font-s-redesigned: var(--font-size-m) / var(--font-line-m) var(--font-family-text-redesigned);
+    --font-s-redesigned: var(--font-size-s) / var(--font-line-s) var(--font-family-text-redesigned);
 
     // m
     --font-m-redesigned: var(--font-size-m) / var(--font-line-m) var(--font-family-text-redesigned);

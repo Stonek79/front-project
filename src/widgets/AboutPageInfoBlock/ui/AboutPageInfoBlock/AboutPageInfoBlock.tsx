@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import NodeJS from '@/shared/assets/node-certificate-ru-small.jpg'
 import FrontJS from '@/shared/assets/front-certificate-ru-small.jpg'
@@ -27,28 +27,27 @@ import {
     contactWithMe,
     orRu,
     or,
-} from '../../model/consts/consts'
+} from '../../../../shared/const/about'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { Card } from '@/shared/ui/redesigned/Card'
 import cls from './AboutPageInfoBlock.module.scss'
 import { SpinnedCube } from '@/features/SpinnedCube'
 import { AppLink } from '@/shared/ui/redesigned/AppLink'
-import { useResizeObserver } from '@/shared/lib/hooks/useResizeObserver/useResizeObserver'
 import { Flex } from '@/shared/ui/redesigned/Stack/Flex/Flex'
 import { BigCertificateModal } from '@/features/BigCertificateModal'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 export const AboutPageInfoBlock = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
     const [isOpen, setIsOpen] = useState(false)
     const [imgPath, setImgPath] = useState('')
-    const sizeRef = useRef(document.body)
-    const { width } = useResizeObserver({ element: sizeRef })
     const { i18n } = useTranslation()
+    const { isScreenXl } = useResize()
 
     const isRuLng = i18n.language === 'ru'
 
-    const direction = (width: number) => (width >= 1200 ? 'row' : 'column')
+    const width = isScreenXl ? 'row' : 'column'
 
     const onOpenModal = useCallback((path: string) => {
         setIsOpen(true)
@@ -68,7 +67,7 @@ export const AboutPageInfoBlock = () => {
     }, [])
 
     return (
-        <Flex direction={direction(width)} max>
+        <Flex direction={width} max>
             <VStack className={cls.aboutPageInfo} gap="8" max>
                 <HStack gap="16" className={cls.letters}>
                     <AnimatedLetters
@@ -103,7 +102,7 @@ export const AboutPageInfoBlock = () => {
                         }
                     >
                         <AppImage
-                            className={cls.sertificate}
+                            className={cls.certificate}
                             src={isRuLng ? FrontJS : FrontJSEng}
                             alt="FrontJS"
                         />
@@ -118,13 +117,15 @@ export const AboutPageInfoBlock = () => {
                         }
                     >
                         <AppImage
-                            className={cls.sertificate}
+                            className={cls.certificate}
                             src={isRuLng ? NodeJS : NodeJSEng}
                             alt="NodeJS"
                         />
                     </Card>
                 </HStack>
-                {isRuLng ? additionalInfoTextRu : additionalInfoText}
+                <div lang={i18n.language} className={cls.text}>
+                    {isRuLng ? additionalInfoTextRu : additionalInfoText}
+                </div>
                 <div lang={i18n.language} className={cls.text}>
                     {isRuLng ? additionalInfoTextRu2 : additionalInfoText2}
                     <AppLink

@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useState } from 'react'
-import { BrowserView, MobileView } from 'react-device-detect'
 import {
     Button as ButtonDeprecated,
     ButtonTheme,
@@ -15,6 +14,7 @@ import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import { Popover } from '@/shared/ui/redesigned/Popups'
 import { Drawer } from '@/shared/ui/redesigned/Drawer'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 interface NotificationButtonProps {
     className?: string
@@ -32,6 +32,8 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
         setIsOpen(false)
     }, [])
 
+    const { isScreenMd } = useResize()
+
     const cn = classNames(cls.NotificationButton, {}, [className])
 
     const trigger = (
@@ -39,6 +41,7 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
             feature="isAppRedesigned"
             on={
                 <Icon
+                    className={className}
                     clickable
                     onClick={onOpenDrawer}
                     Svg={NotificationIcon}
@@ -64,39 +67,46 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
 
     return (
         <div>
-            <BrowserView>
-                <ToggleComponentFeatures
-                    feature="isAppRedesigned"
-                    on={
-                        <Popover
-                            className={cn}
-                            trigger={trigger}
-                            direction="top right"
-                        >
-                            <NotificationList className={cls.notifications} />
-                        </Popover>
-                    }
-                    off={
-                        <PopoverDeprecate
-                            className={cn}
-                            trigger={trigger}
-                            direction="top right"
-                        >
-                            <NotificationList className={cls.notifications} />
-                        </PopoverDeprecate>
-                    }
-                />
-            </BrowserView>
-            <MobileView>
-                {trigger}
-                <Drawer
-                    className={cls.mobile}
-                    isOpen={isOpen}
-                    onClose={onCloseDrawer}
-                >
-                    <NotificationList />
-                </Drawer>
-            </MobileView>
+            {isScreenMd ? (
+                <div>
+                    <ToggleComponentFeatures
+                        feature="isAppRedesigned"
+                        on={
+                            <Popover
+                                className={cn}
+                                trigger={trigger}
+                                direction="top right"
+                            >
+                                <NotificationList
+                                    className={cls.notifications}
+                                />
+                            </Popover>
+                        }
+                        off={
+                            <PopoverDeprecate
+                                className={cn}
+                                trigger={trigger}
+                                direction="top right"
+                            >
+                                <NotificationList
+                                    className={cls.notifications}
+                                />
+                            </PopoverDeprecate>
+                        }
+                    />
+                </div>
+            ) : (
+                <div>
+                    {trigger}
+                    <Drawer
+                        className={cls.mobile}
+                        isOpen={isOpen}
+                        onClose={onCloseDrawer}
+                    >
+                        <NotificationList />
+                    </Drawer>
+                </div>
+            )}
         </div>
     )
 })

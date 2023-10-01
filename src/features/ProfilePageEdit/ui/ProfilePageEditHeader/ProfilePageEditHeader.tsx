@@ -18,6 +18,7 @@ import { updateProfileData } from '../../model/services/UpdateProfileData'
 import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Card } from '@/shared/ui/redesigned/Card'
 import { Profile } from '@/entities/Profile'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 interface ProfilePageEditHeaderProps {
     className?: string
@@ -26,13 +27,15 @@ interface ProfilePageEditHeaderProps {
 
 export const ProfilePageEditHeader = memo(
     (props: ProfilePageEditHeaderProps) => {
-        const { data } = props
-        const { className } = props
+        const { data, className } = props
+
         const { t } = useTranslation()
         const dispatch = useAppDispatch()
         const authData = useSelector(getUserAuthData)
-        const profileData = data
         const readonly = useSelector(getProfileReadonly)
+        const { isScreenMd } = useResize()
+
+        const profileData = data
         const cn = classNames('', {}, [className])
         const canEdit = authData?.id === profileData?.userId
 
@@ -58,6 +61,7 @@ export const ProfilePageEditHeader = memo(
                             {canEdit &&
                                 (readonly ? (
                                     <Button
+                                        size={isScreenMd ? 'm' : 's'}
                                         variant="outline"
                                         onClick={onEdit}
                                         data-testid="ProfilePageEditHeader-edit"
@@ -67,6 +71,7 @@ export const ProfilePageEditHeader = memo(
                                 ) : (
                                     <HStack gap="8">
                                         <Button
+                                            size={isScreenMd ? 'm' : 's'}
                                             variant="outline"
                                             color="error"
                                             onClick={onCancelEdit}
@@ -75,6 +80,7 @@ export const ProfilePageEditHeader = memo(
                                             {t('Cancel edit')}
                                         </Button>
                                         <Button
+                                            size={isScreenMd ? 'm' : 's'}
                                             variant="outline"
                                             color="success"
                                             onClick={onSave}

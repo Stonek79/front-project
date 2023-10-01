@@ -1,0 +1,21 @@
+.account {
+    border-radius: 50%;
+
+    &:hover {
+        background: var(--accent-redesigned);
+    }
+}
+
+.mobile {
+    padding: 0 16px;
+    margin-top: 32px;
+}
+
+.iconWrapper {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -21,6 +21,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { initArticlesPage } from '../../models/services/initArticlesPage'
 import { fetchNextArticlesPage } from '../../models/services/fetchNextArticlesPage'
 import { getArticleIsLoadingData } from '@/entities/Article'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 interface ArticlesPageProps {
     className?: string
@@ -35,6 +36,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const dispatch = useAppDispatch()
     const [searchParams] = useSearchParams()
     const isLoading = useSelector(getArticleIsLoadingData)
+    const { isScreenMd } = useResize()
 
     const cn = classNames(cls.ArticlesPage, {}, [className])
 
@@ -50,21 +52,33 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         <ToggleComponentFeatures
             feature="isAppRedesigned"
             on={
-                <StickyLayout
-                    left={<ViewSelectorContainer />}
-                    right={<FiltersContainer />}
-                    content={
-                        <Page
-                            data-testid="ArticlesPage"
-                            onScrollEnd={onLoadNextPage}
-                            className={cn}
-                            isLoading={isLoading}
-                        >
-                            <ArticleInfiniteList />
-                            <ArticlesPageGreating />
-                        </Page>
-                    }
-                />
+                isScreenMd ? (
+                    <StickyLayout
+                        left={<ViewSelectorContainer />}
+                        right={<FiltersContainer />}
+                        content={
+                            <Page
+                                data-testid="ArticlesPage"
+                                onScrollEnd={onLoadNextPage}
+                                className={cn}
+                                isLoading={isLoading}
+                            >
+                                <ArticleInfiniteList />
+                                <ArticlesPageGreating />
+                            </Page>
+                        }
+                    />
+                ) : (
+                    <Page
+                        data-testid="ArticlesPage"
+                        onScrollEnd={onLoadNextPage}
+                        className={cn}
+                        isLoading={isLoading}
+                    >
+                        <ArticleInfiniteList />
+                        <ArticlesPageGreating />
+                    </Page>
+                )
             }
             off={
                 <Page

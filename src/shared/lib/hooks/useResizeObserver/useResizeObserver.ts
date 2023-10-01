@@ -1,7 +1,7 @@
 import { MutableRefObject, useMemo, useState } from 'react'
 
 interface useResizeObserverProps {
-    element: MutableRefObject<HTMLElement>
+    element: MutableRefObject<HTMLElement | undefined>
     startWidth?: number
     startHeight?: number
 }

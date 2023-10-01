@@ -105,8 +105,22 @@
 }
 
 @media (max-width: 768px) {
+    .home-page {
+        height: auto;
+    }
+
     .letters {
-        font-size: 3rem;
+        font-size: 2rem;
         line-height: 2rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .letters {
+        font-size: 1.5rem;
+    }
+
+    .footerSign {
+        letter-spacing: 2px;
     }
 }

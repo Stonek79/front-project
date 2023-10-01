@@ -12,7 +12,7 @@ export type ButtonVariant = 'clear' | 'outline' | 'filled'
 export type ButtonColor = 'normal' | 'success' | 'error'
 export type TextWrap = 'normal' | 'nowrap'
 
-export type ButtonSize = 'l' | 'm' | 'xl'
+export type ButtonSize = 's' | 'm' | 'l' | 'xl'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
