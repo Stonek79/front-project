@@ -7,4 +7,4 @@ npm run build:prod
 rm -rf ../var/www/front-project/html
 mv build ../var/www/front-project/html
 
-mv ../front-project/public/images ../var/www/front-project/html/images
+copy ../front-project/public/images ../var/www/front-project/html/images
