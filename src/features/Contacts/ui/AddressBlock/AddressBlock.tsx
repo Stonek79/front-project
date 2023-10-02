@@ -12,6 +12,9 @@ import {
     hhRu,
     joinMbEn,
     joinMbRu,
+    ligrettoPlayEn,
+    ligrettoPlayRu,
+    mbGameLink,
     mbGitHubLink,
     mbIconLink,
     mbYoutubeEn,
@@ -80,6 +83,17 @@ export const AddressBlock = () => {
                 <Icon Svg={YouTubeIcon} width={18} height={18} />
                 <a target="_blank" href={mbYoutubeLink} rel="noreferrer">
                     {isRuLng ? mbYoutubeRu : mbYoutubeEn}
+                </a>
+            </HStack>
+            <HStack gap="4">
+                <AppImage
+                    className={cls.img}
+                    src={mbIconLink}
+                    alt={memebattle}
+                    width={18}
+                />
+                <a target="_blank" href={mbGameLink} rel="noreferrer">
+                    {isRuLng ? ligrettoPlayRu : ligrettoPlayEn}
                 </a>
             </HStack>
         </address>
