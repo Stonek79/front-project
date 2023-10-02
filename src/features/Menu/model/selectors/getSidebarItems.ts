@@ -9,11 +9,13 @@ import MainPageIcon from '@/shared/assets/icons/home.svg'
 import AboutPageIcon from '@/shared/assets/icons/Info.svg'
 import ProfilePageIcon from '@/shared/assets/icons/avatar.svg'
 import ArticlesIcon from '@/shared/assets/icons/article.svg'
+import ContactsIcon from '@/shared/assets/icons/contacts.svg'
 
 import { SidebarItemsType } from '../types/sidebar'
 import {
     getRouteAbout,
     getRouteArticles,
+    getRouteContacts,
     getRouteMain,
     getRouteProfile,
 } from '@/shared/const/router'
@@ -38,6 +40,11 @@ export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
                 on: () => AboutPageIcon,
                 off: () => AboutPageIconDeprecated,
             }),
+        },
+        {
+            text: 'Contacts',
+            path: getRouteContacts(),
+            Icon: ContactsIcon,
         },
     ]
     if (userData) {
