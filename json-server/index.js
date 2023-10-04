@@ -2,6 +2,7 @@
 /* eslint no-console: "off" */
 
 const fs = require('fs')
+// eslint-disable-next-line import/order
 const jsonServer = require('json-server')
 const path = require('path')
 
@@ -20,8 +21,7 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'))
 server.use(jsonServer.defaults({}))
 server.use(jsonServer.bodyParser)
 
-// Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи,
-// и проверки создания нового пользователя
+// Endpoint for users
 // eslint-disable-next-line consistent-return
 server.use(async (req, res, next) => {
     if (req.path === '/users') {
@@ -36,18 +36,18 @@ server.use(async (req, res, next) => {
         const userFromBd = users.find((user) => user.username === username)
 
         if (userFromBd) {
-            return res.status(409).json('User already  exists')
+            return res.status(409).json('User already exists')
         }
     }
 
     await new Promise((res) => {
-        setTimeout(res, 800)
+        res()
     })
 
     next()
 })
 
-// Эндпоинт для логина
+// Endpoint for login
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body
@@ -71,11 +71,10 @@ server.post('/login', (req, res) => {
     }
 })
 
-// проверяем, авторизован ли пользователь
+// Check is user authorized
 // eslint-disable-next-line
 server.use((req, res, next) => {
     if (!req.headers.authorization) {
-        console.log(req.headers.authorization, 'REQ')
         return res.status(403).json({ message: 'AUTH ERROR' })
     }
 
@@ -84,7 +83,7 @@ server.use((req, res, next) => {
 
 server.use(router)
 
-// запуск сервера
+// Start server
 const PORT = 8443
 const HTTP_PORT = 8000
 
