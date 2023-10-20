@@ -16,6 +16,7 @@ import { articleDetailsCommentReducers } from '../../model/slices/articleDetailC
 import { StickyLayout } from '@/shared/layouts'
 import { DetailsContainer } from '../DetailsContainer/DetailsContainer'
 import { AdditionalInfoContainer } from '../AdditionInfoContainer/AdditionInfoContainer'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 export const reducers: ReducersList = {
     comments: articleDetailsCommentReducers,
@@ -23,6 +24,7 @@ export const reducers: ReducersList = {
 const ArticleDetailPageRedesigned = (props: ArticleDetailPageProps) => {
     const { className } = props
     const { id = '1' } = useParams<{ id: string }>()
+    const { isScreenMd } = useResize()
 
     const cn = classNames(cls.ArticleDetailPage, {}, [className])
 
@@ -31,8 +33,8 @@ const ArticleDetailPageRedesigned = (props: ArticleDetailPageProps) => {
             <VStack gap="16" max>
                 <DetailsContainer />
                 <ArticleRating articleId={id} />
-                <ArticleRecommendationsList />
                 <ArticleDetailsComments id={id} />
+                <ArticleRecommendationsList />
             </VStack>
         </Page>
     )
@@ -41,10 +43,17 @@ const ArticleDetailPageRedesigned = (props: ArticleDetailPageProps) => {
             reducers={reducers}
             removeAfterUnmount={Boolean(true)}
         >
-            <StickyLayout
-                content={content}
-                right={<AdditionalInfoContainer />}
-            />
+            {!isScreenMd ? (
+                <VStack gap="8">
+                    <AdditionalInfoContainer />
+                    {content}
+                </VStack>
+            ) : (
+                <StickyLayout
+                    content={content}
+                    right={<AdditionalInfoContainer />}
+                />
+            )}
         </DynamicModuleLoader>
     )
 }

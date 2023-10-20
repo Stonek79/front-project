@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { TabItem } from '@/shared/ui/deprecated/Tabs'
 import { ArticleTypes, ArticleTypesType } from '@/entities/Article'
 import { ListBox } from '@/shared/ui/redesigned/Popups'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { Card } from '@/shared/ui/redesigned/Card'
+import { TabItem } from '@/shared/ui/redesigned/Tabs'
 
 interface ArticleTypeSelectorProps {
     className?: string

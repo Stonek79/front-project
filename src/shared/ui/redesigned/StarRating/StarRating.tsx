@@ -3,7 +3,6 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './StarRating.module.scss'
 import StarIcon from '../../../assets/icons/star.svg'
 import { Icon } from '../Icon'
-import { toggleFeatures } from '@/shared/lib/features'
 
 interface StarRatingProps {
     className?: string
@@ -39,15 +38,7 @@ export const StarRating = memo((props: StarRatingProps) => {
         }
     }
 
-    const cn = classNames(
-        toggleFeatures({
-            name: 'isAppRedesigned',
-            on: () => cls.StarRatingRedesigned,
-            off: () => cls.StarRating,
-        }),
-        {},
-        [className],
-    )
+    const cn = classNames(cls.StarRatingRedesigned, {}, [className])
 
     return (
         <div className={cn}>
@@ -70,11 +61,7 @@ export const StarRating = memo((props: StarRatingProps) => {
                     onClick={onSelectStar(star)}
                     data-testid={`StarRating.${star}`}
                     data-selected={hoveredStar >= star}
-                    clickable={toggleFeatures({
-                        name: 'isAppRedesigned',
-                        on: () => true,
-                        off: () => false,
-                    })}
+                    clickable
                 />
             ))}
         </div>

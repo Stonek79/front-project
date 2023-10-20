@@ -1,8 +1,6 @@
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar'
-import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { isUserAdmin, isUserManager, User } from '@/entities/User'
 import cls from './UserNavbarDropdown.module.scss'
@@ -11,7 +9,6 @@ import {
     getRouteProfile,
     getRouteSettings,
 } from '@/shared/const/router'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Dropdown } from '@/shared/ui/redesigned/Popups'
 import { Avatar } from '@/shared/ui/redesigned/Avatar'
 
@@ -60,35 +57,15 @@ export const UserNavbarDropdown = memo((props: UserNavbarDropdownProps) => {
     ]
 
     return (
-        <ToggleComponentFeatures
-            feature="isAppRedesigned"
-            on={
-                <Dropdown
-                    className={cn}
-                    direction="top right"
-                    items={items}
-                    trigger={
-                        <Avatar
-                            className={cls.avatar}
-                            size={40}
-                            src={authData.avatar}
-                        />
-                    }
-                />
-            }
-            off={
-                <DropdownDeprecated
-                    className={cn}
-                    direction="top right"
-                    items={items}
-                    trigger={
-                        <AvatarDeprecated
-                            fallbackInverted
-                            className={cls.avatar}
-                            size={30}
-                            src={authData.avatar}
-                        />
-                    }
+        <Dropdown
+            className={cn}
+            direction="top right"
+            items={items}
+            trigger={
+                <Avatar
+                    className={cls.avatar}
+                    size={40}
+                    src={authData.avatar}
                 />
             }
         />

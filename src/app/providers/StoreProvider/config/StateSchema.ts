@@ -7,7 +7,6 @@ import {
 } from '@reduxjs/toolkit'
 import { AxiosInstance } from 'axios'
 import { AddCommentFormSchema } from 'src/features/AddCommentForm'
-import { CounterSchema } from '@/entities/Counter'
 import { UserSchema } from '@/entities/User'
 import { LoginSchema } from '@/features/AuthByUsername'
 import {
@@ -22,7 +21,6 @@ import { ProfileSchema } from '@/features/ProfilePageEdit'
 import { SignUpSchema } from '@/features/SignUpNewUser'
 
 export interface StateSchema {
-    counter: CounterSchema
     user: UserSchema
     scrollPosition: ScrollSafeSchema
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>

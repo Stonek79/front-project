@@ -69,7 +69,6 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
             <Card
                 variant="outline"
                 className={cls.cardLink}
-                cardBorder="rounded"
                 cardPaddings="4"
                 max
             >

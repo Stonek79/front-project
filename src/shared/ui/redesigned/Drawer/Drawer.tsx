@@ -8,7 +8,6 @@ import cls from './Drawer.module.scss'
 import { Portal } from '../Portal/Portal'
 import { Overlay } from '../Overlay/Overlay'
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme'
-import { toggleFeatures } from '@/shared/lib/features'
 
 interface DrawerProps {
     className?: string
@@ -26,11 +25,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
     const { theme } = useTheme()
     const { className, children, onClose, isOpen, lazy } = props
 
-    const design = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => cls.drawerNew,
-        off: () => cls.drawerOld,
-    })
+    const design = cls.drawerNew
     const cn = classNames(cls.Drawer, {}, [
         className,
         theme,

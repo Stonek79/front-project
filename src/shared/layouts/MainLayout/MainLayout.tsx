@@ -14,11 +14,11 @@ interface MainLayoutProps {
 export const MainLayout = memo((props: MainLayoutProps) => {
     const { className, header, content, toolbar, sidebar } = props
 
-    const { isScreenMd } = useResize()
+    const { isScreenSm } = useResize()
 
     const cn = classNames(cls.MainLayout, {}, [className])
 
-    return isScreenMd ? (
+    return isScreenSm ? (
         <div className={cn}>
             <div className={cls.sidebar}>{sidebar}</div>
             <div className={cls.content}>{content}</div>

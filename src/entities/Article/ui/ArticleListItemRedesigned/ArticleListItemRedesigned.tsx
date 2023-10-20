@@ -18,10 +18,11 @@ import { getRouteArticleDetail } from '@/shared/const/router'
 import { ArticleListItemProps } from '../ArticleListItem/ArticleListItem'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { useEditArticleViewMutation } from '../../api/articlesApi'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
     const { className, article, view, target, index, updateViews } = props
-
+    const { isScreenSm } = useResize()
     const { t } = useTranslation()
 
     const [editArticleView] = useEditArticleViewMutation()
@@ -46,7 +47,7 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
     const handleArticlesViewCount = () => {
         const { views, user, ...rest } = article
 
-        if (updateViews)
+        if (updateViews && !user?.roles?.includes('admin'))
             editArticleView({
                 ...rest,
                 views: views + 1,
@@ -60,7 +61,45 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
         handleArticlesViewCount()
     }
 
-    const cn = classNames('', {}, [className, cls[view]])
+    const currentView = !isScreenSm ? ArticleView.LIST : view
+    const cn = classNames('', {}, [className, cls[currentView]])
+    const cnImg = classNames(cls.img, { [cls.mobile]: !isScreenSm })
+
+    if (!isScreenSm) {
+        return (
+            <AppLink
+                data-testid="ArticleListItem"
+                target={target}
+                to={getRouteArticleDetail(article.id)}
+                className={cn}
+            >
+                <Card
+                    onClick={handleArticlesViewCount}
+                    cardPaddings="24"
+                    data-testid="ArticleListItem"
+                    max
+                >
+                    <VStack max gap="16">
+                        <HStack justify="between" gap="8" max>
+                            <HStack gap="8">
+                                {userInfo}
+                                <Text text={article.createdAt} />
+                            </HStack>
+                            {views}
+                        </HStack>
+                        <Text text={article.title} bold />
+                        <Text text={article.subtitle} bold size="s" />
+                        <AppImage
+                            fallback={<Skeleton width="100%" height={250} />}
+                            src={article.img}
+                            alt={article.title}
+                            className={cnImg}
+                        />
+                    </VStack>
+                </Card>
+            </AppLink>
+        )
+    }
 
     if (view === ArticleView.LIST) {
         const textBlock = article.blocks.find(
@@ -85,7 +124,7 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
                         fallback={<Skeleton width="100%" height={250} />}
                         src={article.img}
                         alt={article.title}
-                        className={cls.img}
+                        className={cnImg}
                     />
                     {textBlock && (
                         <Text

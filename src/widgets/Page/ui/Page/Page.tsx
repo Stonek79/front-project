@@ -11,7 +11,6 @@ import { scrollSafeActions } from '../../model/slices/scrollSafeSlice'
 import { getSafeScrollByPAth } from '../../model/selectors/getSafeScroll'
 import cls from './Page.module.scss'
 import { TestProps } from '@/shared/types/tests'
-import { toggleFeatures } from '@/shared/lib/features'
 
 interface PageProps extends TestProps {
     className?: string
@@ -31,57 +30,34 @@ export const Page = (props: PageProps) => {
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
-    const designedClass = toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => cls.PageRedesigned,
-        off: () => cls.Page,
-    })
+    const designedClass = cls.PageRedesigne
 
     const cn = classNames(designedClass, {}, [className])
 
-    toggleFeatures({
-        name: 'isAppRedesigned',
-        on: () => {
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            window.onscroll = useThrottle(() => {
-                if (pathname === '/articles') {
-                    const position =
-                        document.scrollingElement?.scrollTop || scrollPosition
-                    dispatch(
-                        scrollSafeActions.setScrollPosition({
-                            position,
-                            path: pathname,
-                        }),
-                    )
-                }
-            }, 500)
-        },
-        off: () => undefined,
-    })
+    window.onscroll = useThrottle(() => {
+        if (pathname === '/articles') {
+            const position =
+                document.scrollingElement?.scrollTop || scrollPosition
+            dispatch(
+                scrollSafeActions.setScrollPosition({
+                    position,
+                    path: pathname,
+                }),
+            )
+        }
+    }, 500)
 
     useInfiniteScroll({
         triggerRef,
-        wrapperRef: toggleFeatures({
-            name: 'isAppRedesigned',
-            on: () => undefined,
-            off: () => wrapperRef,
-        }),
+        wrapperRef: undefined,
         isLoading,
         callback: onScrollEnd,
     })
 
     useInitialEffect(() => {
-        toggleFeatures({
-            name: 'isAppRedesigned',
-            on: () => {
-                window.scrollTo({
-                    top: scrollPosition,
-                    behavior: 'auto',
-                })
-            },
-            off: () => {
-                wrapperRef.current.scrollTop = scrollPosition
-            },
+        window.scrollTo({
+            top: scrollPosition,
+            behavior: 'auto',
         })
     })
 

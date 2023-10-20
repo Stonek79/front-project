@@ -1,8 +1,8 @@
 import { I18nextProvider } from 'react-i18next'
 import { Story } from '@storybook/react'
 import { Suspense } from 'react'
-import { Loader } from '@/shared/ui/deprecated/Loader'
 import i18n from '../../i18n/i18n'
+import { Loader } from '@/shared/ui/redesigned/Loader'
 
 export const i18nDecorator = (StoryComponent: Story) => (
     <Suspense fallback={<Loader />}>

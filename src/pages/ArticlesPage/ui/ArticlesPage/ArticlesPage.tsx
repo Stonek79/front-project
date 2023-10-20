@@ -9,11 +9,9 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Page } from '@/widgets/Page'
 import { ArticleInfiniteList } from '../../ui/ArticleInfiniteList/ArticleInfiniteList'
-import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
 import { articlesPageReducer } from '../../models/slices/articlesPageSlice'
 import cls from './ArticlesPage.module.scss'
 import { ArticlesPageGreating } from '@/features/ArticlesPageGreating'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { StickyLayout } from '@/shared/layouts'
 import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer'
 import { FiltersContainer } from '../FiltersContainer/FiltersContainer'
@@ -36,7 +34,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const dispatch = useAppDispatch()
     const [searchParams] = useSearchParams()
     const isLoading = useSelector(getArticleIsLoadingData)
-    const { isScreenMd } = useResize()
+    const { isScreenSm } = useResize()
 
     const cn = classNames(cls.ArticlesPage, {}, [className])
 
@@ -48,50 +46,32 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         dispatch(initArticlesPage(searchParams))
     })
 
-    const content = (
-        <ToggleComponentFeatures
-            feature="isAppRedesigned"
-            on={
-                isScreenMd ? (
-                    <StickyLayout
-                        left={<ViewSelectorContainer />}
-                        right={<FiltersContainer />}
-                        content={
-                            <Page
-                                data-testid="ArticlesPage"
-                                onScrollEnd={onLoadNextPage}
-                                className={cn}
-                                isLoading={isLoading}
-                            >
-                                <ArticleInfiniteList />
-                                <ArticlesPageGreating />
-                            </Page>
-                        }
-                    />
-                ) : (
-                    <Page
-                        data-testid="ArticlesPage"
-                        onScrollEnd={onLoadNextPage}
-                        className={cn}
-                        isLoading={isLoading}
-                    >
-                        <ArticleInfiniteList />
-                        <ArticlesPageGreating />
-                    </Page>
-                )
-            }
-            off={
+    const content = isScreenSm ? (
+        <StickyLayout
+            left={<ViewSelectorContainer />}
+            right={<FiltersContainer />}
+            content={
                 <Page
                     data-testid="ArticlesPage"
                     onScrollEnd={onLoadNextPage}
                     className={cn}
+                    isLoading={isLoading}
                 >
-                    <ArticlesPageFilters />
                     <ArticleInfiniteList />
                     <ArticlesPageGreating />
                 </Page>
             }
         />
+    ) : (
+        <Page
+            data-testid="ArticlesPage"
+            onScrollEnd={onLoadNextPage}
+            className={cn}
+            isLoading={isLoading}
+        >
+            <ArticleInfiniteList />
+            <ArticlesPageGreating />
+        </Page>
     )
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>

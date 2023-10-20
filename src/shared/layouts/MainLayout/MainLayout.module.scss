@@ -40,13 +40,17 @@
 }
 
 .mobile {
+    display: flex;
+    flex-direction: column;
+
     .content {
-        padding: 8px;
+        padding: 4px;
     }
 }
 
 .mobileHeader {
     position: sticky;
+    width: 100%;
     top: 0;
     background: var(--dark-bg-redesigned);
     z-index: var(--overlay-z-index);

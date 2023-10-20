@@ -3,11 +3,18 @@ import gsap from 'gsap'
 import CSSPlugin from 'gsap/CSSPlugin'
 import LogoS from '@/shared/assets/logo-s.png'
 import cls from './Logo.module.scss'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 export const MainLogo = () => {
     const bgRef = useRef() as MutableRefObject<HTMLImageElement>
     const outlineLogoRef = useRef() as MutableRefObject<SVGPathElement>
     const solidLogoRef = useRef() as MutableRefObject<HTMLImageElement>
+    const { isScreenSm } = useResize()
+
+    const cn = classNames('', { [cls.mobile]: !isScreenSm }, [
+        cls['logo-container'],
+    ])
 
     useEffect(() => {
         gsap.registerPlugin(CSSPlugin)
@@ -35,7 +42,7 @@ export const MainLogo = () => {
     }, [])
 
     return (
-        <div className={cls['logo-container']} ref={bgRef}>
+        <div className={cn} ref={bgRef}>
             <img
                 className={cls['solid-logo']}
                 ref={solidLogoRef}

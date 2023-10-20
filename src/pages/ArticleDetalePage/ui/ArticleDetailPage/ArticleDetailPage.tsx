@@ -4,9 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Page } from '@/widgets/Page'
 import cls from './ArticleDetailPage.module.scss'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 import ArticleDetailPageRedesigned from '../ArticleDetailsPageRedesigned/ArticleDetailPageRedesigned'
-import ArticleDetailPageDeprecated from '../ArticleDetailsPageDeprecated/ArticleDetailPageDeprecated'
 
 export interface ArticleDetailPageProps {
     className?: string
@@ -22,13 +20,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
         return <Page className={cn}>{t('Article not found')}</Page>
     }
 
-    return (
-        <ToggleComponentFeatures
-            feature="isAppRedesigned"
-            on={<ArticleDetailPageRedesigned />}
-            off={<ArticleDetailPageDeprecated />}
-        />
-    )
+    return <ArticleDetailPageRedesigned />
 }
 
 export default memo(ArticleDetailPage)

@@ -12,7 +12,7 @@ interface TagsLayoutProps {
 export const TagsLayout = (props: TagsLayoutProps) => {
     const { children } = props
     const [isLoad, setIsLoad] = useState(false)
-    const { isScreenMd } = useResize()
+    const { isScreenSm } = useResize()
 
     useEffect(() => {
         setTimeout(() => setIsLoad(true), 0)
@@ -21,7 +21,7 @@ export const TagsLayout = (props: TagsLayoutProps) => {
     const mode: Mods = { [cls.loaded]: isLoad }
     const cnTop = classNames('', {}, [cls.tags, cls['top-tags']])
     const cnBottom = classNames('', {}, [cls.tags, cls['bottom-tags']])
-    const cnIndent = classNames('', { [cls.mobile]: !isScreenMd }, [cls.indent])
+    const cnIndent = classNames('', { [cls.mobile]: !isScreenSm }, [cls.indent])
 
     return (
         <VStack className={cls.tagsLayout} max>

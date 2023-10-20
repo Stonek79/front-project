@@ -8,6 +8,7 @@ import { Textarea } from '@/shared/ui/redesigned/Textarea'
 import { articleDetailsActions } from '../../model/slice/articleDetailsSlice'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
+import cls from './ArticleCodeBlockComponent.module.scss'
 
 interface ArticleCodeBlockComponentProps {
     className?: string
@@ -27,7 +28,7 @@ export const ArticleCodeBlockComponent = memo(
             if (block) setCode(block.code)
         }, [block])
 
-        const cn = classNames('', {}, [className])
+        const cn = classNames(cls.ArticleCodeBlockComponent, {}, [className])
 
         const onChangeBlockCode = useCallback(
             (value: string, block: ArticleCodeBlock) => {

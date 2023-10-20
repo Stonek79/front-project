@@ -48,9 +48,9 @@
     }
 }
 
-@media (max-width: 768px) {
-    .logo-container {
-        width: 45%;
-        height: 60%;
+.mobile {
+    &.logo-container {
+        width: 50%;
+        height: 100%;
     }
 }

@@ -99,7 +99,7 @@
           ]
         }
       ],
-      "views": 12,
+      "views": 13,
       "id": "1"
     },
     {
@@ -219,7 +219,7 @@
           ]
         }
       ],
-      "views": 15,
+      "views": 16,
       "id": "6"
     },
     {
@@ -667,6 +667,12 @@
       "userId": "1",
       "text": "test comment",
       "id": "eQv-tAT"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "sdfsdlnfgknsdfgdfglkdfng sdffglkndfg sfgnln",
+      "id": "Qt_j1Bz"
     }
   ],
   "profile": [
@@ -718,11 +724,10 @@
       ],
       "features": {
         "isArticleRatingEnabled": true,
-        "isCounterEnabled": true,
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_light_theme",
         "isArticlesPageOpened": true
       },
       "avatar": "https://graph.digiseller.ru/img.ashx?idp=1738637&maxlength=400&keepratio=1"
@@ -736,7 +741,6 @@
       ],
       "features": {
         "isArticleRatingEnabled": false,
-        "isCounterEnabled": false,
         "isAppRedesigned": true
       },
       "jsonSettings": {
@@ -753,8 +757,7 @@
         "manager"
       ],
       "features": {
-        "isArticleRatingEnabled": true,
-        "isCounterEnabled": false
+        "isArticleRatingEnabled": true
       },
       "jsonSettings": {
         "theme": "app_dark_theme"

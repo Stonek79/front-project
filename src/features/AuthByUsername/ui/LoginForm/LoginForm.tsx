@@ -1,12 +1,7 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import {
-    Button as ButtonDeprecated,
-    ButtonTheme,
-} from '@/shared/ui/deprecated/Button'
-import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input'
-import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text'
+
 import { Button } from '@/shared/ui/redesigned/Button'
 import { Input } from '@/shared/ui/redesigned/Input'
 import { Text } from '@/shared/ui/redesigned/Text'
@@ -23,7 +18,6 @@ import { getErrors } from '../../model/selectors/getErrors/getErrors'
 import { loginByUsername } from '../../model/services/loginByUsername/LoginByUsername'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import cls from './LoginForm.module.scss'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 
 export interface LoginFormProps {
@@ -71,70 +65,31 @@ const LoginForm = memo((props: LoginFormProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <ToggleComponentFeatures
-                feature="isAppRedesigned"
-                on={
-                    <VStack className={cn} gap="16">
-                        <Text title={t('authForm')} />
-                        {error && <Text text={loginError} variant="error" />}
-                        <Input
-                            autofocus
-                            type="text"
-                            placeholder={t('Enter username')}
-                            onChange={onChangeUsername}
-                            value={username}
-                        />
-                        <Input
-                            type="text"
-                            placeholder={t('Enter password')}
-                            onChange={onChangePassword}
-                            value={password}
-                        />
-                        <Button
-                            variant="outline"
-                            onClick={onLoginClick}
-                            disabled={isLoading}
-                            right
-                        >
-                            {t('logIn')}
-                        </Button>
-                    </VStack>
-                }
-                off={
-                    <div className={cn}>
-                        <TextDeprecated title={t('authForm')} />
-                        {error && (
-                            <TextDeprecated
-                                text={error}
-                                theme={TextTheme.ERROR}
-                            />
-                        )}
-                        <InputDeprecated
-                            autofocus
-                            type="text"
-                            className={cls.input}
-                            placeholder={t('Enter username')}
-                            onChange={onChangeUsername}
-                            value={username}
-                        />
-                        <InputDeprecated
-                            type="text"
-                            className={cls.input}
-                            placeholder={t('Enter password')}
-                            onChange={onChangePassword}
-                            value={password}
-                        />
-                        <ButtonDeprecated
-                            theme={ButtonTheme.OUTLINE}
-                            className={cls.loginBtn}
-                            onClick={onLoginClick}
-                            disabled={isLoading}
-                        >
-                            {t('logIn')}
-                        </ButtonDeprecated>
-                    </div>
-                }
-            />
+            <VStack className={cn} gap="16">
+                <Text title={t('authForm')} />
+                {error && <Text text={loginError} variant="error" />}
+                <Input
+                    autofocus
+                    type="text"
+                    placeholder={t('Enter username')}
+                    onChange={onChangeUsername}
+                    value={username}
+                />
+                <Input
+                    type="text"
+                    placeholder={t('Enter password')}
+                    onChange={onChangePassword}
+                    value={password}
+                />
+                <Button
+                    variant="outline"
+                    onClick={onLoginClick}
+                    disabled={isLoading}
+                    right
+                >
+                    {t('logIn')}
+                </Button>
+            </VStack>
         </DynamicModuleLoader>
     )
 })

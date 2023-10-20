@@ -74,6 +74,7 @@ export const ArticleDetailsRedesigned = memo((props: ArticleDetailsProps) => {
     let content
 
     if (isLoading) {
+        // TODO: add skeleton for mobile version
         content = (
             <VStack max gap="16">
                 <Skeleton className={cls.title} width={500} height={24} />

@@ -29,15 +29,15 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
     const [hasSignUp, setHasSingUp] = useState(false)
     const [isOpenSignUp, setIsOpenSignUp] = useState(false)
 
-    const { isScreenMd } = useResize()
+    const { isScreenSm } = useResize()
     const authData = useSelector(getUserAuthData)
     const navigate = useNavigate()
 
-    const cn = classNames(cls.NavbarRedesigned, { [cls.mobile]: !isScreenMd }, [
+    const cn = classNames(cls.NavbarRedesigned, { [cls.mobile]: !isScreenSm }, [
         className,
     ])
 
-    const btnSize = isScreenMd ? 'm' : 's'
+    const btnSize = isScreenSm ? 'm' : 's'
 
     const onOpenModal = useCallback(() => {
         setIsOpen(true)
@@ -68,23 +68,23 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
     if (authData) {
         return (
             <header className={cn}>
-                {!isScreenMd && <BurgerMenu />}
+                {!isScreenSm && <BurgerMenu />}
                 <HStack
                     gap="16"
-                    justify={isScreenMd ? 'between' : 'end'}
+                    justify={isScreenSm ? 'between' : 'end'}
                     className={cls.actions}
                 >
-                    {!isScreenMd && (
+                    {!isScreenSm && (
                         <>
                             <ThemeSwitcher />
                             <LangSwitcher short className={cls.lang} />
                         </>
                     )}
                     <NotificationButton
-                        className={(!isScreenMd && cls.center) || ''}
+                        className={(!isScreenSm && cls.center) || ''}
                     />
                     <UserNavbarDropdown
-                        className={(!isScreenMd && cls.center) || ''}
+                        className={(!isScreenSm && cls.center) || ''}
                         authData={authData}
                         onLogOut={onLogOut}
                     />
@@ -95,9 +95,9 @@ export const NavbarRedesigned = memo((props: NavbarProps) => {
 
     return (
         <header className={cn}>
-            {!isScreenMd && <BurgerMenu />}
-            <HStack gap="16" justify={isScreenMd ? 'between' : 'end'}>
-                {!isScreenMd && (
+            {!isScreenSm && <BurgerMenu />}
+            <HStack gap="16" justify={isScreenSm ? 'between' : 'end'}>
+                {!isScreenSm && (
                     <>
                         <ThemeSwitcher />
                         <LangSwitcher short className={cls.lang} />

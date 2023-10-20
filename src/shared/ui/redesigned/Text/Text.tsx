@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './Text.module.scss'
 
 export type TextVariant = 'primary' | 'error' | 'accent' | 'tag' | 'success'
-export type TextAlign = 'right' | 'left' | 'center'
+export type TextAlign = 'right' | 'left' | 'center' | 'justify'
 export type SelfAlign = 'start' | 'end' | 'centered' | 'auto'
 export type TextSize = 's' | 'm' | 'l'
 
@@ -19,6 +19,7 @@ interface TextProps {
     cursive?: boolean
     'data-testing'?: string
     lang?: string
+    indent?: boolean
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3'
@@ -48,18 +49,17 @@ export const Text = memo((props: TextProps) => {
         cursive,
         lang,
         'data-testing': dataTestId = 'Test',
+        indent,
     } = props
 
     const HeaderTag = mapSizeToHeaderTag[size]
     const sizeClass = mapSizeToClass[size]
 
-    const cn = classNames('', { [cls.bold]: bold, [cls.cursive]: cursive }, [
-        className,
-        cls[variant],
-        cls[align],
-        sizeClass,
-        cls[self],
-    ])
+    const cn = classNames(
+        '',
+        { [cls.indent]: indent, [cls.bold]: bold, [cls.cursive]: cursive },
+        [className, cls[variant], cls[align], sizeClass, cls[self]],
+    )
 
     return (
         <div className={cn}>

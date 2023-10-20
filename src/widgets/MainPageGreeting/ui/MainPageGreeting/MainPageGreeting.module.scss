@@ -100,27 +100,21 @@
         animation-name: rubberBand;
     }
 
-    animation-duration: 1s;
+    animation-duration: 1.5s;
     color: var(--accent-redesigned);
 }
 
-@media (max-width: 768px) {
-    .home-page {
+.mobile {
+    &.home-page {
         height: auto;
     }
 
-    .letters {
+    &.letters {
         font-size: 2rem;
         line-height: 2rem;
     }
-}
 
-@media (max-width: 380px) {
-    .letters {
-        font-size: 1.5rem;
-    }
-
-    .footerSign {
-        letter-spacing: 2px;
+    &.text-zone {
+        margin-left: 20px;
     }
 }

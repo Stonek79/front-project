@@ -1,12 +1,12 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ProfileRating.module.scss'
 import { RatingCard } from '@/entities/Rating'
 import { useProfileRating, useRateProfile } from '../../api/ProfileRatingApi'
 import { getUserAuthData } from '@/entities/User'
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton'
 
 export interface ProfileRatingProps {
     className?: string

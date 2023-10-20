@@ -30,11 +30,21 @@ interface MainPageGreetingProps {
 export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
     const { t } = useTranslation()
     const [letterClass, setLetterClass] = useState('text-animate')
-    const { isScreenMd } = useResize()
+    const { isScreenSm } = useResize()
+    console.log(isScreenSm, window.matchMedia('(max-width: 576px)'))
 
-    const size = isScreenMd ? 'm' : 's'
+    const size = isScreenSm ? 'm' : 's'
 
-    const cn = classNames('', {}, [className, cls['home-page']])
+    const cn = classNames('', { [cls.mobile]: !isScreenSm }, [
+        className,
+        cls['home-page'],
+    ])
+    const cnLetters = classNames('', { [cls.mobile]: !isScreenSm }, [
+        cls.letters,
+    ])
+    const cnTextZone = classNames('', { [cls.mobile]: !isScreenSm }, [
+        cls['text-zone'],
+    ])
 
     useEffect(() => {
         const timer = setTimeout(
@@ -55,14 +65,14 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
                     title="<h1>"
                     align="right"
                 />
-                <VStack className={cls['text-zone']}>
-                    <HStack className={cls.letters}>
+                <VStack className={cnTextZone}>
+                    <HStack className={cnLetters}>
                         <span className={cls[letterClass]}>{HLetter}</span>
                         <span className={`${cls[letterClass]} _12`}>
                             {iLetter}
                         </span>
                     </HStack>
-                    <HStack className={cls.letters}>
+                    <HStack className={cnLetters}>
                         <span className={`${cls[letterClass]} _13`}>
                             {ILetter}
                         </span>
@@ -80,7 +90,7 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
                             index={15}
                         />
                     </HStack>
-                    <HStack className={cls.letters}>
+                    <HStack className={cnLetters}>
                         <AnimatedLetters
                             letterClass={letterClass}
                             strArray={jobArray}
@@ -92,7 +102,7 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
                             index={28}
                         />
                     </HStack>
-                    <HStack className={cls.letters}>
+                    <HStack className={cnLetters}>
                         <AnimatedLetters
                             letterClass={letterClass}
                             strArray={jobArray3}
@@ -112,10 +122,10 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
                     title={footerSign}
                 />
                 <HStack justify="between" max>
-                    <Button className={cls['flat-button']}>
+                    <Button size={size} className={cls['flat-button']}>
                         <AppLink to="/contacts">{t('Contact me')}</AppLink>
                     </Button>
-                    <Button className={cls['flat-button']}>
+                    <Button size={size} className={cls['flat-button']}>
                         <AppLink to={AppRoutes.ABOUT}>
                             {t('About Page')}
                         </AppLink>

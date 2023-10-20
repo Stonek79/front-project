@@ -1,13 +1,11 @@
 import { memo, useCallback, useEffect, useId, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { nanoid } from 'nanoid'
-import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { ArticleTextBlock } from '../../model/types/article'
 import cls from './ArticleTextBlockComponent.module.scss'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Input } from '@/shared/ui/redesigned/Input'
 import { Textarea } from '@/shared/ui/redesigned/Textarea'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -84,75 +82,45 @@ export const ArticleTextBlockComponent = memo(
         return (
             <VStack gap={gap} max className={cn}>
                 {textTitle && (
-                    <ToggleComponentFeatures
-                        feature="isAppRedesigned"
-                        on={
-                            <VStack
-                                justify="center"
-                                align="center"
-                                gap="16"
-                                max
-                            >
-                                <Text title={textTitle} className={cls.title} />
-                                {editable && (
-                                    <Input
-                                        wrap
-                                        labelBold
-                                        label={`${t('Edit title')}:`}
-                                        value={textTitle}
-                                        onChange={controlledTextTitle}
-                                    />
-                                )}
-                            </VStack>
-                        }
-                        off={
-                            <TextDeprecated
-                                title={block.title}
-                                className={cls.title}
+                    <VStack justify="center" align="center" gap="16" max>
+                        <Text title={textTitle} className={cls.title} />
+                        {editable && (
+                            <Input
+                                wrap
+                                labelBold
+                                label={`${t('Edit title')}:`}
+                                value={textTitle}
+                                onChange={controlledTextTitle}
                             />
-                        }
-                    />
+                        )}
+                    </VStack>
                 )}
                 {textParagraph && (
-                    <ToggleComponentFeatures
-                        feature="isAppRedesigned"
-                        on={
-                            <VStack gap="16" max>
-                                {editable ? (
-                                    <Textarea
-                                        wrap
-                                        labelBold
-                                        direction="horizontal"
-                                        textareaId={textareaId}
-                                        label={`${t('Edit text')}:`}
-                                        value={textParagraph.join('/n')}
-                                        onChange={controlledTextParagraph}
-                                    />
-                                ) : (
-                                    <>
-                                        {block.paragraphs.map((paragraph) => (
-                                            <Text
-                                                key={nanoid(10)}
-                                                text={paragraph}
-                                                className={cls.paragraph}
-                                            />
-                                        ))}
-                                    </>
-                                )}
-                            </VStack>
-                        }
-                        off={
+                    <VStack gap="16" max>
+                        {editable ? (
+                            <Textarea
+                                wrap
+                                labelBold
+                                direction="horizontal"
+                                textareaId={textareaId}
+                                label={`${t('Edit text')}:`}
+                                value={textParagraph.join('/n')}
+                                onChange={controlledTextParagraph}
+                            />
+                        ) : (
                             <>
                                 {block.paragraphs.map((paragraph) => (
-                                    <TextDeprecated
-                                        key={paragraph.length}
+                                    <Text
+                                        indent
+                                        align="justify"
+                                        key={nanoid(10)}
                                         text={paragraph}
                                         className={cls.paragraph}
                                     />
                                 ))}
                             </>
-                        }
-                    />
+                        )}
+                    </VStack>
                 )}
             </VStack>
         )

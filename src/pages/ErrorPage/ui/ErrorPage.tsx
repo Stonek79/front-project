@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Page } from '@/widgets/Page'
 import cls from './ErrorPage.module.scss'
+import { Button } from '@/shared/ui/redesigned/Button'
 
 interface ErrorPageProps {
     className?: string
@@ -22,9 +22,7 @@ export const ErrorPage = ({ className }: ErrorPageProps) => {
             className={classNames(cls.ErrorPage, {}, [className])}
         >
             <p>{t('Unexpected error')}</p>
-            <Button theme={ButtonTheme.BG_INVERTED} onClick={reloadPage}>
-                {t('Reload page')}
-            </Button>
+            <Button onClick={reloadPage}>{t('Reload page')}</Button>
         </Page>
     )
 }

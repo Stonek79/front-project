@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
@@ -13,7 +12,6 @@ import { fetchCommentsByArticleId } from '../../model/services/FetchCommentsByAr
 import { addCommentForArticle } from '../../model/services/AddCommentForArticle/AddCommentForArticle'
 import { getArticleComments } from '../../model/slices/articleDetailCommentSlice'
 import { getIsLoadingComments } from '../../model/selectors/comments'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 
 interface ArticleDetailsCommentsProps {
     className?: string
@@ -43,16 +41,7 @@ export const ArticleDetailsComments = memo(
 
         return (
             <VStack gap="8" max className={cn}>
-                <ToggleComponentFeatures
-                    feature="isAppRedesigned"
-                    on={<Text size="l" title={t('Comments')} />}
-                    off={
-                        <TextDeprecated
-                            size={TextSize.L}
-                            title={t('Comments')}
-                        />
-                    }
-                />
+                <Text size="l" title={t('Comments')} />
                 <AddCommentForm onSendComment={onSendComment} />
                 <CommentList
                     isLoading={commentsIsLoading}

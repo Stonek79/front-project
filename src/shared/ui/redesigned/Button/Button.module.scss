@@ -52,10 +52,6 @@
     }
 }
 
-.square {
-    padding: 0;
-}
-
 .filled {
     background: var(--light-bg-redesigned);
     border: none;
@@ -190,4 +186,8 @@
 
 .nowrap {
     white-space: nowrap;
+}
+
+.square {
+    border-radius: 0;
 }

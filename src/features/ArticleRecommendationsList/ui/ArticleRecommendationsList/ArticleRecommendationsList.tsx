@@ -1,12 +1,10 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { ArticleList, ArticleView } from '@/entities/Article'
 import { useArticlesRecommendationsList } from '../../api/ArticleRecommendationsApi'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 
 interface ArticleRecommendationsListProps {
     className?: string
@@ -39,16 +37,7 @@ export const ArticleRecommendationsList = memo(
                 align="center"
                 className={cn}
             >
-                <ToggleComponentFeatures
-                    feature="isAppRedesigned"
-                    on={<Text size="l" title={t('Recommendations')} />}
-                    off={
-                        <TextDeprecated
-                            size={TextSize.L}
-                            title={t('Recommendations')}
-                        />
-                    }
-                />
+                <Text size="l" title={t('Recommendations')} />
                 <ArticleList
                     view={ArticleView.CARDS}
                     articles={articles || []}

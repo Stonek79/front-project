@@ -1,7 +1,5 @@
 import { memo } from 'react'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { RatingCardRedesigned } from '../RatingCardRedesigned/RatingCardRedesigned'
-import { RatingCardDeprecated } from '../RatingCardDeprecated/RatingCardDeprecated'
 
 export interface RatingCardProps {
     className?: string
@@ -14,9 +12,5 @@ export interface RatingCardProps {
 }
 
 export const RatingCard = memo((props: RatingCardProps) => (
-    <ToggleComponentFeatures
-        feature="isAppRedesigned"
-        on={<RatingCardRedesigned {...props} />}
-        off={<RatingCardDeprecated {...props} />}
-    />
+    <RatingCardRedesigned {...props} />
 ))

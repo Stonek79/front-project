@@ -7,12 +7,10 @@
 }
 
 .CodeRedesigned {
-    border: 1px solid var(--accent-redesigned);
     padding: 20px;
     position: relative;
     background: var(--light-bg-redesigned);
     overflow: auto;
-    border-radius: 16px;
     white-space: pre;
     width: 100%;
 }

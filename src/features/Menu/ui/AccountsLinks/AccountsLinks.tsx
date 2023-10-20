@@ -18,15 +18,15 @@ interface AccountsLinksProps {
 
 export const AccountsLinks = (props: AccountsLinksProps) => {
     const { short, className } = props
-    const { isScreenMd } = useResize()
+    const { isScreenSm } = useResize()
 
     const cnMobile = classNames(
         cls.AccountsLinks,
-        { [cls.mobile]: !isScreenMd },
+        { [cls.mobile]: !isScreenSm },
         [className],
     )
 
-    return !isScreenMd ? (
+    return !isScreenSm ? (
         <VStack className={cnMobile} gap="4">
             <AppLink
                 target="_blank"

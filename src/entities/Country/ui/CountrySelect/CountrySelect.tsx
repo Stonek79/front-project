@@ -1,10 +1,8 @@
 import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { createOptionsList } from '@/shared/lib/createOptionsList/createOptionsList'
 import { Countries } from '../../model/types/countries'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { ListBox } from '@/shared/ui/redesigned/Popups'
 
 interface CountrySelectProps {
@@ -39,11 +37,5 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
         direction: 'bottom right' as const,
     }
 
-    return (
-        <ToggleComponentFeatures
-            feature="isAppRedesigned"
-            on={<ListBox {...listBoxProps} />}
-            off={<ListBoxDeprecated {...listBoxProps} />}
-        />
-    )
+    return <ListBox {...listBoxProps} />
 })

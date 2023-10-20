@@ -9,7 +9,7 @@ const ContactsPage = () => {
 
     return (
         <Page data-testid="ContactsPage">
-            <VStack gap="32">
+            <VStack padding="8" gap="32">
                 <Text
                     title={t('Contacts page')}
                     text={t('The page is in development')}

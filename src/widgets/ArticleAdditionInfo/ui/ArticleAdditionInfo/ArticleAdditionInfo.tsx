@@ -11,6 +11,7 @@ import { Text } from '@/shared/ui/redesigned/Text'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { getArticleDetailsData } from '@/entities/Article'
 import { getRouteArticles } from '@/shared/const/router'
+import { useResize } from '@/shared/lib/hooks/useResize/useResize'
 
 interface ArticleAdditionInfoProps {
     className?: string
@@ -26,6 +27,7 @@ export const ArticleAdditionInfo = memo((props: ArticleAdditionInfoProps) => {
     const authData = useSelector(getUserAuthData)
     const articleData = useSelector(getArticleDetailsData)
     const navigate = useNavigate()
+    const { isScreenSm } = useResize()
 
     const canEdit =
         authData?.id === (articleData?.userId || articleData?.user.id) ||
@@ -37,7 +39,7 @@ export const ArticleAdditionInfo = memo((props: ArticleAdditionInfoProps) => {
 
     const cn = classNames(cls.ArticleAdditionInfo, {}, [className])
 
-    return (
+    return isScreenSm ? (
         <VStack gap="32" className={cn}>
             <HStack gap="8">
                 <Avatar src={author.avatar} size={32} />
@@ -47,9 +49,38 @@ export const ArticleAdditionInfo = memo((props: ArticleAdditionInfoProps) => {
             <Button disabled={!canEdit} onClick={onEdit}>
                 {t('Edit article')}
             </Button>
-
             <Button onClick={onBackToArticles}>{t('Back to articles')}</Button>
             <Text text={t('{{count}} views', { count: views })} />
         </VStack>
+    ) : (
+        <HStack justify="between">
+            <VStack gap="4" align="center">
+                <HStack gap="4" max>
+                    <Avatar src={author.avatar} size={32} />
+                    <Text text={author.username} bold />
+                </HStack>
+                <Text text={createdAt} />
+                <Text text={t('{{count}} views', { count: views })} />
+            </VStack>
+            <VStack gap="8" align="end">
+                <Button
+                    fullWidth
+                    disabled={!canEdit}
+                    size="s"
+                    variant="filled"
+                    onClick={onEdit}
+                >
+                    {t('Edit article')}
+                </Button>
+                <Button
+                    fullWidth
+                    onClick={onBackToArticles}
+                    variant="filled"
+                    size="s"
+                >
+                    {t('Back to articles')}
+                </Button>
+            </VStack>
+        </HStack>
     )
 })

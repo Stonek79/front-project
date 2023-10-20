@@ -58,6 +58,10 @@
     text-align: center;
 }
 
+.justify {
+    text-align: justify;
+}
+
 .size_s {
     .title {
         font: var(--font-m-redesigned);
@@ -136,4 +140,8 @@
 
 .auto {
     align-self: auto;
+}
+
+.indent {
+    text-indent: 30px;
 }

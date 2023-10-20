@@ -1,12 +1,10 @@
 import { memo, useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text as TextDeprecated, TextAlign } from '@/shared/ui/deprecated/Text'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticleImageBlockComponent.module.scss'
 import { ArticleImageBlock } from '../../model/types/article'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Input } from '@/shared/ui/redesigned/Input'
 import { AppImage } from '@/shared/ui/redesigned/AppImage'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -76,38 +74,27 @@ export const ArticleImageBlockComponent = memo(
                     className={cls.img}
                 />
                 {block.title && (
-                    <ToggleComponentFeatures
-                        feature="isAppRedesigned"
-                        on={
-                            <VStack align="center" gap="16" max>
-                                <Text text={imageTitle} align="center" />
-                                {editable && (
-                                    <>
-                                        <Input
-                                            wrap
-                                            labelBold
-                                            onChange={controlledImgTitle}
-                                            label={`${t('Image title')}:`}
-                                            value={imageTitle}
-                                        />
-                                        <Input
-                                            wrap
-                                            labelBold
-                                            label={t('Image Path')}
-                                            onChange={controlledImgPath}
-                                            value={imagePath}
-                                        />
-                                    </>
-                                )}
-                            </VStack>
-                        }
-                        off={
-                            <TextDeprecated
-                                text={block.title}
-                                align={TextAlign.CENTER}
-                            />
-                        }
-                    />
+                    <VStack align="center" gap="16" max>
+                        <Text text={imageTitle} align="center" />
+                        {editable && (
+                            <>
+                                <Input
+                                    wrap
+                                    labelBold
+                                    onChange={controlledImgTitle}
+                                    label={`${t('Image title')}:`}
+                                    value={imageTitle}
+                                />
+                                <Input
+                                    wrap
+                                    labelBold
+                                    label={t('Image Path')}
+                                    onChange={controlledImgPath}
+                                    value={imagePath}
+                                />
+                            </>
+                        )}
+                    </VStack>
                 )}
             </VStack>
         )

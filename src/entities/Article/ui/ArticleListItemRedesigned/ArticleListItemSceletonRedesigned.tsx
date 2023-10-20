@@ -12,7 +12,6 @@ export const ArticleListItemSkeletonRedesigned = memo(
         const { className, view } = props
 
         const cn = classNames('', {}, [className, cls[view]])
-
         if (view === ArticleView.LIST) {
             return (
                 <Card className={cn} cardPaddings="24">

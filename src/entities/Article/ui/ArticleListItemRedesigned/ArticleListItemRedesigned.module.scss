@@ -44,3 +44,10 @@
         margin-left: 8px;
     }
 }
+
+.mobile {
+    &.img {
+        max-height: 180px;
+        min-height: 180px;
+    }
+}

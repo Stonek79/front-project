@@ -1,16 +1,8 @@
 import React, { memo, useCallback, useState } from 'react'
-import {
-    Button as ButtonDeprecated,
-    ButtonTheme,
-} from '@/shared/ui/deprecated/Button'
-import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon'
-import { Popover as PopoverDeprecate } from '@/shared/ui/deprecated/Popups'
 import NotificationIcon from '@/shared/assets/icons/notification.svg'
-import NotificationIconDeprecated from '@/shared/assets/icons/notification-20-20.svg'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { NotificationList } from '@/entities/Notification'
 import cls from './NotificationButton.module.scss'
-import { ToggleComponentFeatures } from '@/shared/lib/features'
 import { Icon } from '@/shared/ui/redesigned/Icon'
 import { Popover } from '@/shared/ui/redesigned/Popups'
 import { Drawer } from '@/shared/ui/redesigned/Drawer'
@@ -37,31 +29,13 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
     const cn = classNames(cls.NotificationButton, {}, [className])
 
     const trigger = (
-        <ToggleComponentFeatures
-            feature="isAppRedesigned"
-            on={
-                <Icon
-                    className={className}
-                    clickable
-                    onClick={onOpenDrawer}
-                    Svg={NotificationIcon}
-                    width={32}
-                    height={32}
-                />
-            }
-            off={
-                <ButtonDeprecated
-                    onClick={onOpenDrawer}
-                    theme={ButtonTheme.CLEAR}
-                >
-                    <IconDeprecated
-                        Svg={NotificationIconDeprecated}
-                        width={32}
-                        height={32}
-                        inverted
-                    />
-                </ButtonDeprecated>
-            }
+        <Icon
+            className={className}
+            clickable
+            onClick={onOpenDrawer}
+            Svg={NotificationIcon}
+            width={32}
+            height={32}
         />
     )
 
@@ -69,31 +43,13 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
         <div>
             {isScreenMd ? (
                 <div>
-                    <ToggleComponentFeatures
-                        feature="isAppRedesigned"
-                        on={
-                            <Popover
-                                className={cn}
-                                trigger={trigger}
-                                direction="top right"
-                            >
-                                <NotificationList
-                                    className={cls.notifications}
-                                />
-                            </Popover>
-                        }
-                        off={
-                            <PopoverDeprecate
-                                className={cn}
-                                trigger={trigger}
-                                direction="top right"
-                            >
-                                <NotificationList
-                                    className={cls.notifications}
-                                />
-                            </PopoverDeprecate>
-                        }
-                    />
+                    <Popover
+                        className={cn}
+                        trigger={trigger}
+                        direction="top right"
+                    >
+                        <NotificationList className={cls.notifications} />
+                    </Popover>
                 </div>
             ) : (
                 <div>
