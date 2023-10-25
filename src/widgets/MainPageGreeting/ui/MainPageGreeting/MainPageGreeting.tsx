@@ -31,7 +31,6 @@ export const MainPageGreeting = ({ className }: MainPageGreetingProps) => {
     const { t } = useTranslation()
     const [letterClass, setLetterClass] = useState('text-animate')
     const { isScreenSm } = useResize()
-    console.log(isScreenSm, window.matchMedia('(max-width: 576px)'))
 
     const size = isScreenSm ? 'm' : 's'
 

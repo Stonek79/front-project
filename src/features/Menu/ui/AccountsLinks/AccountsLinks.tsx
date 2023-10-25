@@ -28,10 +28,7 @@ export const AccountsLinks = (props: AccountsLinksProps) => {
 
     return !isScreenSm ? (
         <VStack className={cnMobile} gap="4">
-            <AppLink
-                target="_blank"
-                to="https://github.com/Stonek79/front-project"
-            >
+            <AppLink target="_blank" to="https://github.com/Stonek79">
                 <HStack gap="16">
                     <div className={cls.iconWrapper}>
                         <Icon
@@ -80,10 +77,7 @@ export const AccountsLinks = (props: AccountsLinksProps) => {
             gap={short ? '16' : '32'}
             direction={short ? 'column' : 'row'}
         >
-            <AppLink
-                target="_blank"
-                to="https://github.com/Stonek79/front-project"
-            >
+            <AppLink target="_blank" to="https://github.com/Stonek79">
                 <Icon
                     width={short ? 24 : 32}
                     height={short ? 24 : 32}

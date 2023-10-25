@@ -1,102 +1,53 @@
 .LIST {
-    .views {
-        margin-left: auto;
-    }
-
-    .header {
-        display: flex;
-        align-items: center;
-    }
-
-    .username {
-        margin-left: 8px;
-    }
-
-    .date {
-        margin-left: auto;
-    }
-
-    .title {
-        margin-top: 8px;
-    }
+    width: 100%;
 
     .img {
         width: 100%;
-        max-height: 250px;
+        max-height: 420px;
         object-fit: cover;
         margin: 16px 0;
     }
 
-    .footer {
-        display: flex;
-        align-items: center;
-        margin-top: 16px;
-    }
-
     .textBlock {
-        max-height: 200px;
+        max-height: 72px;
         overflow-y: hidden;
     }
 }
 
 .CARDS {
-    width: 230px;
-    transition: 0.2s;
-    cursor: pointer;
-
-    .date {
-        position: absolute;
-        right: 0;
-        top: 0;
-        display: none;
-    }
-
-    &:hover {
-        opacity: 0.8;
-        transform: scale(1.01);
-
-        .date {
-            display: block;
-        }
-    }
-
-    .imageWrapper {
-        width: 200px;
-        height: 200px;
-        position: relative;
-    }
+    width: 240px;
+    height: 350px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
 
     .img {
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        object-fit: cover;
+        min-height: 140px;
+        max-height: 140px;
     }
 
-    .infoWrapper {
-        display: flex;
-        align-items: center;
-        margin-top: 8px;
+    .info {
+        padding: 8px 8px 16px;
+        height: 100%;
     }
 
-    .types p {
-        width: 115px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    .footer {
+        height: 100%;
+        justify-content: flex-end;
     }
 
-    .views {
-        margin-left: auto;
-        margin-right: 8px;
+    .avatar {
+        margin-left: 8px;
     }
+}
 
-    .title {
-        margin-top: 8px;
-    }
-
-    .title p {
-        width: 200px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+.mobile {
+    &.img {
+        max-height: 180px;
+        min-height: 180px;
     }
 }
