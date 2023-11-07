@@ -26,7 +26,7 @@ export const ArticleEditSubtitleBlock = ({
     const onChangeSubtitle = useCallback(
         (value: string) => {
             if (subtitle)
-                dispatch(articleDetailsActions.updateArticleTitle(value))
+                dispatch(articleDetailsActions.updateArticleSubtitle(value))
         },
         [subtitle, dispatch],
     )
@@ -47,7 +47,7 @@ export const ArticleEditSubtitleBlock = ({
             <Input
                 wrap
                 labelBold
-                label={`${t('Article Title')}:`}
+                label={`${t('Article Subtitle')}:`}
                 value={currentSubtitle}
                 onChange={controlledSubtitle}
             />

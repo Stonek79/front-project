@@ -19,7 +19,7 @@ export const ArticleDelete = (props: ArticleDeleteProps) => {
             className={cls.ArticleDelete}
             clickable
             onClick={onClick}
-            cardBorder="rounded"
+            cardBorder="standard"
             cardPaddings="16"
             max
         >

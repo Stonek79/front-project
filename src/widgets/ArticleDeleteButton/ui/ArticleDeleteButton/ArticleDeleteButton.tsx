@@ -28,6 +28,7 @@ export const ArticleDeleteButton = (props: ArticleDeleteButtonProps) => {
     }, [])
 
     const onHandleDelete = useCallback(() => {
+        console.log('delete', id)
         deleteArticle(id)
             .unwrap()
             .then(() => {

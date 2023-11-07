@@ -80,6 +80,7 @@ export const ArticleTextBlockComponent = memo(
         }
 
         return (
+            // TODO fix text title which disappear without text
             <VStack gap={gap} max className={cn}>
                 {textTitle && (
                     <VStack justify="center" align="center" gap="16" max>

@@ -31,7 +31,7 @@ export const additionalInfoText =
     'for creating and editing code. '
 
 export const additionalInfoText2 =
-    'The code architecture is based on FSD technology. The project is still in development and will be gradually improved. ' +
+    'The code architecture is based on FSD idea. The project is still in development and will be gradually improved. ' +
     'If you find a bug or you have suggestions for improving the site, add a comment'
 
 export const additionalInfoTextRu =
@@ -42,7 +42,7 @@ export const additionalInfoTextRu =
     'для создания и редактирования кода.'
 
 export const additionalInfoTextRu2 =
-    'Архитектура кода базируется на технологии FSD. Проект все еще в разработке и будет постепенно улучшаться. ' +
+    'Архитектура кода базируется на идее FSD. Проект все еще в разработке и будет постепенно улучшаться. ' +
     'Если вы нашли баг или у вас есть предложения по улучшению сайта оставьте ишью'
 
 export const contactWithMeRu = 'свяжитесь со мной.'
