@@ -75,8 +75,6 @@ server.post('/login', (req, res) => {
     }
 })
 
-// Check is user authorized
-// eslint-disable-next-line
 server.use((req, res, next) => {
     try {
         if (
@@ -85,11 +83,21 @@ server.use((req, res, next) => {
             req.path === '/comments/' ||
             req.path === '/article-ratings'
         ) {
-            req.headers.authorization = 'World'
+            req.headers.authorization = 'x'
         }
 
         console.log(req.query, req.path, req.headers, 'REQ')
+    } catch (e) {
+        console.log(e, 'auth endpoint error')
+    }
 
+    next()
+})
+
+// Check is user authorized
+// eslint-disable-next-line
+server.use((req, res, next) => {
+    try {
         if (!req.headers.authorization) {
             return res.status(403).json({ message: 'AUTH ERROR' })
         }
