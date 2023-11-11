@@ -15,7 +15,6 @@ export const saveJsonSettings = createAsyncThunk<
     const userData = getUserAuthData(getState())
     const currentSettings = getJsonSettings(getState())
 
-    console.log(currentSettings, userData, 'currentSettings')
     if (!currentSettings.isArticlesPageOpened) {
         localStorage.setItem(ARTICLES_PAGE_GREETING, 'true')
     }
