@@ -8,9 +8,7 @@ export const FeatureFlagDecorator =
     (feature: FeatureFlags) => (StoryComponent: Story) => {
         setFeatureFlags(feature)
         return (
-            <div
-                className={feature?.isAppRedesigned ? 'app-redesigned' : 'app'}
-            >
+            <div className="app">
                 <StoryComponent />
             </div>
         )

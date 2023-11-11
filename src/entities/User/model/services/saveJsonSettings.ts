@@ -4,6 +4,7 @@ import { JsonSettings } from '../types/jsonSettings'
 import { getUserAuthData } from '../selectors/getUserAuthData/getUserAuthData'
 import { getJsonSettings } from '../selectors/getJsonSettings'
 import { setJsonSettingsMutation } from '../../api/userApi'
+import { ARTICLES_PAGE_GREETING } from '../consts/consts'
 
 export const saveJsonSettings = createAsyncThunk<
     JsonSettings,
@@ -13,6 +14,11 @@ export const saveJsonSettings = createAsyncThunk<
     const { rejectWithValue, getState, dispatch } = thunkAPI
     const userData = getUserAuthData(getState())
     const currentSettings = getJsonSettings(getState())
+
+    console.log(currentSettings, userData, 'currentSettings')
+    if (!currentSettings.isArticlesPageOpened) {
+        localStorage.setItem(ARTICLES_PAGE_GREETING, 'true')
+    }
 
     if (!userData) {
         return rejectWithValue('no user data')

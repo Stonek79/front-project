@@ -33,22 +33,19 @@ export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
             path: getRouteContacts(),
             Icon: ContactsIcon,
         },
+        {
+            text: 'Articles',
+            path: getRouteArticles(),
+            Icon: ArticlesIcon,
+        },
     ]
     if (userData) {
-        sidebarItemsList.push(
-            {
-                text: 'Profile',
-                path: getRouteProfile(userData.id),
-                Icon: ProfilePageIcon,
-                authOnly: true,
-            },
-            {
-                text: 'Articles',
-                path: getRouteArticles(),
-                Icon: ArticlesIcon,
-                authOnly: true,
-            },
-        )
+        sidebarItemsList.push({
+            text: 'Profile',
+            path: getRouteProfile(userData.id),
+            Icon: ProfilePageIcon,
+            authOnly: true,
+        })
     }
     return sidebarItemsList
 })

@@ -5,7 +5,6 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Sidebar } from './Sidebar'
 import { Theme } from '@/shared/const/theme'
-import { FeatureFlagDecorator } from '@/shared/config/storybook/FeatureFlagDecorator/FeatureFlagDecorator'
 
 export default {
     title: 'widgets/Sidebar',
@@ -36,7 +35,6 @@ LightRedesigned.decorators = [
             authData: {},
         },
     }),
-    FeatureFlagDecorator({ isAppRedesigned: true }),
 ]
 
 export const Dark = Template.bind({})

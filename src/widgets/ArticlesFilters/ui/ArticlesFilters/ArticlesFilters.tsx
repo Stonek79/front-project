@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import cls from './ArticlesFilters.module.scss'
 import { Card } from '@/shared/ui/redesigned/Card'
@@ -13,6 +14,7 @@ import { Icon } from '@/shared/ui/redesigned/Icon'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 import { AppLink } from '@/shared/ui/redesigned/AppLink'
 import { getRouteArticleNew } from '@/shared/const/router'
+import { getUserAuthData } from '@/entities/User'
 
 interface ArticlesFiltersProps {
     className?: string
@@ -39,8 +41,12 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
         order,
     } = props
     const { t } = useTranslation()
+    const authData = useSelector(getUserAuthData)
 
-    const cn = classNames(cls.ArticlesFilters, {}, [className, cls.getVStack])
+    const cn = classNames(cls.ArticlesFilters, { [cls.withAuth]: !authData }, [
+        className,
+        cls.getVStack,
+    ])
 
     return (
         <VStack gap="32">
@@ -66,16 +72,18 @@ export const ArticlesFilters = memo((props: ArticlesFiltersProps) => {
                     />
                 </VStack>
             </Card>
-            <Card
-                variant="outline"
-                className={cls.cardLink}
-                cardPaddings="4"
-                max
-            >
-                <AppLink to={getRouteArticleNew()}>
-                    {t('Add New Article')}
-                </AppLink>
-            </Card>
+            {authData && (
+                <Card
+                    variant="outline"
+                    className={cls.cardLink}
+                    cardPaddings="4"
+                    max
+                >
+                    <AppLink to={getRouteArticleNew()}>
+                        {t('Add New Article')}
+                    </AppLink>
+                </Card>
+            )}
         </VStack>
     )
 })

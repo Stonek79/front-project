@@ -7,7 +7,6 @@ import { Countries } from '@/entities/Country'
 import { ProfileCardRedesigned } from './ProfileCardRedesigned'
 import AvatarImg from '../../../../shared/assets/avatar.jpg'
 import { Theme } from '@/shared/const/theme'
-import { FeatureFlagDecorator } from '@/shared/config/storybook/FeatureFlagDecorator/FeatureFlagDecorator'
 
 const data = {
     firstname: 'Alex',
@@ -23,7 +22,6 @@ const data = {
 export default {
     title: 'entities/ProfileCardRedesigned',
     component: ProfileCardRedesigned,
-    decorators: [FeatureFlagDecorator({ isAppRedesigned: true })],
 } as ComponentMeta<typeof ProfileCardRedesigned>
 
 const Template: ComponentStory<typeof ProfileCardRedesigned> = (args) => (

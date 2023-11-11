@@ -3,3 +3,5 @@ export const UserRoles = {
     USER: 'user',
     MANAGER: 'manager',
 } as const
+
+export const ARTICLES_PAGE_GREETING = 'visited'

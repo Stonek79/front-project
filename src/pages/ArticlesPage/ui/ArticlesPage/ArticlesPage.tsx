@@ -11,7 +11,7 @@ import { Page } from '@/widgets/Page'
 import { ArticleInfiniteList } from '../../ui/ArticleInfiniteList/ArticleInfiniteList'
 import { articlesPageReducer } from '../../models/slices/articlesPageSlice'
 import cls from './ArticlesPage.module.scss'
-import { ArticlesPageGreating } from '@/features/ArticlesPageGreating'
+import { ArticlesPageGreeting } from '@/features/ArticlesPageGreating'
 import { StickyLayout } from '@/shared/layouts'
 import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer'
 import { FiltersContainer } from '../FiltersContainer/FiltersContainer'
@@ -20,6 +20,7 @@ import { initArticlesPage } from '../../models/services/initArticlesPage'
 import { fetchNextArticlesPage } from '../../models/services/fetchNextArticlesPage'
 import { getArticleIsLoadingData } from '@/entities/Article'
 import { useResize } from '@/shared/lib/hooks/useResize/useResize'
+import { getUserAuthData } from '@/entities/User'
 
 interface ArticlesPageProps {
     className?: string
@@ -35,8 +36,11 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const [searchParams] = useSearchParams()
     const isLoading = useSelector(getArticleIsLoadingData)
     const { isScreenSm } = useResize()
+    const authData = useSelector(getUserAuthData)
 
-    const cn = classNames(cls.ArticlesPage, {}, [className])
+    const cn = classNames(cls.ArticlesPage, { [cls.withAuth]: !authData }, [
+        className,
+    ])
 
     const onLoadNextPage = useCallback(() => {
         dispatch(fetchNextArticlesPage())
@@ -58,7 +62,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                     isLoading={isLoading}
                 >
                     <ArticleInfiniteList />
-                    <ArticlesPageGreating />
+                    <ArticlesPageGreeting />
                 </Page>
             }
         />
@@ -70,7 +74,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
             isLoading={isLoading}
         >
             <ArticleInfiniteList />
-            <ArticlesPageGreating />
+            <ArticlesPageGreeting />
         </Page>
     )
     return (

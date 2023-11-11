@@ -8,6 +8,7 @@ import cls from './AdditionalInfoContainer.module.scss'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { getRouteArticleEdit } from '@/shared/const/router'
 import { useResize } from '@/shared/lib/hooks/useResize/useResize'
+import { getUserAuthData } from '@/entities/User'
 
 interface DetailsContainerProps {
     className?: string
@@ -18,8 +19,13 @@ export const AdditionalInfoContainer = memo((props: DetailsContainerProps) => {
     const article = useSelector(getArticleDetailsData)
     const navigate = useNavigate()
     const { isScreenSm } = useResize()
+    const authData = useSelector(getUserAuthData)
 
-    const cn = classNames(cls.AdditionalInfoContainer, {}, [className])
+    const cn = classNames(
+        cls.AdditionalInfoContainer,
+        { [cls.withAuth]: !authData },
+        [className],
+    )
 
     const onEditArticle = useCallback(() => {
         if (article) {

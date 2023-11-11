@@ -1,3 +1,4 @@
+export { getIsVisited } from './model/selectors/getIsVisited'
 export { addUserMutation } from './api/userApi'
 export {
     getUserRoles,

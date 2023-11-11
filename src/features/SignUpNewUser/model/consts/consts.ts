@@ -8,7 +8,6 @@ export const newUserSchema = {
     roles: [UserRoles.USER],
     features: {
         isArticleRatingEnabled: false,
-        isAppRedesigned: true,
     },
     jsonSettings: {
         theme: Theme.LIGHT,
