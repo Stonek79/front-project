@@ -24,25 +24,29 @@ server.use(jsonServer.bodyParser)
 // Endpoint for users
 // eslint-disable-next-line consistent-return
 server.use(async (req, res, next) => {
-    if (req.path === '/users') {
-        const { username } = req.body
+    try {
+        if (req.path === '/users') {
+            const { username } = req.body
 
-        const db = JSON.parse(
-            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
-        )
+            const db = JSON.parse(
+                fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+            )
 
-        const { users = [] } = db
+            const { users = [] } = db
 
-        const userFromBd = users.find((user) => user.username === username)
+            const userFromBd = users.find((user) => user.username === username)
 
-        if (userFromBd) {
-            return res.status(409).json('User already exists')
+            if (userFromBd) {
+                return res.status(409).json('User already exists')
+            }
         }
-    }
 
-    await new Promise((res) => {
-        res()
-    })
+        await new Promise((res) => {
+            res()
+        })
+    } catch (e) {
+        console.log(e, 'users endpoint error')
+    }
 
     next()
 })
@@ -66,7 +70,7 @@ server.post('/login', (req, res) => {
 
         return res.status(403).json('User not found')
     } catch (e) {
-        console.log(e)
+        console.log(e, 'login endpoint error')
         return res.status(500).json({ message: e.message })
     }
 })
@@ -74,17 +78,23 @@ server.post('/login', (req, res) => {
 // Check is user authorized
 // eslint-disable-next-line
 server.use((req, res, next) => {
-    if (
-        req.path === '/articles' ||
-        `/articles/${req.query.articleId}` ||
-        req.path === '/comments/' ||
-        req.path === '/article-ratings'
-    ) {
-        req.headers.authorization = 'World'
-    }
+    try {
+        if (
+            req.path === '/articles' ||
+            `/articles/${req.query.articleId}` ||
+            req.path === '/comments/' ||
+            req.path === '/article-ratings'
+        ) {
+            req.headers.authorization = 'World'
+        }
 
-    if (!req.headers.authorization) {
-        return res.status(403).json({ message: 'AUTH ERROR' })
+        console.log(req.query, req.path, req.headers, 'REQ')
+
+        if (!req.headers.authorization) {
+            return res.status(403).json({ message: 'AUTH ERROR' })
+        }
+    } catch (e) {
+        console.log(e, 'auth endpoint error')
     }
 
     next()
