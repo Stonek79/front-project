@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text } from '@/shared/ui/redesigned/Text'
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack'
@@ -13,17 +13,13 @@ export const ArticleRecommendationsList = memo(
     (props: ArticleRecommendationsListProps) => {
         const { className } = props
         const { t } = useTranslation()
-        const { data, isLoading, error } = useArticlesRecommendationsList(3)
-        const [articles, setArtickles] = useState([])
+        const {
+            data: articles,
+            isLoading,
+            error,
+        } = useArticlesRecommendationsList(3)
 
         const cn = classNames('', {}, [className])
-
-        useEffect(() => {
-            if (data && data.length) {
-                // @ts-ignore
-                setArtickles(data)
-            }
-        }, [data])
 
         if (error) {
             return (

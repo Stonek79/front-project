@@ -75,38 +75,19 @@ server.post('/login', (req, res) => {
     }
 })
 
-server.use((req, res, next) => {
-    try {
-        if (
-            req.path === '/articles' ||
-            `/articles/${req.query.articleId}` ||
-            req.path === '/comments/' ||
-            req.path === '/article-ratings'
-        ) {
-            req.headers.authorization = 'x'
-        }
-
-        console.log(req.query, req.path, req.headers, 'REQ')
-    } catch (e) {
-        console.log(e, 'auth endpoint error')
-    }
-
-    next()
-})
-
 // Check is user authorized
 // eslint-disable-next-line
-server.use((req, res, next) => {
-    try {
-        if (!req.headers.authorization) {
-            return res.status(403).json({ message: 'AUTH ERROR' })
-        }
-    } catch (e) {
-        console.log(e, 'auth endpoint error')
-    }
-
-    next()
-})
+// server.use((req, res, next) => {
+//     try {
+//         if (!req.headers.authorization) {
+//             return res.status(403).json({ message: 'AUTH ERROR' })
+//         }
+//     } catch (e) {
+//         console.log(e, 'auth endpoint error')
+//     }
+//
+//     next()
+// })
 
 server.use(router)
 
