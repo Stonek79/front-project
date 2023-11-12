@@ -77,17 +77,17 @@ server.post('/login', (req, res) => {
 
 // Check is user authorized
 // eslint-disable-next-line
-server.use((req, res, next) => {
-    try {
-        if (!req.headers.authorization) {
-            return res.status(403).json({ message: 'AUTH ERROR' })
-        }
-    } catch (e) {
-        console.log(e, 'auth endpoint error')
-    }
-
-    next()
-})
+// server.use((req, res, next) => {
+//     try {
+//         if (!req.headers.authorization) {
+//             return res.status(403).json({ message: 'AUTH ERROR' })
+//         }
+//     } catch (e) {
+//         console.log(e, 'auth endpoint error')
+//     }
+//
+//     next()
+// })
 
 server.use(router)
 
