@@ -1,8 +1,11 @@
 export const getQueryParams = (params: OptionalRecord<string, string>) => {
     const searchParams = new URLSearchParams(window.location.search)
     Object.entries(params).forEach(([name, value]) => {
+        console.log(name, value)
         if (value !== undefined) {
             searchParams.set(name, value)
+        } else {
+            searchParams.set(name, '')
         }
     })
     return `?${searchParams.toString()}`
