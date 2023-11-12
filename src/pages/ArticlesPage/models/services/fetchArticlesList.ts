@@ -51,6 +51,7 @@ export const fetchArticlesList = createAsyncThunk<
         })
 
         if (!res.data) {
+            console.log(res)
             return rejectWithValue(res.status === 404 ? '404' : 'server error')
         }
 
