@@ -29,7 +29,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
-    // console.log(articles, 'articles')
+    console.log(articles, 'articles')
     const cn = classNames(cls.ArticleInfiniteList, {}, [className])
 
     if (error) {

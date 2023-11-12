@@ -75,6 +75,14 @@ server.post('/login', (req, res) => {
     }
 })
 
+server.get('/articles', async (req, res, next) => {
+    console.log(req.headers, 'headers')
+    console.log(req.query, 'query')
+    console.log(req.path, 'path')
+    console.log(req.body, 'body')
+
+    next()
+})
 // Check is user authorized
 // eslint-disable-next-line
 // server.use((req, res, next) => {
