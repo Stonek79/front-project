@@ -78,32 +78,20 @@ server.post('/login', (req, res) => {
 
 // eslint-disable-next-line consistent-return
 server.get('/articles', async (req, res, next) => {
-    // if (req.path === '/articles') {
     console.log(req.headers, 'headers')
     console.log(req.query, 'query')
     console.log(req.path, 'path')
     console.log(req.body, 'body')
 
     try {
+        if (!req.headers.authorization) {
+            req.headers.authorization = 'Bearer token'
+        }
         console.log('articles endpoint done')
     } catch (e) {
         console.log(e, 'articles endpoint error')
     }
-    // const db = JSON.parse(
-    //     fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
-    // )
-    //
-    // const { articles = [], users = [] } = db
-    //
-    // const result = articles.map((article) => {
-    //     const { password, ...user } = users.find(
-    //         ({ id }) => id === article.userId,
-    //     )
-    //     return { ...article, user }
-    // })
-    // return res.json(result)
-    // }
-    //
+
     next()
 })
 // Check is user authorized
