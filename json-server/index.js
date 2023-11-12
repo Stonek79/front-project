@@ -28,6 +28,7 @@ server.use(async (req, res, next) => {
         if (req.path === '/users') {
             const { username } = req.body
 
+            console.log(req.query, req.body, req.headers)
             const db = JSON.parse(
                 fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
             )
