@@ -76,24 +76,6 @@ server.post('/login', (req, res) => {
     }
 })
 
-// eslint-disable-next-line consistent-return
-server.get('/articles', async (req, res, next) => {
-    console.log(req.headers, 'headers')
-    console.log(req.query, 'query')
-    console.log(req.path, 'path')
-    console.log(req.body, 'body')
-
-    try {
-        if (!req.headers.authorization) {
-            req.headers.authorization = 'Bearer token'
-        }
-        console.log('articles endpoint done')
-    } catch (e) {
-        console.log(e, 'articles endpoint error')
-    }
-
-    next()
-})
 // Check is user authorized
 // eslint-disable-next-line
 // server.use((req, res, next) => {
