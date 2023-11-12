@@ -45,6 +45,9 @@ export const fetchArticlesList = createAsyncThunk<
                 q: search,
                 type: type === ArticleTypes.ALL ? undefined : type,
             },
+            headers: {
+                'Content-Type': 'application/json',
+            },
         })
 
         if (!res.data) {
