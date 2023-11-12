@@ -50,6 +50,8 @@ export const fetchArticlesList = createAsyncThunk<
             },
         })
 
+        console.log(res)
+
         if (!res.data) {
             console.log(res)
             return rejectWithValue(res.status === 404 ? '404' : 'server error')
@@ -63,6 +65,7 @@ export const fetchArticlesList = createAsyncThunk<
             console.log(e.response.data)
             console.log(e.response.status)
             console.log(e.response.headers)
+            console.log(e.response)
         }
         if (e.response.status === 404) {
             return rejectWithValue('404')

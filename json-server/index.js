@@ -76,6 +76,14 @@ server.post('/login', (req, res) => {
     }
 })
 
+server.use((req, res, next) => {
+    if (req.path === '/articles') {
+        req.headers['Content-Type'] = 'application/json'
+        console.log(req.headers, 'headers')
+    }
+
+    next()
+})
 // Check is user authorized
 // eslint-disable-next-line
 // server.use((req, res, next) => {
