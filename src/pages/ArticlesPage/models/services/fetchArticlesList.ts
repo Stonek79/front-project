@@ -28,9 +28,8 @@ export const fetchArticlesList = createAsyncThunk<
     const currentType = getArticlesPageType(getState())
     const resultType =
         currentType === ArticleTypes.ALL ? undefined : currentType
-    const type = __IS_DEV__ ? resultType : undefined
+    const type = __IS_DEV__ ? resultType : currentType ?? ArticleTypes.IT
 
-    console.log(__IS_DEV__)
     try {
         addQueryParams({
             order,

@@ -1,3 +1,4 @@
+export { articleBaseData } from './model/consts/article'
 export { fetchArticleById } from './model/services/fetchArticleById'
 export {
     useDeleteArticleMutation,
