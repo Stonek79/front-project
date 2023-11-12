@@ -9,7 +9,7 @@ $api.interceptors.request.use((config) => {
     if (config && config.headers) {
         config.headers.authorization =
             localStorage.getItem(USER_LOCALSTORAGE_KEY) || '2'
-        config.headers['Content-Type'] = 'application/json'
+        config.headers['Content-Type'] = 'application/json; charset=utf-8'
     }
     return config
 })

@@ -21,6 +21,13 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'))
 server.use(jsonServer.defaults({}))
 server.use(jsonServer.bodyParser)
 
+server.use((req, res, next) => {
+    req.headers['Content-Type'] = 'application/json; charset=utf-8'
+    console.log(req.headers, 'headers')
+
+    next()
+})
+
 // Endpoint for users
 // eslint-disable-next-line consistent-return
 server.use(async (req, res, next) => {
@@ -76,14 +83,6 @@ server.post('/login', (req, res) => {
     }
 })
 
-server.use((req, res, next) => {
-    if (req.path === '/articles') {
-        req.headers['Content-Type'] = 'application/json'
-        console.log(req.headers, 'headers')
-    }
-
-    next()
-})
 // Check is user authorized
 // eslint-disable-next-line
 // server.use((req, res, next) => {

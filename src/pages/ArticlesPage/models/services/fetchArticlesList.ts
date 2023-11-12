@@ -53,20 +53,13 @@ export const fetchArticlesList = createAsyncThunk<
         console.log(res)
 
         if (!res.data) {
-            console.log(res)
             return rejectWithValue(res.status === 404 ? '404' : 'server error')
         }
 
         return res.data
     } catch (e: any | unknown) {
-        console.log(e)
-        if (e.response) {
-            // The client was given an error response (5xx, 4xx)
-            console.log(e.response.data)
-            console.log(e.response.status)
-            console.log(e.response.headers)
-            console.log(e.response)
-        }
+        console.log(e.response)
+
         if (e.response.status === 404) {
             return rejectWithValue('404')
         }
