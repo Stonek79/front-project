@@ -21,7 +21,9 @@ export const fetchNextArticlesPage = createAsyncThunk<
 
     console.log(length, 'length')
     try {
-        if (hasMore && !isLoading && length) {
+        if (!length) {
+            dispatch(fetchArticlesList({}))
+        } else if (hasMore && !isLoading) {
             dispatch(articlesPageActions.setPage(page + 1))
 
             dispatch(fetchArticlesList({}))
