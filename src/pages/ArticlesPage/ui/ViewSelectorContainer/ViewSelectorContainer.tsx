@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { ArticleViewSelector } from '@/widgets/ArticleViewSelector'
-import { UseArticlesFilter } from '../../lib/hooks/useArticlesFilter'
+import { useArticlesFilter } from '../../lib/hooks/useArticlesFilter'
 
 interface ViewSelectorContainerProps {
     className?: string
@@ -10,7 +10,7 @@ export const ViewSelectorContainer = memo(
     (props: ViewSelectorContainerProps) => {
         const { className } = props
 
-        const { view, onChangeView } = UseArticlesFilter()
+        const { view, onChangeView } = useArticlesFilter()
 
         return (
             <ArticleViewSelector

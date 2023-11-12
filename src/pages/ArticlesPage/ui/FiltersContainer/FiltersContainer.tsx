@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { ArticlesFilters } from '@/widgets/ArticlesFilters'
-import { UseArticlesFilter } from '../../lib/hooks/useArticlesFilter'
+import { useArticlesFilter } from '../../lib/hooks/useArticlesFilter'
 
 interface FiltersContainerProps {
     className?: string
@@ -20,7 +20,7 @@ export const FiltersContainer = memo((props: FiltersContainerProps) => {
         onChangeSearch,
         type,
         onChangeType,
-    } = UseArticlesFilter()
+    } = useArticlesFilter()
 
     return (
         <ArticlesFilters

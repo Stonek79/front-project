@@ -6,7 +6,7 @@ import { ArticleViewSelector } from '@/widgets/ArticleViewSelector'
 import { ArticlesSortSelector } from '@/features/ArticlesSortSelector'
 import { ArticleTypeTabs } from '@/features/ArticleTypeTabs'
 import cls from './ArticlesPageFilters.module.scss'
-import { UseArticlesFilter } from '../../lib/hooks/useArticlesFilter'
+import { useArticlesFilter } from '../../lib/hooks/useArticlesFilter'
 
 interface ArticlesPageFiltersProps {
     className?: string
@@ -27,7 +27,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
         onChangeSearch,
         type,
         onChangeType,
-    } = UseArticlesFilter()
+    } = useArticlesFilter()
 
     return (
         <div className={className}>

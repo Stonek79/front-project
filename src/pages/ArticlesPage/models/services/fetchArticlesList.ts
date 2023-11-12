@@ -25,7 +25,10 @@ export const fetchArticlesList = createAsyncThunk<
     const order = getArticlesPageOrder(getState())
     const sort = getArticlesPageSort(getState())
     const search = getArticlesPageSearch(getState())
-    const type = getArticlesPageType(getState())
+    const type =
+        getArticlesPageType(getState()) === ArticleTypes.ALL
+            ? undefined
+            : getArticlesPageType(getState())
 
     try {
         addQueryParams({
@@ -43,7 +46,7 @@ export const fetchArticlesList = createAsyncThunk<
                 _order: order,
                 _sort: sort,
                 q: search,
-                type: type === ArticleTypes.ALL ? undefined : type,
+                type,
             },
         })
 

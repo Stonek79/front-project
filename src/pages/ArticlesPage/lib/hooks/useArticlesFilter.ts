@@ -18,7 +18,7 @@ import { SortOrder } from '@/shared/types/sort'
 import { fetchArticlesList } from '../../models/services/fetchArticlesList'
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce'
 
-export const UseArticlesFilter = () => {
+export const useArticlesFilter = () => {
     const view = useSelector(getArticlesView)
     const order = useSelector(getArticlesPageOrder)
     const sort = useSelector(getArticlesPageSort)
