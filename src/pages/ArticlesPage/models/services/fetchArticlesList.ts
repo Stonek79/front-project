@@ -25,14 +25,18 @@ export const fetchArticlesList = createAsyncThunk<
     const order = getArticlesPageOrder(getState())
     const sort = getArticlesPageSort(getState())
     const search = getArticlesPageSearch(getState())
-    const type = getArticlesPageType(getState())
+    const currentType = getArticlesPageType(getState())
+    const resultType =
+        currentType === ArticleTypes.ALL ? undefined : currentType
+    const type = __IS_DEV__ ? resultType : undefined
 
+    console.log(__IS_DEV__)
     try {
         addQueryParams({
             order,
             sort,
             search,
-            type: type === ArticleTypes.ALL ? undefined : type,
+            type,
         })
 
         const res = await extra.api.get<Article[]>('/articles', {
@@ -43,14 +47,9 @@ export const fetchArticlesList = createAsyncThunk<
                 _order: order,
                 _sort: sort,
                 q: search,
-                type: type === ArticleTypes.ALL ? undefined : type,
-            },
-            headers: {
-                'Content-Type': 'application/json',
+                type,
             },
         })
-
-        console.log(res)
 
         if (!res.data) {
             return rejectWithValue(res.status === 404 ? '404' : 'server error')

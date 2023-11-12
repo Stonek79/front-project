@@ -21,13 +21,6 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'))
 server.use(jsonServer.defaults({}))
 server.use(jsonServer.bodyParser)
 
-server.use((req, res, next) => {
-    req.headers['Content-Type'] = 'application/json; charset=utf-8'
-    console.log(req.headers, 'headers')
-
-    next()
-})
-
 // Endpoint for users
 // eslint-disable-next-line consistent-return
 server.use(async (req, res, next) => {
@@ -35,7 +28,7 @@ server.use(async (req, res, next) => {
         if (req.path === '/users') {
             const { username } = req.body
 
-            console.log(req.query, req.body, req.headers)
+            console.log(req.query, req.body, req.headers, 'users endpoint')
             const db = JSON.parse(
                 fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
             )
